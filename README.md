@@ -1,20 +1,11 @@
 # `GameHub` Android app
 
-----
-Right now, we're in the process of migrating this app from a native Android app,
-to a Kotlin Multiplatform app.
-Feel free to collaborate with us.
-----
-
 
 [![Build](https://github.com/hojat72elect/GameHub/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/hojat72elect/GameHub/actions/workflows/build.yml)
 
 This is an Android client for <a href="https://www.igdb.com/">IGDB</a>
 and <a href="https://dev.twitch.tv/">Twitch</a> APIs for all the latest news and information about
 video games.
-
-The trello board I use for keeping track of all the tickets of this project is shared in here:
-https://trello.com/b/lG03zl6P/game-news-app
 
 ![Min API](https://img.shields.io/badge/API-21%2B-orange.svg?style=flat)
 [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](http://developer.android.com/index.html)
@@ -164,16 +155,8 @@ that the app uses to fetch information about pretty much any video game there is
 previews, downloads, and other information on video games. The app uses its API to solely retrieve
 the latest news in the gaming world.
 
-## Questions
-
-If you have any questions regarding the codebase or have found an issue, please open up an issue on
-GitHub repository.
-I'll answer to all opened issues as fast as I can.
-
 ### Contributors
 
 Main developer: [Hojat Ghasemi](mailto:hojat72elect@gmail.com)
 <br/>
 App icon designer: [Grace Peterson](mailto:gracepeterson2@outlook.com)
-<br/>
-Russian translations: [Daria Vinogradova](mailto:herrwerner278@gmail.com)
