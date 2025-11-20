@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright 2020 Paul Rybitskyi, oss@paulrybitskyi.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+
+<resources>
+    <string name="app_name" translatable="false">Gamedge</string>
+
+    <string name="text_font_family_medium" translatable="false">sans-serif-medium</string>
+    <string name="unknown">Unknown</string>
+    <string name="not_available_abbr">N/A</string>
+    <string name="url_opener_not_found">No app was found capable of opening the URL!</string>
+    <string name="image">image</string>
+    <string name="artwork">Artwork</string>
+    <string name="cover">Cover</string>
+    <string name="screenshot">Screenshot</string>
+    <string name="version_name_template">v%s</string>
+
+    <string name="action_share_via">Share via…</string>
+
+    <string name="year_quarter_first">Q1</string>
+    <string name="year_quarter_second">Q2</string>
+    <string name="year_quarter_third">Q3</string>
+    <string name="year_quarter_fourth">Q4</string>
+
+    <string name="year_with_quarter_template">%1$d (%2$s)</string>
+    <string name="rating_template">%d%%</string>
+    <string name='age_rating_template'>%1$s-%2$s</string>
+    <string name="text_sharing_message_template">Hey, check out this %1$s - %2$s</string>
+
+    <string name="company_role_developer">Main Developer</string>
+    <string name="company_role_publisher">Publisher</string>
+    <string name="company_role_porter">Porting Developer</string>
+    <string name="company_role_supporting">Supporting Developer</string>
+
+    <string name="website_unknown">Unknown</string>
+    <string name="website_steam" translatable="false">Steam</string>
+    <string name="website_gog" translatable="false">GOG</string>
+    <string name="website_epic_games" translatable="false">Epic Games</string>
+    <string name="website_google_play" translatable="false">Google Play</string>
+    <string name="website_app_store" translatable="false">App Store</string>
+    <string name="website_official">Official</string>
+    <string name="website_twitter" translatable="false">Twitter</string>
+    <string name="website_subreddit" translatable="false">Subreddit</string>
+    <string name="website_youtube" translatable="false">Youtube</string>
+    <string name="website_twitch" translatable="false">Twitch</string>
+    <string name="website_instagram" translatable="false">Instagram</string>
+    <string name="website_facebook" translatable="false">Facebook</string>
+    <string name="website_wikipedia" translatable="false">Wikipedia</string>
+    <string name="website_wikia" translatable="false">Wikia</string>
+    <string name="website_discord" translatable="false">Discord</string>
+
+    <string name="game_category_main">Main</string>
+    <string name="game_category_dlc">DLC</string>
+    <string name="game_category_bundle">Bundle</string>
+    <string name="game_category_mod">Mod</string>
+    <string name="game_category_episode">Episode</string>
+    <string name="game_category_season">Season</string>
+
+    <string name="error_no_network_message">Please check your network connection.</string>
+    <string name="error_unknown_message">Oops! Something went wrong.</string>
+
+    <string name="error_api_network_message">@string/error_no_network_message</string>
+    <string name="error_api_server_message">The server is not responding! Please try again later.</string>
+    <string name="error_api_unknown_message">Could not perform the request! Please try again later.</string>
+</resources>

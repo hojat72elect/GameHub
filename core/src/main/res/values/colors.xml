@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright 2020 Paul Rybitskyi, oss@paulrybitskyi.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+
+<resources>
+    <color name="light_colorPrimary">#ffffff</color>
+    <color name="light_colorPrimaryVariant">#FBFBF8</color>
+    <color name="light_colorSecondary">#dd4d59</color>
+    <color name="light_colorBackground">#faf9f7</color>
+    <color name="light_colorSurface">#FEFEFA</color>
+    <color name="light_colorOnPrimary">#000000</color>
+    <color name="light_colorOnSecondary">#611d12</color>
+    <color name="light_colorOnBackground">#4d5c69</color>
+    <color name="light_colorOnSurface">@color/light_colorOnBackground</color>
+
+    <color name="dark_colorPrimary">#2B303C</color>
+    <color name="dark_colorPrimaryVariant">#1D212B</color>
+    <color name="dark_colorSecondary">#F55663</color>
+    <color name="dark_colorBackground">#1c2028</color>
+    <color name="dark_colorSurface">#222630</color>
+    <color name="dark_colorOnPrimary">#FFFFFF</color>
+    <color name="dark_colorOnSecondary">#611d12</color>
+    <color name="dark_colorOnBackground">#809aaf</color>
+    <color name="dark_colorOnSurface">@color/dark_colorOnBackground</color>
+
+    <color name="colorLightScrim">#35000000</color>
+    <color name="colorDarkScrim">#66000000</color>
+</resources>
