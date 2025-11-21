@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import com.paulrybitskyi.gamedge.common.domain.games.entities.WebsiteCategory
 import com.paulrybitskyi.gamedge.common.ui.theme.GamedgeTheme
 import com.paulrybitskyi.gamedge.common.ui.widgets.GamedgeCard
-import com.paulrybitskyi.gamedge.feature.info.R
+import com.paulrybitskyi.gamedge.feature.category.R
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.utils.GameInfoSection
 import java.util.Locale
 import com.paulrybitskyi.gamedge.core.R as CoreR

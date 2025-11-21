@@ -20,7 +20,7 @@ import com.paulrybitskyi.gamedge.common.domain.games.entities.Video
 import com.paulrybitskyi.gamedge.core.factories.YoutubeMediaUrlFactory
 import com.paulrybitskyi.gamedge.core.factories.YoutubeThumbnailSize
 import com.paulrybitskyi.gamedge.core.providers.StringProvider
-import com.paulrybitskyi.gamedge.feature.info.R
+import com.paulrybitskyi.gamedge.feature.category.R
 import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 

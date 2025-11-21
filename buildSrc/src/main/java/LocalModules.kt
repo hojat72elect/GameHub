@@ -35,7 +35,6 @@ object localModules {
     const val commonTesting = ":common-testing"
 
     const val featureCategory = ":feature-category"
-    const val featureInfo = ":feature-info"
     const val featureLikes = ":feature-likes"
     const val featureSearch = ":feature-search"
     const val featureSettings = ":feature-settings"

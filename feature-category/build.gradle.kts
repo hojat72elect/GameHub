@@ -12,4 +12,5 @@ dependencies {
 
     implementation(libs.prefsDataStore)
     implementation(libs.zoomable)
+    implementation(libs.materialComponents)
 }
