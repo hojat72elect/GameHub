@@ -5,4 +5,6 @@
     <string name="games_discovery_toolbar_title">Discover</string>
     <string name="gaming_news_toolbar_title">News</string>
     <string name="gaming_news_info_view_title">No News Available</string>
+    <string name="image_viewer_default_toolbar_title">Image</string>
+    <string name="image_viewer_toolbar_title_template">%1$s %2$d of %3$d</string>
 </resources>

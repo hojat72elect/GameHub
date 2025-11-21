@@ -32,7 +32,6 @@ dependencies {
     implementation(project(localModules.database))
     implementation(project(localModules.featureCategory))
     implementation(project(localModules.featureInfo))
-    implementation(project(localModules.featureImageViewer))
     implementation(project(localModules.featureLikes))
     implementation(project(localModules.featureSearch))
     implementation(project(localModules.featureSettings))

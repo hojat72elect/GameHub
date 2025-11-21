@@ -36,7 +36,6 @@ object localModules {
 
     const val featureCategory = ":feature-category"
     const val featureInfo = ":feature-info"
-    const val featureImageViewer = ":feature-image-viewer"
     const val featureLikes = ":feature-likes"
     const val featureSearch = ":feature-search"
     const val featureSettings = ":feature-settings"

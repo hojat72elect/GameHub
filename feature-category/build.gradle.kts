@@ -11,4 +11,5 @@ dependencies {
     implementation(project(localModules.database))
 
     implementation(libs.prefsDataStore)
+    implementation(libs.zoomable)
 }
