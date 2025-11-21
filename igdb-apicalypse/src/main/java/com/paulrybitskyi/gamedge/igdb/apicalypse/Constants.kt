@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.apicalypse
 
 internal object Constants {

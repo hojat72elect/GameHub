@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.settings.presentation
 
 import androidx.compose.runtime.Immutable

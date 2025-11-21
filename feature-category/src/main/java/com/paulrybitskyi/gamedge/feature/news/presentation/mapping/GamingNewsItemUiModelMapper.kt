@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.presentation.mapping
 
 import com.paulrybitskyi.gamedge.core.formatters.ArticlePublicationDateFormatter

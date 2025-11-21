@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.data.throttling
 
 import androidx.datastore.core.DataStore

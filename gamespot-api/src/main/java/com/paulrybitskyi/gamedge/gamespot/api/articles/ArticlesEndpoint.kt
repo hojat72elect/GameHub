@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.gamespot.api.articles
 
 import com.github.michaelbull.result.map

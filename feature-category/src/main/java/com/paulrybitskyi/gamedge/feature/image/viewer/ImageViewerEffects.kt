@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.image.viewer
 
 import com.paulrybitskyi.gamedge.common.ui.base.events.Command

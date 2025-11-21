@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core.urlopener
 
 import javax.inject.Qualifier

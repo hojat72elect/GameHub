@@ -1,4 +1,3 @@
-
 @file:Suppress("ClassName")
 
 package com.paulrybitskyi.gamedge.database.common

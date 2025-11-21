@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.gamespot.api.common
 
 import kotlinx.serialization.SerialName

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.data
 
 import app.cash.turbine.test
@@ -25,7 +24,8 @@ internal class ArticlesDatabaseDataStoreTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var articlesTable: ArticlesTable
+    @MockK
+    private lateinit var articlesTable: ArticlesTable
 
     private lateinit var dbArticleMapper: DbArticleMapper
     private lateinit var SUT: ArticlesDatabaseDataStore

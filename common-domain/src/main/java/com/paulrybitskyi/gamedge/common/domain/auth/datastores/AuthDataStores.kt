@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.domain.auth.datastores
 
 import javax.inject.Inject

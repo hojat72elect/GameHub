@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.database.articles.entities
 
 enum class DbImageType {

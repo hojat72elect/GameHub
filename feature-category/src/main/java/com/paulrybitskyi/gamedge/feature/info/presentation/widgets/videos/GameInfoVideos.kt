@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.presentation.widgets.videos
 
 import androidx.compose.foundation.background

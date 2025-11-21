@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.domain
 
 import app.cash.turbine.test
@@ -33,8 +32,11 @@ internal class GetGameImageUrlsUseCaseImplTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var getGameUseCase: GetGameUseCase
-    @MockK private lateinit var gameUrlFactory: ImageViewerGameUrlFactory
+    @MockK
+    private lateinit var getGameUseCase: GetGameUseCase
+
+    @MockK
+    private lateinit var gameUrlFactory: ImageViewerGameUrlFactory
 
     private lateinit var SUT: GetGameImageUrlsUseCaseImpl
 

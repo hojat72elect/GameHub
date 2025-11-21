@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.category.widgets
 
 import androidx.compose.runtime.Composable

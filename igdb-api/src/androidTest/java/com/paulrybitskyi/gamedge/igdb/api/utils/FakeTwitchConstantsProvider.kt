@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api.utils
 
 import com.paulrybitskyi.gamedge.igdb.api.common.TwitchConstantsProvider

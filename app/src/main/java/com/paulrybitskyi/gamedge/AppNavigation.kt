@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge
 
 import androidx.compose.animation.AnimatedContentScope
@@ -77,7 +76,8 @@ private fun NavGraphBuilder.gamesDiscoveryScreen(
                 Screen.GamesSearch -> OvershootScaling.exit()
                 Screen.GamesCategory,
                 Screen.GameInfo,
-                -> HorizontalSliding.exit()
+                    -> HorizontalSliding.exit()
+
                 else -> null
             }
         },
@@ -86,7 +86,8 @@ private fun NavGraphBuilder.gamesDiscoveryScreen(
                 Screen.GamesSearch -> OvershootScaling.popEnter()
                 Screen.GamesCategory,
                 Screen.GameInfo,
-                -> HorizontalSliding.popEnter()
+                    -> HorizontalSliding.popEnter()
+
                 else -> null
             }
         },
@@ -97,9 +98,11 @@ private fun NavGraphBuilder.gamesDiscoveryScreen(
                 is GamesDiscoveryDirection.Search -> {
                     navController.navigate(Screen.GamesSearch.route)
                 }
+
                 is GamesDiscoveryDirection.Category -> {
                     navController.navigate(Screen.GamesCategory.createRoute(category = direction.category))
                 }
+
                 is GamesDiscoveryDirection.Info -> {
                     navController.navigate(Screen.GameInfo.createRoute(gameId = direction.gameId))
                 }
@@ -136,6 +139,7 @@ private fun NavGraphBuilder.likedGamesScreen(
                 is LikedGamesDirection.Search -> {
                     navController.navigate(Screen.GamesSearch.route)
                 }
+
                 is LikedGamesDirection.Info -> {
                     navController.navigate(Screen.GameInfo.createRoute(gameId = direction.gameId))
                 }
@@ -164,7 +168,8 @@ private fun NavGraphBuilder.gamesSearchScreen(navController: NavHostController) 
                 Screen.GamingNews,
                 Screen.GamesDiscovery,
                 Screen.LikedGames,
-                -> OvershootScaling.enter()
+                    -> OvershootScaling.enter()
+
                 else -> null
             }
         },
@@ -185,7 +190,8 @@ private fun NavGraphBuilder.gamesSearchScreen(navController: NavHostController) 
                 Screen.GamingNews,
                 Screen.GamesDiscovery,
                 Screen.LikedGames,
-                -> OvershootScaling.popExit()
+                    -> OvershootScaling.popExit()
+
                 else -> null
             }
         },
@@ -195,6 +201,7 @@ private fun NavGraphBuilder.gamesSearchScreen(navController: NavHostController) 
                 is GamesSearchDirection.Info -> {
                     navController.navigate(Screen.GameInfo.createRoute(gameId = direction.gameId))
                 }
+
                 is GamesSearchDirection.Back -> {
                     navController.popBackStack()
                 }
@@ -236,6 +243,7 @@ private fun NavGraphBuilder.gamesCategoryScreen(navController: NavHostController
                 is GamesCategoryDirection.Info -> {
                     navController.navigate(Screen.GameInfo.createRoute(gameId = direction.gameId))
                 }
+
                 is GamesCategoryDirection.Back -> {
                     navController.popBackStack()
                 }
@@ -254,7 +262,8 @@ private fun NavGraphBuilder.gameInfoScreen(navController: NavHostController) {
                 Screen.GamesSearch,
                 Screen.GamesCategory,
                 Screen.GameInfo,
-                -> HorizontalSliding.enter()
+                    -> HorizontalSliding.enter()
+
                 else -> null
             }
         },
@@ -262,7 +271,8 @@ private fun NavGraphBuilder.gameInfoScreen(navController: NavHostController) {
             when (Screen.forRoute(targetState.destination.requireRoute())) {
                 Screen.ImageViewer,
                 Screen.GameInfo,
-                -> HorizontalSliding.exit()
+                    -> HorizontalSliding.exit()
+
                 else -> null
             }
         },
@@ -270,7 +280,8 @@ private fun NavGraphBuilder.gameInfoScreen(navController: NavHostController) {
             when (Screen.forRoute(initialState.destination.requireRoute())) {
                 Screen.ImageViewer,
                 Screen.GameInfo,
-                -> HorizontalSliding.popEnter()
+                    -> HorizontalSliding.popEnter()
+
                 else -> null
             }
         },
@@ -281,7 +292,8 @@ private fun NavGraphBuilder.gameInfoScreen(navController: NavHostController) {
                 Screen.GamesSearch,
                 Screen.GamesCategory,
                 Screen.GameInfo,
-                -> HorizontalSliding.popExit()
+                    -> HorizontalSliding.popExit()
+
                 else -> null
             }
         },
@@ -297,9 +309,11 @@ private fun NavGraphBuilder.gameInfoScreen(navController: NavHostController) {
                         ),
                     )
                 }
+
                 is GameInfoDirection.Info -> {
                     navController.navigate(Screen.GameInfo.createRoute(gameId = direction.gameId))
                 }
+
                 is GameInfoDirection.Back -> {
                     navController.popBackStack()
                 }
@@ -355,13 +369,13 @@ private fun NavGraphBuilder.composable(
             typeMap,
             content,
         )
-        .apply {
-            deepLinks.forEach { deepLink -> deepLink(deepLink) }
-            this.enterTransition = enterTransition
-            this.exitTransition = exitTransition
-            this.popEnterTransition = popEnterTransition
-            this.popExitTransition = popExitTransition
-            this.sizeTransform = sizeTransform
-        },
+            .apply {
+                deepLinks.forEach { deepLink -> deepLink(deepLink) }
+                this.enterTransition = enterTransition
+                this.exitTransition = exitTransition
+                this.popEnterTransition = popEnterTransition
+                this.popExitTransition = popExitTransition
+                this.sizeTransform = sizeTransform
+            },
     )
 }

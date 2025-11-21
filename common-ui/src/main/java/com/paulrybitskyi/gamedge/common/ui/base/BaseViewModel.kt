@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.base
 
 import androidx.lifecycle.ViewModel

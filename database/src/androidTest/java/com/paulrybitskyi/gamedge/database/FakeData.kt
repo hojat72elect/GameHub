@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.database
 
 import com.paulrybitskyi.gamedge.database.articles.DatabaseArticle

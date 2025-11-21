@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.discovery
 
 import com.paulrybitskyi.gamedge.common.ui.R

@@ -1,4 +1,3 @@
-
 @file:Suppress("unused")
 
 package com.paulrybitskyi.gamedge.common.ui.theme

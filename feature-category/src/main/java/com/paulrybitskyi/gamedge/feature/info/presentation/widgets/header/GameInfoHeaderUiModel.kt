@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.presentation.widgets.header
 
 import androidx.compose.runtime.Immutable

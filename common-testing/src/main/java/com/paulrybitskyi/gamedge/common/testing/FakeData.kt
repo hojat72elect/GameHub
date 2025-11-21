@@ -1,4 +1,3 @@
-
 @file:Suppress("MagicNumber")
 
 package com.paulrybitskyi.gamedge.common.testing

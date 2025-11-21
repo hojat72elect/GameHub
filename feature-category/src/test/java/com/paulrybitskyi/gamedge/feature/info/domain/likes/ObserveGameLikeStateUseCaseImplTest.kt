@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.domain.likes
 
 import app.cash.turbine.test
@@ -21,7 +20,8 @@ internal class ObserveGameLikeStateUseCaseImplTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var likedGamesLocalDataStore: LikedGamesLocalDataStore
+    @MockK
+    private lateinit var likedGamesLocalDataStore: LikedGamesLocalDataStore
 
     private lateinit var SUT: ObserveGameLikeStateUseCaseImpl
 

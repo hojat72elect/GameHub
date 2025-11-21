@@ -3,6 +3,7 @@ package com.paulrybitskyi.gamedge.plugins
 import com.android.build.api.dsl.LibraryExtension
 import com.paulrybitskyi.gamedge.extensions.addBundle
 import com.paulrybitskyi.gamedge.extensions.libs
+import localModules
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.presentation.widgets.utils
 
 import androidx.compose.foundation.layout.Arrangement

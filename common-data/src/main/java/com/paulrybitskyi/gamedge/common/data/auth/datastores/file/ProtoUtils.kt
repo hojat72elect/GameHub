@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.auth.datastores.file
 
 import androidx.datastore.core.Serializer
@@ -7,11 +6,11 @@ import java.io.OutputStream
 
 internal fun ProtoOauthCredentials.isNotEmpty(): Boolean {
     return (
-        accessToken.isNotEmpty() &&
-        tokenType.isNotEmpty() &&
-        (tokenTtl != 0L) &&
-        (expirationTime != 0L)
-    )
+            accessToken.isNotEmpty() &&
+                    tokenType.isNotEmpty() &&
+                    (tokenTtl != 0L) &&
+                    (expirationTime != 0L)
+            )
 }
 
 internal object ProtoOauthCredentialsSerializer : Serializer<ProtoOauthCredentials> {

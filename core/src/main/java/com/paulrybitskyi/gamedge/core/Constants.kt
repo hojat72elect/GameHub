@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core
 
 object Constants {

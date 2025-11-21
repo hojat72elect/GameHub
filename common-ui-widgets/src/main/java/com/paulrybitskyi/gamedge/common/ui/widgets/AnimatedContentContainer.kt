@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.widgets
 
 import androidx.compose.animation.AnimatedContent
@@ -31,14 +30,15 @@ fun AnimatedContentContainer(
                 val finalExitTransition = when (initialState) {
                     FiniteUiState.Empty,
                     FiniteUiState.Loading,
-                    -> ExitTransition.None
+                        -> ExitTransition.None
+
                     FiniteUiState.Success -> exitTransition
                 }
                 val finalEnterTransition = when (targetState) {
                     FiniteUiState.Loading -> EnterTransition.None
                     FiniteUiState.Empty,
                     FiniteUiState.Success,
-                    -> enterTransition
+                        -> enterTransition
                 }
 
                 finalEnterTransition togetherWith finalExitTransition

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.domain.throttling
 
 import javax.inject.Inject

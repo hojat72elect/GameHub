@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.domain.usecases
 
 import com.paulrybitskyi.gamedge.common.domain.common.DispatcherProvider
@@ -74,7 +73,7 @@ internal class GetGameInfoUseCaseImpl @Inject constructor(
         return getCompanyDevelopedGamesUseCase.execute(
             GetCompanyDevelopedGamesUseCase.Params(company, RELATED_GAMES_PAGINATION),
         )
-        .resultOrError()
+            .resultOrError()
     }
 
     private suspend fun getSimilarGames(game: Game): Flow<List<Game>> {
@@ -83,6 +82,6 @@ internal class GetGameInfoUseCaseImpl @Inject constructor(
         return getSimilarGamesUseCase.execute(
             GetSimilarGamesUseCase.Params(game, RELATED_GAMES_PAGINATION),
         )
-        .resultOrError()
+            .resultOrError()
     }
 }

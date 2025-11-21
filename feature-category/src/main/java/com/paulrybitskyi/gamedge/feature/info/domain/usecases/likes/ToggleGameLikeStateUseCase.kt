@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.domain.usecases.likes
 
 import com.paulrybitskyi.gamedge.common.domain.common.usecases.UseCase

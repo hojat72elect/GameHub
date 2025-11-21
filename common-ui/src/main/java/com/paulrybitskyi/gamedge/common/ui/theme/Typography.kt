@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.theme
 
 import androidx.compose.material.Typography

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.data.datastores.database
 
 import com.paulrybitskyi.gamedge.common.domain.common.DispatcherProvider
@@ -37,7 +36,7 @@ internal class ArticlesDatabaseDataStore @Inject constructor(
             offset = pagination.offset,
             limit = pagination.limit,
         )
-        .toDataArticlesFlow()
+            .toDataArticlesFlow()
     }
 
     private fun Flow<List<DatabaseArticle>>.toDataArticlesFlow(): Flow<List<Article>> {

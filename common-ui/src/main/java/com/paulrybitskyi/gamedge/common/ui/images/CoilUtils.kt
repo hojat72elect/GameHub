@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.images
 
 import androidx.annotation.DrawableRes

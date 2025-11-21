@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.games.datastores.igdb
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.AgeRating

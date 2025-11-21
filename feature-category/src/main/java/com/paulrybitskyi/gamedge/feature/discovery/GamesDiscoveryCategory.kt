@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.discovery
 
 internal enum class GamesDiscoveryCategory(val id: Int) {

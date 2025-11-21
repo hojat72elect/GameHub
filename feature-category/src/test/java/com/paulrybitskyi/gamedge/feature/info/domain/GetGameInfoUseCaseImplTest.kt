@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.domain
 
 import app.cash.turbine.test
@@ -35,10 +34,17 @@ internal class GetGameInfoUseCaseImplTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var getGameUseCase: GetGameUseCase
-    @MockK private lateinit var observeGameLikeStateUseCase: ObserveGameLikeStateUseCase
-    @MockK private lateinit var getCompanyDevelopedGamesUseCase: GetCompanyDevelopedGamesUseCase
-    @MockK private lateinit var getSimilarGamesUseCase: GetSimilarGamesUseCase
+    @MockK
+    private lateinit var getGameUseCase: GetGameUseCase
+
+    @MockK
+    private lateinit var observeGameLikeStateUseCase: ObserveGameLikeStateUseCase
+
+    @MockK
+    private lateinit var getCompanyDevelopedGamesUseCase: GetCompanyDevelopedGamesUseCase
+
+    @MockK
+    private lateinit var getSimilarGamesUseCase: GetSimilarGamesUseCase
 
     private lateinit var SUT: GetGameInfoUseCaseImpl
 

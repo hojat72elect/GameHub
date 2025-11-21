@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.apicalypse
 
 import com.google.common.truth.Truth.assertThat
@@ -131,7 +130,7 @@ internal class ApicalypseSerializerImplTest {
         assertThat(SUT.serialize(Parent::class.java))
             .isEqualTo(
                 "parent, child1.field1, child2.field1, child2.field2, child3.field1, child3.field2, " +
-                "child3.field3",
+                        "child3.field3",
             )
     }
 
@@ -201,8 +200,8 @@ internal class ApicalypseSerializerImplTest {
         assertThat(SUT.serialize(Parent::class.java))
             .isEqualTo(
                 "parent, child1.kid1.field1, child2.kid1.field1, child2.kid2.field1, child2.kid2.field2, " +
-                "child3.kid1.field1, child3.kid2.field1, child3.kid2.field2, child3.kid3.field1, " +
-                "child3.kid3.field2, child3.kid3.field3",
+                        "child3.kid1.field1, child3.kid2.field1, child3.kid2.field2, child3.kid3.field1, " +
+                        "child3.kid3.field2, child3.kid3.field3",
             )
     }
 

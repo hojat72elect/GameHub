@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.games.common.throttling
 
 import androidx.datastore.core.DataStore

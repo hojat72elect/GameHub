@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.apicalypse.serialization
 
 import com.paulrybitskyi.gamedge.igdb.apicalypse.Constants
@@ -26,7 +25,7 @@ internal class ApicalypseSerializerImpl : ApicalypseSerializer {
         if (!clazz.isAnnotationPresent(ApicalypseClass::class.java)) {
             throw IllegalArgumentException(
                 "The provided class, \"${clazz.simpleName}\', does not have the " +
-                "\"${ApicalypseClass::class.simpleName}\" annotation present.",
+                        "\"${ApicalypseClass::class.simpleName}\" annotation present.",
             )
         }
     }
@@ -74,7 +73,7 @@ internal class ApicalypseSerializerImpl : ApicalypseSerializer {
         if (name.isBlank()) {
             throw IllegalArgumentException(
                 "The field \"${field.name}\" of the class \"${field.declaringClass.simpleName}\" " +
-                "is annotated with an invalid name \"$name\".",
+                        "is annotated with an invalid name \"$name\".",
             )
         }
     }

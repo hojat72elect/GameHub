@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.database.games.entities
 
 import androidx.room.ColumnInfo

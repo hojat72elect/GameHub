@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.testing.domain
 
 import io.mockk.MockKVerificationScope

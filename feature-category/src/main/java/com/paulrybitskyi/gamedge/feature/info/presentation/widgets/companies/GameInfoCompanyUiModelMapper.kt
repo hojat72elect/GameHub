@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.presentation.widgets.companies
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.InvolvedCompany
@@ -50,10 +49,10 @@ internal class GameInfoCompanyUiModelMapperImpl @Inject constructor(
             if (isPorter) add(CoreR.string.company_role_porter)
             if (isSupporting) add(CoreR.string.company_role_supporting)
         }
-        .joinToString(
-            separator = COMPANY_ROLE_SEPARATOR,
-            transform = stringProvider::getString,
-        )
+            .joinToString(
+                separator = COMPANY_ROLE_SEPARATOR,
+                transform = stringProvider::getString,
+            )
     }
 }
 

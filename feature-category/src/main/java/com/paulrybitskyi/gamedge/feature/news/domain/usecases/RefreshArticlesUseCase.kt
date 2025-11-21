@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.domain.usecases
 
 import com.paulrybitskyi.gamedge.common.domain.common.DispatcherProvider
@@ -38,10 +37,10 @@ internal class RefreshArticlesUseCaseImpl @Inject constructor(
                 emit(articlesDataStores.remote.getArticles(params.pagination))
             }
         }
-        .onEachSuccess { articles ->
-            articlesDataStores.local.saveArticles(articles)
-            throttlerTools.throttler.updateArticlesLastRefreshTime(throttlerKey)
-        }
-        .flowOn(dispatcherProvider.main)
+            .onEachSuccess { articles ->
+                articlesDataStores.local.saveArticles(articles)
+                throttlerTools.throttler.updateArticlesLastRefreshTime(throttlerKey)
+            }
+            .flowOn(dispatcherProvider.main)
     }
 }

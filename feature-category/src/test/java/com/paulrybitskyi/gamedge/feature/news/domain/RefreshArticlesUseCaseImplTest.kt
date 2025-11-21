@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.domain
 
 import app.cash.turbine.test
@@ -36,10 +35,17 @@ internal class RefreshArticlesUseCaseImplTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var articlesLocalDataStore: ArticlesLocalDataStore
-    @MockK private lateinit var articlesRemoteDataStore: ArticlesRemoteDataStore
-    @MockK private lateinit var throttler: ArticlesRefreshingThrottler
-    @MockK private lateinit var keyProvider: ArticlesRefreshingThrottlerKeyProvider
+    @MockK
+    private lateinit var articlesLocalDataStore: ArticlesLocalDataStore
+
+    @MockK
+    private lateinit var articlesRemoteDataStore: ArticlesRemoteDataStore
+
+    @MockK
+    private lateinit var throttler: ArticlesRefreshingThrottler
+
+    @MockK
+    private lateinit var keyProvider: ArticlesRefreshingThrottlerKeyProvider
 
     private lateinit var SUT: RefreshArticlesUseCaseImpl
 

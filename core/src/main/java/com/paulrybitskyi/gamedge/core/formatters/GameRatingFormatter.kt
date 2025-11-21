@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core.formatters
 
 import com.paulrybitskyi.gamedge.core.R

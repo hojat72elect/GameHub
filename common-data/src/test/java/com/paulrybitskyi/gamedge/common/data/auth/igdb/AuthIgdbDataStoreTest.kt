@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.auth.igdb
 
 import com.github.michaelbull.result.Err
@@ -29,7 +28,8 @@ private val API_OAUTH_CREDENTIALS = ApiOauthCredentials(
 
 internal class AuthIgdbDataStoreTest {
 
-    @MockK private lateinit var authEndpoint: AuthEndpoint
+    @MockK
+    private lateinit var authEndpoint: AuthEndpoint
 
     private lateinit var igdbAuthMapper: IgdbAuthMapper
     private lateinit var apiErrorMapper: ApiErrorMapper

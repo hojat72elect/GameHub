@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.category
 
 internal enum class GamesCategory {

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.domain.games.datastores
 
 import com.paulrybitskyi.gamedge.common.domain.common.entities.Pagination

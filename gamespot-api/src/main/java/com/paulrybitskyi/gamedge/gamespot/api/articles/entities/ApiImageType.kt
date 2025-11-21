@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.gamespot.api.articles.entities
 
 import com.paulrybitskyi.gamedge.gamespot.api.articles.entities.ApiImageType.Companion.asImageType

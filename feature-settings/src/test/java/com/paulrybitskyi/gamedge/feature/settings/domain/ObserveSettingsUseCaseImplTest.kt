@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.settings.domain
 
 import app.cash.turbine.test
@@ -22,7 +21,8 @@ internal class ObserveSettingsUseCaseImplTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var settingsLocalDataStore: SettingsLocalDataStore
+    @MockK
+    private lateinit var settingsLocalDataStore: SettingsLocalDataStore
 
     private lateinit var SUT: ObserveSettingsUseCaseImpl
 

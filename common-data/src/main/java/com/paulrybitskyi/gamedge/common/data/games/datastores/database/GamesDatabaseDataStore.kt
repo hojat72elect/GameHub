@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.games.datastores.database
 
 import com.paulrybitskyi.gamedge.common.data.games.common.DiscoveryGamesReleaseDatesProvider
@@ -50,7 +49,7 @@ internal class GamesDatabaseDataStore @Inject constructor(
             offset = pagination.offset,
             limit = pagination.limit,
         )
-        .toDataGames()
+            .toDataGames()
     }
 
     override suspend fun getSimilarGames(game: Game, pagination: Pagination): List<Game> {
@@ -59,7 +58,7 @@ internal class GamesDatabaseDataStore @Inject constructor(
             offset = pagination.offset,
             limit = pagination.limit,
         )
-        .toDataGames()
+            .toDataGames()
     }
 
     override suspend fun searchGames(searchQuery: String, pagination: Pagination): List<Game> {
@@ -68,11 +67,11 @@ internal class GamesDatabaseDataStore @Inject constructor(
             offset = pagination.offset,
             limit = pagination.limit,
         )
-        .let { databaseGames ->
-            withContext(dispatcherProvider.computation) {
-                dbGameMapper.mapToDomainGames(databaseGames)
+            .let { databaseGames ->
+                withContext(dispatcherProvider.computation) {
+                    dbGameMapper.mapToDomainGames(databaseGames)
+                }
             }
-        }
     }
 
     override fun observePopularGames(pagination: Pagination): Flow<List<Game>> {
@@ -81,7 +80,7 @@ internal class GamesDatabaseDataStore @Inject constructor(
             offset = pagination.offset,
             limit = pagination.limit,
         )
-        .toDataGamesFlow()
+            .toDataGamesFlow()
     }
 
     override fun observeRecentlyReleasedGames(pagination: Pagination): Flow<List<Game>> {
@@ -91,7 +90,7 @@ internal class GamesDatabaseDataStore @Inject constructor(
             offset = pagination.offset,
             limit = pagination.limit,
         )
-        .toDataGamesFlow()
+            .toDataGamesFlow()
     }
 
     override fun observeComingSoonGames(pagination: Pagination): Flow<List<Game>> {
@@ -100,7 +99,7 @@ internal class GamesDatabaseDataStore @Inject constructor(
             offset = pagination.offset,
             limit = pagination.limit,
         )
-        .toDataGamesFlow()
+            .toDataGamesFlow()
     }
 
     override fun observeMostAnticipatedGames(pagination: Pagination): Flow<List<Game>> {
@@ -109,7 +108,7 @@ internal class GamesDatabaseDataStore @Inject constructor(
             offset = pagination.offset,
             limit = pagination.limit,
         )
-        .toDataGamesFlow()
+            .toDataGamesFlow()
     }
 
     private suspend fun List<DbGame>.toDataGames(): List<Game> {

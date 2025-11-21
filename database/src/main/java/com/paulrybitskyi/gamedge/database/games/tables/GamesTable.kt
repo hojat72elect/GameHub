@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.database.games.tables
 
 import androidx.room.Dao

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.settings.presentation
 
 import androidx.lifecycle.viewModelScope
@@ -50,7 +49,7 @@ internal class SettingsViewModel @Inject constructor(
             selectedThemeName = null,
             isThemePickerVisible = false,
         )
-        .toLoadingState()
+            .toLoadingState()
     }
 
     private fun observeSettings() {

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.extensions
 
 import org.gradle.api.Project

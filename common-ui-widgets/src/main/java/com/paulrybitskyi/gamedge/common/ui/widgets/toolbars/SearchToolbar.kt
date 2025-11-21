@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.widgets.toolbars
 
 import androidx.compose.animation.AnimatedVisibility

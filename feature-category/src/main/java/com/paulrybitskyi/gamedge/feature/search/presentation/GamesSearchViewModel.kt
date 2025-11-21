@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.search.presentation
 
 import androidx.lifecycle.SavedStateHandle
@@ -176,11 +175,11 @@ internal class GamesSearchViewModel @Inject constructor(
                 }
                 .map(::combineWithAlreadyLoadedGames)
         }
-        .collect { emittedUiState ->
-            configureNextLoad(emittedUiState)
-            updateTotalGamesResult(emittedUiState)
-            _uiState.update { it.copy(gamesUiState = emittedUiState) }
-        }
+            .collect { emittedUiState ->
+                configureNextLoad(emittedUiState)
+                updateTotalGamesResult(emittedUiState)
+                _uiState.update { it.copy(gamesUiState = emittedUiState) }
+            }
     }
 
     private fun isPerformingNewSearch(): Boolean {

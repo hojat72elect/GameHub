@@ -1,4 +1,3 @@
-
 @file:Suppress("LongMethod", "MagicNumber", "LongParameterList")
 
 package com.paulrybitskyi.gamedge.feature.info.presentation.widgets.header
@@ -183,7 +182,7 @@ internal fun GameInfoHeader(
     val isPageIndicatorVisible = remember(artworks) { artworks.size > 1 }
     val hasDefaultPlaceholderArtwork = remember(artworks) {
         artworks.size == 1 &&
-        artworks.single() is GameInfoArtworkUiModel.DefaultImage
+                artworks.single() is GameInfoArtworkUiModel.DefaultImage
     }
     var selectedArtworkPage by remember { mutableIntStateOf(0) }
     var secondTitleText by rememberSaveable { mutableStateOf("") }
@@ -214,8 +213,8 @@ internal fun GameInfoHeader(
 
     DisposableEffect(minHeaderHeightInPx, maxHeaderHeightInPx) {
         val shouldSetInitialHeaderHeight = minHeaderHeightInPx != HeightUnspecified &&
-            maxHeaderHeightInPx != HeightUnspecified &&
-            headerHeightInPx == HeightUnspecified
+                maxHeaderHeightInPx != HeightUnspecified &&
+                headerHeightInPx == HeightUnspecified
 
         if (shouldSetInitialHeaderHeight) {
             headerHeightInPx = when (State.fromProgressOrNull(progress.value)) {
@@ -287,10 +286,12 @@ internal fun GameInfoHeader(
                         onUpdateValues(maxHeaderHeightInPx)
                         Offset(0f, maxHeaderHeightInPx - currentHeight)
                     }
+
                     currentHeight + available.y < minHeaderHeightInPx -> {
                         onUpdateValues(minHeaderHeightInPx)
                         Offset(0f, minHeaderHeightInPx - currentHeight)
                     }
+
                     else -> {
                         onUpdateValues(headerHeightInPx + available.y)
                         Offset(0f, available.y)

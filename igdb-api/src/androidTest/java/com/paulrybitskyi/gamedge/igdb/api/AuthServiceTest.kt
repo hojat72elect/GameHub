@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api
 
 import com.github.michaelbull.result.get
@@ -26,8 +25,11 @@ internal class AuthServiceTest {
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
-    @Inject lateinit var mockWebServer: MockWebServer
-    @Inject lateinit var authService: AuthService
+    @Inject
+    lateinit var mockWebServer: MockWebServer
+
+    @Inject
+    lateinit var authService: AuthService
 
     @Before
     fun setup() {

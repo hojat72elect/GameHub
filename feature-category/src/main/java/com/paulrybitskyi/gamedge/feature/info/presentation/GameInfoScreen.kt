@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.presentation
 
 import android.content.res.Configuration
@@ -160,6 +159,7 @@ private fun GameInfoScreen(
                             .align(Alignment.Center),
                     )
                 }
+
                 FiniteUiState.Loading -> {
                     LoadingState(
                         modifier = Modifier
@@ -167,6 +167,7 @@ private fun GameInfoScreen(
                             .align(Alignment.Center),
                     )
                 }
+
                 FiniteUiState.Success -> {
                     SuccessState(
                         gameInfo = checkNotNull(uiState.game),
@@ -564,11 +565,11 @@ private fun buildFakeGameModel(): GameInfoUiModel {
             ),
         ),
         summary = "Elden Ring is an action-RPG open world game with RPG " +
-            "elements such as stats, weapons and spells.",
+                "elements such as stats, weapons and spells.",
         detailsModel = GameInfoDetailsUiModel(
             genresText = "Role-playing (RPG)",
             platformsText = "PC (Microsoft Windows) • PlayStation 4 • " +
-                "Xbox One • PlayStation 5 • Xbox Series X|S",
+                    "Xbox One • PlayStation 5 • Xbox Series X|S",
             modesText = "Single player • Multiplayer • Co-operative",
             playerPerspectivesText = "Third person",
             themesText = "Action",

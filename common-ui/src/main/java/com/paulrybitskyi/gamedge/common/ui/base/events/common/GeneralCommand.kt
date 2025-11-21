@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.base.events.common
 
 import com.paulrybitskyi.gamedge.common.ui.base.events.Command

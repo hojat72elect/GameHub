@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api.auth.entities
 
 enum class ApiAuthorizationType(val rawType: String) {

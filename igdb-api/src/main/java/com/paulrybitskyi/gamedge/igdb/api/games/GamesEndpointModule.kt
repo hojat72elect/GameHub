@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api.games
 
 import com.paulrybitskyi.gamedge.common.api.asConverterFactory

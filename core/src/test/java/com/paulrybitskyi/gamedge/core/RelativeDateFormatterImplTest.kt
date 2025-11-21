@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core
 
 import com.google.common.truth.Truth.assertThat
@@ -15,7 +14,8 @@ import java.time.Month
 
 internal class RelativeDateFormatterImplTest {
 
-    @MockK private lateinit var timeProvider: TimeProvider
+    @MockK
+    private lateinit var timeProvider: TimeProvider
 
     private lateinit var stringProvider: FakeStringProvider
     private lateinit var SUT: RelativeDateFormatterImpl

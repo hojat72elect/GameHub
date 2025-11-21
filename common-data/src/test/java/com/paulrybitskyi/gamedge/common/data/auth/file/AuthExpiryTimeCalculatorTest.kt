@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.auth.file
 
 import com.google.common.truth.Truth.assertThat
@@ -17,7 +16,8 @@ private const val CURRENT_TIMESTAMP = 10_000L
 
 internal class AuthExpiryTimeCalculatorTest {
 
-    @MockK private lateinit var timestampProvider: TimestampProvider
+    @MockK
+    private lateinit var timestampProvider: TimestampProvider
 
     private lateinit var SUT: AuthExpiryTimeCalculator
 

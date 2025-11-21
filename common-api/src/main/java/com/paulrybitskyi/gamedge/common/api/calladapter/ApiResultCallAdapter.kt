@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.api.calladapter
 
 import com.paulrybitskyi.gamedge.common.api.ApiResult

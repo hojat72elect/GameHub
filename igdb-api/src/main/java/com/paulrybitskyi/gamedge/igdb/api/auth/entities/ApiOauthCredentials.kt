@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api.auth.entities
 
 import kotlinx.serialization.SerialName

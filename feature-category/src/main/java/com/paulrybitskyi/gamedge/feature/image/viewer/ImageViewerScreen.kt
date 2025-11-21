@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.image.viewer
 
 import android.annotation.SuppressLint

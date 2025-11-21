@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.api
 
 object HttpHeaders {

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api.games
 
 import com.paulrybitskyi.gamedge.igdb.api.games.entities.ApiGame
@@ -51,7 +50,7 @@ internal class IgdbApiQueryFactoryImpl @Inject constructor(
             .select(gameEntityFields)
             .where {
                 USERS_RATING.isNotNull and
-                { RELEASE_DATE.isLargerThan(request.minReleaseDateTimestamp.toString()) }
+                        { RELEASE_DATE.isLargerThan(request.minReleaseDateTimestamp.toString()) }
             }
             .offset(request.offset)
             .limit(request.limit)
@@ -64,7 +63,7 @@ internal class IgdbApiQueryFactoryImpl @Inject constructor(
             .select(gameEntityFields)
             .where {
                 RELEASE_DATE.isLargerThan(request.minReleaseDateTimestamp.toString()) and
-                { RELEASE_DATE.isSmallerThan(request.maxReleaseDateTimestamp.toString()) }
+                        { RELEASE_DATE.isSmallerThan(request.maxReleaseDateTimestamp.toString()) }
             }
             .offset(request.offset)
             .limit(request.limit)
@@ -87,7 +86,7 @@ internal class IgdbApiQueryFactoryImpl @Inject constructor(
             .select(gameEntityFields)
             .where {
                 RELEASE_DATE.isLargerThan(request.minReleaseDateTimestamp.toString()) and
-                { HYPE_COUNT.isNotNull }
+                        { HYPE_COUNT.isNotNull }
             }
             .offset(request.offset)
             .limit(request.limit)

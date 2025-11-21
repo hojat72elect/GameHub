@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.domain.common.extensions
 
 import com.github.michaelbull.result.Err

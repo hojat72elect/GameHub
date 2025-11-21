@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge
 
 import android.app.Application
@@ -9,7 +8,8 @@ import javax.inject.Inject
 @HiltAndroidApp
 internal class GamedgeApplication : Application() {
 
-    @Inject lateinit var initializer: Initializer
+    @Inject
+    lateinit var initializer: Initializer
 
     override fun onCreate() {
         super.onCreate()

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.domain
 
 import com.paulrybitskyi.gamedge.common.domain.games.common.RefreshGamesUseCaseParams

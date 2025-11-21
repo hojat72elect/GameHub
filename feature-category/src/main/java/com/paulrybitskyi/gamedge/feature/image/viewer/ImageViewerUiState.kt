@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.image.viewer
 
 import androidx.compose.runtime.Immutable

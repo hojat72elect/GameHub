@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.common
 
 import com.paulrybitskyi.gamedge.common.api.httpErrorMessage

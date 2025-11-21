@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.category
 
 import androidx.compose.foundation.layout.PaddingValues
@@ -94,6 +93,7 @@ private fun GamesCategoryScreen(
                             .align(Alignment.Center),
                     )
                 }
+
                 FiniteUiState.Loading -> {
                     LoadingState(
                         modifier = Modifier
@@ -101,6 +101,7 @@ private fun GamesCategoryScreen(
                             .align(Alignment.Center),
                     )
                 }
+
                 FiniteUiState.Success -> {
                     SuccessState(
                         uiState = uiState,

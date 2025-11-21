@@ -1,5 +1,3 @@
-
-
 package com.paulrybitskyi.gamedge.feature.discovery.widgets
 
 import com.paulrybitskyi.gamedge.common.ui.widgets.categorypreview.GamesCategoryPreviewItemUiModel

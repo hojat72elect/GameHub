@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.domain
 
 import app.cash.turbine.test
@@ -25,7 +24,8 @@ internal class ObserveArticlesUseCaseImplTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var articlesLocalDataStore: ArticlesLocalDataStore
+    @MockK
+    private lateinit var articlesLocalDataStore: ArticlesLocalDataStore
 
     private lateinit var SUT: ObserveArticlesUseCaseImpl
 

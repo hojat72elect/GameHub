@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.presentation
 
 import androidx.lifecycle.viewModelScope

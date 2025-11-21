@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.settings.domain
 
 import app.cash.turbine.test
@@ -22,7 +21,8 @@ internal class ObserveThemeUseCaseImplTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var observeSettingsUseCase: ObserveSettingsUseCase
+    @MockK
+    private lateinit var observeSettingsUseCase: ObserveSettingsUseCase
 
     private lateinit var SUT: ObserveThemeUseCaseImpl
 

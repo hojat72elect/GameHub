@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api.common
 
 import javax.inject.Inject

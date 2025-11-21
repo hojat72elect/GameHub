@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.domain.common.entities
 
 private const val DEFAULT_PAGE_SIZE = 20

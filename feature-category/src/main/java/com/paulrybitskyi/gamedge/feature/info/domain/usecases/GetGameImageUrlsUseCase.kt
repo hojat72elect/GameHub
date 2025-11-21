@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.domain.usecases
 
 import com.github.michaelbull.result.Err
@@ -43,6 +42,7 @@ internal class GetGameImageUrlsUseCaseImpl @Inject constructor(
                             ?.let(::listOf)
                             ?: error("Cannot create a game cover image url.")
                     }
+
                     GameImageType.ARTWORK -> gameUrlFactory.createArtworkImageUrls(game)
                     GameImageType.SCREENSHOT -> gameUrlFactory.createScreenshotImageUrls(game)
                 }

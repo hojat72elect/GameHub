@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.presentation.widgets.screenshots
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Image

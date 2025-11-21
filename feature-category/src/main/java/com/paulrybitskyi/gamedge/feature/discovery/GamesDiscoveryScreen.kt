@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.discovery
 
 import androidx.compose.foundation.layout.Arrangement
@@ -23,12 +22,12 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.paulrybitskyi.gamedge.common.ui.CommandsHandler
 import com.paulrybitskyi.gamedge.common.ui.DirectionsHandler
-import com.paulrybitskyi.gamedge.feature.category.R
 import com.paulrybitskyi.gamedge.common.ui.base.events.Direction
 import com.paulrybitskyi.gamedge.common.ui.theme.GamedgeTheme
 import com.paulrybitskyi.gamedge.common.ui.widgets.RefreshableContent
 import com.paulrybitskyi.gamedge.common.ui.widgets.categorypreview.GamesCategoryPreview
 import com.paulrybitskyi.gamedge.common.ui.widgets.toolbars.Toolbar
+import com.paulrybitskyi.gamedge.feature.category.R
 import com.paulrybitskyi.gamedge.feature.discovery.widgets.GamesDiscoveryItemGameUiModel
 import com.paulrybitskyi.gamedge.feature.discovery.widgets.mapToCategoryUiModels
 import com.paulrybitskyi.gamedge.feature.discovery.widgets.mapToDiscoveryUiModel
@@ -151,9 +150,9 @@ private fun GamesDiscoveryScreenSuccessStatePreview() {
         "Kena: Bridge of Spirits",
         "Forza Horizon 5",
     )
-    .mapIndexed { index, gameTitle ->
-        GamesDiscoveryItemGameUiModel(id = index, title = gameTitle, coverUrl = null)
-    }
+        .mapIndexed { index, gameTitle ->
+            GamesDiscoveryItemGameUiModel(id = index, title = gameTitle, coverUrl = null)
+        }
 
     val items = GamesDiscoveryCategory.entries.map { category ->
         GamesDiscoveryItemUiModel(

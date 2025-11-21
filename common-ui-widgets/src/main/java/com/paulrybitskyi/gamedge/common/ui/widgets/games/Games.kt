@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.widgets.games
 
 import androidx.compose.foundation.layout.Arrangement
@@ -42,6 +41,7 @@ fun Games(
                         .align(Alignment.Center),
                 )
             }
+
             FiniteUiState.Loading -> {
                 LoadingState(
                     modifier = Modifier
@@ -49,6 +49,7 @@ fun Games(
                         .align(Alignment.Center),
                 )
             }
+
             FiniteUiState.Success -> {
                 SuccessState(
                     uiState = uiState,

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core.sharers
 
 import android.content.Context

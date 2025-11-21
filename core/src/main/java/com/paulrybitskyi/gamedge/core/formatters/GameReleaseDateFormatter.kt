@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core.formatters
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Game
@@ -43,7 +42,7 @@ internal class GameReleaseDateFormatterImpl @Inject constructor(
             ReleaseDateCategory.YYYYQ2,
             ReleaseDateCategory.YYYYQ3,
             ReleaseDateCategory.YYYYQ4,
-            -> date.formatDateWithYearAndQuarter()
+                -> date.formatDateWithYearAndQuarter()
 
             else -> error("Unknown category: $category.")
         }
@@ -53,9 +52,9 @@ internal class GameReleaseDateFormatterImpl @Inject constructor(
         return releaseDates
             .filter {
                 it.category != ReleaseDateCategory.UNKNOWN &&
-                it.category != ReleaseDateCategory.TBD &&
-                it.date != null &&
-                it.year != null
+                        it.category != ReleaseDateCategory.TBD &&
+                        it.date != null &&
+                        it.year != null
             }
             .minByOrNull { it.date!! }
     }

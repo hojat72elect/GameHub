@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.di
 
 import com.paulrybitskyi.gamedge.common.ui.TransitionAnimations

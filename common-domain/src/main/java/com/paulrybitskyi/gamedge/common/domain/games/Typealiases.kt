@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.domain.games
 
 import com.paulrybitskyi.gamedge.common.domain.common.DomainResult

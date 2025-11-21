@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.domain.usecases
 
 import com.github.michaelbull.result.Ok
@@ -42,7 +41,7 @@ internal class GetSimilarGamesUseCaseImpl @Inject constructor(
                 val localSimilarGamesFlow = flow {
                     emit(gamesLocalDataStore.getSimilarGames(params.game, params.pagination))
                 }
-                .map<List<Game>, DomainResult<List<Game>>>(::Ok)
+                    .map<List<Game>, DomainResult<List<Game>>>(::Ok)
 
                 emitAll(localSimilarGamesFlow)
             }

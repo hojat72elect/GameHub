@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.auth.file
 
 import androidx.datastore.core.DataStore
@@ -28,8 +27,11 @@ private val PROTO_OAUTH_CREDENTIALS = ProtoOauthCredentials.newBuilder()
 
 internal class AuthFileDataStoreTest {
 
-    @MockK private lateinit var protoDataStore: DataStore<ProtoOauthCredentials>
-    @MockK private lateinit var timestampProvider: TimestampProvider
+    @MockK
+    private lateinit var protoDataStore: DataStore<ProtoOauthCredentials>
+
+    @MockK
+    private lateinit var timestampProvider: TimestampProvider
 
     private lateinit var SUT: AuthFileDataStore
 

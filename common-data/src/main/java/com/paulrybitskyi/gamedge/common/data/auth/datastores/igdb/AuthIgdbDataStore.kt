@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.auth.datastores.igdb
 
 import com.github.michaelbull.result.mapEither

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.search.domain
 
 import com.paulrybitskyi.gamedge.common.domain.common.DispatcherProvider

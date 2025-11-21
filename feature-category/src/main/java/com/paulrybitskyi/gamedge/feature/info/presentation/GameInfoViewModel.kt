@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.presentation
 
 import androidx.lifecycle.viewModelScope
@@ -116,14 +115,14 @@ internal class GameInfoViewModel @AssistedInject constructor(
                     imageType = imageType,
                 ),
             )
-            .resultOrError()
-            .onError {
-                logger.error(logTag, "Failed to get the image urls of type = $imageType.", it)
-                dispatchCommand(GeneralCommand.ShowLongToast(errorMapper.mapToMessage(it)))
-            }
-            .collect { imageUrls ->
-                navigate(GameInfoDirection.ImageViewer(imageUrls, title, initialPosition))
-            }
+                .resultOrError()
+                .onError {
+                    logger.error(logTag, "Failed to get the image urls of type = $imageType.", it)
+                    dispatchCommand(GeneralCommand.ShowLongToast(errorMapper.mapToMessage(it)))
+                }
+                .collect { imageUrls ->
+                    navigate(GameInfoDirection.ImageViewer(imageUrls, title, initialPosition))
+                }
         }
     }
 

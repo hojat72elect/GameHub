@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge
 
 import androidx.annotation.DrawableRes

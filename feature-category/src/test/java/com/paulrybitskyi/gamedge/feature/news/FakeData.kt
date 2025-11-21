@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news
 
 import com.paulrybitskyi.gamedge.feature.news.domain.DomainArticle

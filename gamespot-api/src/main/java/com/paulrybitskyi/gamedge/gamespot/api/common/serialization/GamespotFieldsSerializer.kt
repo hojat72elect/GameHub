@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.gamespot.api.common.serialization
 
 import com.paulrybitskyi.hiltbinder.BindType
@@ -35,7 +34,7 @@ internal class GamespotFieldsSerializerImpl @Inject constructor() : GamespotFiel
         if (fieldName.isBlank()) {
             throw IllegalArgumentException(
                 "The field \"${name}\" of the class \"${declaringClass.simpleName}\" " +
-                "is annotated with an invalid name \"$fieldName\"",
+                        "is annotated with an invalid name \"$fieldName\"",
             )
         }
 

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge
 
 import android.graphics.Color
@@ -33,11 +32,17 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject lateinit var urlOpener: UrlOpener
-    @Inject lateinit var textSharer: TextSharer
-    @Inject lateinit var networkStateProvider: NetworkStateProvider
+    @Inject
+    lateinit var urlOpener: UrlOpener
 
-    @Inject lateinit var observeThemeUseCase: ObserveThemeUseCase
+    @Inject
+    lateinit var textSharer: TextSharer
+
+    @Inject
+    lateinit var networkStateProvider: NetworkStateProvider
+
+    @Inject
+    lateinit var observeThemeUseCase: ObserveThemeUseCase
 
     private var shouldKeepSplashOpen = true
 

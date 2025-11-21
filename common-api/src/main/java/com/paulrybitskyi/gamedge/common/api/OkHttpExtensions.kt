@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.api
 
 import okhttp3.Interceptor

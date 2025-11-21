@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.data
 
 import com.google.common.truth.Truth.assertThat

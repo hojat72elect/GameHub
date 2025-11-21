@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.presentation.widgets.main
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Game

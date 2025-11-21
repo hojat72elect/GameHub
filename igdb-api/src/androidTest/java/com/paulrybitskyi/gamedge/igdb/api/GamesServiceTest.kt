@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api
 
 import com.github.michaelbull.result.get
@@ -35,9 +34,14 @@ internal class GamesServiceTest {
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
-    @Inject lateinit var mockWebServer: MockWebServer
-    @Inject lateinit var credentialsStore: CredentialsStore
-    @Inject lateinit var gamesService: GamesService
+    @Inject
+    lateinit var mockWebServer: MockWebServer
+
+    @Inject
+    lateinit var credentialsStore: CredentialsStore
+
+    @Inject
+    lateinit var gamesService: GamesService
 
     @Before
     fun setup() {

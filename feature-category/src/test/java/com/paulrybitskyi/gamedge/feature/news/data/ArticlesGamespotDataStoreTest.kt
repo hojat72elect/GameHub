@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.data
 
 import com.github.michaelbull.result.Err
@@ -37,7 +36,8 @@ internal class ArticlesGamespotDataStoreTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var articlesEndpoint: ArticlesEndpoint
+    @MockK
+    private lateinit var articlesEndpoint: ArticlesEndpoint
 
     private lateinit var apiArticleMapper: GamespotArticleMapper
     private lateinit var apiErrorMapper: ApiErrorMapper

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.presentation.widgets.links
 
 import androidx.compose.foundation.layout.Arrangement
@@ -99,7 +98,7 @@ private fun GameInfoLinksPreview() {
                 iconId = CoreR.drawable.web,
                 url = "url$index",
             )
-    }
+        }
 
     GamedgeTheme {
         GameInfoLinks(

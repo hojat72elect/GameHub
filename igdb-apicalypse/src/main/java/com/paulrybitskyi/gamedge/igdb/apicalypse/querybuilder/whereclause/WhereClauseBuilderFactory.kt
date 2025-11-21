@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.apicalypse.querybuilder.whereclause
 
 import com.paulrybitskyi.gamedge.igdb.apicalypse.querybuilder.whereclause.conditions.ConditionBuilderFactory

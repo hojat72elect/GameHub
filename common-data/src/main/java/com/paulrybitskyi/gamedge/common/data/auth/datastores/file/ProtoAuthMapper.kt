@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.auth.datastores.file
 
 import com.paulrybitskyi.gamedge.common.domain.auth.entities.OauthCredentials

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.domain.usecases
 
 import com.paulrybitskyi.gamedge.common.domain.common.DispatcherProvider
@@ -47,10 +46,10 @@ internal class RefreshSimilarGamesUseCaseImpl @Inject constructor(
                 emit(gamesDataStores.remote.getSimilarGames(params.game, params.pagination))
             }
         }
-        .onEachSuccess { games ->
-            gamesDataStores.local.saveGames(games)
-            throttlerTools.throttler.updateGamesLastRefreshTime(throttlerKey)
-        }
-        .flowOn(dispatcherProvider.main)
+            .onEachSuccess { games ->
+                gamesDataStores.local.saveGames(games)
+                throttlerTools.throttler.updateGamesLastRefreshTime(throttlerKey)
+            }
+            .flowOn(dispatcherProvider.main)
     }
 }

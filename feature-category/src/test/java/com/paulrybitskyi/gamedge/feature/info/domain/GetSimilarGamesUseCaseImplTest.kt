@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.domain
 
 import app.cash.turbine.test
@@ -25,8 +24,11 @@ internal class GetSimilarGamesUseCaseImplTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var refreshSimilarGamesUseCase: RefreshSimilarGamesUseCase
-    @MockK private lateinit var gamesLocalDataStore: GamesLocalDataStore
+    @MockK
+    private lateinit var refreshSimilarGamesUseCase: RefreshSimilarGamesUseCase
+
+    @MockK
+    private lateinit var gamesLocalDataStore: GamesLocalDataStore
 
     private lateinit var SUT: GetSimilarGamesUseCaseImpl
 

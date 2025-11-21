@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api.common
 
 import okhttp3.Response

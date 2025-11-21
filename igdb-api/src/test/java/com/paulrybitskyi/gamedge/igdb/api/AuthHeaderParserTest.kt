@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api
 
 import com.google.common.truth.Truth.assertThat

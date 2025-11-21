@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.database
 
 import androidx.room.testing.MigrationTestHelper
@@ -24,7 +23,8 @@ internal class MigrationTest {
         GamedgeDatabase::class.java,
     )
 
-    @Inject lateinit var databaseProvider: Provider<GamedgeDatabase>
+    @Inject
+    lateinit var databaseProvider: Provider<GamedgeDatabase>
 
     @Before
     fun setup() {

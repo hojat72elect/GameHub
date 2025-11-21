@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.domain.likes
 
 import com.google.common.truth.Truth.assertThat

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.widgets.games
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Game

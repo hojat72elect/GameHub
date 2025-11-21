@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.settings.domain.usecases
 
 import com.paulrybitskyi.gamedge.common.domain.common.DispatcherProvider

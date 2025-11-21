@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.settings.presentation
 
 import androidx.compose.foundation.clickable
@@ -96,12 +95,14 @@ private fun SettingsScreen(
                 FiniteUiState.Loading -> {
                     LoadingState(modifier = Modifier.align(Alignment.Center))
                 }
+
                 FiniteUiState.Success -> {
                     SuccessState(
                         sections = uiState.sections,
                         onSettingClicked = onSettingClicked,
                     )
                 }
+
                 else -> error("Unsupported finite UI state = $finiteUiState.")
             }
         }

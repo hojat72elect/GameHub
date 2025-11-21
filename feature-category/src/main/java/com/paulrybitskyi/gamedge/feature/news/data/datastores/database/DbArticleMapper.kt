@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.data.datastores.database
 
 import com.paulrybitskyi.gamedge.database.articles.DatabaseArticle

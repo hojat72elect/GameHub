@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui
 
 import android.app.Activity

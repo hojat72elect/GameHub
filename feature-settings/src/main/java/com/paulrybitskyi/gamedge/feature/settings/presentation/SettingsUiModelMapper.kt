@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.settings.presentation
 
 import com.paulrybitskyi.gamedge.core.providers.StringProvider

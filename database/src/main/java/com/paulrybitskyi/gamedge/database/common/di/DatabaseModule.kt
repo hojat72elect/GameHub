@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.database.common.di
 
 import android.content.Context
@@ -31,8 +30,8 @@ internal object DatabaseModule {
             GamedgeDatabase::class.java,
             Constants.DATABASE_NAME,
         )
-        .addTypeConverters(typeConverters)
-        .addMigrations(*MANUAL_MIGRATIONS)
-        .build()
+            .addTypeConverters(typeConverters)
+            .addMigrations(*MANUAL_MIGRATIONS)
+            .build()
     }
 }

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core.formatters
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Category
@@ -29,7 +28,7 @@ internal class GameCategoryFormatterImpl @Inject constructor(
                 Category.DLC,
                 Category.EXPANSION,
                 Category.STANDALONE_EXPANSION,
-                -> R.string.game_category_dlc
+                    -> R.string.game_category_dlc
             },
         )
     }

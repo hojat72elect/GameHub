@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.settings.data.datastores
 
 import com.paulrybitskyi.gamedge.feature.settings.domain.DomainSettings

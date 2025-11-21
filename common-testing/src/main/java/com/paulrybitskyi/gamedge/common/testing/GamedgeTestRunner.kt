@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.testing
 
 import android.app.Application

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.gamespot.api.common
 
 import com.paulrybitskyi.gamedge.gamespot.api.BuildConfig

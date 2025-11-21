@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.widgets.categorypreview
 
 import androidx.compose.foundation.clickable

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.widgets
 
 import androidx.compose.foundation.layout.Box

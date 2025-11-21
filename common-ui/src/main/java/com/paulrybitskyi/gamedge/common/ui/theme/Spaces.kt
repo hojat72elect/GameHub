@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.theme
 
 import androidx.compose.runtime.Stable
@@ -70,25 +69,25 @@ class Spaces(
 
     override fun toString(): String {
         return "Spaces(" +
-            "spacing_0_5=$spacing_0_5, " +
-            "spacing_1_0=$spacing_1_0, " +
-            "spacing_1_5=$spacing_1_5, " +
-            "spacing_2_0=$spacing_2_0, " +
-            "spacing_2_5=$spacing_2_5, " +
-            "spacing_3_0=$spacing_3_0, " +
-            "spacing_3_5=$spacing_3_5, " +
-            "spacing_4_0=$spacing_4_0, " +
-            "spacing_4_5=$spacing_4_5, " +
-            "spacing_5_0=$spacing_5_0, " +
-            "spacing_5_5=$spacing_5_5, " +
-            "spacing_6_0=$spacing_6_0, " +
-            "spacing_6_5=$spacing_6_5, " +
-            "spacing_7_0=$spacing_7_0, " +
-            "spacing_7_5=$spacing_7_5, " +
-            "spacing_8_0=$spacing_8_0, " +
-            "spacing_8_5=$spacing_8_5, " +
-            "spacing_9_0=$spacing_9_0" +
-            ")"
+                "spacing_0_5=$spacing_0_5, " +
+                "spacing_1_0=$spacing_1_0, " +
+                "spacing_1_5=$spacing_1_5, " +
+                "spacing_2_0=$spacing_2_0, " +
+                "spacing_2_5=$spacing_2_5, " +
+                "spacing_3_0=$spacing_3_0, " +
+                "spacing_3_5=$spacing_3_5, " +
+                "spacing_4_0=$spacing_4_0, " +
+                "spacing_4_5=$spacing_4_5, " +
+                "spacing_5_0=$spacing_5_0, " +
+                "spacing_5_5=$spacing_5_5, " +
+                "spacing_6_0=$spacing_6_0, " +
+                "spacing_6_5=$spacing_6_5, " +
+                "spacing_7_0=$spacing_7_0, " +
+                "spacing_7_5=$spacing_7_5, " +
+                "spacing_8_0=$spacing_8_0, " +
+                "spacing_8_5=$spacing_8_5, " +
+                "spacing_9_0=$spacing_9_0" +
+                ")"
     }
 }
 

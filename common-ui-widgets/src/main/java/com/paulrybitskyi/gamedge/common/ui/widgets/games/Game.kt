@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.widgets.games
 
 import androidx.compose.foundation.layout.Column
@@ -137,7 +136,7 @@ private fun GameFullPreview() {
                 releaseDate = "Nov 09, 2021 (7 days ago)",
                 developerName = "Playground Games",
                 description = "Your Ultimate Horizon Adventure awaits! Explore the vibrant " +
-                    "and ever-evolving open-world landscapes of Mexico.",
+                        "and ever-evolving open-world landscapes of Mexico.",
             ),
             onClick = {},
         )
@@ -156,7 +155,7 @@ private fun GameWithoutDeveloperPreview() {
                 releaseDate = "Nov 09, 2021 (7 days ago)",
                 developerName = null,
                 description = "Your Ultimate Horizon Adventure awaits! Explore the vibrant " +
-                    "and ever-evolving open-world landscapes of Mexico.",
+                        "and ever-evolving open-world landscapes of Mexico.",
             ),
             onClick = {},
         )

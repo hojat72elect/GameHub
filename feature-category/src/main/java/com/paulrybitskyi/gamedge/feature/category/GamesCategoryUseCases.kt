@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.category
 
 import com.paulrybitskyi.gamedge.common.domain.games.ObservableGamesUseCase

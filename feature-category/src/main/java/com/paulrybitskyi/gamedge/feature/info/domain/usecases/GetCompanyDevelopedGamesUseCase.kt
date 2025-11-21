@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.info.domain.usecases
 
 import com.github.michaelbull.result.Ok
@@ -43,7 +42,7 @@ internal class GetCompanyDevelopedGamesUseCaseImpl @Inject constructor(
                 val localCompanyDevelopedGamesFlow = flow {
                     emit(gamesLocalDataStore.getCompanyDevelopedGames(params.company, params.pagination))
                 }
-                .map<List<Game>, DomainResult<List<Game>>>(::Ok)
+                    .map<List<Game>, DomainResult<List<Game>>>(::Ok)
 
                 emitAll(localCompanyDevelopedGamesFlow)
             }

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.search.domain
 
 import app.cash.turbine.test
@@ -36,9 +35,14 @@ internal class SearchGamesUseCaseImplTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var gamesLocalDataStore: GamesLocalDataStore
-    @MockK private lateinit var gamesRemoteDataStore: GamesRemoteDataStore
-    @MockK private lateinit var networkStateProvider: NetworkStateProvider
+    @MockK
+    private lateinit var gamesLocalDataStore: GamesLocalDataStore
+
+    @MockK
+    private lateinit var gamesRemoteDataStore: GamesRemoteDataStore
+
+    @MockK
+    private lateinit var networkStateProvider: NetworkStateProvider
 
     private lateinit var SUT: SearchGamesUseCaseImpl
 

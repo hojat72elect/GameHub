@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.database.common
 
 import androidx.room.RoomDatabase

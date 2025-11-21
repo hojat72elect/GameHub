@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.settings.data
 
 import androidx.datastore.core.DataStore
@@ -23,7 +22,8 @@ private val PROTO_SETTINGS = ProtoSettings.newBuilder()
 
 internal class SettingsFileDataStoreTest {
 
-    @MockK private lateinit var protoDataStore: DataStore<ProtoSettings>
+    @MockK
+    private lateinit var protoDataStore: DataStore<ProtoSettings>
 
     private lateinit var SUT: SettingsFileDataStore
 

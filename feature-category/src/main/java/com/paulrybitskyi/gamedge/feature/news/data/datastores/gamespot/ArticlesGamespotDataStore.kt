@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.data.datastores.gamespot
 
 import com.github.michaelbull.result.mapEither

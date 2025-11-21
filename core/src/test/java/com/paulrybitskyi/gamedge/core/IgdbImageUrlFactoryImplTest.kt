@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core
 
 import com.google.common.truth.Truth.assertThat

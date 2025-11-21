@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.widgets.games
 
 import androidx.compose.runtime.Immutable

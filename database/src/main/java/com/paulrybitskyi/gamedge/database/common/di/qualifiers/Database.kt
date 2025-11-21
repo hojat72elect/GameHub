@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.database.common.di.qualifiers
 
 import javax.inject.Qualifier

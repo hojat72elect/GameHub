@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.domain.games
 
 import app.cash.turbine.test
@@ -22,7 +21,8 @@ internal class ObserveMostAnticipatedGamesUseCaseImplTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var gamesLocalDataStore: GamesLocalDataStore
+    @MockK
+    private lateinit var gamesLocalDataStore: GamesLocalDataStore
 
     private lateinit var SUT: ObserveMostAnticipatedGamesUseCaseImpl
 

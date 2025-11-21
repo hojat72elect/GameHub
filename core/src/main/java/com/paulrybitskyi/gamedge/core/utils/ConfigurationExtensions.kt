@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core.utils
 
 import android.content.res.Configuration

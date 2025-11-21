@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.ui.widgets
 
 import androidx.compose.foundation.layout.Box
@@ -46,7 +45,7 @@ fun GameCover(
             // https://stackoverflow.com/questions/71986944/custom-saver-remembersaveable-using-derivedstateof
             val shouldDisplayTitle = rememberSaveable(title, imageState) {
                 (title != null) &&
-                (imageState !is State.Success)
+                        (imageState !is State.Success)
             }
 
             AsyncImage(

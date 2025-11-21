@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.plugins
 
 import com.google.protobuf.gradle.ProtobufExtension

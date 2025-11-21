@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.database.tables
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -30,7 +29,8 @@ internal class GamesTableTest {
     @get:Rule(order = 1)
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    @Inject lateinit var SUT: GamesTable
+    @Inject
+    lateinit var SUT: GamesTable
 
     @Module(includes = [TestDatabaseModule::class])
     @InstallIn(SingletonComponent::class)

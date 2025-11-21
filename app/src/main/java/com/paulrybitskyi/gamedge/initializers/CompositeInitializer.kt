@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.initializers
 
 import com.paulrybitskyi.hiltbinder.BindType

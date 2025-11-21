@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.games.datastores.database
 
 import com.paulrybitskyi.gamedge.core.providers.TimestampProvider

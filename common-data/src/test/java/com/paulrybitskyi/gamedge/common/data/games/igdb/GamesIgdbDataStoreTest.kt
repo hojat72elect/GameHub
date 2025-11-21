@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.games.igdb
 
 import com.github.michaelbull.result.Err
@@ -39,7 +38,8 @@ internal class GamesIgdbDataStoreTest {
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
 
-    @MockK private lateinit var gamesEndpoint: GamesEndpoint
+    @MockK
+    private lateinit var gamesEndpoint: GamesEndpoint
 
     private lateinit var igdbGameMapper: IgdbGameMapper
     private lateinit var apiErrorMapper: ApiErrorMapper

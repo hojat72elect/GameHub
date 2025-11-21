@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.gamespot.api
 
 import com.github.michaelbull.result.get
@@ -26,8 +25,11 @@ internal class ArticlesServiceTest {
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
-    @Inject lateinit var mockWebServer: MockWebServer
-    @Inject lateinit var articlesService: ArticlesService
+    @Inject
+    lateinit var mockWebServer: MockWebServer
+
+    @Inject
+    lateinit var articlesService: ArticlesService
 
     @Before
     fun setup() {

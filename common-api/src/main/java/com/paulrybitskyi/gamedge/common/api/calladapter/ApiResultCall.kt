@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.api.calladapter
 
 import com.github.michaelbull.result.Err

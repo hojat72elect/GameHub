@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.domain.common
 
 import kotlinx.coroutines.CoroutineDispatcher

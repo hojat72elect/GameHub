@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.data.games.datastores.database
 
 import com.paulrybitskyi.gamedge.common.domain.common.DispatcherProvider
@@ -41,11 +40,11 @@ internal class LikedGamesDatabaseDataStore @Inject constructor(
     }
 
     override fun observeLikedGames(pagination: Pagination): Flow<List<Game>> {
-         return likedGamesTable.observeLikedGames(
+        return likedGamesTable.observeLikedGames(
             offset = pagination.offset,
             limit = pagination.limit,
         )
-         .toDataGamesFlow()
+            .toDataGamesFlow()
     }
 
     private fun Flow<List<DbGame>>.toDataGamesFlow(): Flow<List<Game>> {

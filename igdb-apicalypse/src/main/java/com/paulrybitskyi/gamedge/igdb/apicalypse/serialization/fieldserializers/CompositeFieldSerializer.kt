@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.apicalypse.serialization.fieldserializers
 
 import com.paulrybitskyi.gamedge.igdb.apicalypse.Constants
@@ -13,6 +12,6 @@ internal class CompositeFieldSerializer(
                 add(child.serialize())
             }
         }
-        .joinToString(Constants.FIELD_SEPARATOR)
+            .joinToString(Constants.FIELD_SEPARATOR)
     }
 }

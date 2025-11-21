@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core.providers
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Website
@@ -34,7 +33,7 @@ internal class WebsiteIconProviderImpl @Inject constructor() : WebsiteIconProvid
             WebsiteCategory.OFFICIAL,
             WebsiteCategory.WIKIA,
             WebsiteCategory.EPIC_GAMES,
-            -> R.drawable.web
+                -> R.drawable.web
         }
     }
 }

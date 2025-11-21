@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.plugins
 
 import com.android.build.gradle.BaseExtension
@@ -108,11 +107,13 @@ class GamedgeAndroidPlugin : Plugin<Project> {
                             keyAlias = properties.getValue("keyAlias")
                             keyPassword = properties.getValue("keyPassword")
                         } else {
-                            println("""
+                            println(
+                                """
                                 Cannot create a release signing config. The file,
                                 $KEYSTORE_FILE_NAME, either does not exist or
                                 cannot be read from.
-                            """.trimIndent())
+                            """.trimIndent()
+                            )
                         }
                     }
                 }

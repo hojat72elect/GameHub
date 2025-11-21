@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api.games.entities
 
 import com.paulrybitskyi.gamedge.igdb.api.games.entities.ApiCategory.Companion.asCategory

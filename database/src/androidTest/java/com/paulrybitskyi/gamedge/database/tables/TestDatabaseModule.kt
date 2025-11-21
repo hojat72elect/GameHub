@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.database.tables
 
 import androidx.room.Room
@@ -25,8 +24,8 @@ internal object TestDatabaseModule {
             ApplicationProvider.getApplicationContext(),
             GamedgeDatabase::class.java,
         )
-        .addTypeConverters(typeConverters)
-        .addMigrations(*MANUAL_MIGRATIONS)
-        .build()
+            .addTypeConverters(typeConverters)
+            .addMigrations(*MANUAL_MIGRATIONS)
+            .build()
     }
 }

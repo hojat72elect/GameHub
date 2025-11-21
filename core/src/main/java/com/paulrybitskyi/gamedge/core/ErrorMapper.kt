@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core
 
 import com.paulrybitskyi.gamedge.common.domain.common.DomainException
@@ -28,7 +27,7 @@ internal class ErrorMapperImpl @Inject constructor(
 
             is Error.NotFound,
             is Error.Unknown,
-            -> stringProvider.getString(R.string.error_unknown_message)
+                -> stringProvider.getString(R.string.error_unknown_message)
         }
     }
 
@@ -40,7 +39,7 @@ internal class ErrorMapperImpl @Inject constructor(
 
                 is Error.ApiError.ClientError,
                 is Error.ApiError.Unknown,
-                -> R.string.error_api_unknown_message
+                    -> R.string.error_api_unknown_message
             },
         )
     }

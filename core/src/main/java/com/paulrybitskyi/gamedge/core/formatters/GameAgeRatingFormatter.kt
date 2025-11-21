@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.core.formatters
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.AgeRatingCategory
@@ -21,7 +20,7 @@ internal class GameAgeRatingFormatterImpl @Inject constructor(
     override fun formatAgeRating(game: Game): String {
         val ageRatings = game.ageRatings.filterNot {
             it.category == AgeRatingCategory.UNKNOWN ||
-            it.type == AgeRatingType.UNKNOWN
+                    it.type == AgeRatingType.UNKNOWN
         }
 
         val ageRating = ageRatings.firstOrNull { it.category == AgeRatingCategory.PEGI }

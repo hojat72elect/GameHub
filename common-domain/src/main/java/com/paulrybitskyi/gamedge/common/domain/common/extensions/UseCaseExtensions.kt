@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.common.domain.common.extensions
 
 import com.paulrybitskyi.gamedge.common.domain.common.usecases.ObservableUseCase

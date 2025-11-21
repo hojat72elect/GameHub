@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.igdb.api.games.requests
 
 import com.paulrybitskyi.gamedge.common.api.ApiRequest

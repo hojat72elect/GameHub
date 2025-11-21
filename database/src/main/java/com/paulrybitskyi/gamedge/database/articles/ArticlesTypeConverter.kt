@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.database.articles
 
 import androidx.room.ProvidedTypeConverter

@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.presentation
 
 import androidx.compose.foundation.layout.Arrangement
@@ -90,6 +89,7 @@ private fun GamingNewsScreen(
                 FiniteUiState.Loading -> {
                     LoadingState(modifier = Modifier.align(Alignment.Center))
                 }
+
                 else -> {
                     RefreshableContent(
                         isRefreshing = uiState.isRefreshing,
@@ -170,7 +170,7 @@ private fun GamingNewsScreenSuccessStatePreview() {
             imageUrl = "",
             title = "Call of Duty: Vanguard's UK Launch Sales are Down 40% From Last Year",
             lede = "Call of Duty: Vanguard's launch sales are down about 40% compared to last year's " +
-                "Call of Duty: Black Ops Cold War in the UK.",
+                    "Call of Duty: Black Ops Cold War in the UK.",
             publicationDate = "an hour ago",
             siteDetailUrl = "url",
         ),
@@ -179,7 +179,7 @@ private fun GamingNewsScreenSuccessStatePreview() {
             imageUrl = null,
             title = "WoW Classic Season of Mastery: Full List of Changes",
             lede = "World of Warcraft Classic's first season is nearly here, and Blizzard has " +
-                "detailed all the changes players can expect.",
+                    "detailed all the changes players can expect.",
             publicationDate = "2 hours ago",
             siteDetailUrl = "url",
         ),

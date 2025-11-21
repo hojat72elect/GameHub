@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.settings.domain
 
 import com.paulrybitskyi.gamedge.feature.settings.domain.entities.Settings

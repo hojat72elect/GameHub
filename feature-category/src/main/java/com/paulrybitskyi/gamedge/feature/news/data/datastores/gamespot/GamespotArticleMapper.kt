@@ -1,4 +1,3 @@
-
 package com.paulrybitskyi.gamedge.feature.news.data.datastores.gamespot
 
 import com.paulrybitskyi.gamedge.feature.news.domain.DomainArticle
