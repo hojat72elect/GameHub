@@ -7,9 +7,7 @@
 
 An Android application for browsing video games and checking the latest gaming news from around the world.
 
-Built entirely using the Jetpack Compose.
-
-The aim of this project is to showcase the latest trends in Android development by utilizing the best practices, libraries, and tools to develop a fully-fledged Android application.
+Built entirely using Kotlin technologies.
 
 ## Contents
 * [Demonstration](#demonstration)
@@ -110,19 +108,3 @@ Check [this link](https://www.gamespot.com/api/) on how to obtain an API key. On
 ```
 GAMESPOT_API_KEY=your_api_key_here
 ```
-
-## Download
-
-Go to the [Releases](https://github.com/mars885/gamedge/releases) to download the latest APK.
-
-## Contribution
-
-See the [CONTRIBUTION.md](/CONTRIBUTION.md) file.
-
-## Questions
-
-If you have any questions regarding the codebase, hit me up on [Twitter](https://twitter.com/PRybitskyi).
-
-## License
-
-Gamedge is licensed under the [Apache 2.0 License](LICENSE).
