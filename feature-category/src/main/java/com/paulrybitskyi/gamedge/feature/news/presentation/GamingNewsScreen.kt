@@ -45,7 +45,7 @@ import com.paulrybitskyi.gamedge.common.ui.widgets.GamedgeProgressIndicator
 import com.paulrybitskyi.gamedge.common.ui.widgets.Info
 import com.paulrybitskyi.gamedge.common.ui.widgets.RefreshableContent
 import com.paulrybitskyi.gamedge.common.ui.widgets.toolbars.Toolbar
-import com.paulrybitskyi.gamedge.feature.news.R
+import com.paulrybitskyi.gamedge.feature.category.R
 import com.paulrybitskyi.gamedge.feature.news.presentation.widgets.GamingNewsItem
 import com.paulrybitskyi.gamedge.feature.news.presentation.widgets.GamingNewsItemUiModel
 import com.paulrybitskyi.gamedge.core.R as CoreR

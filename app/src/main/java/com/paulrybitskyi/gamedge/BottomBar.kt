@@ -38,7 +38,6 @@ import com.paulrybitskyi.gamedge.common.ui.theme.GamedgeTheme
 import com.paulrybitskyi.gamedge.core.R as CoreR
 import com.paulrybitskyi.gamedge.feature.category.R as FeatureCategoryR
 import com.paulrybitskyi.gamedge.feature.likes.R as FeatureLikesR
-import com.paulrybitskyi.gamedge.feature.news.R as FeatureNewsR
 import com.paulrybitskyi.gamedge.feature.settings.R as FeatureSettingsR
 
 private const val BOTTOM_BAR_ANIMATION_DURATION = 300
@@ -137,7 +136,7 @@ private enum class BottomNavigationItemModel(
     ),
     NEWS(
         iconId = CoreR.drawable.newspaper,
-        titleId = FeatureNewsR.string.gaming_news_toolbar_title,
+        titleId = FeatureCategoryR.string.gaming_news_toolbar_title,
         screen = Screen.GamingNews,
     ),
     SETTINGS(

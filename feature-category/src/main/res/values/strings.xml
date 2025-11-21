@@ -3,4 +3,6 @@
 <resources>
     <string name="games_category_info_view_title">No Games Available</string>
     <string name="games_discovery_toolbar_title">Discover</string>
+    <string name="gaming_news_toolbar_title">News</string>
+    <string name="gaming_news_info_view_title">No News Available</string>
 </resources>
