@@ -27,4 +27,6 @@
     <string name="games_search_toolbar_hint">Search games</string>
     <string name="games_search_info_title_default">Search for specific games</string>
     <string name="games_search_info_title_empty">No games found for\n\"%s\"</string>
+    <string name="liked_games_toolbar_title">Likes</string>
+    <string name="liked_games_info_title">You haven\'t liked any games yet</string>
 </resources>

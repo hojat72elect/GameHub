@@ -37,7 +37,6 @@ import androidx.navigation.NavHostController
 import com.paulrybitskyi.gamedge.common.ui.theme.GamedgeTheme
 import com.paulrybitskyi.gamedge.core.R as CoreR
 import com.paulrybitskyi.gamedge.feature.category.R as FeatureCategoryR
-import com.paulrybitskyi.gamedge.feature.likes.R as FeatureLikesR
 import com.paulrybitskyi.gamedge.feature.settings.R as FeatureSettingsR
 
 private const val BOTTOM_BAR_ANIMATION_DURATION = 300
@@ -131,7 +130,7 @@ private enum class BottomNavigationItemModel(
     ),
     LIKES(
         iconId = CoreR.drawable.heart,
-        titleId = FeatureLikesR.string.liked_games_toolbar_title,
+        titleId = FeatureCategoryR.string.liked_games_toolbar_title,
         screen = Screen.LikedGames,
     ),
     NEWS(

@@ -35,7 +35,7 @@ import com.paulrybitskyi.gamedge.common.ui.widgets.games.GameUiModel
 import com.paulrybitskyi.gamedge.common.ui.widgets.games.Games
 import com.paulrybitskyi.gamedge.common.ui.widgets.games.GamesUiState
 import com.paulrybitskyi.gamedge.common.ui.widgets.toolbars.Toolbar
-import com.paulrybitskyi.gamedge.feature.likes.R
+import com.paulrybitskyi.gamedge.feature.category.R
 import com.paulrybitskyi.gamedge.core.R as CoreR
 
 @Composable
