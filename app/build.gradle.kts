@@ -32,7 +32,6 @@ dependencies {
     implementation(project(localModules.database))
     implementation(project(localModules.featureCategory))
     implementation(project(localModules.featureLikes))
-    implementation(project(localModules.featureSearch))
     implementation(project(localModules.featureSettings))
 
     implementation(libs.activity)

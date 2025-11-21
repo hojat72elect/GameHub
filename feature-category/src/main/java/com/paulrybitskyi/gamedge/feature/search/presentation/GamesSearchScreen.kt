@@ -44,7 +44,7 @@ import com.paulrybitskyi.gamedge.common.ui.widgets.games.Games
 import com.paulrybitskyi.gamedge.common.ui.widgets.games.GamesUiState
 import com.paulrybitskyi.gamedge.common.ui.widgets.games.finiteUiState
 import com.paulrybitskyi.gamedge.common.ui.widgets.toolbars.SearchToolbar
-import com.paulrybitskyi.gamedge.feature.search.R
+import com.paulrybitskyi.gamedge.feature.category.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import com.paulrybitskyi.gamedge.core.R as CoreR

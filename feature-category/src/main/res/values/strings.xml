@@ -24,4 +24,7 @@
     <string name="game_info_other_company_games_title_template">More Games by %s</string>
     <string name="game_info_other_company_games_title_default_arg">Developer</string>
     <string name="game_info_similar_games_title">Similar Games</string>
+    <string name="games_search_toolbar_hint">Search games</string>
+    <string name="games_search_info_title_default">Search for specific games</string>
+    <string name="games_search_info_title_empty">No games found for\n\"%s\"</string>
 </resources>
