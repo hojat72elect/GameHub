@@ -13,7 +13,7 @@ dependencies {
     implementation(project(localModules.commonUi))
     implementation(project(localModules.commonUiWidgets))
     implementation(project(localModules.igdbApi))
-    implementation(project(localModules.gamespotApi))
+    implementation(project(localModules.commonApi))
     implementation(project(localModules.database))
     implementation(project(localModules.featureCategory))
     implementation(project(localModules.featureSettings))

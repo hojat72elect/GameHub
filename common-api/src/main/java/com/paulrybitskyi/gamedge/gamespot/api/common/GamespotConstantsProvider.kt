@@ -1,6 +1,6 @@
 package com.paulrybitskyi.gamedge.gamespot.api.common
 
-import com.paulrybitskyi.gamedge.gamespot.api.BuildConfig
+import com.paulrybitskyi.gamedge.common.api.BuildConfig
 import javax.inject.Inject
 
 internal interface GamespotConstantsProvider {

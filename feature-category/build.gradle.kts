@@ -7,7 +7,7 @@ android {
 }
 
 dependencies {
-    implementation(project(localModules.gamespotApi))
+    implementation(project(localModules.commonApi))
     implementation(project(localModules.database))
 
     implementation(libs.prefsDataStore)

@@ -1,3 +1,5 @@
+import com.paulrybitskyi.gamedge.extensions.property
+import com.paulrybitskyi.gamedge.extensions.stringField
 
 
 plugins {
@@ -8,6 +10,10 @@ plugins {
 
 android {
     namespace = "com.paulrybitskyi.gamedge.common.api"
+
+    defaultConfig {
+        stringField("GAMESPOT_API_KEY", property("GAMESPOT_API_KEY", ""))
+    }
 
     buildFeatures {
         buildConfig = true
