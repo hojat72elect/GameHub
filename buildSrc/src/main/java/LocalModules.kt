@@ -8,7 +8,6 @@ object localModules {
     const val core = ":core"
     const val database = ":database"
     const val igdbApi = ":igdb-api"
-    const val igdbApicalypse = ":igdb-apicalypse"
     const val gamespotApi = ":gamespot-api"
     const val commonDomain = ":common-domain"
     const val commonData = ":common-data"

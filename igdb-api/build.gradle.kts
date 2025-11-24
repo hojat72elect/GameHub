@@ -16,7 +16,5 @@ android {
 }
 
 dependencies {
-    implementation(project(localModules.igdbApicalypse))
-
     implementation(libs.retrofitScalarsConverter)
 }
