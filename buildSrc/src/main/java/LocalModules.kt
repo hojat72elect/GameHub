@@ -12,8 +12,6 @@ object localModules {
     const val commonUi = ":common-ui"
     const val commonUiWidgets = ":common-ui-widgets"
     const val commonApi = ":common-api"
-    const val commonTestingDomain = ":common-testing-domain"
-    const val commonTesting = ":common-testing"
     const val featureCategory = ":feature-category"
     const val featureSettings = ":feature-settings"
 }

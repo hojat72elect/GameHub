@@ -18,7 +18,4 @@ dependencies {
 
     implementation(libs.prefsDataStore)
     implementation(libs.protoDataStore)
-
-    testImplementation(project(localModules.commonTesting))
-    testImplementation(libs.bundles.testing)
 }

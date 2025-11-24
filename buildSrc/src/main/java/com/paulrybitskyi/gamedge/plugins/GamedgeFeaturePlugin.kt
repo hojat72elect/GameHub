@@ -1,6 +1,5 @@
 package com.paulrybitskyi.gamedge.plugins
 
-import com.paulrybitskyi.gamedge.extensions.addBundle
 import com.paulrybitskyi.gamedge.extensions.libs
 import localModules
 import org.gradle.api.Plugin
@@ -32,7 +31,5 @@ class GamedgeFeaturePlugin : Plugin<Project> {
         add("implementation", libs.commonsCore.get())
         add("implementation", libs.commonsKtx.get())
         add("implementation", libs.coil.get())
-        add("testImplementation", project(localModules.commonTesting))
-        addBundle("testImplementation", libs.bundles.testing.get())
     }
 }

@@ -10,7 +10,4 @@ dependencies {
 
     implementation(libs.daggerHiltCore)
     kapt(libs.daggerHiltCoreCompiler)
-
-    testImplementation(project(localModules.commonTestingDomain))
-    testImplementation(libs.bundles.testing)
 }

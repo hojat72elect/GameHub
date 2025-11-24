@@ -33,11 +33,4 @@ dependencies {
     implementation(libs.room)
     implementation(libs.roomKtx)
     ksp(libs.roomCompiler)
-
-    testImplementation(project(localModules.commonTesting))
-    testImplementation(libs.bundles.testing)
-
-    androidTestImplementation(libs.bundles.testingAndroid)
-    androidTestImplementation(libs.archCore)
-    androidTestImplementation(libs.roomTesting)
 }
