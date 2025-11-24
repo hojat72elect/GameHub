@@ -6,6 +6,7 @@ plugins {
     id(libs.plugins.androidLibrary.get().pluginId)
     id(libs.plugins.gamedgeAndroid.get().pluginId)
     id(libs.plugins.gamedgeDaggerHilt.get().pluginId)
+    id(libs.plugins.gamedgeRemoteApi.get().pluginId)
 }
 
 android {
@@ -13,6 +14,8 @@ android {
 
     defaultConfig {
         stringField("GAMESPOT_API_KEY", property("GAMESPOT_API_KEY", ""))
+        stringField("TWITCH_APP_CLIENT_ID", property("TWITCH_APP_CLIENT_ID", ""))
+        stringField("TWITCH_APP_CLIENT_SECRET", property("TWITCH_APP_CLIENT_SECRET", ""))
     }
 
     buildFeatures {
@@ -21,13 +24,12 @@ android {
 }
 
 dependencies {
+
     implementation(project(localModules.core))
-
     implementation(libs.kotlinxSerialization)
-
     implementation(libs.okHttpLoggingInterceptor)
     implementation(libs.retrofit)
     implementation(libs.retrofitKotlinxSerializationConverter)
-
+    implementation(libs.retrofitScalarsConverter)
     implementation(libs.kotlinResult)
 }

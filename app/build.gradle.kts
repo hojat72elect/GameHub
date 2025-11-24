@@ -12,7 +12,6 @@ dependencies {
     implementation(project(localModules.core))
     implementation(project(localModules.commonUi))
     implementation(project(localModules.commonUiWidgets))
-    implementation(project(localModules.igdbApi))
     implementation(project(localModules.commonApi))
     implementation(project(localModules.database))
     implementation(project(localModules.featureCategory))
@@ -25,6 +24,7 @@ dependencies {
 
     implementation(libs.commonsCore)
     implementation(libs.commonsKtx)
+    implementation(libs.kotlinxSerialization)
 }
 
 val installGitHook by tasks.registering(Copy::class) {

@@ -11,16 +11,11 @@ android {
 
 dependencies {
     implementation(project(localModules.commonDomain))
-
     implementation(libs.kotlinxSerialization)
-
     implementation(libs.browser)
 
     implementation(libs.commonsCore)
     implementation(libs.commonsKtx)
     implementation(libs.commonsNetwork)
     implementation(libs.commonsWindowAnims)
-
-    testImplementation(project(localModules.commonTesting))
-    testImplementation(libs.bundles.testing)
 }

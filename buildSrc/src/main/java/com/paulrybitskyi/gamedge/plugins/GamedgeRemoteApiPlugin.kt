@@ -32,7 +32,6 @@ class GamedgeRemoteApiPlugin : Plugin<Project> {
     }
 
     private fun Project.addDependencies(): Unit = with(dependencies) {
-        add("api", project(localModules.commonApi))
         add("implementation", project(localModules.core))
 
         add("implementation", libs.retrofit.get())
