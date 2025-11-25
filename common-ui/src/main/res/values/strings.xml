@@ -5,4 +5,6 @@
     <string name="games_category_recently_released">Recently Released</string>
     <string name="games_category_coming_soon">Coming Soon</string>
     <string name="games_category_most_anticipated">Most Anticipated</string>
+    <string name="games_category_preview_more_button_text">See All</string>
+    <string name="games_category_preview_info_view_title">No Games Available</string>
 </resources>

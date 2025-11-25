@@ -11,7 +11,6 @@ dependencies {
     implementation(project(localModules.commonData))
     implementation(project(localModules.core))
     implementation(project(localModules.commonUi))
-    implementation(project(localModules.commonUiWidgets))
     implementation(project(localModules.commonApi))
     implementation(project(localModules.database))
     implementation(project(localModules.featureCategory))

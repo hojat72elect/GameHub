@@ -12,6 +12,7 @@ android {
 
 dependencies {
     implementation(project(localModules.core))
+    implementation(project(localModules.commonDomain))
 
     implementation(libs.commonsCore)
     implementation(libs.commonsKtx)

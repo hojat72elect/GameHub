@@ -25,7 +25,6 @@ class GamedgeFeaturePlugin : Plugin<Project> {
         add("implementation", project(localModules.commonData))
         add("implementation", project(localModules.core))
         add("implementation", project(localModules.commonUi))
-        add("implementation", project(localModules.commonUiWidgets))
         add("implementation", libs.composeHilt.get())
         add("implementation", libs.composeNavigation.get())
         add("implementation", libs.commonsCore.get())

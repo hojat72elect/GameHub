@@ -16,7 +16,7 @@ import com.paulrybitskyi.gamedge.common.ui.clickable
 import com.paulrybitskyi.gamedge.common.ui.images.defaultImageRequest
 import com.paulrybitskyi.gamedge.common.ui.images.secondaryImage
 import com.paulrybitskyi.gamedge.common.ui.theme.GamedgeTheme
-import com.paulrybitskyi.gamedge.common.ui.widgets.R as CommonUiWidgetsR
+import com.paulrybitskyi.gamedge.common.ui.R as CommonUiR
 
 @Composable
 internal fun Artworks(
@@ -52,13 +52,13 @@ private fun Artwork(
     onArtworkClicked: () -> Unit,
 ) {
     val data = when (artwork) {
-        is GameInfoArtworkUiModel.DefaultImage -> CommonUiWidgetsR.drawable.game_background_placeholder
+        is GameInfoArtworkUiModel.DefaultImage -> CommonUiR.drawable.game_background_placeholder
         is GameInfoArtworkUiModel.UrlImage -> artwork.url
     }
 
     AsyncImage(
         model = defaultImageRequest(data) {
-            secondaryImage(CommonUiWidgetsR.drawable.game_background_placeholder)
+            secondaryImage(CommonUiR.drawable.game_background_placeholder)
         },
         contentDescription = null,
         modifier = Modifier

@@ -21,7 +21,7 @@ import com.paulrybitskyi.gamedge.common.ui.images.defaultImageRequest
 import com.paulrybitskyi.gamedge.common.ui.images.secondaryImage
 import com.paulrybitskyi.gamedge.common.ui.theme.GamedgeTheme
 import com.paulrybitskyi.gamedge.common.ui.widgets.GamedgeCard
-import com.paulrybitskyi.gamedge.common.ui.widgets.R as CommonUiWidgetsR
+import com.paulrybitskyi.gamedge.common.ui.R as CommonUiR
 import com.paulrybitskyi.gamedge.core.R as CoreR
 
 @Composable
@@ -77,7 +77,7 @@ private fun Image(
     ) {
         AsyncImage(
             model = defaultImageRequest(imageUrl) {
-                secondaryImage(CommonUiWidgetsR.drawable.game_landscape_placeholder)
+                secondaryImage(CommonUiR.drawable.game_landscape_placeholder)
             },
             contentDescription = null,
             contentScale = ContentScale.Crop,

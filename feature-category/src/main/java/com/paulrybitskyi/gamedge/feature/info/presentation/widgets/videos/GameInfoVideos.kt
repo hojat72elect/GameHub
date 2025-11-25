@@ -35,7 +35,7 @@ import com.paulrybitskyi.gamedge.common.ui.theme.darkScrim
 import com.paulrybitskyi.gamedge.common.ui.widgets.GamedgeCard
 import com.paulrybitskyi.gamedge.feature.category.R
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.utils.GameInfoSectionWithInnerList
-import com.paulrybitskyi.gamedge.common.ui.widgets.R as CommonUiWidgetsR
+import com.paulrybitskyi.gamedge.common.ui.R as CommonUiR
 import com.paulrybitskyi.gamedge.core.R as CoreR
 
 @Composable
@@ -77,7 +77,7 @@ private fun Video(
             ) {
                 AsyncImage(
                     model = defaultImageRequest(video.thumbnailUrl) {
-                        secondaryImage(CommonUiWidgetsR.drawable.game_landscape_placeholder)
+                        secondaryImage(CommonUiR.drawable.game_landscape_placeholder)
                     },
                     contentDescription = null,
                     modifier = Modifier.fillMaxSize(),
