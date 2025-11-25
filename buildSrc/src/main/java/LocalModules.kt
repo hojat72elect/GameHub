@@ -9,7 +9,6 @@ object localModules {
     const val database = ":database"
     const val commonDomain = ":common-domain"
     const val commonData = ":common-data"
-    const val commonUi = ":common-ui"
     const val commonApi = ":common-api"
     const val featureCategory = ":feature-category"
     const val featureSettings = ":feature-settings"

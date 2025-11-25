@@ -2,6 +2,7 @@
 plugins {
     id(libs.plugins.androidLibrary.get().pluginId)
     id(libs.plugins.gamedgeAndroid.get().pluginId)
+    id(libs.plugins.gamedgeJetpackCompose.get().pluginId)
     id(libs.plugins.gamedgeDaggerHilt.get().pluginId)
 }
 
@@ -18,4 +19,5 @@ dependencies {
     implementation(libs.commonsKtx)
     implementation(libs.commonsNetwork)
     implementation(libs.commonsWindowAnims)
+    implementation(libs.coil)
 }

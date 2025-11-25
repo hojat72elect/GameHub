@@ -60,4 +60,11 @@
     <string name="error_api_network_message">@string/error_no_network_message</string>
     <string name="error_api_server_message">The server is not responding! Please try again later.</string>
     <string name="error_api_unknown_message">Could not perform the request! Please try again later.</string>
+
+    <string name="games_category_popular">Popular</string>
+    <string name="games_category_recently_released">Recently Released</string>
+    <string name="games_category_coming_soon">Coming Soon</string>
+    <string name="games_category_most_anticipated">Most Anticipated</string>
+    <string name="games_category_preview_more_button_text">See All</string>
+    <string name="games_category_preview_info_view_title">No Games Available</string>
 </resources>

@@ -37,7 +37,7 @@ import com.paulrybitskyi.gamedge.common.ui.widgets.GamedgeCard
 import com.paulrybitskyi.gamedge.feature.category.R
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.utils.GameInfoSectionWithInnerList
 import kotlin.math.roundToInt
-import com.paulrybitskyi.gamedge.common.ui.R as CommonUiR
+import com.paulrybitskyi.gamedge.core.R as CoreR
 
 private val LogoMaxWidth = 268.dp
 private val LogoMaxHeight = 150.dp
@@ -129,7 +129,7 @@ private fun CompanyLogoImage(
     val logoContainerHeightInPx = with(density) { logoContainerSize.height.roundToPx() }
     val painter = rememberAsyncImagePainter(
         model = defaultImageRequest(logoImageUrl) {
-            secondaryImage(CommonUiR.drawable.game_landscape_placeholder)
+            secondaryImage(CoreR.drawable.game_landscape_placeholder)
             size(logoImageSize.width, logoImageSize.height)
             transformations(
                 LogoImageTransformation(
