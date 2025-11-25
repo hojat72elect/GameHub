@@ -8,7 +8,6 @@ import com.paulrybitskyi.gamedge.common.domain.common.usecases.UseCase
 import com.paulrybitskyi.gamedge.common.domain.games.datastores.GamesLocalDataStore
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Game
 import com.paulrybitskyi.gamedge.feature.info.domain.usecases.GetSimilarGamesUseCase.Params
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
@@ -27,7 +26,6 @@ internal interface GetSimilarGamesUseCase : UseCase<Params, Flow<DomainResult<Li
 }
 
 @Singleton
-@BindType
 internal class GetSimilarGamesUseCaseImpl @Inject constructor(
     private val refreshSimilarGamesUseCase: RefreshSimilarGamesUseCase,
     private val gamesLocalDataStore: GamesLocalDataStore,

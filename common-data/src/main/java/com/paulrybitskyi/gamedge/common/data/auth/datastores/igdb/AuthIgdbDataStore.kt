@@ -6,12 +6,10 @@ import com.paulrybitskyi.gamedge.common.domain.auth.datastores.AuthRemoteDataSto
 import com.paulrybitskyi.gamedge.common.domain.auth.entities.OauthCredentials
 import com.paulrybitskyi.gamedge.common.domain.common.DomainResult
 import com.paulrybitskyi.gamedge.igdb.api.auth.AuthEndpoint
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-@BindType
 internal class AuthIgdbDataStore @Inject constructor(
     private val authEndpoint: AuthEndpoint,
     private val igdbAuthMapper: IgdbAuthMapper,

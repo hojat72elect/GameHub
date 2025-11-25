@@ -10,13 +10,11 @@ import com.paulrybitskyi.gamedge.common.domain.games.datastores.GamesDataStores
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Game
 import com.paulrybitskyi.gamedge.core.providers.NetworkStateProvider
 import com.paulrybitskyi.gamedge.feature.search.domain.SearchGamesUseCase.Params
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
-import javax.inject.Singleton
 
 internal interface SearchGamesUseCase : UseCase<Params, Flow<DomainResult<List<Game>>>> {
 
@@ -26,8 +24,6 @@ internal interface SearchGamesUseCase : UseCase<Params, Flow<DomainResult<List<G
     )
 }
 
-@Singleton
-@BindType
 internal class SearchGamesUseCaseImpl @Inject constructor(
     private val gamesDataStores: GamesDataStores,
     private val dispatcherProvider: DispatcherProvider,

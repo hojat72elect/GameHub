@@ -11,14 +11,12 @@ import com.paulrybitskyi.gamedge.core.formatters.GameReleaseDateFormatter
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.header.artworks.GameInfoArtworkUiModel
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.header.artworks.GameInfoArtworkUiModelMapper
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.header.artworks.mapToUiModels
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 internal interface GameInfoHeaderUiModelMapper {
     fun mapToUiModel(game: Game, isLiked: Boolean): GameInfoHeaderUiModel
 }
 
-@BindType(installIn = BindType.Component.VIEW_MODEL)
 internal class GameInfoHeaderUiModelMapperImpl @Inject constructor(
     private val igdbImageUrlFactory: IgdbImageUrlFactory,
     private val artworkModelMapper: GameInfoArtworkUiModelMapper,

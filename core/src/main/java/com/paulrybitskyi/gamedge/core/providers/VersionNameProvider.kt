@@ -2,7 +2,6 @@ package com.paulrybitskyi.gamedge.core.providers
 
 import android.content.Context
 import com.paulrybitskyi.gamedge.core.R
-import com.paulrybitskyi.hiltbinder.BindType
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -10,7 +9,6 @@ interface VersionNameProvider {
     fun getVersionName(): String
 }
 
-@BindType
 internal class VersionNameProviderImpl @Inject constructor(
     @ApplicationContext private val context: Context,
     private val stringProvider: StringProvider,

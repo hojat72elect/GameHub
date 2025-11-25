@@ -3,13 +3,11 @@ package com.paulrybitskyi.gamedge.common.data.auth.datastores.file
 import androidx.datastore.core.DataStore
 import com.paulrybitskyi.gamedge.common.domain.auth.datastores.AuthLocalDataStore
 import com.paulrybitskyi.gamedge.common.domain.auth.entities.OauthCredentials
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.firstOrNull
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-@BindType
 internal class AuthFileDataStore @Inject constructor(
     private val protoDataStore: DataStore<ProtoOauthCredentials>,
     private val protoAuthMapper: ProtoAuthMapper,

@@ -14,7 +14,6 @@ import com.paulrybitskyi.gamedge.igdb.api.games.requests.GetRecentlyReleasedGame
 import com.paulrybitskyi.gamedge.igdb.api.games.requests.SearchGamesRequest
 import com.paulrybitskyi.gamedge.igdb.apicalypse.querybuilder.ApicalypseQueryBuilderFactory
 import com.paulrybitskyi.gamedge.igdb.apicalypse.serialization.ApicalypseSerializer
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 internal interface IgdbApiQueryFactory {
@@ -26,7 +25,6 @@ internal interface IgdbApiQueryFactory {
     fun createGamesRetrievalQuery(request: GetGamesRequest): String
 }
 
-@BindType
 internal class IgdbApiQueryFactoryImpl @Inject constructor(
     private val apicalypseQueryBuilderFactory: ApicalypseQueryBuilderFactory,
     private val apicalypseSerializer: ApicalypseSerializer,

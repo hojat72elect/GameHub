@@ -7,7 +7,6 @@ import com.paulrybitskyi.gamedge.gamespot.api.common.GamespotQueryParamsFactory
 import com.paulrybitskyi.gamedge.gamespot.api.common.QUERY_PARAM_LIMIT
 import com.paulrybitskyi.gamedge.gamespot.api.common.QUERY_PARAM_OFFSET
 import com.paulrybitskyi.gamedge.gamespot.api.common.Response
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -16,7 +15,6 @@ interface ArticlesEndpoint {
 }
 
 @Singleton
-@BindType
 internal class ArticlesEndpointImpl @Inject constructor(
     private val articlesService: ArticlesService,
     private val queryParamsFactory: GamespotQueryParamsFactory,

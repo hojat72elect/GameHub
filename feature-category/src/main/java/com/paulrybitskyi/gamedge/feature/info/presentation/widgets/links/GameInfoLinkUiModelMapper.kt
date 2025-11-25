@@ -4,7 +4,6 @@ import com.paulrybitskyi.gamedge.common.domain.games.entities.Website
 import com.paulrybitskyi.gamedge.common.domain.games.entities.WebsiteCategory
 import com.paulrybitskyi.gamedge.core.providers.WebsiteIconProvider
 import com.paulrybitskyi.gamedge.core.providers.WebsiteNameProvider
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 internal interface GameInfoLinkUiModelMapper {
@@ -12,7 +11,6 @@ internal interface GameInfoLinkUiModelMapper {
     fun mapToUiModels(websites: List<Website>): List<GameInfoLinkUiModel>
 }
 
-@BindType(installIn = BindType.Component.VIEW_MODEL)
 internal class GameInfoLinkUiModelMapperImpl @Inject constructor(
     private val websiteNameProvider: WebsiteNameProvider,
     private val websiteIconProvider: WebsiteIconProvider,

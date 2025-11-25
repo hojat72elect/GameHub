@@ -1,7 +1,6 @@
 package com.paulrybitskyi.gamedge.core
 
 import android.util.Log
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 interface Logger {
@@ -11,7 +10,6 @@ interface Logger {
     fun error(tag: String, message: String, throwable: Throwable? = null)
 }
 
-@BindType
 internal class GamedgeLogger @Inject constructor() : Logger {
 
     override fun info(tag: String, message: String, throwable: Throwable?) {

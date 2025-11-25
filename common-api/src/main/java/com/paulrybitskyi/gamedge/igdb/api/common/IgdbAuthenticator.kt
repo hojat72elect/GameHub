@@ -5,7 +5,6 @@ import com.paulrybitskyi.gamedge.igdb.api.auth.AuthHeaderParser
 import com.paulrybitskyi.gamedge.igdb.api.auth.Authorizer
 import com.paulrybitskyi.gamedge.igdb.api.auth.entities.ApiAuthorizationType
 import com.paulrybitskyi.gamedge.igdb.api.auth.entities.ApiOauthCredentials
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -17,7 +16,6 @@ import javax.inject.Inject
 
 private const val MAX_AUTH_RESPONSE_COUNT = 3
 
-@BindType
 internal class IgdbAuthenticator @Inject constructor(
     private val credentialsStore: CredentialsStore,
     private val authHeaderParser: AuthHeaderParser,

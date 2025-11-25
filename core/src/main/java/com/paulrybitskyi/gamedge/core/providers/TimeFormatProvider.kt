@@ -2,7 +2,6 @@ package com.paulrybitskyi.gamedge.core.providers
 
 import android.content.Context
 import android.text.format.DateFormat
-import com.paulrybitskyi.hiltbinder.BindType
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -15,7 +14,6 @@ interface TimeFormatProvider {
     fun getTimeFormat(): TimeFormat
 }
 
-@BindType
 internal class TimeFormatProviderImpl @Inject constructor(
     @ApplicationContext private val context: Context,
 ) : TimeFormatProvider {

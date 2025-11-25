@@ -1,7 +1,6 @@
 package com.paulrybitskyi.gamedge.core.factories
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Image
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 enum class IgdbImageSize(internal val rawSize: String) {
@@ -48,7 +47,6 @@ fun IgdbImageUrlFactory.createUrls(
     }
 }
 
-@BindType
 internal class IgdbImageUrlFactoryImpl @Inject constructor() : IgdbImageUrlFactory {
 
     private companion object {

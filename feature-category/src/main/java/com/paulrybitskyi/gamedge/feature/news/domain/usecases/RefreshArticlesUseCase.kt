@@ -9,20 +9,16 @@ import com.paulrybitskyi.gamedge.feature.news.domain.datastores.ArticlesDataStor
 import com.paulrybitskyi.gamedge.feature.news.domain.entities.Article
 import com.paulrybitskyi.gamedge.feature.news.domain.throttling.ArticlesRefreshingThrottlerTools
 import com.paulrybitskyi.gamedge.feature.news.domain.usecases.RefreshArticlesUseCase.Params
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
-import javax.inject.Singleton
 
 internal interface RefreshArticlesUseCase : ObservableUseCase<Params, DomainResult<List<Article>>> {
 
     data class Params(val pagination: Pagination = Pagination())
 }
 
-@Singleton
-@BindType
 internal class RefreshArticlesUseCaseImpl @Inject constructor(
     private val articlesDataStores: ArticlesDataStores,
     private val dispatcherProvider: DispatcherProvider,

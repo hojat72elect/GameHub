@@ -18,13 +18,11 @@ import com.paulrybitskyi.gamedge.igdb.api.games.requests.GetMostAnticipatedGames
 import com.paulrybitskyi.gamedge.igdb.api.games.requests.GetPopularGamesRequest
 import com.paulrybitskyi.gamedge.igdb.api.games.requests.GetRecentlyReleasedGamesRequest
 import com.paulrybitskyi.gamedge.igdb.api.games.requests.SearchGamesRequest
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-@BindType
 internal class GamesIgdbDataStore @Inject constructor(
     private val gamesEndpoint: GamesEndpoint,
     private val releaseDatesProvider: DiscoveryGamesReleaseDatesProvider,

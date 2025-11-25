@@ -9,22 +9,18 @@ import com.paulrybitskyi.gamedge.common.domain.games.entities.Game
 import com.paulrybitskyi.gamedge.core.utils.combine
 import com.paulrybitskyi.gamedge.feature.info.domain.entities.GameInfo
 import com.paulrybitskyi.gamedge.feature.info.domain.usecases.likes.ObserveGameLikeStateUseCase
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
-import javax.inject.Singleton
 
 internal interface GetGameInfoUseCase : UseCase<GetGameInfoUseCase.Params, Flow<GameInfo>> {
 
     data class Params(val gameId: Int)
 }
 
-@Singleton
-@BindType
 internal class GetGameInfoUseCaseImpl @Inject constructor(
     private val getGameUseCase: GetGameUseCase,
     private val observeGameLikeStateUseCase: ObserveGameLikeStateUseCase,

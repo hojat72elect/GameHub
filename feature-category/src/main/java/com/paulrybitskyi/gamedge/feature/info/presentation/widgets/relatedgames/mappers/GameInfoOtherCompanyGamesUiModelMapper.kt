@@ -8,7 +8,6 @@ import com.paulrybitskyi.gamedge.feature.category.R
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.relatedgames.GameInfoRelatedGameUiModel
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.relatedgames.GameInfoRelatedGamesType
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.relatedgames.GameInfoRelatedGamesUiModel
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 internal interface GameInfoOtherCompanyGamesUiModelMapper {
@@ -19,7 +18,6 @@ internal interface GameInfoOtherCompanyGamesUiModelMapper {
     ): GameInfoRelatedGamesUiModel?
 }
 
-@BindType(installIn = BindType.Component.VIEW_MODEL)
 internal class GameInfoOtherCompanyGamesUiModelMapperImpl @Inject constructor(
     private val stringProvider: StringProvider,
     private val igdbImageUrlFactory: IgdbImageUrlFactory,

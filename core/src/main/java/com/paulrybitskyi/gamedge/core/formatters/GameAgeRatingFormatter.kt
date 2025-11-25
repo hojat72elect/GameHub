@@ -5,14 +5,12 @@ import com.paulrybitskyi.gamedge.common.domain.games.entities.AgeRatingType
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Game
 import com.paulrybitskyi.gamedge.core.R
 import com.paulrybitskyi.gamedge.core.providers.StringProvider
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 interface GameAgeRatingFormatter {
     fun formatAgeRating(game: Game): String
 }
 
-@BindType
 internal class GameAgeRatingFormatterImpl @Inject constructor(
     private val stringProvider: StringProvider,
 ) : GameAgeRatingFormatter {

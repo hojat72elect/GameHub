@@ -9,13 +9,11 @@ import com.paulrybitskyi.gamedge.common.domain.games.common.throttling.GamesRefr
 import com.paulrybitskyi.gamedge.common.domain.games.datastores.GamesDataStores
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Game
 import com.paulrybitskyi.gamedge.feature.info.domain.usecases.RefreshSimilarGamesUseCase.Params
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import javax.inject.Singleton
 
 internal interface RefreshSimilarGamesUseCase : UseCase<Params, Flow<DomainResult<List<Game>>>> {
 
@@ -25,8 +23,6 @@ internal interface RefreshSimilarGamesUseCase : UseCase<Params, Flow<DomainResul
     )
 }
 
-@Singleton
-@BindType
 internal class RefreshSimilarGamesUseCaseImpl @Inject constructor(
     private val gamesDataStores: GamesDataStores,
     private val dispatcherProvider: DispatcherProvider,

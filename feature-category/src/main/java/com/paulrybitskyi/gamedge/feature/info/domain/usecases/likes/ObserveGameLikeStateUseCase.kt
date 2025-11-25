@@ -4,7 +4,6 @@ import com.paulrybitskyi.gamedge.common.domain.common.DispatcherProvider
 import com.paulrybitskyi.gamedge.common.domain.common.usecases.ObservableUseCase
 import com.paulrybitskyi.gamedge.common.domain.games.datastores.LikedGamesLocalDataStore
 import com.paulrybitskyi.gamedge.feature.info.domain.usecases.likes.ObserveGameLikeStateUseCase.Params
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
@@ -16,7 +15,6 @@ internal interface ObserveGameLikeStateUseCase : ObservableUseCase<Params, Boole
 }
 
 @Singleton
-@BindType
 internal class ObserveGameLikeStateUseCaseImpl @Inject constructor(
     private val likedGamesLocalDataStore: LikedGamesLocalDataStore,
     private val dispatcherProvider: DispatcherProvider,

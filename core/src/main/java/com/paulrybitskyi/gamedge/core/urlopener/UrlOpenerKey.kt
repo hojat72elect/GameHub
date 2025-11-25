@@ -1,16 +1,11 @@
 package com.paulrybitskyi.gamedge.core.urlopener
 
-import javax.inject.Qualifier
+import dagger.MapKey
 
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-@Target(
-    AnnotationTarget.CLASS,
-    AnnotationTarget.FIELD,
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.VALUE_PARAMETER,
-)
-internal annotation class UrlOpenerKey(val type: Type) {
+@MapKey
+@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
+@Retention(AnnotationRetention.BINARY)
+annotation class UrlOpenerKey(val type: Type) {
 
     enum class Type {
         NATIVE_APP,

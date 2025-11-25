@@ -1,6 +1,5 @@
 package com.paulrybitskyi.gamedge.gamespot.api.common.serialization
 
-import com.paulrybitskyi.hiltbinder.BindType
 import java.lang.reflect.Field
 import javax.inject.Inject
 
@@ -10,7 +9,6 @@ internal interface GamespotFieldsSerializer {
     fun serializeFields(clazz: Class<*>): String
 }
 
-@BindType
 internal class GamespotFieldsSerializerImpl @Inject constructor() : GamespotFieldsSerializer {
 
     override fun serializeFields(clazz: Class<*>): String {

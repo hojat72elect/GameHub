@@ -1,7 +1,6 @@
 package com.paulrybitskyi.gamedge.common.data.games.common
 
 import com.paulrybitskyi.gamedge.core.providers.TimestampProvider
-import com.paulrybitskyi.hiltbinder.BindType
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,7 +17,6 @@ internal interface DiscoveryGamesReleaseDatesProvider {
 }
 
 @Singleton
-@BindType
 internal class DiscoveryGamesReleaseDatesProviderImpl @Inject constructor(
     private val timestampProvider: TimestampProvider,
 ) : DiscoveryGamesReleaseDatesProvider {

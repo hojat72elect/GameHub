@@ -10,13 +10,11 @@ import com.paulrybitskyi.gamedge.common.domain.games.datastores.GamesDataStores
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Company
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Game
 import com.paulrybitskyi.gamedge.feature.info.domain.usecases.RefreshCompanyDevelopedGamesUseCase.Params
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import javax.inject.Singleton
 
 internal interface RefreshCompanyDevelopedGamesUseCase : UseCase<Params, Flow<DomainResult<List<Game>>>> {
 
@@ -26,8 +24,6 @@ internal interface RefreshCompanyDevelopedGamesUseCase : UseCase<Params, Flow<Do
     )
 }
 
-@Singleton
-@BindType
 internal class RefreshCompanyDevelopedGamesUseCaseImpl @Inject constructor(
     private val gamesDataStores: GamesDataStores,
     private val dispatcherProvider: DispatcherProvider,

@@ -10,14 +10,10 @@ import com.paulrybitskyi.gamedge.feature.news.domain.datastores.ArticlesRemoteDa
 import com.paulrybitskyi.gamedge.feature.news.domain.entities.Article
 import com.paulrybitskyi.gamedge.gamespot.api.articles.ArticlesEndpoint
 import com.paulrybitskyi.gamedge.gamespot.api.articles.entities.ApiArticle
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-@BindType
-internal class ArticlesGamespotDataStore @Inject constructor(
+internal class ArticlesGamespotDataStoreImpl @Inject constructor(
     private val articlesEndpoint: ArticlesEndpoint,
     private val dispatcherProvider: DispatcherProvider,
     private val apiArticleMapper: GamespotArticleMapper,

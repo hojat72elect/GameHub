@@ -1,7 +1,6 @@
 package com.paulrybitskyi.gamedge.core.factories
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Game
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 interface ImageViewerGameUrlFactory {
@@ -10,7 +9,6 @@ interface ImageViewerGameUrlFactory {
     fun createScreenshotImageUrls(game: Game): List<String>
 }
 
-@BindType
 internal class ImageViewerGameUrlFactoryImpl @Inject constructor(
     private val igdbImageUrlFactory: IgdbImageUrlFactory,
 ) : ImageViewerGameUrlFactory {

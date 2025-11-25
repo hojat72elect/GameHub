@@ -6,14 +6,12 @@ import com.paulrybitskyi.gamedge.common.domain.games.entities.Mode
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Platform
 import com.paulrybitskyi.gamedge.common.domain.games.entities.PlayerPerspective
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Theme
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 internal interface GameInfoDetailsUiModelMapper {
     fun mapToUiModel(game: Game): GameInfoDetailsUiModel?
 }
 
-@BindType(installIn = BindType.Component.VIEW_MODEL)
 internal class GameInfoDetailsUiModelMapperImpl @Inject constructor() :
     GameInfoDetailsUiModelMapper {
 

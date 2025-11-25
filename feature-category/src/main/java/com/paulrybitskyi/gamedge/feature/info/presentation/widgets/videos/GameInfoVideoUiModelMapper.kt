@@ -5,14 +5,12 @@ import com.paulrybitskyi.gamedge.core.factories.YoutubeMediaUrlFactory
 import com.paulrybitskyi.gamedge.core.factories.YoutubeThumbnailSize
 import com.paulrybitskyi.gamedge.core.providers.StringProvider
 import com.paulrybitskyi.gamedge.feature.category.R
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 internal interface GameInfoVideoUiModelMapper {
     fun mapToUiModel(video: Video): GameInfoVideoUiModel?
 }
 
-@BindType(installIn = BindType.Component.VIEW_MODEL)
 internal class GameInfoVideoUiModelMapperImpl @Inject constructor(
     private val youtubeMediaUrlFactory: YoutubeMediaUrlFactory,
     private val stringProvider: StringProvider,

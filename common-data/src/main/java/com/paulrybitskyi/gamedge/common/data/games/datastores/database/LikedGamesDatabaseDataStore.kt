@@ -6,7 +6,6 @@ import com.paulrybitskyi.gamedge.common.domain.games.datastores.LikedGamesLocalD
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Game
 import com.paulrybitskyi.gamedge.database.games.entities.DbGame
 import com.paulrybitskyi.gamedge.database.games.tables.LikedGamesTable
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn
@@ -15,7 +14,6 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-@BindType
 internal class LikedGamesDatabaseDataStore @Inject constructor(
     private val likedGamesTable: LikedGamesTable,
     private val likedGameFactory: LikedGameFactory,

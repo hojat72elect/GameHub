@@ -4,14 +4,12 @@ import com.paulrybitskyi.gamedge.core.providers.StringProvider
 import com.paulrybitskyi.gamedge.core.providers.VersionNameProvider
 import com.paulrybitskyi.gamedge.feature.settings.R
 import com.paulrybitskyi.gamedge.feature.settings.domain.entities.Settings
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 internal interface SettingsUiModelMapper {
     fun mapToUiModels(settings: Settings): List<SettingsSectionUiModel>
 }
 
-@BindType(installIn = BindType.Component.VIEW_MODEL)
 internal class SettingsUiModelMapperImpl @Inject constructor(
     private val stringProvider: StringProvider,
     private val versionNameProvider: VersionNameProvider,

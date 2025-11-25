@@ -6,7 +6,6 @@ import com.paulrybitskyi.gamedge.common.domain.games.entities.ReleaseDateCategor
 import com.paulrybitskyi.gamedge.core.R
 import com.paulrybitskyi.gamedge.core.providers.LocaleProvider
 import com.paulrybitskyi.gamedge.core.providers.StringProvider
-import com.paulrybitskyi.hiltbinder.BindType
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -17,7 +16,6 @@ interface GameReleaseDateFormatter {
     fun formatReleaseDate(game: Game): String
 }
 
-@BindType
 internal class GameReleaseDateFormatterImpl @Inject constructor(
     private val stringProvider: StringProvider,
     private val relativeDateFormatter: RelativeDateFormatter,

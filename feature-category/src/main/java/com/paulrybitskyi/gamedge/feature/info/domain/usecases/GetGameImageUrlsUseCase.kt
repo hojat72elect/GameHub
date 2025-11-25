@@ -10,11 +10,9 @@ import com.paulrybitskyi.gamedge.core.factories.ImageViewerGameUrlFactory
 import com.paulrybitskyi.gamedge.core.utils.onError
 import com.paulrybitskyi.gamedge.feature.info.domain.entities.GameImageType
 import com.paulrybitskyi.gamedge.feature.info.domain.usecases.GetGameImageUrlsUseCase.Params
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
-import javax.inject.Singleton
 
 internal interface GetGameImageUrlsUseCase : UseCase<Params, Flow<DomainResult<List<String>>>> {
 
@@ -24,8 +22,6 @@ internal interface GetGameImageUrlsUseCase : UseCase<Params, Flow<DomainResult<L
     )
 }
 
-@Singleton
-@BindType
 internal class GetGameImageUrlsUseCaseImpl @Inject constructor(
     private val getGameUseCase: GetGameUseCase,
     private val gameUrlFactory: ImageViewerGameUrlFactory,

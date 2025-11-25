@@ -1,17 +1,14 @@
-
 package com.paulrybitskyi.gamedge.feature.info.presentation.widgets.header.artworks
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Image
 import com.paulrybitskyi.gamedge.core.factories.IgdbImageSize
 import com.paulrybitskyi.gamedge.core.factories.IgdbImageUrlFactory
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 internal interface GameInfoArtworkUiModelMapper {
     fun mapToUiModel(image: Image): GameInfoArtworkUiModel
 }
 
-@BindType(installIn = BindType.Component.VIEW_MODEL)
 internal class GameInfoArtworkUiModelMapperImpl @Inject constructor(
     private val igdbImageUrlFactory: IgdbImageUrlFactory,
 ) : GameInfoArtworkUiModelMapper {

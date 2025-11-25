@@ -14,7 +14,6 @@ import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.screenshots.G
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.screenshots.mapToUiModels
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.videos.GameInfoVideoUiModelMapper
 import com.paulrybitskyi.gamedge.feature.info.presentation.widgets.videos.mapToUiModels
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 internal interface GameInfoUiModelMapper {
@@ -22,7 +21,6 @@ internal interface GameInfoUiModelMapper {
     fun mapToUiModel(gameInfo: GameInfo): GameInfoUiModel
 }
 
-@BindType(installIn = BindType.Component.VIEW_MODEL)
 @Suppress("LongParameterList")
 internal class GameInfoUiModelMapperImpl @Inject constructor(
     private val headerModelMapper: GameInfoHeaderUiModelMapper,

@@ -3,7 +3,6 @@ package com.paulrybitskyi.gamedge.common.api
 import android.content.Context
 import com.paulrybitskyi.gamedge.core.R
 import com.paulrybitskyi.gamedge.core.providers.StringProvider
-import com.paulrybitskyi.hiltbinder.BindType
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -12,7 +11,6 @@ interface UserAgentProvider {
     fun getUserAgent(): String
 }
 
-@BindType
 internal class UserAgentProviderImpl @Inject constructor(
     @ApplicationContext private val context: Context,
     private val stringProvider: StringProvider,

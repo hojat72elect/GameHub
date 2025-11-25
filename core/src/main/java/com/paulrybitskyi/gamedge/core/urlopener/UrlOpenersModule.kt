@@ -11,10 +11,12 @@ internal object UrlOpenersModule {
 
     @Provides
     fun provideUrlOpeners(
-        @UrlOpenerKey(UrlOpenerKey.Type.NATIVE_APP) nativeAppUrlOpener: UrlOpener,
-        @UrlOpenerKey(UrlOpenerKey.Type.CUSTOM_TAB) customTabUrlOpener: UrlOpener,
-        @UrlOpenerKey(UrlOpenerKey.Type.BROWSER) browserUrlOpener: UrlOpener,
+        urlOpenersMap: Map<UrlOpenerKey.Type, @JvmSuppressWildcards UrlOpener>,
     ): List<UrlOpener> {
-        return listOf(nativeAppUrlOpener, customTabUrlOpener, browserUrlOpener)
+        return listOf(
+            urlOpenersMap.getValue(UrlOpenerKey.Type.NATIVE_APP),
+            urlOpenersMap.getValue(UrlOpenerKey.Type.CUSTOM_TAB),
+            urlOpenersMap.getValue(UrlOpenerKey.Type.BROWSER),
+        )
     }
 }

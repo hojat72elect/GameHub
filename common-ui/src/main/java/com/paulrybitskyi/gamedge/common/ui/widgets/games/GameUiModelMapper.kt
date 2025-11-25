@@ -4,14 +4,12 @@ import com.paulrybitskyi.gamedge.common.domain.games.entities.Game
 import com.paulrybitskyi.gamedge.core.factories.IgdbImageSize
 import com.paulrybitskyi.gamedge.core.factories.IgdbImageUrlFactory
 import com.paulrybitskyi.gamedge.core.formatters.GameReleaseDateFormatter
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 interface GameUiModelMapper {
     fun mapToUiModel(game: Game): GameUiModel
 }
 
-@BindType(installIn = BindType.Component.VIEW_MODEL)
 internal class GameUiModelMapperImpl @Inject constructor(
     private val igdbImageUrlFactory: IgdbImageUrlFactory,
     private val gameReleaseDateFormatter: GameReleaseDateFormatter,

@@ -6,18 +6,14 @@ import com.paulrybitskyi.gamedge.database.articles.DatabaseArticle
 import com.paulrybitskyi.gamedge.database.articles.tables.ArticlesTable
 import com.paulrybitskyi.gamedge.feature.news.domain.datastores.ArticlesLocalDataStore
 import com.paulrybitskyi.gamedge.feature.news.domain.entities.Article
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-@BindType
-internal class ArticlesDatabaseDataStore @Inject constructor(
+internal class ArticlesDatabaseDataStoreImpl @Inject constructor(
     private val articlesTable: ArticlesTable,
     private val dispatcherProvider: DispatcherProvider,
     private val dbArticleMapper: DbArticleMapper,

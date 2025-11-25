@@ -8,10 +8,8 @@ import com.paulrybitskyi.commons.SdkInfo
 import com.paulrybitskyi.commons.ktx.canUrlBeOpenedByNativeApp
 import com.paulrybitskyi.commons.ktx.getNativeAppPackageForUrl
 import com.paulrybitskyi.gamedge.core.utils.attachNewTaskFlagIfNeeded
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
-@BindType(withQualifier = true)
 @UrlOpenerKey(UrlOpenerKey.Type.NATIVE_APP)
 internal class NativeAppUrlOpener @Inject constructor() : UrlOpener {
 

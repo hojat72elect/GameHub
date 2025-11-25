@@ -3,14 +3,12 @@ package com.paulrybitskyi.gamedge.core.providers
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Website
 import com.paulrybitskyi.gamedge.common.domain.games.entities.WebsiteCategory
 import com.paulrybitskyi.gamedge.core.R
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 interface WebsiteNameProvider {
     fun provideWebsiteName(website: Website): String
 }
 
-@BindType
 internal class WebsiteNameProviderImpl @Inject constructor(
     private val stringProvider: StringProvider,
 ) : WebsiteNameProvider {

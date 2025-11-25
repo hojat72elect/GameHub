@@ -6,7 +6,6 @@ import com.paulrybitskyi.gamedge.core.factories.IgdbImageSize
 import com.paulrybitskyi.gamedge.core.factories.IgdbImageUrlFactory
 import com.paulrybitskyi.gamedge.core.factories.IgdbImageUrlFactory.Config
 import com.paulrybitskyi.gamedge.core.providers.StringProvider
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 import com.paulrybitskyi.gamedge.core.R as CoreR
 
@@ -14,7 +13,6 @@ internal interface GameInfoCompanyUiModelMapper {
     fun mapToUiModel(company: InvolvedCompany): GameInfoCompanyUiModel
 }
 
-@BindType(installIn = BindType.Component.VIEW_MODEL)
 internal class GameInfoCompanyUiModelMapperImpl @Inject constructor(
     private val igdbImageUrlFactory: IgdbImageUrlFactory,
     private val stringProvider: StringProvider,

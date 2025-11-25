@@ -6,15 +6,11 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
 import com.paulrybitskyi.gamedge.core.providers.TimestampProvider
 import com.paulrybitskyi.gamedge.feature.news.domain.throttling.ArticlesRefreshingThrottler
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-@BindType
 internal class ArticlesRefreshingThrottlerImpl @Inject constructor(
     private val articlesPreferences: DataStore<Preferences>,
     private val timestampProvider: TimestampProvider,

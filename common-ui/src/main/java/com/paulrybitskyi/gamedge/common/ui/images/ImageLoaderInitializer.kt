@@ -4,7 +4,6 @@ import android.content.Context
 import coil.Coil
 import coil.ImageLoader
 import coil.memory.MemoryCache
-import com.paulrybitskyi.hiltbinder.BindType
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -12,7 +11,6 @@ interface ImageLoaderInitializer {
     fun init()
 }
 
-@BindType
 internal class CoilInitializer @Inject constructor(
     @ApplicationContext private val context: Context,
 ) : ImageLoaderInitializer {

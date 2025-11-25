@@ -4,7 +4,6 @@ import com.paulrybitskyi.gamedge.core.providers.LocaleProvider
 import com.paulrybitskyi.gamedge.core.providers.TimeFormat
 import com.paulrybitskyi.gamedge.core.providers.TimeFormatProvider
 import com.paulrybitskyi.gamedge.core.providers.TimeProvider
-import com.paulrybitskyi.hiltbinder.BindType
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -16,7 +15,6 @@ interface ArticlePublicationDateFormatter {
     fun formatPublicationDate(timestamp: Long): String
 }
 
-@BindType
 internal class ArticlePublicationDateFormatterImpl @Inject constructor(
     private val relativeDateFormatter: RelativeDateFormatter,
     private val timeProvider: TimeProvider,

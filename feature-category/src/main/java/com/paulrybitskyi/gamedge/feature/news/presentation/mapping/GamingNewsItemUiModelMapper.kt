@@ -4,14 +4,12 @@ import com.paulrybitskyi.gamedge.core.formatters.ArticlePublicationDateFormatter
 import com.paulrybitskyi.gamedge.feature.news.domain.entities.Article
 import com.paulrybitskyi.gamedge.feature.news.domain.entities.ImageType
 import com.paulrybitskyi.gamedge.feature.news.presentation.widgets.GamingNewsItemUiModel
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 internal interface GamingNewsItemUiModelMapper {
     fun mapToUiModel(article: Article): GamingNewsItemUiModel
 }
 
-@BindType(installIn = BindType.Component.VIEW_MODEL)
 internal class GamingNewsItemUiModelMapperImpl @Inject constructor(
     private val publicationDateFormatter: ArticlePublicationDateFormatter,
 ) : GamingNewsItemUiModelMapper {

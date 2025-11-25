@@ -8,7 +8,6 @@ import com.paulrybitskyi.gamedge.igdb.api.games.requests.GetMostAnticipatedGames
 import com.paulrybitskyi.gamedge.igdb.api.games.requests.GetPopularGamesRequest
 import com.paulrybitskyi.gamedge.igdb.api.games.requests.GetRecentlyReleasedGamesRequest
 import com.paulrybitskyi.gamedge.igdb.api.games.requests.SearchGamesRequest
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,7 +21,6 @@ interface GamesEndpoint {
 }
 
 @Singleton
-@BindType
 internal class GamesEndpointImpl @Inject constructor(
     private val gamesService: GamesService,
     private val igdbApiQueryFactory: IgdbApiQueryFactory,

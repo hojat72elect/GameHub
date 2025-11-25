@@ -4,12 +4,10 @@ import android.content.Context
 import android.content.Intent
 import com.paulrybitskyi.gamedge.core.R
 import com.paulrybitskyi.gamedge.core.providers.StringProvider
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 interface TextSharer : ContentSharer<String>
 
-@BindType
 internal class TextSharerImpl @Inject constructor(
     private val stringProvider: StringProvider,
 ) : TextSharer {

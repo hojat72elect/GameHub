@@ -3,7 +3,6 @@ package com.paulrybitskyi.gamedge.core.providers
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Website
 import com.paulrybitskyi.gamedge.common.domain.games.entities.WebsiteCategory
 import com.paulrybitskyi.gamedge.core.R
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 interface WebsiteIconProvider {
@@ -11,7 +10,6 @@ interface WebsiteIconProvider {
     fun provideIconIdForWebsite(website: Website): Int
 }
 
-@BindType
 internal class WebsiteIconProviderImpl @Inject constructor() : WebsiteIconProvider {
 
     override fun provideIconIdForWebsite(website: Website): Int {

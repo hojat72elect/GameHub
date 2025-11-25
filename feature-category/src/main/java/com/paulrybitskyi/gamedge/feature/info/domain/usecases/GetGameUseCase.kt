@@ -9,7 +9,6 @@ import com.paulrybitskyi.gamedge.common.domain.common.usecases.UseCase
 import com.paulrybitskyi.gamedge.common.domain.games.datastores.GamesLocalDataStore
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Game
 import com.paulrybitskyi.gamedge.feature.info.domain.usecases.GetGameUseCase.Params
-import com.paulrybitskyi.hiltbinder.BindType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -24,7 +23,6 @@ internal interface GetGameUseCase : UseCase<Params, Flow<DomainResult<Game>>> {
 }
 
 @Singleton
-@BindType
 internal class GetGameUseCaseImpl @Inject constructor(
     private val gamesLocalDataStore: GamesLocalDataStore,
     private val dispatcherProvider: DispatcherProvider,

@@ -3,7 +3,6 @@ package com.paulrybitskyi.gamedge.core.formatters
 import com.paulrybitskyi.gamedge.core.R
 import com.paulrybitskyi.gamedge.core.providers.StringProvider
 import com.paulrybitskyi.gamedge.core.providers.TimeProvider
-import com.paulrybitskyi.hiltbinder.BindType
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 import javax.inject.Inject
@@ -12,7 +11,6 @@ interface RelativeDateFormatter {
     fun formatRelativeDate(dateTime: LocalDateTime): String
 }
 
-@BindType
 internal class RelativeDateFormatterImpl @Inject constructor(
     private val timeProvider: TimeProvider,
     private val stringProvider: StringProvider,

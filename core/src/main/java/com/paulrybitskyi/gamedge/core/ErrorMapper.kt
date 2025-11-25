@@ -3,14 +3,12 @@ package com.paulrybitskyi.gamedge.core
 import com.paulrybitskyi.gamedge.common.domain.common.DomainException
 import com.paulrybitskyi.gamedge.common.domain.common.entities.Error
 import com.paulrybitskyi.gamedge.core.providers.StringProvider
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 interface ErrorMapper {
     fun mapToMessage(error: Throwable): String
 }
 
-@BindType
 internal class ErrorMapperImpl @Inject constructor(
     private val stringProvider: StringProvider,
 ) : ErrorMapper {

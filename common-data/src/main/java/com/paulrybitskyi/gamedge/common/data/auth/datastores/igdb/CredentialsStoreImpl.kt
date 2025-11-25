@@ -5,12 +5,10 @@ import com.paulrybitskyi.gamedge.common.domain.auth.datastores.AuthLocalDataStor
 import com.paulrybitskyi.gamedge.common.domain.auth.datastores.AuthRemoteDataStore
 import com.paulrybitskyi.gamedge.igdb.api.auth.entities.ApiOauthCredentials
 import com.paulrybitskyi.gamedge.igdb.api.common.CredentialsStore
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-@BindType
 internal class CredentialsStoreImpl @Inject constructor(
     private val authLocalDataStore: AuthLocalDataStore,
     private val authRemoteDataStore: AuthRemoteDataStore,

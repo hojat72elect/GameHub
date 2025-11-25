@@ -1,7 +1,6 @@
 package com.paulrybitskyi.gamedge.core.factories
 
 import com.paulrybitskyi.gamedge.common.domain.games.entities.Video
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 enum class YoutubeThumbnailSize(internal val rawSize: String) {
@@ -17,7 +16,6 @@ interface YoutubeMediaUrlFactory {
     fun createVideoUrl(video: Video): String?
 }
 
-@BindType
 internal class YoutubeMediaUrlFactoryImpl @Inject constructor() : YoutubeMediaUrlFactory {
 
     private companion object {

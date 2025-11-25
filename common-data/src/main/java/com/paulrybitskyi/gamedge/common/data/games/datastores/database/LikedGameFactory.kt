@@ -2,7 +2,6 @@ package com.paulrybitskyi.gamedge.common.data.games.datastores.database
 
 import com.paulrybitskyi.gamedge.core.providers.TimestampProvider
 import com.paulrybitskyi.gamedge.database.games.entities.DbLikedGame
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,7 +12,6 @@ internal interface LikedGameFactory {
 }
 
 @Singleton
-@BindType
 internal class LikedGameFactoryImpl @Inject constructor(
     private val timestampProvider: TimestampProvider,
 ) : LikedGameFactory {

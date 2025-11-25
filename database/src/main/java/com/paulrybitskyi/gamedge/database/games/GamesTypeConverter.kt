@@ -21,11 +21,9 @@ import com.paulrybitskyi.gamedge.database.games.entities.DbTheme
 import com.paulrybitskyi.gamedge.database.games.entities.DbVideo
 import com.paulrybitskyi.gamedge.database.games.entities.DbWebsite
 import com.paulrybitskyi.gamedge.database.games.entities.DbWebsiteCategory
-import com.paulrybitskyi.hiltbinder.BindType
 import javax.inject.Inject
 
 @ProvidedTypeConverter
-@BindType(contributesTo = BindType.Collection.SET)
 @Suppress("TooManyFunctions")
 internal class GamesTypeConverter @Inject constructor(
     private val jsonConverter: JsonConverter,
