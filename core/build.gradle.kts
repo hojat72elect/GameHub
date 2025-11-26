@@ -9,6 +9,9 @@ plugins {
     id(libs.plugins.gamedgeJetpackCompose.get().pluginId)
     id(libs.plugins.gamedgeDaggerHilt.get().pluginId)
     id(libs.plugins.gamedgeRemoteApi.get().pluginId)
+    id(libs.plugins.gamedgeKotlinxSerialization.get().pluginId)
+
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -41,4 +44,8 @@ dependencies {
     implementation(libs.retrofitScalarsConverter)
 
     kapt(libs.daggerHiltCoreCompiler)
+
+    implementation(libs.room)
+    implementation(libs.roomKtx)
+    ksp(libs.roomCompiler)
 }
