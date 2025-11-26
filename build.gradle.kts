@@ -21,7 +21,6 @@ plugins {
 
     alias(libs.plugins.gradleVersions) apply true
     alias(libs.plugins.detekt) apply true
-    alias(libs.plugins.ktlint) apply true
 }
 
 detekt {
@@ -44,28 +43,11 @@ tasks.withType<DependencyUpdatesTask> {
 
 allprojects {
     apply(plugin = rootProject.libs.plugins.detekt.get().pluginId)
-    apply(plugin = rootProject.libs.plugins.ktlint.get().pluginId)
 
     repositories {
         mavenCentral()
         google()
         maven { setUrl("https://jitpack.io") }
-    }
-
-    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
-        version.set(rootProject.libs.versions.ktlint.get())
-        android.set(true)
-        outputToConsole.set(true)
-        verbose.set(true)
-
-        filter {
-            // https://github.com/JLLeitschuh/ktlint-gradle/issues/266#issuecomment-529527697
-            exclude { fileTreeElement -> fileTreeElement.file.path.contains("generated/") }
-        }
-
-        reporters {
-            reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.HTML)
-        }
     }
 }
 

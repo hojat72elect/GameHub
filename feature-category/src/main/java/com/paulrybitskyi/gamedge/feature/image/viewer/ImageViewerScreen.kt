@@ -1,6 +1,5 @@
 package com.paulrybitskyi.gamedge.feature.image.viewer
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
@@ -100,8 +99,6 @@ private fun ImageViewerScreen(
     )
 }
 
-@Suppress("DEPRECATION")
-@SuppressLint("NewApi")
 @Composable
 private fun SystemBarsColorHandler() {
     val isOnAndroid10OrLater = SdkInfo.IS_AT_LEAST_10
