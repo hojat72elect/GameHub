@@ -66,15 +66,6 @@ https://github.com/user-attachments/assets/a8cde6c6-1e89-4986-a5d7-3dc98cb014c5
 - [Kotlin Result](https://github.com/michaelbull/kotlin-result) - A multiplatform Result monad for modelling success or failure operations.
 - [Detekt](https://github.com/detekt/detekt) - A static code analysis library for Kotlin.
 - [Ktlint](https://github.com/pinterest/ktlint) - A library for formatting Kotlin code according to official guidelines.
-- [Testing](https://developer.android.com/training/testing) - The app is currently covered with unit tests and instrumentation tests.
-  - [JUnit](https://junit.org/junit5) - JUnit is a unit testing framework for the Java programming language.
-  - [Truth](https://github.com/google/truth) - Truth is a library providing fluent assertions for Java and Android.
-  - [MockK](https://github.com/mockk/mockk) - MockK is a mocking library for Kotlin.
-  - [Coroutines Test](https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-test) - A library for testing Kotlin coroutines.
-  - [Turbine](https://github.com/cashapp/turbine) - A testing library for Kotlin Flows.
-  - [Dagger Hilt Test](https://developer.android.com/training/dependency-injection/hilt-testing) - A testing library for modifying the Dagger bindings in instrumented tests.
-  - [Room Testing](https://developer.android.com/training/data-storage/room/migrating-db-versions#test) - A library for testing Room migrations.
-  - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) - A scriptable web server for testing HTTP clients.
 - [Gradle's Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Gradle’s Kotlin DSL is an alternative syntax to the Groovy DSL with an enhanced editing experience.
 - [buildSrc](https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources) - A special module within the project to manage dependencies and whatnot.
 

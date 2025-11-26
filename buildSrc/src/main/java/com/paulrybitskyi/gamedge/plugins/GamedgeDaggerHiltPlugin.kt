@@ -20,7 +20,5 @@ class GamedgeDaggerHiltPlugin : Plugin<Project> {
     private fun Project.addDependencies(): Unit = with(dependencies) {
         add("implementation", libs.daggerHiltAndroid.get())
         add("kapt", libs.daggerHiltAndroidCompiler.get())
-        add("androidTestImplementation", libs.daggerHiltTesting.get())
-        add("kaptAndroidTest", libs.daggerHiltAndroidCompiler.get())
     }
 }

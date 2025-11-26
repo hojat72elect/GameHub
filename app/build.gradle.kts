@@ -16,9 +16,7 @@ implementation(project(localModules.commonData))
 
     implementation(libs.activity)
     implementation(libs.splash)
-
     implementation(libs.composeNavigation)
-
     implementation(libs.commonsCore)
     implementation(libs.commonsKtx)
     implementation(libs.kotlinxSerialization)
