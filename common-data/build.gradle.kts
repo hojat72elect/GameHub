@@ -12,7 +12,6 @@ android {
 
 dependencies {
     implementation(project(localModules.core))
-    implementation(project(localModules.commonApi))
     implementation(project(localModules.database))
 
     implementation(libs.prefsDataStore)

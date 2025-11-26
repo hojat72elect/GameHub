@@ -1,6 +1,6 @@
 package com.paulrybitskyi.gamedge.igdb.api.common
 
-import com.paulrybitskyi.gamedge.common.api.BuildConfig
+import com.paulrybitskyi.gamedge.core.BuildConfig
 import javax.inject.Inject
 
 internal interface TwitchConstantsProvider {

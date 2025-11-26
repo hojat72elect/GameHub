@@ -1,5 +1,6 @@
 package com.paulrybitskyi.gamedge.common.api
 
+import com.paulrybitskyi.gamedge.core.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -8,6 +9,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Provider
 import javax.inject.Singleton
+
 
 @Module
 @InstallIn(SingletonComponent::class)

@@ -8,7 +8,6 @@ object localModules {
     const val core = ":core"
     const val database = ":database"
     const val commonData = ":common-data"
-    const val commonApi = ":common-api"
     const val featureCategory = ":feature-category"
     const val featureSettings = ":feature-settings"
 }
