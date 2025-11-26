@@ -9,7 +9,6 @@ pluginManagement {
 
 include(":app")
 include(":core")
-include(":common-domain")
 include(":common-data")
 include(":common-api")
 include(":database")

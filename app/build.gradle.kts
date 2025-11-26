@@ -7,8 +7,8 @@ plugins {
 }
 
 dependencies {
-    implementation(project(localModules.commonDomain))
-    implementation(project(localModules.commonData))
+
+implementation(project(localModules.commonData))
     implementation(project(localModules.core))
     implementation(project(localModules.commonApi))
     implementation(project(localModules.database))
