@@ -2,7 +2,7 @@
 
 syntax = "proto3";
 
-option java_package = "com.paulrybitskyi.gamedge.feature.settings.data.datastores";
+option java_package = "ca.six.hojat.gamehub.feature.settings.data.datastores";
 option java_multiple_files = true;
 
 message ProtoSettings {

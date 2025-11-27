@@ -1,0 +1,108 @@
+package ca.six.hojat.gamehub.feature.info.presentation.widgets.links
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.Icon
+import androidx.compose.material.LocalMinimumInteractiveComponentEnforcement
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.dp
+import ca.six.hojat.gamehub.R
+import ca.six.hojat.gamehub.common.domain.games.entities.WebsiteCategory
+import ca.six.hojat.gamehub.common.ui.theme.GamedgeTheme
+import ca.six.hojat.gamehub.common.ui.widgets.GamedgeCard
+import ca.six.hojat.gamehub.feature.info.presentation.widgets.utils.GameInfoSection
+import java.util.Locale
+
+@Composable
+internal fun GameInfoLinks(
+    links: List<GameInfoLinkUiModel>,
+    onLinkClicked: (GameInfoLinkUiModel) -> Unit,
+) {
+    GameInfoSection(title = stringResource(R.string.game_info_links_title)) { paddingValues ->
+        FlowRow(
+            modifier = Modifier.padding(paddingValues),
+            horizontalArrangement = Arrangement.spacedBy(GamedgeTheme.spaces.spacing_2_0),
+            verticalArrangement = Arrangement.spacedBy(GamedgeTheme.spaces.spacing_3_0),
+        ) {
+            for (link in links) {
+                Link(
+                    link = link,
+                    onLinkClicked = { onLinkClicked(link) },
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun Link(
+    link: GameInfoLinkUiModel,
+    onLinkClicked: () -> Unit,
+) {
+    CompositionLocalProvider(LocalMinimumInteractiveComponentEnforcement provides false) {
+        GamedgeCard(
+            onClick = onLinkClicked,
+            shape = GamedgeTheme.shapes.small,
+            backgroundColor = GamedgeTheme.colors.primaryVariant,
+            contentColor = GamedgeTheme.colors.onSurface,
+        ) {
+            Row(
+                modifier = Modifier
+                    .padding(vertical = GamedgeTheme.spaces.spacing_1_5)
+                    .padding(
+                        start = GamedgeTheme.spaces.spacing_2_5,
+                        end = GamedgeTheme.spaces.spacing_3_0,
+                    ),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    painter = painterResource(link.iconId),
+                    contentDescription = null,
+                    modifier = Modifier.size(20.dp),
+                )
+                Text(
+                    text = link.text,
+                    modifier = Modifier.padding(start = GamedgeTheme.spaces.spacing_1_5),
+                    style = GamedgeTheme.typography.button,
+                )
+            }
+        }
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun GameInfoLinksPreview() {
+    val links = WebsiteCategory.entries
+        .filterNot { it == WebsiteCategory.UNKNOWN }
+        .mapIndexed { index, websiteCategory ->
+            GameInfoLinkUiModel(
+                id = index,
+                text = websiteCategory.name
+                    .replace("_", " ")
+                    .lowercase()
+                    .replaceFirstChar {
+                        if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+                    },
+                iconId = R.drawable.web,
+                url = "url$index",
+            )
+        }
+
+    GamedgeTheme {
+        GameInfoLinks(
+            links = links,
+            onLinkClicked = {},
+        )
+    }
+}

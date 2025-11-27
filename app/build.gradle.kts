@@ -37,11 +37,11 @@ fun readProperties(fileName: String): Properties {
 }
 
 android {
-    namespace = "com.paulrybitskyi.gamedge"
+    namespace = "ca.six.hojat.gamehub"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.paulrybitskyi.gamedge"
+        applicationId = "ca.six.hojat.gamehub"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = libs.versions.appVersionCode.get().toInt()

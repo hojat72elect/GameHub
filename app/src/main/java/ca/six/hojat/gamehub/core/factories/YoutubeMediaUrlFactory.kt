@@ -1,0 +1,37 @@
+package ca.six.hojat.gamehub.core.factories
+
+import ca.six.hojat.gamehub.common.domain.games.entities.Video
+import javax.inject.Inject
+
+enum class YoutubeThumbnailSize(internal val rawSize: String) {
+    DEFAULT("default"), // 120x90
+    MEDIUM("mqdefault"), // 320x180
+    HIGH("hqdefault"), // 480x360
+    STANDARD_DEFINITION("sddefault"), // 640x480
+    MAX("maxresdefault"), // 1052x592
+}
+
+interface YoutubeMediaUrlFactory {
+    fun createThumbnailUrl(video: Video, size: YoutubeThumbnailSize): String?
+    fun createVideoUrl(video: Video): String?
+}
+
+internal class YoutubeMediaUrlFactoryImpl @Inject constructor() : YoutubeMediaUrlFactory {
+
+    private companion object {
+        private const val THUMBNAIL_URL_TEMPLATE = "https://img.youtube.com/vi/%s/%s.jpg"
+        private const val VIDEO_URL_TEMPLATE = "https://youtu.be/%s"
+    }
+
+    override fun createThumbnailUrl(video: Video, size: YoutubeThumbnailSize): String? {
+        if (video.id.isBlank()) return null
+
+        return String.format(THUMBNAIL_URL_TEMPLATE, video.id, size.rawSize)
+    }
+
+    override fun createVideoUrl(video: Video): String? {
+        if (video.id.isBlank()) return null
+
+        return String.format(VIDEO_URL_TEMPLATE, video.id)
+    }
+}

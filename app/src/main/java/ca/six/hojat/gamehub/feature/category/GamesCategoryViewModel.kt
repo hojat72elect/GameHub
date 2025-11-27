@@ -1,0 +1,199 @@
+package ca.six.hojat.gamehub.feature.category
+
+import androidx.lifecycle.viewModelScope
+import ca.six.hojat.gamehub.common.domain.common.DispatcherProvider
+import ca.six.hojat.gamehub.common.domain.common.entities.nextLimit
+import ca.six.hojat.gamehub.common.domain.common.entities.nextOffset
+import ca.six.hojat.gamehub.common.domain.common.extensions.resultOrError
+import ca.six.hojat.gamehub.common.domain.games.common.ObserveGamesUseCaseParams
+import ca.six.hojat.gamehub.common.domain.games.common.RefreshGamesUseCaseParams
+import ca.six.hojat.gamehub.common.ui.base.BaseViewModel
+import ca.six.hojat.gamehub.common.ui.base.events.common.GeneralCommand
+import ca.six.hojat.gamehub.common.ui.di.qualifiers.TransitionAnimationDuration
+import ca.six.hojat.gamehub.core.ErrorMapper
+import ca.six.hojat.gamehub.core.Logger
+import ca.six.hojat.gamehub.core.providers.StringProvider
+import ca.six.hojat.gamehub.core.utils.onError
+import ca.six.hojat.gamehub.feature.category.widgets.GameCategoryUiModelMapper
+import ca.six.hojat.gamehub.feature.category.widgets.mapToUiModels
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+
+@HiltViewModel(assistedFactory = GamesCategoryViewModel.Factory::class)
+internal class GamesCategoryViewModel @AssistedInject constructor(
+    stringProvider: StringProvider,
+    @TransitionAnimationDuration
+    transitionAnimationDuration: Long,
+    @Assisted
+    private val route: GamesCategoryRoute,
+    private val useCases: GamesCategoryUseCases,
+    private val uiModelMapper: GameCategoryUiModelMapper,
+    private val dispatcherProvider: DispatcherProvider,
+    private val errorMapper: ErrorMapper,
+    private val logger: Logger,
+) : BaseViewModel() {
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: GamesCategoryRoute): GamesCategoryViewModel
+    }
+
+    private var isObservingGames = false
+    private var isRefreshingGames = false
+    private var hasMoreGamesToLoad = false
+
+    private var observeGamesUseCaseParams = ObserveGamesUseCaseParams()
+    private var refreshGamesUseCaseParams = RefreshGamesUseCaseParams()
+
+    private val gamesCategory = GamesCategory.valueOf(route.category)
+    private val gamesCategoryKeyType = gamesCategory.toKeyType()
+
+    private var gamesObservingJob: Job? = null
+    private var gamesRefreshingJob: Job? = null
+
+    private val _uiState = MutableStateFlow(createEmptyUiState())
+
+    private val currentUiState: GamesCategoryUiState
+        get() = _uiState.value
+
+    val uiState: StateFlow<GamesCategoryUiState> = _uiState.asStateFlow()
+
+    init {
+        _uiState.update {
+            it.copy(title = stringProvider.getString(gamesCategory.titleId))
+        }
+
+        observeGames(resultEmissionDelay = transitionAnimationDuration)
+        refreshGames(resultEmissionDelay = transitionAnimationDuration)
+    }
+
+    private fun createEmptyUiState(): GamesCategoryUiState {
+        return GamesCategoryUiState(
+            isLoading = false,
+            title = "",
+            games = emptyList(),
+        )
+    }
+
+    private fun observeGames(resultEmissionDelay: Long = 0L) {
+        if (isObservingGames) return
+
+        gamesObservingJob = useCases.getObservableUseCase(gamesCategoryKeyType)
+            .execute(observeGamesUseCaseParams)
+            .map(uiModelMapper::mapToUiModels)
+            .flowOn(dispatcherProvider.computation)
+            .map { games -> currentUiState.toSuccessState(games) }
+            .onError {
+                logger.error(logTag, "Failed to observe ${gamesCategory.name} games.", it)
+                dispatchCommand(GeneralCommand.ShowLongToast(errorMapper.mapToMessage(it)))
+                emit(currentUiState.toEmptyState())
+            }
+            .onStart {
+                isObservingGames = true
+                delay(resultEmissionDelay)
+            }
+            .onCompletion { isObservingGames = false }
+            .onEach { emittedUiState ->
+                configureNextLoad(emittedUiState)
+                _uiState.update { emittedUiState }
+            }
+            .launchIn(viewModelScope)
+    }
+
+    private fun configureNextLoad(uiState: GamesCategoryUiState) {
+        if (!uiState.hasLoadedNewGames()) return
+
+        val paginationLimit = observeGamesUseCaseParams.pagination.limit
+        val gameCount = uiState.games.size
+
+        hasMoreGamesToLoad = (paginationLimit == gameCount)
+    }
+
+    private fun GamesCategoryUiState.hasLoadedNewGames(): Boolean {
+        return (!isLoading && games.isNotEmpty())
+    }
+
+    private fun refreshGames(resultEmissionDelay: Long = 0L) {
+        if (isRefreshingGames) return
+
+        gamesRefreshingJob = useCases.getRefreshableUseCase(gamesCategoryKeyType)
+            .execute(refreshGamesUseCaseParams)
+            .resultOrError()
+            .map { currentUiState }
+            .onError {
+                logger.error(logTag, "Failed to refresh ${gamesCategory.name} games.", it)
+                dispatchCommand(GeneralCommand.ShowLongToast(errorMapper.mapToMessage(it)))
+            }
+            .onStart {
+                isRefreshingGames = true
+                emit(currentUiState.enableLoading())
+                // Show loading state for some time since it can be too quick
+                delay(resultEmissionDelay)
+            }
+            .onCompletion {
+                isRefreshingGames = false
+                // Delay disabling loading to avoid quick state changes like
+                // empty, loading, empty, success
+                delay(resultEmissionDelay)
+                emit(currentUiState.disableLoading())
+            }
+            .onEach { emittedUiState -> _uiState.update { emittedUiState } }
+            .launchIn(viewModelScope)
+    }
+
+    fun onToolbarLeftButtonClicked() {
+        navigate(GamesCategoryDirection.Back)
+    }
+
+    fun onGameClicked(game: GameCategoryUiModel) {
+        navigate(GamesCategoryDirection.Info(game.id))
+    }
+
+    fun onBottomReached() {
+        loadMoreGames()
+    }
+
+    private fun loadMoreGames() {
+        if (!hasMoreGamesToLoad) return
+
+        viewModelScope.launch {
+            fetchNextGamesBatch()
+            observeNewGamesBatch()
+        }
+    }
+
+    private suspend fun fetchNextGamesBatch() {
+        refreshGamesUseCaseParams = refreshGamesUseCaseParams.copy(
+            refreshGamesUseCaseParams.pagination.nextOffset(),
+        )
+
+        gamesRefreshingJob?.cancelAndJoin()
+        refreshGames()
+        gamesRefreshingJob?.join()
+    }
+
+    private suspend fun observeNewGamesBatch() {
+        observeGamesUseCaseParams = observeGamesUseCaseParams.copy(
+            observeGamesUseCaseParams.pagination.nextLimit(),
+        )
+
+        gamesObservingJob?.cancelAndJoin()
+        observeGames()
+    }
+}
