@@ -2,7 +2,6 @@ package com.paulrybitskyi.gamedge.plugins
 
 import com.android.build.api.dsl.LibraryExtension
 import com.paulrybitskyi.gamedge.extensions.libs
-import localModules
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -31,9 +30,6 @@ class GamedgeRemoteApiPlugin : Plugin<Project> {
     }
 
     private fun Project.addDependencies(): Unit = with(dependencies) {
-        if (path != localModules.core) {
-            add("implementation", project(localModules.core))
-        }
         add("implementation", libs.retrofit.get())
     }
 }

@@ -1,7 +1,6 @@
 package com.paulrybitskyi.gamedge.plugins
 
 import com.paulrybitskyi.gamedge.extensions.libs
-import localModules
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -21,7 +20,6 @@ class GamedgeFeaturePlugin : Plugin<Project> {
     }
 
     private fun Project.addDependencies(): Unit = with(dependencies) {
-        add("implementation", project(localModules.core))
         add("implementation", libs.composeHilt.get())
         add("implementation", libs.composeNavigation.get())
         add("implementation", libs.commonsCore.get())

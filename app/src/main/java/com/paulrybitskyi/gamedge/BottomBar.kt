@@ -19,7 +19,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.paulrybitskyi.gamedge.common.ui.theme.GamedgeTheme
-import com.paulrybitskyi.gamedge.core.R as CoreR
 
 private const val BOTTOM_BAR_ANIMATION_DURATION = 300
 
@@ -106,23 +105,23 @@ private enum class BottomNavigationItemModel(
     val screen: Screen,
 ) {
     DISCOVER(
-        iconId = CoreR.drawable.compass_rose,
-        titleId = CoreR.string.games_discovery_toolbar_title,
+        iconId = R.drawable.compass_rose,
+        titleId = R.string.games_discovery_toolbar_title,
         screen = Screen.GamesDiscovery,
     ),
     LIKES(
-        iconId = CoreR.drawable.heart,
-        titleId = CoreR.string.liked_games_toolbar_title,
+        iconId = R.drawable.heart,
+        titleId = R.string.liked_games_toolbar_title,
         screen = Screen.LikedGames,
     ),
     NEWS(
-        iconId = CoreR.drawable.newspaper,
-        titleId = CoreR.string.gaming_news_toolbar_title,
+        iconId = R.drawable.newspaper,
+        titleId = R.string.gaming_news_toolbar_title,
         screen = Screen.GamingNews,
     ),
     SETTINGS(
-        iconId = CoreR.drawable.cog_outline,
-        titleId = CoreR.string.settings_toolbar_title,
+        iconId = R.drawable.cog_outline,
+        titleId = R.string.settings_toolbar_title,
         screen = Screen.Settings,
     ),
 }
