@@ -47,6 +47,9 @@ dependencies {
     implementation(libs.protoDataStore)
     implementation(libs.room)
     implementation(libs.roomKtx)
+    implementation(libs.zoomable)
+    implementation(libs.materialComponents)
+    implementation(libs.composeHilt)
 
     kapt(libs.daggerHiltCoreCompiler)
     ksp(libs.roomCompiler)

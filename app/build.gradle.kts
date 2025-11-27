@@ -9,7 +9,6 @@ plugins {
 dependencies {
 
     implementation(project(localModules.core))
-    implementation(project(localModules.featureCategory))
     implementation(project(localModules.featureSettings))
 
     implementation(libs.activity)

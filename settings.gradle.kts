@@ -9,5 +9,4 @@ pluginManagement {
 
 include(":app")
 include(":core")
-include(":feature-category")
 include(":feature-settings")

@@ -6,6 +6,5 @@
  */
 object localModules {
     const val core = ":core"
-    const val featureCategory = ":feature-category"
     const val featureSettings = ":feature-settings"
 }
