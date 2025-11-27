@@ -6,7 +6,6 @@
  */
 object localModules {
     const val core = ":core"
-    const val commonData = ":common-data"
     const val featureCategory = ":feature-category"
     const val featureSettings = ":feature-settings"
 }

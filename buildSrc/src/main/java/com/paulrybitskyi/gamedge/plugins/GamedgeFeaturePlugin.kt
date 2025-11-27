@@ -21,7 +21,6 @@ class GamedgeFeaturePlugin : Plugin<Project> {
     }
 
     private fun Project.addDependencies(): Unit = with(dependencies) {
-        add("implementation", project(localModules.commonData))
         add("implementation", project(localModules.core))
         add("implementation", libs.composeHilt.get())
         add("implementation", libs.composeNavigation.get())

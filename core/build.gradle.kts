@@ -8,6 +8,7 @@ plugins {
     id(libs.plugins.gamedgeKotlinKapt.get().pluginId)
     id(libs.plugins.gamedgeJetpackCompose.get().pluginId)
     id(libs.plugins.gamedgeDaggerHilt.get().pluginId)
+    id(libs.plugins.gamedgeProtobuf.get().pluginId)
     id(libs.plugins.gamedgeRemoteApi.get().pluginId)
     id(libs.plugins.gamedgeKotlinxSerialization.get().pluginId)
 
@@ -42,10 +43,11 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofitKotlinxSerializationConverter)
     implementation(libs.retrofitScalarsConverter)
-
-    kapt(libs.daggerHiltCoreCompiler)
-
+    implementation(libs.prefsDataStore)
+    implementation(libs.protoDataStore)
     implementation(libs.room)
     implementation(libs.roomKtx)
+
+    kapt(libs.daggerHiltCoreCompiler)
     ksp(libs.roomCompiler)
 }

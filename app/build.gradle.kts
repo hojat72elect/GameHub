@@ -8,7 +8,6 @@ plugins {
 
 dependencies {
 
-implementation(project(localModules.commonData))
     implementation(project(localModules.core))
     implementation(project(localModules.featureCategory))
     implementation(project(localModules.featureSettings))
