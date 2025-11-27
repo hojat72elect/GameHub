@@ -1,8 +1,8 @@
 package com.paulrybitskyi.gamedge.feature.settings.presentation
 
+import com.paulrybitskyi.gamedge.core.R
 import com.paulrybitskyi.gamedge.core.providers.StringProvider
 import com.paulrybitskyi.gamedge.core.providers.VersionNameProvider
-import com.paulrybitskyi.gamedge.feature.settings.R
 import com.paulrybitskyi.gamedge.feature.settings.domain.entities.Settings
 import javax.inject.Inject
 

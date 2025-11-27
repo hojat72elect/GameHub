@@ -34,9 +34,8 @@ import com.paulrybitskyi.gamedge.common.ui.widgets.GamedgeCard
 import com.paulrybitskyi.gamedge.common.ui.widgets.GamedgeProgressIndicator
 import com.paulrybitskyi.gamedge.common.ui.widgets.dialogs.GamedgeDialog
 import com.paulrybitskyi.gamedge.common.ui.widgets.toolbars.Toolbar
-import com.paulrybitskyi.gamedge.feature.settings.R
+import com.paulrybitskyi.gamedge.core.R
 import com.paulrybitskyi.gamedge.feature.settings.domain.entities.Theme
-import com.paulrybitskyi.gamedge.core.R as CoreR
 
 @Composable
 fun SettingsScreen(modifier: Modifier) {
@@ -58,7 +57,7 @@ private fun SettingsScreen(
         when (command) {
             is SettingsCommand.OpenUrl -> {
                 if (!urlOpener.openUrl(command.url, context)) {
-                    context.showShortToast(context.getString(CoreR.string.url_opener_not_found))
+                    context.showShortToast(context.getString(R.string.url_opener_not_found))
                 }
             }
         }

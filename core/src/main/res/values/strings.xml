@@ -97,4 +97,16 @@
     <string name="games_search_info_title_empty">No games found for\n\"%s\"</string>
     <string name="liked_games_toolbar_title">Likes</string>
     <string name="liked_games_info_title">You haven\'t liked any games yet</string>
+
+    <!--    Feature Settings  -->
+    <string name="settings_toolbar_title">Settings</string>
+    <string name="settings_section_appearance_title">Appearance</string>
+    <string name="settings_item_theme_title">Theme</string>
+    <string name="settings_item_theme_option_light">Light</string>
+    <string name="settings_item_theme_option_dark">Dark</string>
+    <string name="settings_item_theme_option_system_default">System Default</string>
+    <string name="settings_section_about_title">About</string>
+    <string name="settings_item_source_code_title">Source Code</string>
+    <string name="settings_item_source_code_description">View the source code of the app</string>
+    <string name="settings_item_version_title">Version</string>
 </resources>
