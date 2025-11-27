@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string name="app_name" translatable="false">Gamedge</string>
+    <string name="app_name" translatable="false">GameHub</string>
 
     <string name="text_font_family_medium" translatable="false">sans-serif-medium</string>
     <string name="unknown">Unknown</string>
