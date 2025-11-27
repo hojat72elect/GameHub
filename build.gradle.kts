@@ -1,18 +1,15 @@
 
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import com.paulrybitskyi.gamedge.extensions.libs
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
 plugins {
-    // See https://github.com/gradle/gradle/issues/20084#issuecomment-1060822638
-    // for why it has to be done this way
-    id(libs.plugins.androidApplication.get().pluginId) apply false
-    id(libs.plugins.androidLibrary.get().pluginId) apply false
-    id(libs.plugins.kotlinJvm.get().pluginId) apply false
-    id(libs.plugins.kotlinAndroid.get().pluginId) apply false
-    id(libs.plugins.kotlinKapt.get().pluginId) apply false
-    id(libs.plugins.protobuf.get().pluginId) apply false
+    alias(libs.plugins.androidApplication) apply false
+    alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.kotlinJvm) apply false
+    alias(libs.plugins.kotlinAndroid) apply false
+    alias(libs.plugins.kotlinKapt) apply false
+    alias(libs.plugins.protobuf) apply false
 
     alias(libs.plugins.jetpackCompose) apply false
     alias(libs.plugins.ksp) apply false
