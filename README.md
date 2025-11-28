@@ -138,3 +138,10 @@ Currently, we are particularly interested in help with migrating the application
 Multiplatform (KMP).
 
 Please feel free to open a pull request or an issue if you have any suggestions or improvements.
+
+
+<p align="center">
+  <a href="https://buymeacoffee.com/hojat" target="_blank">
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2tqa3dkMzFjOHFub25kZmhwbXZ3aG5jZzU0Nnc4cjhzenI5b21zbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/o7RZbs4KAA6tvM4H6j/giphy.gif" alt="buy me a cup of tea"/>
+  </a>
+</p>
