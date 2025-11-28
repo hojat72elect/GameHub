@@ -1,26 +1,25 @@
-# Gamedge
+# GameHub
 
 ![Min API](https://img.shields.io/badge/API-21%2B-orange.svg?style=flat)
 [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](http://developer.android.com/index.html)
-[![Build](https://github.com/mars885/gamedge/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/mars885/gamedge/actions)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-An Android application for browsing video games and checking the latest gaming news from around the world.
+An Android application for browsing video games and checking the latest gaming news from around the
+world.
 
 Built entirely using Kotlin technologies.
 
 ## Contents
+
 * [Demonstration](#demonstration)
-  * [Video](#video)
-  * [Screenshots](#screenshots)
+    * [Video](#video)
+    * [Screenshots](#screenshots)
 * [Tech Stack](#tech-stack)
 * [Architecture](#architecture)
 * [Development Setup](#development-setup)
-  * [IGDB](#igdb)
-  * [Gamespot](#gamespot)
+    * [IGDB](#igdb)
+    * [Gamespot](#gamespot)
 * [Download](#download)
-* [Contribution](#contribution)
-* [Questions](#questions)
 * [License](#license)
 
 ## Demonstration
@@ -44,31 +43,50 @@ https://github.com/user-attachments/assets/a8cde6c6-1e89-4986-a5d7-3dc98cb014c5
 
 ## Tech Stack
 
-- [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
-- [Jetpack Compose](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for building native UI.
-- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) and [Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html#asynchronous-flow) - Official Kotlin's tooling for performing asynchronous work.
-- [MVVM/MVI Architecture](https://developer.android.com/jetpack/guide) - Official recommended architecture for building robust, production-quality apps.
-- [Android Jetpack](https://developer.android.com/jetpack) - Jetpack is a suite of libraries to help developers build state-of-the-art applications.
-  - [Navigation Compose](https://developer.android.com/jetpack/compose/navigation) - Navigation Compose is a framework for navigating between composables while taking advantage of the Navigation component’s infrastructure and features.
-  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - The ViewModel is designed to store and manage UI-related data in a lifecycle conscious way.
-  - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#stateflow) - StateFlow is a state-holder observable flow that emits the current and new state updates to its collectors.
-  - [Room](https://developer.android.com/topic/libraries/architecture/room) - The Room library provides an abstraction layer over SQLite to allow for more robust database access.
-  - [DataStore](https://developer.android.com/topic/libraries/architecture/datastore) - DataStore is a data storage solution that stores key-value pairs or typed objects with [protocol buffers](https://developers.google.com/protocol-buffers).
-  - [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt is a dependency injection library for Android.
-  - [MotionLayout](https://developer.android.com/training/constraint-layout/motionlayout) - MotionLayout allows you to create beautiful animations in your app without too much hassle.
-  - [Custom Tabs](https://developers.google.com/web/android/custom-tabs/implementation-guide) - Custom Tabs is a browser feature that gives apps more control over their web experience.
-- [Accompanist](https://github.com/google/accompanist) - A collection of extension libraries for Jetpack Compose.
+- [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android
+  development.
+- [Jetpack Compose](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
+  building native UI.
+- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
+  and [Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html#asynchronous-flow) -
+  Official Kotlin's tooling for performing asynchronous work.
+- [MVVM/MVI Architecture](https://developer.android.com/jetpack/guide) - Official recommended
+  architecture for building robust, production-quality apps.
+- [Android Jetpack](https://developer.android.com/jetpack) - Jetpack is a suite of libraries to help
+  developers build state-of-the-art applications.
+    - [Navigation Compose](https://developer.android.com/jetpack/compose/navigation) - Navigation
+      Compose is a framework for navigating between composables while taking advantage of the
+      Navigation component’s infrastructure and features.
+    - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - The
+      ViewModel is designed to store and manage UI-related data in a lifecycle conscious way.
+    - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#stateflow) -
+      StateFlow is a state-holder observable flow that emits the current and new state updates to
+      its collectors.
+    - [Room](https://developer.android.com/topic/libraries/architecture/room) - The Room library
+      provides an abstraction layer over SQLite to allow for more robust database access.
+    - [DataStore](https://developer.android.com/topic/libraries/architecture/datastore) - DataStore
+      is a data storage solution that stores key-value pairs or typed objects
+      with [protocol buffers](https://developers.google.com/protocol-buffers).
+    - [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt
+      is a dependency injection library for Android.
+    - [MotionLayout](https://developer.android.com/training/constraint-layout/motionlayout) -
+      MotionLayout allows you to create beautiful animations in your app without too much hassle.
+    - [Custom Tabs](https://developers.google.com/web/android/custom-tabs/implementation-guide) -
+      Custom Tabs is a browser feature that gives apps more control over their web experience.
+- [Accompanist](https://github.com/google/accompanist) - A collection of extension libraries for
+  Jetpack Compose.
 - [OkHttp](https://github.com/square/okhttp) - An HTTP client for making network calls.
 - [Retrofit](https://github.com/square/retrofit) - A library for building REST API clients.
-- [KotlinX Serialization](https://github.com/Kotlin/kotlinx.serialization) - A multiplatform Kotlin serialization library.
+- [KotlinX Serialization](https://github.com/Kotlin/kotlinx.serialization) - A multiplatform Kotlin
+  serialization library.
 - [Coil](https://github.com/coil-kt/coil) - An image loading library.
-- [Hilt Binder](https://github.com/mars885/hilt-binder) - An annotating processing library that automatically generates Dagger Hilt's `@Binds` methods.
-- [Kotlin Result](https://github.com/michaelbull/kotlin-result) - A multiplatform Result monad for modelling success or failure operations.
-- [Detekt](https://github.com/detekt/detekt) - A static code analysis library for Kotlin.
-- [Gradle's Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Gradle’s Kotlin DSL is an alternative syntax to the Groovy DSL with an enhanced editing experience.
-- [buildSrc](https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources) - A special module within the project to manage dependencies and whatnot.
+- [Kotlin Result](https://github.com/michaelbull/kotlin-result) - A multiplatform Result monad for
+  modelling success or failure operations.
+- [Gradle's Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Gradle’s Kotlin
+  DSL is an alternative syntax to the Groovy DSL with an enhanced editing experience.
 
-For more information about used dependencies, see [this](/buildSrc/src/main/java/Dependencies.kt) file.
+For more information about used dependencies, see [this](./gradle/libs.versions.toml)
+file.
 
 ## Architecture
 
@@ -76,13 +94,17 @@ For more information about used dependencies, see [this](/buildSrc/src/main/java
 
 ## Development Setup
 
-You'll need to supply API/client keys for the various services that the app uses in order to build the application.
+You'll need to supply API/client keys for the various services that the app uses in order to build
+the application.
 
 ### IGDB
 
-[IGDB](https://www.igdb.com/discover) is a website dedicated to combining all the relevant information about games into a comprehensive resource for gamers everywhere. This is the main API that the app uses to fetch information about pretty much any video game there is.
+[IGDB](https://www.igdb.com/discover) is a website dedicated to combining all the relevant
+information about games into a comprehensive resource for gamers everywhere. This is the main API
+that the app uses to fetch information about pretty much any video game there is.
 
-Check [this link](https://api-docs.igdb.com/#account-creation) on how to obtain a client ID and secret. Once you have obtained the keys, you can set them in your `~/.gradle/gradle.properties`:
+Check [this link](https://api-docs.igdb.com/#account-creation) on how to obtain a client ID and
+secret. Once you have obtained the keys, you can set them in your `~/.gradle/gradle.properties`:
 
 ```
 TWITCH_APP_CLIENT_ID=yout_client_id_here
@@ -91,9 +113,12 @@ TWITCH_APP_CLIENT_SECRET=your_client_secret_here
 
 ### Gamespot
 
-[Gamespot](https://www.gamespot.com/) is a video gaming website that provides news, reviews, previews, downloads, and other information on video games. The app uses its API to solely retrieve the latest news in the gaming world.
+[Gamespot](https://www.gamespot.com/) is a video gaming website that provides news, reviews,
+previews, downloads, and other information on video games. The app uses its API to solely retrieve
+the latest news in the gaming world.
 
-Check [this link](https://www.gamespot.com/api/) on how to obtain an API key. Once you have obtained the key, you can set it in your `~/.gradle/gradle.properties`:
+Check [this link](https://www.gamespot.com/api/) on how to obtain an API key. Once you have obtained
+the key, you can set it in your `~/.gradle/gradle.properties`:
 
 ```
 GAMESPOT_API_KEY=your_api_key_here
