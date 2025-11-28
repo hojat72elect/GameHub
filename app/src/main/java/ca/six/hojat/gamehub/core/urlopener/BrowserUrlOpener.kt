@@ -3,8 +3,8 @@ package ca.six.hojat.gamehub.core.urlopener
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import ca.six.hojat.gamehub.common.extensions.canIntentBeHandled
 import ca.six.hojat.gamehub.core.utils.attachNewTaskFlagIfNeeded
-import com.paulrybitskyi.commons.ktx.canIntentBeHandled
 import javax.inject.Inject
 
 @UrlOpenerKey(UrlOpenerKey.Type.BROWSER)

@@ -1,7 +1,7 @@
 package ca.six.hojat.gamehub.core.providers
 
 import android.content.Context
-import com.paulrybitskyi.commons.network.isConnectedToNetwork
+import ca.six.hojat.gamehub.common.extensions.isConnectedToNetwork
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 

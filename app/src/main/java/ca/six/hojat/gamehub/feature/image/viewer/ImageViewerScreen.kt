@@ -33,6 +33,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import ca.six.hojat.gamehub.R
+import ca.six.hojat.gamehub.common.extensions.SdkInfo
 import ca.six.hojat.gamehub.common.ui.CommandsHandler
 import ca.six.hojat.gamehub.common.ui.DirectionsHandler
 import ca.six.hojat.gamehub.common.ui.LocalNetworkStateProvider
@@ -52,7 +53,6 @@ import coil.size.Size
 import com.mxalbert.zoomable.OverZoomConfig
 import com.mxalbert.zoomable.Zoomable
 import com.mxalbert.zoomable.rememberZoomableState
-import com.paulrybitskyi.commons.SdkInfo
 
 private const val ZoomScaleMin = 0.5f
 private const val ZoomScaleMax = 5f

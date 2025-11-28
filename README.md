@@ -31,14 +31,14 @@ https://github.com/user-attachments/assets/a8cde6c6-1e89-4986-a5d7-3dc98cb014c5
 ### Screenshots
 
 <p>
-<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot1.png" width="32%"/>
-<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot2.png" width="32%"/>
-<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot3.png" width="32%"/>
+<img src="/media/screenshot1.png" width="32%"/>
+<img src="/media/screenshot2.png" width="32%"/>
+<img src="/media/screenshot3.png" width="32%"/>
 </p>
 <p>
-<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot4.png" width="32%"/>
-<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot5.png" width="32%"/>
-<img src="/fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot6.png" width="32%"/>
+<img src="/media/screenshot4.png" width="32%"/>
+<img src="/media/screenshot5.png" width="32%"/>
+<img src="/media/screenshot6.png" width="32%"/>
 </p>
 
 ## Tech Stack

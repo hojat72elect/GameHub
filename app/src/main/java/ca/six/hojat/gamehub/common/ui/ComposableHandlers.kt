@@ -3,12 +3,12 @@ package ca.six.hojat.gamehub.common.ui
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
+import ca.six.hojat.gamehub.common.extensions.showLongToast
+import ca.six.hojat.gamehub.common.extensions.showShortToast
 import ca.six.hojat.gamehub.common.ui.base.BaseViewModel
 import ca.six.hojat.gamehub.common.ui.base.events.Command
 import ca.six.hojat.gamehub.common.ui.base.events.Direction
 import ca.six.hojat.gamehub.common.ui.base.events.common.GeneralCommand
-import com.paulrybitskyi.commons.ktx.showLongToast
-import com.paulrybitskyi.commons.ktx.showShortToast
 
 @Composable
 fun CommandsHandler(

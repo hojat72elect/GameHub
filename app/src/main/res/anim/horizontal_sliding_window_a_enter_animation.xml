@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@anim/sliding_animation_decelerate_interpolator"
+    android:zAdjustment="bottom">
+
+    <alpha
+        android:fromAlpha="@integer/horizontal_sliding_animation_window_a_min_alpha"
+        android:toAlpha="@integer/horizontal_sliding_animation_window_a_max_alpha"
+        android:duration="@integer/horizontal_sliding_animation_duration" />
+
+    <translate
+        android:fromXDelta="-25%"
+        android:toXDelta="0%"
+        android:duration="@integer/horizontal_sliding_animation_duration"
+        android:zAdjustment="top" />
+
+</set>

@@ -7,6 +7,7 @@ import ca.six.hojat.gamehub.common.domain.common.DispatcherProvider
 import ca.six.hojat.gamehub.common.domain.common.entities.Pagination
 import ca.six.hojat.gamehub.common.domain.common.entities.nextOffset
 import ca.six.hojat.gamehub.common.domain.common.extensions.resultOrError
+import ca.six.hojat.gamehub.common.extensions.observeChanges
 import ca.six.hojat.gamehub.common.ui.base.BaseViewModel
 import ca.six.hojat.gamehub.common.ui.base.events.common.GeneralCommand
 import ca.six.hojat.gamehub.common.ui.widgets.games.GameUiModel
@@ -19,7 +20,6 @@ import ca.six.hojat.gamehub.core.Logger
 import ca.six.hojat.gamehub.core.providers.StringProvider
 import ca.six.hojat.gamehub.core.utils.onError
 import ca.six.hojat.gamehub.feature.search.domain.SearchGamesUseCase
-import com.paulrybitskyi.commons.utils.observeChanges
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

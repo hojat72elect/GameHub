@@ -3,10 +3,10 @@ package ca.six.hojat.gamehub.core.urlopener
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import ca.six.hojat.gamehub.common.extensions.SdkInfo
+import ca.six.hojat.gamehub.common.extensions.canUrlBeOpenedByNativeApp
+import ca.six.hojat.gamehub.common.extensions.getNativeAppPackageForUrl
 import ca.six.hojat.gamehub.core.utils.attachNewTaskFlagIfNeeded
-import com.paulrybitskyi.commons.SdkInfo
-import com.paulrybitskyi.commons.ktx.canUrlBeOpenedByNativeApp
-import com.paulrybitskyi.commons.ktx.getNativeAppPackageForUrl
 import javax.inject.Inject
 
 @UrlOpenerKey(UrlOpenerKey.Type.NATIVE_APP)

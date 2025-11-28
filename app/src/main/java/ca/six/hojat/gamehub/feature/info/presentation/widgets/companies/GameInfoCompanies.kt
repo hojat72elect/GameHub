@@ -24,6 +24,10 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import ca.six.hojat.gamehub.R
+import ca.six.hojat.gamehub.common.extensions.centerX
+import ca.six.hojat.gamehub.common.extensions.centerY
+import ca.six.hojat.gamehub.common.extensions.hasTransparentPixels
+import ca.six.hojat.gamehub.common.extensions.isOpaque
 import ca.six.hojat.gamehub.common.ui.images.defaultImageRequest
 import ca.six.hojat.gamehub.common.ui.images.secondaryImage
 import ca.six.hojat.gamehub.common.ui.theme.GamedgeTheme
@@ -32,10 +36,6 @@ import ca.six.hojat.gamehub.feature.info.presentation.widgets.utils.GameInfoSect
 import coil.compose.rememberAsyncImagePainter
 import coil.size.Size
 import coil.transform.Transformation
-import com.paulrybitskyi.commons.ktx.centerX
-import com.paulrybitskyi.commons.ktx.centerY
-import com.paulrybitskyi.commons.ktx.hasTransparentPixels
-import com.paulrybitskyi.commons.ktx.isOpaque
 import kotlin.math.roundToInt
 
 private val LogoMaxWidth = 268.dp

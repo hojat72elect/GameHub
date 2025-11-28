@@ -2,7 +2,7 @@ package ca.six.hojat.gamehub.core.utils
 
 import android.content.Context
 import androidx.browser.customtabs.CustomTabsIntent
-import com.paulrybitskyi.commons.window.anims.WindowAnimations
+import ca.six.hojat.gamehub.common.extensions.WindowAnimations
 
 internal fun CustomTabsIntent.Builder.setAnimations(
     context: Context,

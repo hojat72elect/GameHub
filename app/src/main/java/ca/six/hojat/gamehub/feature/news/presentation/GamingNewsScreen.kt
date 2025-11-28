@@ -20,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.hilt.navigation.compose.hiltViewModel
 import ca.six.hojat.gamehub.R
+import ca.six.hojat.gamehub.common.extensions.showShortToast
 import ca.six.hojat.gamehub.common.ui.CommandsHandler
 import ca.six.hojat.gamehub.common.ui.LocalUrlOpener
 import ca.six.hojat.gamehub.common.ui.theme.GamedgeTheme
@@ -31,7 +32,6 @@ import ca.six.hojat.gamehub.common.ui.widgets.RefreshableContent
 import ca.six.hojat.gamehub.common.ui.widgets.toolbars.Toolbar
 import ca.six.hojat.gamehub.feature.news.presentation.widgets.GamingNewsItem
 import ca.six.hojat.gamehub.feature.news.presentation.widgets.GamingNewsItemUiModel
-import com.paulrybitskyi.commons.ktx.showShortToast
 
 @Composable
 fun GamingNewsScreen(modifier: Modifier) {

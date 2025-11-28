@@ -33,6 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.hilt.navigation.compose.hiltViewModel
 import ca.six.hojat.gamehub.R
+import ca.six.hojat.gamehub.common.extensions.showShortToast
 import ca.six.hojat.gamehub.common.ui.CommandsHandler
 import ca.six.hojat.gamehub.common.ui.DirectionsHandler
 import ca.six.hojat.gamehub.common.ui.LocalUrlOpener
@@ -66,7 +67,6 @@ import ca.six.hojat.gamehub.feature.info.presentation.widgets.screenshots.GameIn
 import ca.six.hojat.gamehub.feature.info.presentation.widgets.screenshots.GameInfoScreenshots
 import ca.six.hojat.gamehub.feature.info.presentation.widgets.videos.GameInfoVideoUiModel
 import ca.six.hojat.gamehub.feature.info.presentation.widgets.videos.GameInfoVideos
-import com.paulrybitskyi.commons.ktx.showShortToast
 
 @Composable
 fun GameInfoScreen(

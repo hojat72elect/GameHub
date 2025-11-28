@@ -6,13 +6,13 @@ import androidx.annotation.ColorRes
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import ca.six.hojat.gamehub.R
+import ca.six.hojat.gamehub.common.extensions.WindowAnimations
+import ca.six.hojat.gamehub.common.extensions.configuration
+import ca.six.hojat.gamehub.common.extensions.getCompatColor
 import ca.six.hojat.gamehub.core.providers.CustomTabsProvider
 import ca.six.hojat.gamehub.core.utils.attachNewTaskFlagIfNeeded
 import ca.six.hojat.gamehub.core.utils.isDarkThemeEnabled
 import ca.six.hojat.gamehub.core.utils.setAnimations
-import com.paulrybitskyi.commons.ktx.configuration
-import com.paulrybitskyi.commons.ktx.getCompatColor
-import com.paulrybitskyi.commons.window.anims.WindowAnimations
 import javax.inject.Inject
 
 @UrlOpenerKey(UrlOpenerKey.Type.CUSTOM_TAB)
