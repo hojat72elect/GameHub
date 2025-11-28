@@ -19,7 +19,6 @@ Built entirely using Kotlin technologies.
 * [Development Setup](#development-setup)
     * [IGDB](#igdb)
     * [Gamespot](#gamespot)
-* [Download](#download)
 * [License](#license)
 
 ## Demonstration
@@ -123,3 +122,7 @@ the key, you can set it in your `~/.gradle/gradle.properties`:
 ```
 GAMESPOT_API_KEY=your_api_key_here
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) for more details.
