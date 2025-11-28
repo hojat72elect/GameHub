@@ -20,6 +20,7 @@ Built entirely using Kotlin technologies.
     * [IGDB](#igdb)
     * [Gamespot](#gamespot)
 * [License](#license)
+* [Contributing](#contributing)
 
 ## Demonstration
 
@@ -125,4 +126,15 @@ GAMESPOT_API_KEY=your_api_key_here
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+❤️ Contributions are always welcome! ❤️
+
+If you'd like to help, please have a look at
+the [open issues](https://github.com/hojat72elect/GameHub/issues).
+Currently, we are particularly interested in help with migrating the application to Kotlin
+Multiplatform (KMP).
+
+Please feel free to open a pull request or an issue if you have any suggestions or improvements.
