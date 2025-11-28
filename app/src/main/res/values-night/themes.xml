@@ -4,7 +4,7 @@
 <resources>
     <style name="GamedgeThemeSplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/dark_colorPrimary</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_light</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
         <item name="postSplashScreenTheme">@android:style/Theme.Material.NoActionBar</item>
     </style>
 </resources>
