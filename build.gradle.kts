@@ -1,6 +1,5 @@
 
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
 plugins {
@@ -17,17 +16,6 @@ plugins {
     alias(libs.plugins.kotlinxSerialization) apply false
 
     alias(libs.plugins.gradleVersions) apply true
-    alias(libs.plugins.detekt) apply true
-}
-
-detekt {
-    parallel = true
-    buildUponDefaultConfig = true
-    config.setFrom("config/detekt/detekt.yml")
-}
-
-tasks.withType<Detekt>().configureEach {
-    reports.html.required.set(true)
 }
 
 tasks.withType<DependencyUpdatesTask> {
@@ -39,7 +27,6 @@ tasks.withType<DependencyUpdatesTask> {
 }
 
 allprojects {
-    apply(plugin = rootProject.libs.plugins.detekt.get().pluginId)
 
     repositories {
         mavenCentral()

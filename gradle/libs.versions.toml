@@ -14,7 +14,6 @@ androidPlugin = "8.6.1"
 protobufPlugin = "0.9.4"
 kspPlugin = "2.0.21-1.0.25"
 gradleVersionsPlugin = "0.51.0"
-detektPlugin = "1.23.7"
 
 # Kotlin
 coroutines = "1.9.0"
@@ -68,7 +67,6 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "kspPlugin" }
 daggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "daggerHilt" }
 kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 gradleVersions = { id = "com.github.ben-manes.versions", version.ref = "gradleVersionsPlugin" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detektPlugin" }
 
 [libraries]
 # Plugins
