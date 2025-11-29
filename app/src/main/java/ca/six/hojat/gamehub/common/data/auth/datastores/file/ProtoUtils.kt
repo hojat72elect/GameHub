@@ -4,14 +4,15 @@ import androidx.datastore.core.Serializer
 import java.io.InputStream
 import java.io.OutputStream
 
-internal fun ProtoOauthCredentials.isNotEmpty(): Boolean {
-    return (
-            accessToken.isNotEmpty() &&
-                    tokenType.isNotEmpty() &&
-                    (tokenTtl != 0L) &&
-                    (expirationTime != 0L)
-            )
-}
+/**
+ * Checks if the provided [ProtoOauthCredentials] is empty or not.
+ */
+internal fun ProtoOauthCredentials.isNotEmpty() =
+    accessToken.isNotEmpty() &&
+            tokenType.isNotEmpty() &&
+            (tokenTtl != 0L) &&
+            (expirationTime != 0L)
+
 
 internal object ProtoOauthCredentialsSerializer : Serializer<ProtoOauthCredentials> {
 
