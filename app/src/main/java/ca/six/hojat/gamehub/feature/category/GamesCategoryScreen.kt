@@ -38,7 +38,7 @@ import ca.six.hojat.gamehub.feature.category.widgets.rememberGamesGridConfig
 
 @Composable
 fun GamesCategoryScreen(
-    route: GamesCategoryRoute,
+    route: CategoryScreenRoute,
     onNavigate: (Direction) -> Unit,
 ) {
     GamesCategoryScreen(

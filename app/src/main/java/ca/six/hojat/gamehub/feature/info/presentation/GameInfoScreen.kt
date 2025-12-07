@@ -70,7 +70,7 @@ import ca.six.hojat.gamehub.feature.info.presentation.widgets.videos.GameInfoVid
 
 @Composable
 fun GameInfoScreen(
-    route: GameInfoRoute,
+    route: GameInfoScreenRoute,
     onNavigate: (Direction) -> Unit,
 ) {
     GameInfoScreen(

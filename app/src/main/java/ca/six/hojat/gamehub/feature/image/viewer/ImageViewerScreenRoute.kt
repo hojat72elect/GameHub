@@ -3,7 +3,7 @@ package ca.six.hojat.gamehub.feature.image.viewer
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ImageViewerRoute(
+data class ImageViewerScreenRoute(
     val imageUrls: List<String>,
     val title: String?,
     val initialPosition: Int,

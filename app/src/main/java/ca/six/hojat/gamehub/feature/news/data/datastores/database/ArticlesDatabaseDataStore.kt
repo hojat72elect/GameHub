@@ -2,7 +2,7 @@ package ca.six.hojat.gamehub.feature.news.data.datastores.database
 
 import ca.six.hojat.gamehub.common.domain.common.DispatcherProvider
 import ca.six.hojat.gamehub.common.domain.common.entities.Pagination
-import ca.six.hojat.gamehub.database.articles.DatabaseArticle
+import ca.six.hojat.gamehub.database.articles.entities.DbArticle
 import ca.six.hojat.gamehub.database.articles.tables.ArticlesTable
 import ca.six.hojat.gamehub.feature.news.domain.datastores.ArticlesLocalDataStore
 import ca.six.hojat.gamehub.feature.news.domain.entities.Article
@@ -35,7 +35,7 @@ internal class ArticlesDatabaseDataStoreImpl @Inject constructor(
             .toDataArticlesFlow()
     }
 
-    private fun Flow<List<DatabaseArticle>>.toDataArticlesFlow(): Flow<List<Article>> {
+    private fun Flow<List<DbArticle>>.toDataArticlesFlow(): Flow<List<Article>> {
         return distinctUntilChanged()
             .map(dbArticleMapper::mapToDomainArticles)
             .flowOn(dispatcherProvider.computation)

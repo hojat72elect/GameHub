@@ -41,7 +41,7 @@ internal class GamesCategoryViewModel @AssistedInject constructor(
     @TransitionAnimationDuration
     transitionAnimationDuration: Long,
     @Assisted
-    private val route: GamesCategoryRoute,
+    private val route: CategoryScreenRoute,
     private val useCases: GamesCategoryUseCases,
     private val uiModelMapper: GameCategoryUiModelMapper,
     private val dispatcherProvider: DispatcherProvider,
@@ -51,7 +51,7 @@ internal class GamesCategoryViewModel @AssistedInject constructor(
 
     @AssistedFactory
     interface Factory {
-        fun create(route: GamesCategoryRoute): GamesCategoryViewModel
+        fun create(route: CategoryScreenRoute): GamesCategoryViewModel
     }
 
     private var isObservingGames = false

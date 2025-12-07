@@ -107,21 +107,21 @@ private enum class BottomNavigationItemModel(
     DISCOVER(
         iconId = R.drawable.compass_rose,
         titleId = R.string.games_discovery_toolbar_title,
-        screen = Screen.GamesDiscovery,
+        screen = Screen.DiscoverScreen,
     ),
     LIKES(
         iconId = R.drawable.heart,
         titleId = R.string.liked_games_toolbar_title,
-        screen = Screen.LikedGames,
+        screen = Screen.LikesScreen,
     ),
     NEWS(
         iconId = R.drawable.newspaper,
         titleId = R.string.gaming_news_toolbar_title,
-        screen = Screen.GamingNews,
+        screen = Screen.NewsScreen,
     ),
     SETTINGS(
         iconId = R.drawable.cog_outline,
         titleId = R.string.settings_toolbar_title,
-        screen = Screen.Settings,
+        screen = Screen.SettingsScreen,
     ),
 }

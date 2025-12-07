@@ -8,47 +8,43 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.navigation.NavController
-import ca.six.hojat.gamehub.feature.category.GamesCategoryRoute
-import ca.six.hojat.gamehub.feature.discovery.GamesDiscoveryRoute
-import ca.six.hojat.gamehub.feature.image.viewer.ImageViewerRoute
-import ca.six.hojat.gamehub.feature.info.presentation.GameInfoRoute
-import ca.six.hojat.gamehub.feature.likes.presentation.LikedGamesRoute
-import ca.six.hojat.gamehub.feature.news.presentation.GamingNewsRoute
-import ca.six.hojat.gamehub.feature.search.presentation.GamesSearchRoute
-import ca.six.hojat.gamehub.feature.settings.presentation.SettingsRoute
+import ca.six.hojat.gamehub.feature.category.CategoryScreenRoute
+import ca.six.hojat.gamehub.feature.discovery.DiscoverScreenRoute
+import ca.six.hojat.gamehub.feature.image.viewer.ImageViewerScreenRoute
+import ca.six.hojat.gamehub.feature.info.presentation.GameInfoScreenRoute
+import ca.six.hojat.gamehub.feature.likes.presentation.LikesScreenRoute
+import ca.six.hojat.gamehub.feature.news.presentation.NewsScreenRoute
+import ca.six.hojat.gamehub.feature.search.presentation.SearchScreenRoute
+import ca.six.hojat.gamehub.feature.settings.presentation.SettingsScreenRoute
 import kotlin.reflect.KClass
 
-internal val START_SCREEN = Screen.GamesDiscovery
+internal val START_SCREEN = Screen.DiscoverScreen
 
 internal sealed class Screen(val routeClass: KClass<*>) {
 
-    data object GamesDiscovery : Screen(GamesDiscoveryRoute::class)
-    data object LikedGames : Screen(LikedGamesRoute::class)
-    data object GamingNews : Screen(GamingNewsRoute::class)
-    data object Settings : Screen(SettingsRoute::class)
-    data object GamesSearch : Screen(GamesSearchRoute::class)
-    data object GamesCategory : Screen(GamesCategoryRoute::class) {
+    data object DiscoverScreen : Screen(DiscoverScreenRoute::class)
+    data object LikesScreen : Screen(LikesScreenRoute::class)
+    data object NewsScreen : Screen(NewsScreenRoute::class)
+    data object SettingsScreen : Screen(SettingsScreenRoute::class)
+    data object SearchScreen : Screen(SearchScreenRoute::class)
+    data object CategoryScreen : Screen(CategoryScreenRoute::class) {
 
-        fun createRoute(category: String): GamesCategoryRoute {
-            return GamesCategoryRoute(category = category)
-        }
+        fun createRoute(category: String) = CategoryScreenRoute(category = category)
     }
 
-    data object GameInfo : Screen(GameInfoRoute::class) {
+    data object GameInfoScreen : Screen(GameInfoScreenRoute::class) {
 
-        fun createRoute(gameId: Int): GameInfoRoute {
-            return GameInfoRoute(gameId = gameId)
-        }
+        fun createRoute(gameId: Int) = GameInfoScreenRoute(gameId = gameId)
     }
 
-    data object ImageViewer : Screen(ImageViewerRoute::class) {
+    data object ImageViewerScreen : Screen(ImageViewerScreenRoute::class) {
 
         fun createRoute(
             imageUrls: List<String>,
             title: String? = null,
             initialPosition: Int = 0,
-        ): ImageViewerRoute {
-            return ImageViewerRoute(
+        ): ImageViewerScreenRoute {
+            return ImageViewerScreenRoute(
                 imageUrls = imageUrls,
                 title = title,
                 initialPosition = initialPosition,
@@ -68,14 +64,14 @@ internal sealed class Screen(val routeClass: KClass<*>) {
 
         fun forRoute(route: String): Screen {
             return when {
-                route.contains(GamesDiscovery.route) -> GamesDiscovery
-                route.contains(LikedGames.route) -> LikedGames
-                route.contains(GamingNews.route) -> GamingNews
-                route.contains(Settings.route) -> Settings
-                route.contains(GamesSearch.route) -> GamesSearch
-                route.contains(GamesCategory.route) -> GamesCategory
-                route.contains(GameInfo.route) -> GameInfo
-                route.contains(ImageViewer.route) -> ImageViewer
+                route.contains(DiscoverScreen.route) -> DiscoverScreen
+                route.contains(LikesScreen.route) -> LikesScreen
+                route.contains(NewsScreen.route) -> NewsScreen
+                route.contains(SettingsScreen.route) -> SettingsScreen
+                route.contains(SearchScreen.route) -> SearchScreen
+                route.contains(CategoryScreen.route) -> CategoryScreen
+                route.contains(GameInfoScreen.route) -> GameInfoScreen
+                route.contains(ImageViewerScreen.route) -> ImageViewerScreen
                 else -> error("Cannot find screen for the route: $route.")
             }
         }

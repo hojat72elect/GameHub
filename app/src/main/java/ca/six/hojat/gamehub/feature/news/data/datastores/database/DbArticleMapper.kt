@@ -1,15 +1,15 @@
 package ca.six.hojat.gamehub.feature.news.data.datastores.database
 
-import ca.six.hojat.gamehub.database.articles.DatabaseArticle
-import ca.six.hojat.gamehub.database.articles.DatabaseImageType
+import ca.six.hojat.gamehub.database.articles.entities.DbArticle
+import ca.six.hojat.gamehub.database.articles.entities.DbImageType
 import ca.six.hojat.gamehub.feature.news.domain.DomainArticle
 import ca.six.hojat.gamehub.feature.news.domain.DomainImageType
 import javax.inject.Inject
 
 internal class DbArticleMapper @Inject constructor() {
 
-    fun mapToDatabaseArticle(dataArticle: DomainArticle): DatabaseArticle {
-        return DatabaseArticle(
+    fun mapToDatabaseArticle(dataArticle: DomainArticle): DbArticle {
+        return DbArticle(
             id = dataArticle.id,
             title = dataArticle.title,
             lede = dataArticle.lede,
@@ -19,13 +19,13 @@ internal class DbArticleMapper @Inject constructor() {
         )
     }
 
-    private fun Map<DomainImageType, String>.toDatabaseImageUrls(): Map<DatabaseImageType, String> {
+    private fun Map<DomainImageType, String>.toDatabaseImageUrls(): Map<DbImageType, String> {
         return mapKeys {
-            DatabaseImageType.valueOf(it.key.name)
+            DbImageType.valueOf(it.key.name)
         }
     }
 
-    fun mapToDomainArticle(databaseArticle: DatabaseArticle): DomainArticle {
+    fun mapToDomainArticle(databaseArticle: DbArticle): DomainArticle {
         return DomainArticle(
             id = databaseArticle.id,
             title = databaseArticle.title,
@@ -36,17 +36,17 @@ internal class DbArticleMapper @Inject constructor() {
         )
     }
 
-    private fun Map<DatabaseImageType, String>.toDomainImageUrls(): Map<DomainImageType, String> {
+    private fun Map<DbImageType, String>.toDomainImageUrls(): Map<DomainImageType, String> {
         return mapKeys {
             DomainImageType.valueOf(it.key.name)
         }
     }
 }
 
-internal fun DbArticleMapper.mapToDatabaseArticles(dataArticles: List<DomainArticle>): List<DatabaseArticle> {
+internal fun DbArticleMapper.mapToDatabaseArticles(dataArticles: List<DomainArticle>): List<DbArticle> {
     return dataArticles.map(::mapToDatabaseArticle)
 }
 
-internal fun DbArticleMapper.mapToDomainArticles(databaseArticles: List<DatabaseArticle>): List<DomainArticle> {
+internal fun DbArticleMapper.mapToDomainArticles(databaseArticles: List<DbArticle>): List<DomainArticle> {
     return databaseArticles.map(::mapToDomainArticle)
 }

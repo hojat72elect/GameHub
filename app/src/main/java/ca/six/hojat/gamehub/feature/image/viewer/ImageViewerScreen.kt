@@ -62,7 +62,7 @@ private const val ZoomScaleInitial = 1f
 
 @Composable
 fun ImageViewerScreen(
-    route: ImageViewerRoute,
+    route: ImageViewerScreenRoute,
     onNavigate: (Direction) -> Unit,
 ) {
     ImageViewerScreen(

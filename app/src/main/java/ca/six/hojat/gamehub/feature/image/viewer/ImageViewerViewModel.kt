@@ -23,14 +23,14 @@ internal const val KEY_SELECTED_POSITION = "selected_position"
 @HiltViewModel(assistedFactory = ImageViewerViewModel.Factory::class)
 internal class ImageViewerViewModel @AssistedInject constructor(
     @Assisted
-    route: ImageViewerRoute,
+    route: ImageViewerScreenRoute,
     private val stringProvider: StringProvider,
     private val savedStateHandle: SavedStateHandle,
 ) : BaseViewModel() {
 
     @AssistedFactory
     interface Factory {
-        fun create(route: ImageViewerRoute): ImageViewerViewModel
+        fun create(route: ImageViewerScreenRoute): ImageViewerViewModel
     }
 
     private val args = route.copy(

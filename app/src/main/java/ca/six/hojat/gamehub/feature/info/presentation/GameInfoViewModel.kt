@@ -41,7 +41,7 @@ internal class GameInfoViewModel @AssistedInject constructor(
     @TransitionAnimationDuration
     transitionAnimationDuration: Long,
     @Assisted
-    private val route: GameInfoRoute,
+    private val route: GameInfoScreenRoute,
     private val useCases: GameInfoUseCases,
     private val uiModelMapper: GameInfoUiModelMapper,
     private val dispatcherProvider: DispatcherProvider,
@@ -52,7 +52,7 @@ internal class GameInfoViewModel @AssistedInject constructor(
 
     @AssistedFactory
     interface Factory {
-        fun create(route: GameInfoRoute): GameInfoViewModel
+        fun create(route: GameInfoScreenRoute): GameInfoViewModel
     }
 
     private var isObservingGameData = false
