@@ -1,7 +1,7 @@
 package ca.six.hojat.gamehub.feature.settings.data.datastores
 
 import androidx.datastore.core.Serializer
-import ca.six.hojat.gamehub.feature.settings.domain.DomainSettings
+import ca.six.hojat.gamehub.feature.settings.domain.entities.Settings
 import java.io.InputStream
 import java.io.OutputStream
 
@@ -10,7 +10,7 @@ internal object ProtoSettingsSerializer : Serializer<ProtoSettings> {
 
     override val defaultValue: ProtoSettings
         get() = ProtoSettings.newBuilder()
-            .setThemeName(DomainSettings.DEFAULT.theme.name)
+            .setThemeName(Settings.DEFAULT.theme.name)
             .build()
 
     override suspend fun writeTo(t: ProtoSettings, output: OutputStream) = t.writeTo(output)
