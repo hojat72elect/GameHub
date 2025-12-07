@@ -31,21 +31,21 @@
     <string name="company_role_supporting">Supporting Developer</string>
 
     <string name="website_unknown">Unknown</string>
-    <string name="website_steam" translatable="false">Steam</string>
+    <string name="website_steam">Steam</string>
     <string name="website_gog" translatable="false">GOG</string>
-    <string name="website_epic_games" translatable="false">Epic Games</string>
-    <string name="website_google_play" translatable="false">Google Play</string>
-    <string name="website_app_store" translatable="false">App Store</string>
+    <string name="website_epic_games">Epic Games</string>
+    <string name="website_google_play">Google Play</string>
+    <string name="website_app_store">App Store</string>
     <string name="website_official">Official</string>
-    <string name="website_twitter" translatable="false">Twitter</string>
-    <string name="website_subreddit" translatable="false">Subreddit</string>
-    <string name="website_youtube" translatable="false">Youtube</string>
-    <string name="website_twitch" translatable="false">Twitch</string>
-    <string name="website_instagram" translatable="false">Instagram</string>
-    <string name="website_facebook" translatable="false">Facebook</string>
-    <string name="website_wikipedia" translatable="false">Wikipedia</string>
-    <string name="website_wikia" translatable="false">Wikia</string>
-    <string name="website_discord" translatable="false">Discord</string>
+    <string name="website_twitter" translatable="false">X</string>
+    <string name="website_subreddit">Reddit</string>
+    <string name="website_youtube">Youtube</string>
+    <string name="website_twitch">Twitch</string>
+    <string name="website_instagram">Instagram</string>
+    <string name="website_facebook">Facebook</string>
+    <string name="website_wikipedia">Wikipedia</string>
+    <string name="website_wikia">Wikia</string>
+    <string name="website_discord">Discord</string>
 
     <string name="game_category_main">Main</string>
     <string name="game_category_dlc">DLC</string>
