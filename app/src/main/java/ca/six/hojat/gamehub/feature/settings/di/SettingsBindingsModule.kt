@@ -1,6 +1,6 @@
 package ca.six.hojat.gamehub.feature.settings.di
 
-import ca.six.hojat.gamehub.feature.settings.data.datastores.SettingsFileDataStoreImpl
+import ca.six.hojat.gamehub.feature.settings.data.datastores.SettingsDatabaseDataStore
 import ca.six.hojat.gamehub.feature.settings.domain.datastores.SettingsLocalDataStore
 import ca.six.hojat.gamehub.feature.settings.domain.usecases.ObserveSettingsUseCase
 import ca.six.hojat.gamehub.feature.settings.domain.usecases.ObserveSettingsUseCaseImpl
@@ -23,7 +23,7 @@ internal interface SettingsBindingsModule {
 
     @Binds
     @Singleton
-    fun bindSettingsLocalDataStore(binding: SettingsFileDataStoreImpl): SettingsLocalDataStore
+    fun bindSettingsLocalDataStore(binding: SettingsDatabaseDataStore): SettingsLocalDataStore
 
     @Binds
     @Singleton

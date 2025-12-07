@@ -11,12 +11,15 @@ import ca.six.hojat.gamehub.database.games.entities.DbGame
 import ca.six.hojat.gamehub.database.games.entities.DbLikedGame
 import ca.six.hojat.gamehub.database.games.tables.GamesTable
 import ca.six.hojat.gamehub.database.games.tables.LikedGamesTable
+import ca.six.hojat.gamehub.database.settings.entities.DbSettings
+import ca.six.hojat.gamehub.database.settings.tables.SettingsTable
 
 @Database(
     entities = [
         DbGame::class,
         DbLikedGame::class,
         DbArticle::class,
+        DbSettings::class,
     ],
     version = Constants.VERSION,
     exportSchema = false,
@@ -31,4 +34,5 @@ internal abstract class GamedgeDatabase : RoomDatabase() {
     abstract val gamesTable: GamesTable
     abstract val likedGamesTable: LikedGamesTable
     abstract val articlesTable: ArticlesTable
+    abstract val settingsTable: SettingsTable
 }
