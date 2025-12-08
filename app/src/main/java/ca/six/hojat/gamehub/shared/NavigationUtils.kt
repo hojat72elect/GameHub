@@ -1,4 +1,4 @@
-package ca.six.hojat.gamehub
+package ca.six.hojat.gamehub.shared
 
 import androidx.navigation.NavDestination
 

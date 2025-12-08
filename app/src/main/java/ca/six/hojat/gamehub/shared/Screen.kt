@@ -1,4 +1,4 @@
-package ca.six.hojat.gamehub
+package ca.six.hojat.gamehub.shared
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect

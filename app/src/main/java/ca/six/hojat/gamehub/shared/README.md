@@ -1,0 +1,1 @@
+Everything that is being shared between various features of the app.

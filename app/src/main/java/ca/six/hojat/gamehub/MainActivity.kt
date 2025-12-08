@@ -25,6 +25,7 @@ import ca.six.hojat.gamehub.core.urlopener.UrlOpener
 import ca.six.hojat.gamehub.feature.settings.domain.entities.Settings
 import ca.six.hojat.gamehub.feature.settings.domain.entities.Theme
 import ca.six.hojat.gamehub.feature.settings.domain.usecases.ObserveThemeUseCase
+import ca.six.hojat.gamehub.shared.MainScreen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.filterNotNull
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package ca.six.hojat.gamehub
+package ca.six.hojat.gamehub.shared
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import ca.six.hojat.gamehub.R
 import ca.six.hojat.gamehub.common.ui.theme.GamedgeTheme
 
 private const val BOTTOM_BAR_ANIMATION_DURATION = 300
