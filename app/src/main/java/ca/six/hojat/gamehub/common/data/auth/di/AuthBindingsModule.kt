@@ -1,6 +1,6 @@
 package ca.six.hojat.gamehub.common.data.auth.di
 
-import ca.six.hojat.gamehub.common.data.auth.datastores.file.AuthFileDataStore
+import ca.six.hojat.gamehub.common.data.auth.datastores.database.AuthDatabaseDataStore
 import ca.six.hojat.gamehub.common.data.auth.datastores.igdb.AuthIgdbDataStore
 import ca.six.hojat.gamehub.common.data.auth.datastores.igdb.CredentialsStoreImpl
 import ca.six.hojat.gamehub.common.domain.auth.datastores.AuthLocalDataStore
@@ -18,7 +18,7 @@ internal interface AuthBindingsModule {
 
     @Binds
     @Singleton
-    fun bindAuthLocalDataStore(binding: AuthFileDataStore): AuthLocalDataStore
+    fun bindAuthLocalDataStore(binding: AuthDatabaseDataStore): AuthLocalDataStore
 
     @Binds
     @Singleton

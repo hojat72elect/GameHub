@@ -1,4 +1,3 @@
-
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
@@ -8,13 +7,10 @@ plugins {
     alias(libs.plugins.kotlinJvm) apply false
     alias(libs.plugins.kotlinAndroid) apply false
     alias(libs.plugins.kotlinKapt) apply false
-    alias(libs.plugins.protobuf) apply false
-
     alias(libs.plugins.jetpackCompose) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.daggerHilt) apply false
     alias(libs.plugins.kotlinxSerialization) apply false
-
     alias(libs.plugins.gradleVersions) apply true
 }
 

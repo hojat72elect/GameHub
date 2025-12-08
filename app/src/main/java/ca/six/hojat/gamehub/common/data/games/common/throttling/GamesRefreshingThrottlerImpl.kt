@@ -1,20 +1,16 @@
 package ca.six.hojat.gamehub.common.data.games.common.throttling
 
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.longPreferencesKey
 import ca.six.hojat.gamehub.common.domain.games.common.throttling.GamesRefreshingThrottler
 import ca.six.hojat.gamehub.core.providers.TimestampProvider
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
+import ca.six.hojat.gamehub.database.games.entities.DbGamesRefreshingTimestamp
+import ca.six.hojat.gamehub.database.games.tables.GamesRefreshingTimestampsTable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 internal class GamesRefreshingThrottlerImpl @Inject constructor(
-    private val gamesPreferences: DataStore<Preferences>,
+    private val gamesRefreshingTimestampsTable: GamesRefreshingTimestampsTable,
     private val timestampProvider: TimestampProvider,
 ) : GamesRefreshingThrottler {
 
@@ -26,39 +22,36 @@ internal class GamesRefreshingThrottlerImpl @Inject constructor(
 
     override suspend fun canRefreshGames(key: String): Boolean {
         return canRefreshGames(
-            key = longPreferencesKey(key),
+            key = key,
             refreshTimeout = DEFAULT_GAMES_REFRESH_TIMEOUT,
         )
     }
 
     override suspend fun updateGamesLastRefreshTime(key: String) {
-        updateGamesLastRefreshTime(longPreferencesKey(key))
+        gamesRefreshingTimestampsTable.save(
+            DbGamesRefreshingTimestamp(
+                key = key,
+                lastRefreshTimestamp = timestampProvider.getUnixTimestamp(),
+            )
+        )
     }
 
     override suspend fun canRefreshCompanyDevelopedGames(key: String): Boolean {
         return canRefreshGames(
-            key = longPreferencesKey(key),
+            key = key,
             refreshTimeout = COMPANY_DEVELOPED_GAMES_REFRESH_TIMEOUT,
         )
     }
 
     override suspend fun canRefreshSimilarGames(key: String): Boolean {
         return canRefreshGames(
-            key = longPreferencesKey(key),
+            key = key,
             refreshTimeout = SIMILAR_GAMES_REFRESH_TIMEOUT,
         )
     }
 
-    private suspend fun canRefreshGames(key: Preferences.Key<Long>, refreshTimeout: Long): Boolean {
-        return gamesPreferences.data
-            .map { it[key] ?: 0L }
-            .map { timestampProvider.getUnixTimestamp() > (it + refreshTimeout) }
-            .first()
-    }
-
-    private suspend fun updateGamesLastRefreshTime(key: Preferences.Key<Long>) {
-        gamesPreferences.edit {
-            it[key] = timestampProvider.getUnixTimestamp()
-        }
+    private suspend fun canRefreshGames(key: String, refreshTimeout: Long): Boolean {
+        val lastRefreshTimestamp = gamesRefreshingTimestampsTable.get(key)?.lastRefreshTimestamp ?: 0L
+        return timestampProvider.getUnixTimestamp() > (lastRefreshTimestamp + refreshTimeout)
     }
 }

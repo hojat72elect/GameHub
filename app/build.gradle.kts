@@ -1,39 +1,35 @@
-import com.android.build.api.dsl.VariantDimension
-import com.google.protobuf.gradle.id
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+/*
+ * Copyright 2020 Paul Rybitskyi, paul.rybitskyi.work@gmail.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.jetpackCompose)
-    alias(libs.plugins.daggerHilt)
     alias(libs.plugins.kotlinKapt)
-    alias(libs.plugins.protobuf)
-    alias(libs.plugins.kotlinxSerialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.daggerHilt)
+    alias(libs.plugins.jetpackCompose)
 }
 
-fun Project.property(key: String, default: String): String {
-    val localProperties = Properties()
-    val localPropertiesFile = rootProject.file("local.properties")
-    if (localPropertiesFile.exists()) {
-        localPropertiesFile.inputStream().use { localProperties.load(it) }
-    }
-    return (localProperties.getProperty(key) ?: providers.gradleProperty(key).orNull ?: default)
-}
-
-fun VariantDimension.stringField(name: String, value: String) {
-    buildConfigField("String", name, "\"$value\"")
-}
-
-fun readProperties(fileName: String): Properties {
-    return Properties().apply {
-        val file = rootProject.file(fileName)
-        if (file.exists()) {
-            load(file.inputStream())
-        }
-    }
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
 }
 
 android {
@@ -47,136 +43,116 @@ android {
         versionCode = libs.versions.appVersionCode.get().toInt()
         versionName = libs.versions.appVersionName.get()
 
-        stringField("GAMESPOT_API_KEY", property("GAMESPOT_API_KEY", ""))
-        stringField("TWITCH_APP_CLIENT_ID", property("TWITCH_APP_CLIENT_ID", ""))
-        stringField("TWITCH_APP_CLIENT_SECRET", property("TWITCH_APP_CLIENT_SECRET", ""))
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+
+        buildConfigField("String", "GAMESPOT_API_KEY", "\"${localProperties.getProperty("GAMESPOT_API_KEY")}\"")
+        buildConfigField("String", "TWITCH_APP_CLIENT_ID", "\"${localProperties.getProperty("TWITCH_APP_CLIENT_ID")}\"")
+        buildConfigField("String", "TWITCH_APP_CLIENT_SECRET", "\"${localProperties.getProperty("TWITCH_APP_CLIENT_SECRET")}\"")
     }
 
     signingConfigs {
         create("release") {
-            val keystoreFile = "keystore.properties"
-            if (rootProject.file(keystoreFile).canRead()) {
-                val properties = readProperties(keystoreFile)
-                storeFile = file(properties.getProperty("storeFile"))
-                storePassword = properties.getProperty("storePassword")
-                keyAlias = properties.getProperty("keyAlias")
-                keyPassword = properties.getProperty("keyPassword")
-            } else {
-                println("Cannot create a release signing config. The file $keystoreFile does not exist.")
-            }
+            // These environment variables are set on the CI/CD
+            storeFile = file("prod.keystore")
+            storePassword = System.getenv("KEYSTORE_PASSWORD")
+            keyAlias = System.getenv("KEY_ALIAS")
+            keyPassword = System.getenv("KEY_PASSWORD")
         }
     }
 
     buildTypes {
-        debug {
+        getByName("debug") {
             applicationIdSuffix = ".debug"
-            manifestPlaceholders["usesCleartextTraffic"] = true
+            versionNameSuffix = "-debug"
+            isMinifyEnabled = false
+            isDebuggable = true
         }
-        release {
+
+        getByName("release") {
             isMinifyEnabled = true
+            isShrinkResources = true
+            isDebuggable = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             signingConfig = signingConfigs.getByName("release")
-            manifestPlaceholders["usesCleartextTraffic"] = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
     compileOptions {
-        val javaVersion = JavaVersion.toVersion(libs.versions.jvmToolchain.get().toInt())
-        sourceCompatibility = javaVersion
-        targetCompatibility = javaVersion
-        isCoreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    
+
+    kotlinOptions {
+        jvmTarget = "17"
+        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+        freeCompilerArgs += "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs += "-opt-in=kotlinx.coroutines.FlowPreview"
+        freeCompilerArgs += "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi"
+        freeCompilerArgs += "-opt-in=androidx.compose.animation.ExperimentalAnimationApi"
+        freeCompilerArgs += "-opt-in=androidx.compose.material.ExperimentalMaterialApi"
+        freeCompilerArgs += "-opt-in=androidx.compose.ui.ExperimentalComposeUiApi"
+        freeCompilerArgs += "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
+    }
+
     buildFeatures {
+        compose = true
         buildConfig = true
     }
-}
 
-kapt {
-    correctErrorTypes = true
-}
-
-protobuf {
-    protoc {
-        artifact = libs.protobufCompiler.get().toString()
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.kotlin.get()
     }
-    generateProtoTasks {
-        all().forEach { task ->
-            task.builtins {
-                id("java") {
-                    option("lite")
-                }
-            }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 }
 
-tasks.withType<KotlinCompile>().configureEach {
-    compilerOptions {
-        freeCompilerArgs.addAll(
-            listOf(
-                "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
-                "-opt-in=androidx.compose.foundation.layout.ExperimentalLayoutApi",
-                "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
-                "-opt-in=androidx.compose.animation.graphics.ExperimentalAnimationGraphicsApi",
-                "-opt-in=androidx.constraintlayout.compose.ExperimentalMotionApi",
-                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-                "-Xsuppress-version-warnings"
-            )
-        )
-    }
-}
-
 dependencies {
-    implementation(libs.activity)
-    implementation(libs.splash)
-    implementation(libs.composeNavigation)
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
+    implementation(libs.coroutines)
     implementation(libs.kotlinxSerialization)
+
+    implementation(libs.activity)
+    implementation(libs.materialComponents)
+    implementation(libs.splash)
     implementation(libs.browser)
-    implementation(libs.kotlinResult)
-    implementation(libs.daggerHiltCore)
-    implementation(libs.coil)
+
+    implementation(libs.room)
+    implementation(libs.roomKtx)
+    ksp(libs.roomCompiler)
+
+    implementation(libs.daggerHiltAndroid)
+    kapt(libs.daggerHiltAndroidCompiler)
+    implementation(libs.composeHilt)
+
     implementation(libs.okHttpLoggingInterceptor)
     implementation(libs.retrofit)
     implementation(libs.retrofitKotlinxSerializationConverter)
     implementation(libs.retrofitScalarsConverter)
-    implementation(libs.prefsDataStore)
-    implementation(libs.protoDataStore)
-    implementation(libs.room)
-    implementation(libs.roomKtx)
-    implementation(libs.zoomable)
-    implementation(libs.materialComponents)
-    implementation(libs.composeHilt)
-
-    kapt(libs.daggerHiltCoreCompiler)
-    ksp(libs.roomCompiler)
-
-    coreLibraryDesugaring(libs.desugaredJdk)
 
     implementation(platform(libs.composeBom))
     implementation(libs.composeUi)
-    debugImplementation(libs.composeTooling)
     implementation(libs.composeToolingPreview)
     implementation(libs.composeFoundation)
     implementation(libs.composeMaterial)
     implementation(libs.composeRuntime)
-    implementation(libs.composeAnimation)
     implementation(libs.composeConstraintLayout)
+    implementation(libs.composeNavigation)
 
-    implementation(libs.daggerHiltAndroid)
-    kapt(libs.daggerHiltAndroidCompiler)
+    debugImplementation(libs.composeTooling)
 
-    implementation(libs.coroutines)
-    implementation(libs.protobuf)
+    implementation(libs.coil)
+    implementation(libs.zoomable)
+
+    implementation(libs.kotlinResult)
 }
-
-val installGitHook by tasks.registering(Copy::class) {
-    from(File(rootProject.rootDir, "hooks/pre-push"))
-    into(File(rootProject.rootDir, ".git/hooks/"))
-
-    filePermissions {
-        unix("rwxr-xr-x")
-    }
-}
-
-tasks.getByPath(":app:preBuild").dependsOn(installGitHook)

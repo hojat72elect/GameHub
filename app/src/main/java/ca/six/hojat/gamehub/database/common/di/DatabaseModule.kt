@@ -4,9 +4,16 @@ import android.content.Context
 import androidx.room.Room
 import ca.six.hojat.gamehub.database.Constants
 import ca.six.hojat.gamehub.database.GamedgeDatabase
+import ca.six.hojat.gamehub.database.articles.tables.ArticlesRefreshingTimestampsTable
+import ca.six.hojat.gamehub.database.articles.tables.ArticlesTable
+import ca.six.hojat.gamehub.database.auth.tables.AuthTable
 import ca.six.hojat.gamehub.database.common.MANUAL_MIGRATIONS
 import ca.six.hojat.gamehub.database.common.RoomTypeConverter
 import ca.six.hojat.gamehub.database.common.addTypeConverters
+import ca.six.hojat.gamehub.database.games.tables.GamesRefreshingTimestampsTable
+import ca.six.hojat.gamehub.database.games.tables.GamesTable
+import ca.six.hojat.gamehub.database.games.tables.LikedGamesTable
+import ca.six.hojat.gamehub.database.settings.tables.SettingsTable
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,5 +40,40 @@ internal object DatabaseModule {
             .addTypeConverters(typeConverters)
             .addMigrations(*MANUAL_MIGRATIONS)
             .build()
+    }
+
+    @Provides
+    fun provideGamesTable(gamedgeDatabase: GamedgeDatabase): GamesTable {
+        return gamedgeDatabase.gamesTable
+    }
+
+    @Provides
+    fun provideLikedGamesTable(gamedgeDatabase: GamedgeDatabase): LikedGamesTable {
+        return gamedgeDatabase.likedGamesTable
+    }
+
+    @Provides
+    fun provideGamesRefreshingTimestampsTable(gamedgeDatabase: GamedgeDatabase): GamesRefreshingTimestampsTable {
+        return gamedgeDatabase.gamesRefreshingTimestampsTable
+    }
+
+    @Provides
+    fun provideArticlesTable(gamedgeDatabase: GamedgeDatabase): ArticlesTable {
+        return gamedgeDatabase.articlesTable
+    }
+
+    @Provides
+    fun provideArticlesRefreshingTimestampsTable(gamedgeDatabase: GamedgeDatabase): ArticlesRefreshingTimestampsTable {
+        return gamedgeDatabase.articlesRefreshingTimestampsTable
+    }
+
+    @Provides
+    fun provideSettingsTable(gamedgeDatabase: GamedgeDatabase): SettingsTable {
+        return gamedgeDatabase.settingsTable
+    }
+
+    @Provides
+    fun provideAuthTable(gamedgeDatabase: GamedgeDatabase): AuthTable {
+        return gamedgeDatabase.authTable
     }
 }

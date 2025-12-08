@@ -13,6 +13,6 @@ interface SettingsTable {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveSettings(settings: DbSettings)
 
-    @Query("SELECT * FROM settings WHERE id = 0")
+    @Query("SELECT * FROM settings LIMIT 1")
     fun observeSettings(): Flow<DbSettings?>
 }

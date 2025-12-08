@@ -1,6 +1,7 @@
 package ca.six.hojat.gamehub.feature.info.presentation.widgets.links
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -23,6 +24,7 @@ import ca.six.hojat.gamehub.common.ui.widgets.GamedgeCard
 import ca.six.hojat.gamehub.feature.info.presentation.widgets.utils.GameInfoSection
 import java.util.Locale
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 internal fun GameInfoLinks(
     links: List<GameInfoLinkUiModel>,

@@ -1,4 +1,4 @@
-package ca.six.hojat.gamehub.common.data.auth.datastores.file
+package ca.six.hojat.gamehub.common.data.auth.datastores
 
 import ca.six.hojat.gamehub.common.domain.auth.entities.OauthCredentials
 import ca.six.hojat.gamehub.core.providers.TimestampProvider

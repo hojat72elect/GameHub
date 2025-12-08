@@ -11,7 +11,6 @@ daggerHilt = "2.52"
 
 # Plugins
 androidPlugin = "8.6.1"
-protobufPlugin = "0.9.4"
 kspPlugin = "2.0.21-1.0.25"
 gradleVersionsPlugin = "0.51.0"
 
@@ -24,7 +23,6 @@ activity = "1.9.3"
 splash = "1.0.1"
 browser = "1.8.0"
 room = "2.6.1"
-dataStore = "1.1.1"
 viewModel = "2.8.5" # to be deleted when the linked issue at use site is fixed
 
 # Compose
@@ -35,7 +33,6 @@ composeHilt = "1.2.0"
 
 # Google
 materialComponents = "1.12.0"
-protobuf = "4.28.3"
 
 # Square
 javaPoet = "1.13.0"
@@ -55,7 +52,6 @@ androidLibrary = { id = "com.android.library", version.ref = "androidPlugin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 jetpackCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kspPlugin" }
 daggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "daggerHilt" }
@@ -66,7 +62,6 @@ gradleVersions = { id = "com.github.ben-manes.versions", version.ref = "gradleVe
 # Plugins
 androidPlugin = { module = "com.android.tools.build:gradle", version.ref = "androidPlugin" }
 kotlinPlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-protobufPlugin = { module = "com.google.protobuf:protobuf-gradle-plugin", version.ref = "protobufPlugin" }
 
 # Kotlin
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
@@ -79,8 +74,6 @@ browser = { module = "androidx.browser:browser", version.ref = "browser" }
 room = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-prefsDataStore = { module = "androidx.datastore:datastore-preferences", version.ref = "dataStore" }
-protoDataStore = { module = "androidx.datastore:datastore", version.ref = "dataStore" }
 
 # Compose
 composeBom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
@@ -102,8 +95,6 @@ daggerHiltCore = { module = "com.google.dagger:hilt-core", version.ref = "dagger
 daggerHiltCoreCompiler = { module = "com.google.dagger:hilt-compiler", version.ref = "daggerHilt" }
 daggerHiltAndroid = { module = "com.google.dagger:hilt-android", version.ref = "daggerHilt" }
 daggerHiltAndroidCompiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "daggerHilt" }
-protobuf = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobuf" }
-protobufCompiler = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
 
 # Square
 okHttpLoggingInterceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okHttp" }

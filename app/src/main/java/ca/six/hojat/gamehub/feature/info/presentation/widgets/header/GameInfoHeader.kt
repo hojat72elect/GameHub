@@ -1,4 +1,5 @@
 @file:Suppress("LongMethod", "MagicNumber", "LongParameterList")
+@file:OptIn(ExperimentalMotionApi::class)
 
 package ca.six.hojat.gamehub.feature.info.presentation.widgets.header
 
@@ -65,6 +66,7 @@ import androidx.constraintlayout.compose.ConstrainScope
 import androidx.constraintlayout.compose.ConstrainedLayoutReference
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
+import androidx.constraintlayout.compose.ExperimentalMotionApi
 import androidx.constraintlayout.compose.InvalidationStrategy
 import androidx.constraintlayout.compose.KeyAttributeScope
 import androidx.constraintlayout.compose.KeyPositionScope
