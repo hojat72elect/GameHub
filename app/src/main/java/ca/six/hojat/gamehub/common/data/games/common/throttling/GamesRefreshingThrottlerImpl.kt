@@ -2,7 +2,7 @@ package ca.six.hojat.gamehub.common.data.games.common.throttling
 
 import ca.six.hojat.gamehub.common.domain.games.common.throttling.GamesRefreshingThrottler
 import ca.six.hojat.gamehub.core.providers.TimestampProvider
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbGamesRefreshingTimestamp
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalGamesRefreshingTimestamp
 import ca.six.hojat.gamehub.shared.data.local.games.tables.GamesRefreshingTimestampsTable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -29,7 +29,7 @@ internal class GamesRefreshingThrottlerImpl @Inject constructor(
 
     override suspend fun updateGamesLastRefreshTime(key: String) {
         gamesRefreshingTimestampsTable.save(
-            DbGamesRefreshingTimestamp(
+            LocalGamesRefreshingTimestamp(
                 key = key,
                 lastRefreshTimestamp = timestampProvider.getUnixTimestamp(),
             )

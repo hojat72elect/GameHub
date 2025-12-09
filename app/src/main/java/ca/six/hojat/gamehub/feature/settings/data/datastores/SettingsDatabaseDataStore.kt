@@ -3,20 +3,20 @@ package ca.six.hojat.gamehub.feature.settings.data.datastores
 import ca.six.hojat.gamehub.feature.settings.domain.datastores.SettingsLocalDataStore
 import ca.six.hojat.gamehub.feature.settings.domain.entities.Settings
 import ca.six.hojat.gamehub.feature.settings.domain.entities.Theme
-import ca.six.hojat.gamehub.shared.data.local.GamedgeDatabase
-import ca.six.hojat.gamehub.shared.data.local.settings.entities.DbSettings
+import ca.six.hojat.gamehub.shared.data.local.GameHubDatabase
+import ca.six.hojat.gamehub.shared.data.local.settings.entities.LocalSettings
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 internal class SettingsDatabaseDataStore @Inject constructor(
-    private val database: GamedgeDatabase
+    private val database: GameHubDatabase
 ) : SettingsLocalDataStore {
 
     override suspend fun saveSettings(settings: Settings) {
         database.settingsTable.saveSettings(
-            DbSettings(themeName = settings.theme.name)
+            LocalSettings(themeName = settings.theme.name)
         )
     }
 

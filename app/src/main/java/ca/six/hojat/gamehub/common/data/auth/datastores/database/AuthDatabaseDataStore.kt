@@ -2,22 +2,22 @@ package ca.six.hojat.gamehub.common.data.auth.datastores.database
 
 import ca.six.hojat.gamehub.common.domain.auth.datastores.AuthLocalDataStore
 import ca.six.hojat.gamehub.common.domain.auth.entities.OauthCredentials
-import ca.six.hojat.gamehub.shared.data.local.auth.DbAuthMapper
-import ca.six.hojat.gamehub.shared.data.local.auth.tables.AuthTable
+import ca.six.hojat.gamehub.shared.data.local.authentication.LocalAuthenticationMapper
+import ca.six.hojat.gamehub.shared.data.local.authentication.tables.AuthenticationTable
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 internal class AuthDatabaseDataStore @Inject constructor(
-    private val authTable: AuthTable,
-    private val dbAuthMapper: DbAuthMapper,
+    private val authenticationTable: AuthenticationTable,
+    private val localAuthenticationMapper: LocalAuthenticationMapper,
 ) : AuthLocalDataStore {
 
     override suspend fun saveOauthCredentials(oauthCredentials: OauthCredentials) {
-        authTable.save(dbAuthMapper.mapToDbOauthCredentials(oauthCredentials))
+        authenticationTable.save(localAuthenticationMapper.mapToDbOauthCredentials(oauthCredentials))
     }
 
     override suspend fun getOauthCredentials(): OauthCredentials? {
-        return authTable.get()?.let(dbAuthMapper::mapToDomainOauthCredentials)
+        return authenticationTable.get()?.let(localAuthenticationMapper::mapToDomainOauthCredentials)
     }
 }

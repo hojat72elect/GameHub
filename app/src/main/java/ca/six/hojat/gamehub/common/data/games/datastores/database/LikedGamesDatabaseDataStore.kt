@@ -4,7 +4,7 @@ import ca.six.hojat.gamehub.common.domain.common.DispatcherProvider
 import ca.six.hojat.gamehub.common.domain.common.entities.Pagination
 import ca.six.hojat.gamehub.common.domain.games.datastores.LikedGamesLocalDataStore
 import ca.six.hojat.gamehub.common.domain.games.entities.Game
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbGame
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalGame
 import ca.six.hojat.gamehub.shared.data.local.games.tables.LikedGamesTable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -45,7 +45,7 @@ internal class LikedGamesDatabaseDataStore @Inject constructor(
             .toDataGamesFlow()
     }
 
-    private fun Flow<List<DbGame>>.toDataGamesFlow(): Flow<List<Game>> {
+    private fun Flow<List<LocalGame>>.toDataGamesFlow(): Flow<List<Game>> {
         return distinctUntilChanged()
             .map(dbGameMapper::mapToDomainGames)
             .flowOn(dispatcherProvider.computation)

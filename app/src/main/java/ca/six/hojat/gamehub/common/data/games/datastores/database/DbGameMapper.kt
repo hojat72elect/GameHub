@@ -19,64 +19,64 @@ import ca.six.hojat.gamehub.common.domain.games.entities.Theme
 import ca.six.hojat.gamehub.common.domain.games.entities.Video
 import ca.six.hojat.gamehub.common.domain.games.entities.Website
 import ca.six.hojat.gamehub.common.domain.games.entities.WebsiteCategory
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbAgeRating
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbAgeRatingCategory
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbAgeRatingType
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbCategory
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbCompany
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbGame
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbGenre
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbImage
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbInvolvedCompany
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbKeyword
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbMode
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbPlatform
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbPlayerPerspective
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbReleaseDate
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbReleaseDateCategory
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbTheme
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbVideo
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbWebsite
-import ca.six.hojat.gamehub.shared.data.local.games.entities.DbWebsiteCategory
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalAgeRating
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalAgeRatingCategory
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalAgeRatingType
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalCategory
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalCompany
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalGame
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalGenre
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalImage
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalInvolvedCompany
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalKeyword
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalMode
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalPlatform
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalPlayerPerspective
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalReleaseDate
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalReleaseDateCategory
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalTheme
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalVideo
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalWebsite
+import ca.six.hojat.gamehub.shared.data.local.games.entities.LocalWebsiteCategory
 import javax.inject.Inject
 
 internal class DbGameMapper @Inject constructor() {
 
-    fun mapToDomainGame(dbGame: DbGame): Game {
+    fun mapToDomainGame(localGame: LocalGame): Game {
         return Game(
-            id = dbGame.id,
-            hypeCount = dbGame.hypeCount,
-            releaseDate = dbGame.releaseDate,
-            criticsRating = dbGame.criticsRating,
-            usersRating = dbGame.usersRating,
-            totalRating = dbGame.totalRating,
-            name = dbGame.name,
-            summary = dbGame.summary,
-            storyline = dbGame.storyline,
-            category = dbGame.category.toDomainCategory(),
-            cover = dbGame.cover?.toDomainImage(),
-            releaseDates = dbGame.releaseDates.toDomainReleaseDates(),
-            ageRatings = dbGame.ageRatings.toDomainAgeRatings(),
-            videos = dbGame.videos.toDomainVideos(),
-            artworks = dbGame.artworks.toDomainImages(),
-            screenshots = dbGame.screenshots.toDomainImages(),
-            genres = dbGame.genres.toDomainGenres(),
-            platforms = dbGame.platforms.toDomainPlatforms(),
-            playerPerspectives = dbGame.playerPerspectives.toDomainPlayerPerspectives(),
-            themes = dbGame.themes.toDomainThemes(),
-            modes = dbGame.modes.toDomainModes(),
-            keywords = dbGame.keywords.toDomainKeywords(),
-            involvedCompanies = dbGame.involvedCompanies.toDomainInvolvedCompanies(),
-            websites = dbGame.websites.toDomainWebsites(),
-            similarGames = dbGame.similarGames,
+            id = localGame.id,
+            hypeCount = localGame.hypeCount,
+            releaseDate = localGame.releaseDate,
+            criticsRating = localGame.criticsRating,
+            usersRating = localGame.usersRating,
+            totalRating = localGame.totalRating,
+            name = localGame.name,
+            summary = localGame.summary,
+            storyline = localGame.storyline,
+            category = localGame.category.toDomainCategory(),
+            cover = localGame.cover?.toDomainImage(),
+            releaseDates = localGame.releaseDates.toDomainReleaseDates(),
+            ageRatings = localGame.ageRatings.toDomainAgeRatings(),
+            videos = localGame.videos.toDomainVideos(),
+            artworks = localGame.artworks.toDomainImages(),
+            screenshots = localGame.screenshots.toDomainImages(),
+            genres = localGame.genres.toDomainGenres(),
+            platforms = localGame.platforms.toDomainPlatforms(),
+            playerPerspectives = localGame.playerPerspectives.toDomainPlayerPerspectives(),
+            themes = localGame.themes.toDomainThemes(),
+            modes = localGame.modes.toDomainModes(),
+            keywords = localGame.keywords.toDomainKeywords(),
+            involvedCompanies = localGame.involvedCompanies.toDomainInvolvedCompanies(),
+            websites = localGame.websites.toDomainWebsites(),
+            similarGames = localGame.similarGames,
         )
     }
 
-    private fun DbCategory.toDomainCategory(): Category {
+    private fun LocalCategory.toDomainCategory(): Category {
         return Category.valueOf(name)
     }
 
-    private fun DbImage.toDomainImage(): Image {
+    private fun LocalImage.toDomainImage(): Image {
         return Image(
             id = id,
             width = width,
@@ -84,11 +84,11 @@ internal class DbGameMapper @Inject constructor() {
         )
     }
 
-    private fun List<DbImage>.toDomainImages(): List<Image> {
+    private fun List<LocalImage>.toDomainImages(): List<Image> {
         return map { it.toDomainImage() }
     }
 
-    private fun List<DbReleaseDate>.toDomainReleaseDates(): List<ReleaseDate> {
+    private fun List<LocalReleaseDate>.toDomainReleaseDates(): List<ReleaseDate> {
         return map {
             ReleaseDate(
                 date = it.date,
@@ -98,7 +98,7 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    private fun List<DbAgeRating>.toDomainAgeRatings(): List<AgeRating> {
+    private fun List<LocalAgeRating>.toDomainAgeRatings(): List<AgeRating> {
         return map {
             AgeRating(
                 category = AgeRatingCategory.valueOf(it.category.name),
@@ -107,7 +107,7 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    private fun List<DbVideo>.toDomainVideos(): List<Video> {
+    private fun List<LocalVideo>.toDomainVideos(): List<Video> {
         return map {
             Video(
                 id = it.id,
@@ -116,7 +116,7 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    private fun List<DbGenre>.toDomainGenres(): List<Genre> {
+    private fun List<LocalGenre>.toDomainGenres(): List<Genre> {
         return map {
             Genre(
                 name = it.name,
@@ -124,7 +124,7 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    private fun List<DbPlatform>.toDomainPlatforms(): List<Platform> {
+    private fun List<LocalPlatform>.toDomainPlatforms(): List<Platform> {
         return map {
             Platform(
                 abbreviation = it.abbreviation,
@@ -133,7 +133,7 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    private fun List<DbPlayerPerspective>.toDomainPlayerPerspectives(): List<PlayerPerspective> {
+    private fun List<LocalPlayerPerspective>.toDomainPlayerPerspectives(): List<PlayerPerspective> {
         return map {
             PlayerPerspective(
                 name = it.name,
@@ -141,7 +141,7 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    private fun List<DbTheme>.toDomainThemes(): List<Theme> {
+    private fun List<LocalTheme>.toDomainThemes(): List<Theme> {
         return map {
             Theme(
                 name = it.name,
@@ -149,7 +149,7 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    private fun List<DbMode>.toDomainModes(): List<Mode> {
+    private fun List<LocalMode>.toDomainModes(): List<Mode> {
         return map {
             Mode(
                 name = it.name,
@@ -157,7 +157,7 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    private fun List<DbKeyword>.toDomainKeywords(): List<Keyword> {
+    private fun List<LocalKeyword>.toDomainKeywords(): List<Keyword> {
         return map {
             Keyword(
                 name = it.name,
@@ -165,7 +165,7 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    private fun List<DbInvolvedCompany>.toDomainInvolvedCompanies(): List<InvolvedCompany> {
+    private fun List<LocalInvolvedCompany>.toDomainInvolvedCompanies(): List<InvolvedCompany> {
         return map {
             InvolvedCompany(
                 company = it.company.toDomainCompany(),
@@ -177,7 +177,7 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    private fun DbCompany.toDomainCompany(): Company {
+    private fun LocalCompany.toDomainCompany(): Company {
         return Company(
             id = id,
             name = name,
@@ -187,7 +187,7 @@ internal class DbGameMapper @Inject constructor() {
         )
     }
 
-    private fun List<DbWebsite>.toDomainWebsites(): List<Website> {
+    private fun List<LocalWebsite>.toDomainWebsites(): List<Website> {
         return map {
             Website(
                 id = it.id,
@@ -197,8 +197,8 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    fun mapToDatabaseGame(domainGame: Game): DbGame {
-        return DbGame(
+    fun mapToDatabaseGame(domainGame: Game): LocalGame {
+        return LocalGame(
             id = domainGame.id,
             hypeCount = domainGame.hypeCount,
             releaseDate = domainGame.releaseDate,
@@ -227,102 +227,102 @@ internal class DbGameMapper @Inject constructor() {
         )
     }
 
-    private fun Category.toDbCategory(): DbCategory {
-        return DbCategory.valueOf(name)
+    private fun Category.toDbCategory(): LocalCategory {
+        return LocalCategory.valueOf(name)
     }
 
-    private fun Image.toDbImage(): DbImage {
-        return DbImage(
+    private fun Image.toDbImage(): LocalImage {
+        return LocalImage(
             id = id,
             width = width,
             height = height,
         )
     }
 
-    private fun List<Image>.toDbImages(): List<DbImage> {
+    private fun List<Image>.toDbImages(): List<LocalImage> {
         return map { it.toDbImage() }
     }
 
-    private fun List<ReleaseDate>.toDbReleaseDates(): List<DbReleaseDate> {
+    private fun List<ReleaseDate>.toDbReleaseDates(): List<LocalReleaseDate> {
         return map {
-            DbReleaseDate(
+            LocalReleaseDate(
                 date = it.date,
                 year = it.year,
-                category = DbReleaseDateCategory.valueOf(it.category.name),
+                category = LocalReleaseDateCategory.valueOf(it.category.name),
             )
         }
     }
 
-    private fun List<AgeRating>.toDbAgeRatings(): List<DbAgeRating> {
+    private fun List<AgeRating>.toDbAgeRatings(): List<LocalAgeRating> {
         return map {
-            DbAgeRating(
-                category = DbAgeRatingCategory.valueOf(it.category.name),
-                type = DbAgeRatingType.valueOf(it.type.name),
+            LocalAgeRating(
+                category = LocalAgeRatingCategory.valueOf(it.category.name),
+                type = LocalAgeRatingType.valueOf(it.type.name),
             )
         }
     }
 
-    private fun List<Video>.toDbVideos(): List<DbVideo> {
+    private fun List<Video>.toDbVideos(): List<LocalVideo> {
         return map {
-            DbVideo(
+            LocalVideo(
                 id = it.id,
                 name = it.name,
             )
         }
     }
 
-    private fun List<Genre>.toDbGenres(): List<DbGenre> {
+    private fun List<Genre>.toDbGenres(): List<LocalGenre> {
         return map {
-            DbGenre(
+            LocalGenre(
                 name = it.name,
             )
         }
     }
 
-    private fun List<Platform>.toDbPlatforms(): List<DbPlatform> {
+    private fun List<Platform>.toDbPlatforms(): List<LocalPlatform> {
         return map {
-            DbPlatform(
+            LocalPlatform(
                 abbreviation = it.abbreviation,
                 name = it.name,
             )
         }
     }
 
-    private fun List<PlayerPerspective>.toDbPlayerPerspectives(): List<DbPlayerPerspective> {
+    private fun List<PlayerPerspective>.toDbPlayerPerspectives(): List<LocalPlayerPerspective> {
         return map {
-            DbPlayerPerspective(
+            LocalPlayerPerspective(
                 name = it.name,
             )
         }
     }
 
-    private fun List<Theme>.toDbThemes(): List<DbTheme> {
+    private fun List<Theme>.toDbThemes(): List<LocalTheme> {
         return map {
-            DbTheme(
+            LocalTheme(
                 name = it.name,
             )
         }
     }
 
-    private fun List<Mode>.toDbModes(): List<DbMode> {
+    private fun List<Mode>.toDbModes(): List<LocalMode> {
         return map {
-            DbMode(
+            LocalMode(
                 name = it.name,
             )
         }
     }
 
-    private fun List<Keyword>.toDbKeywords(): List<DbKeyword> {
+    private fun List<Keyword>.toDbKeywords(): List<LocalKeyword> {
         return map {
-            DbKeyword(
+            LocalKeyword(
                 name = it.name,
             )
         }
     }
 
-    private fun List<InvolvedCompany>.toDatabaseInvolvedCompanies(): List<DbInvolvedCompany> {
+    private fun List<InvolvedCompany>.toDatabaseInvolvedCompanies(): List<LocalInvolvedCompany> {
         return map {
-            DbInvolvedCompany(
+            LocalInvolvedCompany(
                 company = it.company.toDbCompany(),
                 isDeveloper = it.isDeveloper,
                 isPublisher = it.isPublisher,
@@ -332,8 +332,8 @@ internal class DbGameMapper @Inject constructor() {
         }
     }
 
-    private fun Company.toDbCompany(): DbCompany {
-        return DbCompany(
+    private fun Company.toDbCompany(): LocalCompany {
+        return LocalCompany(
             id = id,
             name = name,
             websiteUrl = websiteUrl,
@@ -342,21 +342,21 @@ internal class DbGameMapper @Inject constructor() {
         )
     }
 
-    private fun List<Website>.toDbWebsites(): List<DbWebsite> {
+    private fun List<Website>.toDbWebsites(): List<LocalWebsite> {
         return map {
-            DbWebsite(
+            LocalWebsite(
                 id = it.id,
                 url = it.url,
-                category = DbWebsiteCategory.valueOf(it.category.name),
+                category = LocalWebsiteCategory.valueOf(it.category.name),
             )
         }
     }
 }
 
-internal fun DbGameMapper.mapToDomainGames(dbGames: List<DbGame>): List<Game> {
-    return dbGames.map(::mapToDomainGame)
+internal fun DbGameMapper.mapToDomainGames(localGames: List<LocalGame>): List<Game> {
+    return localGames.map(::mapToDomainGame)
 }
 
-internal fun DbGameMapper.mapToDatabaseGames(domainGames: List<Game>): List<DbGame> {
+internal fun DbGameMapper.mapToDatabaseGames(domainGames: List<Game>): List<LocalGame> {
     return domainGames.map(::mapToDatabaseGame)
 }
