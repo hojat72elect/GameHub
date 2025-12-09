@@ -1,9 +1,9 @@
 package ca.six.hojat.gamehub.feature.news.data.throttling
 
 import ca.six.hojat.gamehub.core.providers.TimestampProvider
-import ca.six.hojat.gamehub.database.articles.entities.DbArticlesRefreshingTimestamp
-import ca.six.hojat.gamehub.database.articles.tables.ArticlesRefreshingTimestampsTable
 import ca.six.hojat.gamehub.feature.news.domain.throttling.ArticlesRefreshingThrottler
+import ca.six.hojat.gamehub.shared.data.local.news_articles.entities.DbArticlesRefreshingTimestamp
+import ca.six.hojat.gamehub.shared.data.local.news_articles.tables.ArticlesRefreshingTimestampsTable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 

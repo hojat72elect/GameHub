@@ -1,9 +1,9 @@
 package ca.six.hojat.gamehub.feature.news.data.datastores.database
 
-import ca.six.hojat.gamehub.database.articles.entities.DbArticle
-import ca.six.hojat.gamehub.database.articles.entities.DbImageType
 import ca.six.hojat.gamehub.feature.news.domain.entities.Article
 import ca.six.hojat.gamehub.feature.news.domain.entities.ImageType
+import ca.six.hojat.gamehub.shared.data.local.news_articles.entities.DbArticle
+import ca.six.hojat.gamehub.shared.data.local.news_articles.entities.DbImageType
 import javax.inject.Inject
 
 internal class DbArticleMapper @Inject constructor() {

@@ -3,22 +3,22 @@ package ca.six.hojat.gamehub.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import ca.six.hojat.gamehub.database.articles.ArticlesTypeConverter
-import ca.six.hojat.gamehub.database.articles.entities.DbArticle
-import ca.six.hojat.gamehub.database.articles.entities.DbArticlesRefreshingTimestamp
-import ca.six.hojat.gamehub.database.articles.tables.ArticlesRefreshingTimestampsTable
-import ca.six.hojat.gamehub.database.articles.tables.ArticlesTable
-import ca.six.hojat.gamehub.database.auth.entities.DbOauthCredentials
-import ca.six.hojat.gamehub.database.auth.tables.AuthTable
-import ca.six.hojat.gamehub.database.games.GamesTypeConverter
-import ca.six.hojat.gamehub.database.settings.entities.DbSettings
-import ca.six.hojat.gamehub.database.settings.tables.SettingsTable
-import ca.six.hojat.gamehub.shared.data.local.entities.DbGame
-import ca.six.hojat.gamehub.shared.data.local.entities.DbGamesRefreshingTimestamp
-import ca.six.hojat.gamehub.shared.data.local.entities.DbLikedGame
-import ca.six.hojat.gamehub.shared.data.local.tables.GamesRefreshingTimestampsTable
-import ca.six.hojat.gamehub.shared.data.local.tables.GamesTable
-import ca.six.hojat.gamehub.shared.data.local.tables.LikedGamesTable
+import ca.six.hojat.gamehub.shared.data.local.auth.entities.DbOauthCredentials
+import ca.six.hojat.gamehub.shared.data.local.auth.tables.AuthTable
+import ca.six.hojat.gamehub.shared.data.local.games.GamesTypeConverter
+import ca.six.hojat.gamehub.shared.data.local.games.entities.DbGame
+import ca.six.hojat.gamehub.shared.data.local.games.entities.DbGamesRefreshingTimestamp
+import ca.six.hojat.gamehub.shared.data.local.games.entities.DbLikedGame
+import ca.six.hojat.gamehub.shared.data.local.games.tables.GamesRefreshingTimestampsTable
+import ca.six.hojat.gamehub.shared.data.local.games.tables.GamesTable
+import ca.six.hojat.gamehub.shared.data.local.games.tables.LikedGamesTable
+import ca.six.hojat.gamehub.shared.data.local.news_articles.ArticlesTypeConverter
+import ca.six.hojat.gamehub.shared.data.local.news_articles.entities.DbArticle
+import ca.six.hojat.gamehub.shared.data.local.news_articles.entities.DbArticlesRefreshingTimestamp
+import ca.six.hojat.gamehub.shared.data.local.news_articles.tables.ArticlesRefreshingTimestampsTable
+import ca.six.hojat.gamehub.shared.data.local.news_articles.tables.ArticlesTable
+import ca.six.hojat.gamehub.shared.data.local.settings.entities.DbSettings
+import ca.six.hojat.gamehub.shared.data.local.settings.tables.SettingsTable
 
 @Database(
     entities = [

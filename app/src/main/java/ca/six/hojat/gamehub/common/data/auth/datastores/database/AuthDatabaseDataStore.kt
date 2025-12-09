@@ -2,8 +2,8 @@ package ca.six.hojat.gamehub.common.data.auth.datastores.database
 
 import ca.six.hojat.gamehub.common.domain.auth.datastores.AuthLocalDataStore
 import ca.six.hojat.gamehub.common.domain.auth.entities.OauthCredentials
-import ca.six.hojat.gamehub.database.auth.DbAuthMapper
-import ca.six.hojat.gamehub.database.auth.tables.AuthTable
+import ca.six.hojat.gamehub.shared.data.local.auth.DbAuthMapper
+import ca.six.hojat.gamehub.shared.data.local.auth.tables.AuthTable
 import javax.inject.Inject
 import javax.inject.Singleton
 

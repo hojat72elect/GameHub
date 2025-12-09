@@ -2,10 +2,10 @@ package ca.six.hojat.gamehub.feature.news.data.datastores.database
 
 import ca.six.hojat.gamehub.common.domain.common.DispatcherProvider
 import ca.six.hojat.gamehub.common.domain.common.entities.Pagination
-import ca.six.hojat.gamehub.database.articles.entities.DbArticle
-import ca.six.hojat.gamehub.database.articles.tables.ArticlesTable
 import ca.six.hojat.gamehub.feature.news.domain.datastores.ArticlesLocalDataStore
 import ca.six.hojat.gamehub.feature.news.domain.entities.Article
+import ca.six.hojat.gamehub.shared.data.local.news_articles.entities.DbArticle
+import ca.six.hojat.gamehub.shared.data.local.news_articles.tables.ArticlesTable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn
