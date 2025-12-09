@@ -3,7 +3,7 @@ package ca.six.hojat.gamehub.shared.data.local.news_articles
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import ca.six.hojat.gamehub.core.JsonConverter
-import ca.six.hojat.gamehub.database.common.RoomTypeConverter
+import ca.six.hojat.gamehub.shared.data.local.RoomTypeConverter
 import ca.six.hojat.gamehub.shared.data.local.news_articles.entities.DbImageType
 import javax.inject.Inject
 

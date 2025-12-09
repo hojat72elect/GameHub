@@ -1,4 +1,4 @@
-package ca.six.hojat.gamehub.database
+package ca.six.hojat.gamehub.shared.data.local
 
 internal object Constants {
     const val DATABASE_NAME = "gamedge.db"

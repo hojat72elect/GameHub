@@ -1,4 +1,4 @@
-package ca.six.hojat.gamehub.database.common.di.qualifiers
+package ca.six.hojat.gamehub.shared.data.local
 
 import javax.inject.Qualifier
 

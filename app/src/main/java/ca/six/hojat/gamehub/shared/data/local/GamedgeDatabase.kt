@@ -1,4 +1,4 @@
-package ca.six.hojat.gamehub.database
+package ca.six.hojat.gamehub.shared.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

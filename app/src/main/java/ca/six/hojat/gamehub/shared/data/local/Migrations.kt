@@ -1,6 +1,6 @@
 @file:Suppress("ClassName")
 
-package ca.six.hojat.gamehub.database.common
+package ca.six.hojat.gamehub.shared.data.local
 
 import androidx.room.DeleteColumn
 import androidx.room.migration.AutoMigrationSpec

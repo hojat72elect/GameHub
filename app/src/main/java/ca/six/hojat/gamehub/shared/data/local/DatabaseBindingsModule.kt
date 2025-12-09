@@ -1,6 +1,5 @@
-package ca.six.hojat.gamehub.database.common.di
+package ca.six.hojat.gamehub.shared.data.local
 
-import ca.six.hojat.gamehub.database.common.RoomTypeConverter
 import ca.six.hojat.gamehub.shared.data.local.games.GamesTypeConverter
 import ca.six.hojat.gamehub.shared.data.local.news_articles.ArticlesTypeConverter
 import dagger.Binds

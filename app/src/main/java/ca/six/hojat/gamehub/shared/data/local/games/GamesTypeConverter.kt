@@ -3,7 +3,7 @@ package ca.six.hojat.gamehub.shared.data.local.games
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import ca.six.hojat.gamehub.core.JsonConverter
-import ca.six.hojat.gamehub.database.common.RoomTypeConverter
+import ca.six.hojat.gamehub.shared.data.local.RoomTypeConverter
 import ca.six.hojat.gamehub.shared.data.local.games.entities.DbAgeRating
 import ca.six.hojat.gamehub.shared.data.local.games.entities.DbAgeRatingCategory
 import ca.six.hojat.gamehub.shared.data.local.games.entities.DbAgeRatingType

@@ -1,12 +1,7 @@
-package ca.six.hojat.gamehub.database.common.di
+package ca.six.hojat.gamehub.shared.data.local
 
 import android.content.Context
 import androidx.room.Room
-import ca.six.hojat.gamehub.database.Constants
-import ca.six.hojat.gamehub.database.GamedgeDatabase
-import ca.six.hojat.gamehub.database.common.MANUAL_MIGRATIONS
-import ca.six.hojat.gamehub.database.common.RoomTypeConverter
-import ca.six.hojat.gamehub.database.common.addTypeConverters
 import ca.six.hojat.gamehub.shared.data.local.auth.tables.AuthTable
 import ca.six.hojat.gamehub.shared.data.local.games.tables.GamesRefreshingTimestampsTable
 import ca.six.hojat.gamehub.shared.data.local.games.tables.GamesTable
