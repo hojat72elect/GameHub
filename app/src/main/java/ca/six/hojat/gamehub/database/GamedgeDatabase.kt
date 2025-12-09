@@ -11,14 +11,14 @@ import ca.six.hojat.gamehub.database.articles.tables.ArticlesTable
 import ca.six.hojat.gamehub.database.auth.entities.DbOauthCredentials
 import ca.six.hojat.gamehub.database.auth.tables.AuthTable
 import ca.six.hojat.gamehub.database.games.GamesTypeConverter
-import ca.six.hojat.gamehub.database.games.entities.DbGame
-import ca.six.hojat.gamehub.database.games.entities.DbGamesRefreshingTimestamp
-import ca.six.hojat.gamehub.database.games.entities.DbLikedGame
-import ca.six.hojat.gamehub.database.games.tables.GamesRefreshingTimestampsTable
-import ca.six.hojat.gamehub.database.games.tables.GamesTable
-import ca.six.hojat.gamehub.database.games.tables.LikedGamesTable
 import ca.six.hojat.gamehub.database.settings.entities.DbSettings
 import ca.six.hojat.gamehub.database.settings.tables.SettingsTable
+import ca.six.hojat.gamehub.shared.data.local.entities.DbGame
+import ca.six.hojat.gamehub.shared.data.local.entities.DbGamesRefreshingTimestamp
+import ca.six.hojat.gamehub.shared.data.local.entities.DbLikedGame
+import ca.six.hojat.gamehub.shared.data.local.tables.GamesRefreshingTimestampsTable
+import ca.six.hojat.gamehub.shared.data.local.tables.GamesTable
+import ca.six.hojat.gamehub.shared.data.local.tables.LikedGamesTable
 
 @Database(
     entities = [

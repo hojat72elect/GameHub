@@ -6,8 +6,8 @@ import ca.six.hojat.gamehub.common.domain.common.entities.Pagination
 import ca.six.hojat.gamehub.common.domain.games.datastores.GamesLocalDataStore
 import ca.six.hojat.gamehub.common.domain.games.entities.Company
 import ca.six.hojat.gamehub.common.domain.games.entities.Game
-import ca.six.hojat.gamehub.database.games.entities.DbGame
-import ca.six.hojat.gamehub.database.games.tables.GamesTable
+import ca.six.hojat.gamehub.shared.data.local.entities.DbGame
+import ca.six.hojat.gamehub.shared.data.local.tables.GamesTable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn

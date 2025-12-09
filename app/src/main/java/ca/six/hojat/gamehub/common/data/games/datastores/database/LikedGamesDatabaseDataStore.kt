@@ -4,8 +4,8 @@ import ca.six.hojat.gamehub.common.domain.common.DispatcherProvider
 import ca.six.hojat.gamehub.common.domain.common.entities.Pagination
 import ca.six.hojat.gamehub.common.domain.games.datastores.LikedGamesLocalDataStore
 import ca.six.hojat.gamehub.common.domain.games.entities.Game
-import ca.six.hojat.gamehub.database.games.entities.DbGame
-import ca.six.hojat.gamehub.database.games.tables.LikedGamesTable
+import ca.six.hojat.gamehub.shared.data.local.entities.DbGame
+import ca.six.hojat.gamehub.shared.data.local.tables.LikedGamesTable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn

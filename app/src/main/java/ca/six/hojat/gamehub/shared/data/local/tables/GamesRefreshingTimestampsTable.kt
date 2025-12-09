@@ -1,10 +1,10 @@
-package ca.six.hojat.gamehub.database.games.tables
+package ca.six.hojat.gamehub.shared.data.local.tables
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import ca.six.hojat.gamehub.database.games.entities.DbGamesRefreshingTimestamp
+import ca.six.hojat.gamehub.shared.data.local.entities.DbGamesRefreshingTimestamp
 
 @Dao
 interface GamesRefreshingTimestampsTable {

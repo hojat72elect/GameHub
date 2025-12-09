@@ -2,8 +2,8 @@ package ca.six.hojat.gamehub.common.data.games.common.throttling
 
 import ca.six.hojat.gamehub.common.domain.games.common.throttling.GamesRefreshingThrottler
 import ca.six.hojat.gamehub.core.providers.TimestampProvider
-import ca.six.hojat.gamehub.database.games.entities.DbGamesRefreshingTimestamp
-import ca.six.hojat.gamehub.database.games.tables.GamesRefreshingTimestampsTable
+import ca.six.hojat.gamehub.shared.data.local.entities.DbGamesRefreshingTimestamp
+import ca.six.hojat.gamehub.shared.data.local.tables.GamesRefreshingTimestampsTable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton

@@ -1,7 +1,7 @@
 package ca.six.hojat.gamehub.common.data.games.datastores.database
 
 import ca.six.hojat.gamehub.core.providers.TimestampProvider
-import ca.six.hojat.gamehub.database.games.entities.DbLikedGame
+import ca.six.hojat.gamehub.shared.data.local.entities.DbLikedGame
 import javax.inject.Inject
 import javax.inject.Singleton
 

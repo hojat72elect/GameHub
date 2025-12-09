@@ -1,4 +1,4 @@
-package ca.six.hojat.gamehub.database.games.entities
+package ca.six.hojat.gamehub.shared.data.local.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

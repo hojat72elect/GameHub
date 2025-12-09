@@ -1,8 +1,8 @@
-package ca.six.hojat.gamehub.database.games.entities
+package ca.six.hojat.gamehub.shared.data.local.entities
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DbTheme(
+data class DbKeyword(
     val name: String,
 )

@@ -10,10 +10,10 @@ import ca.six.hojat.gamehub.database.auth.tables.AuthTable
 import ca.six.hojat.gamehub.database.common.MANUAL_MIGRATIONS
 import ca.six.hojat.gamehub.database.common.RoomTypeConverter
 import ca.six.hojat.gamehub.database.common.addTypeConverters
-import ca.six.hojat.gamehub.database.games.tables.GamesRefreshingTimestampsTable
-import ca.six.hojat.gamehub.database.games.tables.GamesTable
-import ca.six.hojat.gamehub.database.games.tables.LikedGamesTable
 import ca.six.hojat.gamehub.database.settings.tables.SettingsTable
+import ca.six.hojat.gamehub.shared.data.local.tables.GamesRefreshingTimestampsTable
+import ca.six.hojat.gamehub.shared.data.local.tables.GamesTable
+import ca.six.hojat.gamehub.shared.data.local.tables.LikedGamesTable
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
