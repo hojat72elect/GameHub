@@ -4,10 +4,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
-    "android": "expo run:android",
+    "android": "bunx expo run:android",
     "web": "expo start --web",
-    "lint": "expo lint",
-    "ios": "expo run:ios"
+    "lint": "expo lint"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
