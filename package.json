@@ -3,7 +3,7 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "bunx expo start",
     "android": "bunx expo run:android",
     "web": "expo start --web",
     "lint": "expo lint"
