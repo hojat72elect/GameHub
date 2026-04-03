@@ -20,7 +20,8 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "permissions": []
+      "permissions": [],
+      "package": "com.hojat72elect.GameHub"
     },
     "web": {
       "output": "static",
