@@ -6,9 +6,9 @@ import DiscoverIcon from '@/assets/svg/compass_rose.svg';
 import LikesIcon from '@/assets/svg/heart.svg';
 import NewsIcon from '@/assets/svg/newspaper.svg';
 
-import {Colors} from '@/constants/theme';
 import {useColorScheme} from "react-native";
 import {HapticTab} from "@/src/HapticTab";
+import {Colors} from "@/src/Color";
 
 export default function TabLayout() {
     const colorScheme = useColorScheme();
