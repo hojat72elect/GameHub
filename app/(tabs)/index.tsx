@@ -47,15 +47,13 @@ export default function HomeScreen() {
         {id: '1', imageUrl: 'https://via.placeholder.com/120x180'},
         {id: '2', imageUrl: 'https://via.placeholder.com/120x180'},
         {id: '3', imageUrl: 'https://via.placeholder.com/120x180'},
-        {id: '3', imageUrl: 'https://via.placeholder.com/120x180'},
         {id: '4', imageUrl: 'https://via.placeholder.com/120x180'},
         {id: '5', imageUrl: 'https://via.placeholder.com/120x180'},
         {id: '6', imageUrl: 'https://via.placeholder.com/120x180'},
         {id: '7', imageUrl: 'https://via.placeholder.com/120x180'},
         {id: '8', imageUrl: 'https://via.placeholder.com/120x180'},
         {id: '9', imageUrl: 'https://via.placeholder.com/120x180'},
-        {id: '10', imageUrl: 'https://via.placeholder.com/120x180'},
-        {id: '11', imageUrl: 'https://via.placeholder.com/120x180'},
+        {id: '10', imageUrl: 'https://via.placeholder.com/120x180'}
     ];
 
     return (
