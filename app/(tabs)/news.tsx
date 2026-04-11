@@ -26,7 +26,7 @@ export default function NewsScreen() {
 
     const NewsCard = (item: { id: number; title: string; description: string; timestamp: string }) => (
         <TouchableOpacity activeOpacity={0.9} style={{backgroundColor: "#FFF", marginBottom: 25, overflow: "hidden"}}>
-            <Image source={idleImage} style={{width: "100%", height: 200, resizeMode: "cover"}}/>
+            <Image source={idleImage} resizeMode="cover" style={{width: "100%", height: 200}}/>
             <View style={{padding: 15}}>
                 <Text style={{
                     fontSize: 20,

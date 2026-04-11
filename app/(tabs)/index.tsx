@@ -34,7 +34,7 @@ function DiscoverScreenSection({title, data}: { title: string, data: any[] }) {
                     overflow: "hidden",
                     backgroundColor: "#EEE"
                 }}>
-                    <Image source={idleImage} style={{width: 110, height: 180, resizeMode: "cover"}}/>
+                    <Image source={idleImage} resizeMode="cover" style={{width: 110, height: 180}}/>
                 </TouchableOpacity>
             ))}
         </ScrollView>
