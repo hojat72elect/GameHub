@@ -1,8 +1,8 @@
-import {Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SearchIcon from "@/assets/svg/magnify.svg";
 import React from "react";
-
 
 /**
  * Each one of the seemingly identical sections you see in the discover screen.
@@ -59,7 +59,7 @@ export function DiscoverScreen(): React.JSX.Element {
     ];
 
     return (
-        <SafeAreaView style={{flex: 1, backgroundColor: "#FFF"}}>
+        <SafeAreaProvider style={{flex: 1, backgroundColor: "#FFF"}}>
             <View style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
@@ -81,6 +81,6 @@ export function DiscoverScreen(): React.JSX.Element {
                 <DiscoverScreenSection title="Coming Soon" data={mockData}/>
                 <DiscoverScreenSection title="Most Anticipated" data={mockData}/>
             </ScrollView>
-        </SafeAreaView>
+        </SafeAreaProvider>
     );
 }

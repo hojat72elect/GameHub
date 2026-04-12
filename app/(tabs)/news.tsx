@@ -1,4 +1,5 @@
-import {FlatList, Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import idleImage from "../../assets/images/game_landscape_placeholder.webp";
 
 export default function NewsScreen() {
@@ -47,7 +48,7 @@ export default function NewsScreen() {
 
 
     return (
-        <SafeAreaView style={{flex: 1, backgroundColor: "#FFF"}}>
+        <SafeAreaProvider style={{flex: 1, backgroundColor: "#FFF"}}>
             <View style={{
                 paddingTop: 35,
                 paddingBottom: 10,
@@ -65,6 +66,6 @@ export default function NewsScreen() {
                 showsVerticalScrollIndicator={true}
                 contentContainerStyle={{paddingBottom: 100}}
             />
-        </SafeAreaView>
+        </SafeAreaProvider>
     );
 }
