@@ -1,4 +1,4 @@
-import {NewsScreen} from "@/src/NewsScreen";
+import {NewsScreen} from "@/src/feature_news/NewsScreen";
 
 export default function TabThreeScreen() {
 
