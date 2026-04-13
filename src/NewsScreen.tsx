@@ -1,8 +1,37 @@
 import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
 import idleImage from "@/assets/images/game_landscape_placeholder.webp";
 import {SafeAreaProvider} from "react-native-safe-area-context";
+import axios from 'axios';
+
+async function fetchGamespotArticles(): Promise<void> {
+    const API_KEY = process.env.EXPO_PUBLIC_GAMESPOT_API_KEY!;
+    const url = "http://www.gamespot.com/api/articles/";
+
+    try {
+        const response = await axios.get(url, {
+            params: {
+                api_key: API_KEY,
+                format: 'json',
+                sort: 'publish_date:desc',
+                field_list: 'id,title,deck,publish_date,image,site_detail_url',
+            },
+        });
+
+        const resultString = JSON.stringify(response.data, null, 2);
+        console.log(`Gamespot API Response:\n${resultString}`);
+
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error("Axios Error:", error.message);
+        } else {
+            console.error("Unexpected Error:", error);
+        }
+    }
+}
 
 export function NewsScreen() {
+
+    fetchGamespotArticles().then(_ => {});
 
     const FAKE_DATA = [
         {
