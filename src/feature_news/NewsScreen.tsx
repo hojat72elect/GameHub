@@ -1,10 +1,11 @@
-import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
+import {FlatList, Image, Linking, Text, TouchableOpacity, View} from "react-native";
 import idleImage from "@/assets/images/game_landscape_placeholder.webp";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import axios from 'axios';
 import {NewsApiResponse} from "@/src/feature_news/domain/NewsApiResponse";
+import {useEffect, useState} from "react";
 
-async function fetchGamespotArticles(): Promise<void> {
+async function fetchGamespotArticles(): Promise<NewsApiResponse | null> {
     const API_KEY = process.env.EXPO_PUBLIC_GAMESPOT_API_KEY!;
     const url = "http://www.gamespot.com/api/articles/";
 
@@ -18,11 +19,7 @@ async function fetchGamespotArticles(): Promise<void> {
             },
         });
 
-
-        const newsData = response.data;
-        console.log(`the first news title : ${newsData.results[0].title}`);
-        console.log(`Total number of results : ${newsData.number_of_total_results}`);
-
+        return response.data;
 
     } catch (error) {
         if (axios.isAxiosError(error)) {
@@ -30,37 +27,39 @@ async function fetchGamespotArticles(): Promise<void> {
         } else {
             console.error("Unexpected Error:", error);
         }
+        return null;
     }
 }
 
 export function NewsScreen() {
+    const [newsData, setNewsData] = useState<NewsApiResponse | null>(null);
 
-    fetchGamespotArticles().then(_ => {});
+    useEffect(() => {
+        fetchGamespotArticles().then(data => {
+            if (data) {
+                setNewsData(data);
+            }
+        });
+    }, []);
 
-    const FAKE_DATA = [
-        {
-            id: 1,
-            title: "It's Not A Switch 2 Mario Galaxy Bundle, But This Deal Is The Next Best Thing",
-            description: "You can save $20 on two of the greatest Super Mario games of all time when you buy a Switch 2 console.",
-            timestamp: 'Apr 6, 10:13 AM',
-        },
-        {
-            id: 2,
-            title: "Star Wars Actor Sam Witwer Says A Darth Maul Game Could Be Something",
-            description: "The voice of Maul discusses the potential for a standalone title...",
-            timestamp: 'Apr 6, 8:11 AM',
-        },
-        {
-            id: 3,
-            title: "Fanatical's New Wholesome Collection Includes Up To 18 Cozy PC Games",
-            description: "Fill out your collection of quaint titles with games like Henry Halfhead, Dogpile, and so much more.",
-            timestamp: 'Apr 6, 6:58 AM',
-        },
-    ];
-
-    const NewsCard = (item: { id: number; title: string; description: string; timestamp: string }) => (
-        <TouchableOpacity activeOpacity={0.9} style={{backgroundColor: "#FFF", marginBottom: 25, overflow: "hidden"}}>
-            <Image source={idleImage} resizeMode="cover" style={{width: "100%", height: 200}}/>
+    const NewsCard = (item: {
+        id: number;
+        title: string;
+        deck: string;
+        publish_date: string;
+        image: any;
+        site_detail_url: string
+    }) => (
+        <TouchableOpacity
+            activeOpacity={0.9}
+            style={{backgroundColor: "#FFF", marginBottom: 25, overflow: "hidden"}}
+            onPress={() => Linking.openURL(item.site_detail_url)}
+        >
+            <Image
+                source={item.image?.original ? {uri: item.image.original} : idleImage}
+                resizeMode="cover"
+                style={{width: "100%", height: 200}}
+            />
             <View style={{padding: 15}}>
                 <Text style={{
                     fontSize: 20,
@@ -71,9 +70,12 @@ export function NewsScreen() {
                 }}>{item.title}</Text>
                 <Text numberOfLines={3}
                       style={{fontSize: 16, color: "#444", lineHeight: 22, marginBottom: 10}}
-                >{item.description}</Text>
+                >{item.deck}</Text>
                 <View>
-                    <Text style={{fontSize: 14, color: "#888"}}>🕒 {item.timestamp}</Text>
+                    <Text style={{
+                        fontSize: 14,
+                        color: "#888"
+                    }}>🕒 {new Date(item.publish_date).toLocaleDateString()}</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -92,7 +94,7 @@ export function NewsScreen() {
             </View>
 
             <FlatList
-                data={FAKE_DATA}
+                data={newsData?.results || []}
                 renderItem={({item}) => <NewsCard {...item}/>}
                 keyExtractor={(item) => String(item.id)}
                 showsVerticalScrollIndicator={true}
