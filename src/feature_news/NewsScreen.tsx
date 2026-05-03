@@ -2,13 +2,14 @@ import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
 import idleImage from "@/assets/images/game_landscape_placeholder.webp";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import axios from 'axios';
+import {NewsApiResponse} from "@/src/feature_news/domain/NewsApiResponse";
 
 async function fetchGamespotArticles(): Promise<void> {
     const API_KEY = process.env.EXPO_PUBLIC_GAMESPOT_API_KEY!;
     const url = "http://www.gamespot.com/api/articles/";
 
     try {
-        const response = await axios.get(url, {
+        const response = await axios.get<NewsApiResponse>(url, {
             params: {
                 api_key: API_KEY,
                 format: 'json',
@@ -17,8 +18,11 @@ async function fetchGamespotArticles(): Promise<void> {
             },
         });
 
-        const resultString = JSON.stringify(response.data, null, 2);
-        console.log(`Gamespot API Response:\n${resultString}`);
+
+        const newsData = response.data;
+        console.log(`the first news title : ${newsData.results[0].title}`);
+        console.log(`Total number of results : ${newsData.number_of_total_results}`);
+
 
     } catch (error) {
         if (axios.isAxiosError(error)) {
