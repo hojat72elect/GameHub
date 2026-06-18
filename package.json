@@ -6,7 +6,6 @@
     "start": "bunx expo start",
     "android": "bunx expo run:android",
     "web": "expo start --web",
-    "lint": "expo lint"
   },
   "dependencies": {
     "@expo/ngrok": "^4.1.0",
@@ -45,8 +44,6 @@
   "devDependencies": {
     "@types/react": "~19.1.0",
     "@types/react-native": "^0.72.8",
-    "eslint": "^9.25.0",
-    "eslint-config-expo": "~10.0.0",
     "react-native-svg-transformer": "^1.5.3",
     "typescript": "~5.9.2"
   },
