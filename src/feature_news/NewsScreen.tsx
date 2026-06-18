@@ -1,45 +1,37 @@
 import {FlatList, Image, Linking, Text, TouchableOpacity, View} from "react-native";
 import idleImage from "@/assets/images/game_landscape_placeholder.webp";
 import {SafeAreaProvider} from "react-native-safe-area-context";
-import axios from 'axios';
-import {NewsApiResponse} from "@/src/feature_news/domain/NewsApiResponse";
 import {useEffect, useState} from "react";
+import mockedNewsApiResponse from "../feature_news/api/mocked_news_api_response.json";
+import {NewsApiResultItem} from "@/src/feature_news/domain/NewsApiResultItem";
 
-async function fetchGamespotArticles(): Promise<NewsApiResponse | null> {
-    const API_KEY = process.env.EXPO_PUBLIC_GAMESPOT_API_KEY!;
-    const url = "http://www.gamespot.com/api/articles/";
+function fetchGamespotArticles(): NewsApiResultItem[] {
 
-    try {
-        const response = await axios.get<NewsApiResponse>(url, {
-            params: {
-                api_key: API_KEY,
-                format: 'json',
-                sort: 'publish_date:desc',
-                field_list: 'id,title,deck,publish_date,image,site_detail_url',
-            },
-        });
+    const mapJsonToNewsItems = (rawItems: typeof mockedNewsApiResponse): NewsApiResultItem[] => {
+        return rawItems.map((item, index) => ({
+            id: index,
+            title: item.title,
+            deck: item.lede,
+            publish_date: item.release_time,
+            site_detail_url: item.link,
+            image: {
+                square_tiny: item.image_url,
+                screen_tiny: item.image_url,
+                square_small: item.image_url,
+                original: item.image_url,
+            }
+        }));
 
-        return response.data;
+    };
 
-    } catch (error) {
-        if (axios.isAxiosError(error)) {
-            console.error("Axios Error:", error.message);
-        } else {
-            console.error("Unexpected Error:", error);
-        }
-        return null;
-    }
+    return mapJsonToNewsItems(mockedNewsApiResponse);
 }
 
 export function NewsScreen() {
-    const [newsData, setNewsData] = useState<NewsApiResponse | null>(null);
+    const [newsData, setNewsData] = useState<NewsApiResultItem[]>([]);
 
     useEffect(() => {
-        fetchGamespotArticles().then(data => {
-            if (data) {
-                setNewsData(data);
-            }
-        });
+        setNewsData(fetchGamespotArticles());
     }, []);
 
     const NewsCard = (item: {
@@ -94,7 +86,7 @@ export function NewsScreen() {
             </View>
 
             <FlatList
-                data={newsData?.results || []}
+                data={newsData || []}
                 renderItem={({item}) => <NewsCard {...item}/>}
                 keyExtractor={(item) => String(item.id)}
                 showsVerticalScrollIndicator={true}
