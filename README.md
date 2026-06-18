@@ -1,50 +1,81 @@
-# Welcome to your Expo app 👋
+# GameHub 🎮
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern mobile app for gaming discovery and news hub. GameHub helps users to discover new games, stay updated with latest news of gaming industry, and follow favorite titles.
 
-## Get started
+## Main Features
 
-1. Install dependencies
+- **Discovery**: Browse games across categories of `Popular`, `Recently Released`, `Coming Soon`, and `Most Anticipated`.
+- **News**: Stay updated with the latest news about gaming and other related industries.
+- **Likes**: Save and manage your favorite games.
+- **Dark Mode Support**: Automatic theme switching based on system preferences.
+- **Responsive Design**: Optimized for various screen sizes with safe area handling.
 
-   ```bash
-   bun install
-   ```
+## Tech Stack
 
-2. Start the app
+- **Framework**: React Native 0.81.5 with React 19.1.0
+- **Platform**: Expo SDK ~54.0.33
+- **Language**: TypeScript
+- **Navigation**: expo-router (file-based routing) with React Navigation bottom tabs
+- **HTTP Client**: Axios for API requests
+- **UI Components**:
+  - react-native-reanimated for animations
+  - react-native-gesture-handler for gestures
+  - react-native-safe-area-context for safe areas
+  - react-native-svg for custom icons
+- **Expo Modules**:
+  - expo-haptics for haptic feedback
+  - expo-image for optimized image handling
+  - expo-file-system for file operations
+  - expo-web-browser for in-app browsing
+  - expo-splash-screen for splash screen
+  - expo-updates for OTA updates
+- **Package Manager**: Bun
 
-   ```bash
-   bunx expo start
-   ```
+## Getting Started
 
-In the output, you'll find options to open the app in a
+### Prerequisites
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+**Please pay attention tht at the time of writing, this app is only optimised for Android OS; if you are interested in porting this app to iOS, web, and/or desktop, fell free to fork the repo.**
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- Node.js (recommended to use Bun as package manager)
+- Expo CLI
+- For Android: Android Studio with Android SDK
 
-## Get a fresh project
+### Development
 
-When you're ready, run:
+1. Install dependencies:
 
 ```bash
-npm run reset-project
+bun install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Start the development server:
 
-## Learn more
+```bash
+bunx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+3. Run on your preferred platform:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- **Android**: Press `a` in the terminal
+- **Web Browser**: Press `w` in the terminal
 
-## Join the community
+## Current Status
 
-Join our community of developers creating universal apps.
+- ✅ Discover screen with game categories
+- ✅ News screen with Gamespot integration (mocked data)
+- ✅ Settings screen with theme options
+- ⏳ Likes screen (placeholder - needs implementation)
+- ⏳ Real API integration for news
+- ⏳ Game details screen
+- ⏳ Search functionality
+- ⏳ User authentication
+- ⏳ Persistent storage for likes
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Contributing
+
+Contributions are welcome! Please feel free to submit a PR or open an issue about anything you like to see in this app.
+
+## License
+
+This project is private and proprietary.
