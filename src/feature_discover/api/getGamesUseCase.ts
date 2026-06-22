@@ -6,7 +6,7 @@ import {getAccessTokenUseCase} from "@/src/feature_discover/api/getAccessTokenUs
  * Fetches popular, recently released, coming soon, and most anticipated games
  * in a single batch request using the IGDB multi-query endpoint.
  */
-export async function fetchDiscoverData(): Promise<DiscoverScreenData> {
+export async function getGamesUseCase(): Promise<DiscoverScreenData> {
     const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
     const token = await getAccessTokenUseCase();
 

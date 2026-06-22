@@ -3,7 +3,7 @@ import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SearchIcon from "@/assets/svg/magnify.svg";
 import React from "react";
-import {fetchDiscoverData} from "./api/igdbService";
+import {getGamesUseCase} from "./api/getGamesUseCase";
 import {Game} from "@/src/feature_discover/domain/Game";
 
 /**
@@ -67,7 +67,7 @@ export function DiscoverScreen() {
         }
         setError(null);
         try {
-            const data = await fetchDiscoverData();
+            const data = await getGamesUseCase();
             setPopular(data.popularGames);
             setRecent(data.recentlyReleasedGames);
             setSoon(data.comingSoonGames);
