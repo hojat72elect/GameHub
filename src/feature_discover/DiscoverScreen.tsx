@@ -3,7 +3,7 @@ import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SearchIcon from "@/assets/svg/magnify.svg";
 import React from "react";
-import {fetchDiscoverData, Game} from "./services/igdbService";
+import {fetchDiscoverData, Game} from "../services/igdbService";
 
 /**
  * Each one of the seemingly identical sections you see in the discover screen.
@@ -49,7 +49,7 @@ function DiscoverScreenSection({title, data}: { title: string, data: Game[] }) {
     </View>);
 }
 
-export function DiscoverScreen(): React.JSX.Element {
+export function DiscoverScreen() {
     const [popular, setPopular] = React.useState<Game[]>([]);
     const [recent, setRecent] = React.useState<Game[]>([]);
     const [soon, setSoon] = React.useState<Game[]>([]);

@@ -1,4 +1,4 @@
-import {DiscoverScreen} from "@/src/DiscoverScreen";
+import {DiscoverScreen} from "@/src/feature_discover/DiscoverScreen";
 
 export default function HomeScreen() {
 
