@@ -1,50 +1,6 @@
 import {Game} from "@/src/feature_discover/domain/Game";
 import {DiscoverScreenData} from "@/src/feature_discover/domain/DiscoverScreenData";
-
-let accessToken: string | null = null;
-let tokenExpiryTime: number = 0;
-
-/**
- * Retrieves a valid Twitch OAuth2 access token for the IGDB API.
- * Uses cached token if it is still valid.
- */
-async function getAccessToken(): Promise<string> {
-    const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
-    const clientSecret = process.env.EXPO_PUBLIC_IGDB_SECRET;
-
-    if (!clientId || !clientSecret) {
-        throw new Error(
-            "IGDB credentials are missing. Please verify that EXPO_PUBLIC_IGDB_CLIENT_ID and EXPO_PUBLIC_IGDB_SECRET are defined in your .env file."
-        );
-    }
-
-    const now = Date.now();
-    // Re-use cached token if it expires in more than 60 seconds
-    if (accessToken && tokenExpiryTime > now + 60000) {
-        return accessToken;
-    }
-
-    const url = `https://id.twitch.tv/oauth2/token?client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials`;
-
-    const response = await fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-
-    if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Failed to retrieve access token: ${response.status} ${errorText}`);
-    }
-
-    const data = await response.json();
-    accessToken = data.access_token;
-    // expires_in is in seconds; convert to absolute time in milliseconds
-    tokenExpiryTime = now + data.expires_in * 1000;
-
-    return accessToken!;
-}
+import {getAccessTokenUseCase} from "@/src/feature_discover/api/getAccessTokenUseCase";
 
 /**
  * Fetches popular, recently released, coming soon, and most anticipated games
@@ -52,7 +8,7 @@ async function getAccessToken(): Promise<string> {
  */
 export async function fetchDiscoverData(): Promise<DiscoverScreenData> {
     const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
-    const token = await getAccessToken();
+    const token = await getAccessTokenUseCase();
 
     const currentTimestamp = Math.floor(Date.now() / 1000);
 
