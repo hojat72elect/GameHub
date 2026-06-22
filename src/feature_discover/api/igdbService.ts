@@ -10,11 +10,11 @@ export interface Game {
     hypes?: number;
 }
 
-export interface DiscoverData {
-    popular: Game[];
-    recent: Game[];
-    soon: Game[];
-    anticipated: Game[];
+export interface DiscoverScreenData {
+    popularGames: Game[];
+    recentlyReleasedGames: Game[];
+    comingSoonGames: Game[];
+    mostAnticipatedGames: Game[];
 }
 
 let accessToken: string | null = null;
@@ -66,7 +66,7 @@ async function getAccessToken(): Promise<string> {
  * Fetches popular, recently released, coming soon, and most anticipated games
  * in a single batch request using the IGDB multi-query endpoint.
  */
-export async function fetchDiscoverData(): Promise<DiscoverData> {
+export async function fetchDiscoverData(): Promise<DiscoverScreenData> {
     const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
     const token = await getAccessToken();
 
@@ -127,9 +127,9 @@ query games "anticipated" {
     };
 
     return {
-        popular: getResultByName("popular"),
-        recent: getResultByName("recent"),
-        soon: getResultByName("soon"),
-        anticipated: getResultByName("anticipated"),
+        popularGames: getResultByName("popular"),
+        recentlyReleasedGames: getResultByName("recent"),
+        comingSoonGames: getResultByName("soon"),
+        mostAnticipatedGames: getResultByName("anticipated"),
     };
 }

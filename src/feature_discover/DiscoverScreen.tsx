@@ -3,7 +3,7 @@ import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SearchIcon from "@/assets/svg/magnify.svg";
 import React from "react";
-import {fetchDiscoverData, Game} from "../services/igdbService";
+import {fetchDiscoverData, Game} from "./api/igdbService";
 
 /**
  * Each one of the seemingly identical sections you see in the discover screen.
@@ -67,10 +67,10 @@ export function DiscoverScreen() {
         setError(null);
         try {
             const data = await fetchDiscoverData();
-            setPopular(data.popular);
-            setRecent(data.recent);
-            setSoon(data.soon);
-            setAnticipated(data.anticipated);
+            setPopular(data.popularGames);
+            setRecent(data.recentlyReleasedGames);
+            setSoon(data.comingSoonGames);
+            setAnticipated(data.mostAnticipatedGames);
         } catch (err: any) {
             console.error("Error loading IGDB discover data:", err);
             setError(err.message || "Failed to load discover data");
