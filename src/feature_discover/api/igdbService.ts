@@ -1,14 +1,4 @@
-export interface Game {
-    id: number;
-    name: string;
-    cover?: {
-        id: number;
-        image_id: string;
-    };
-    first_release_date?: number;
-    follows?: number;
-    hypes?: number;
-}
+import {Game} from "@/src/feature_discover/domain/Game";
 
 export interface DiscoverScreenData {
     popularGames: Game[];

@@ -3,7 +3,8 @@ import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SearchIcon from "@/assets/svg/magnify.svg";
 import React from "react";
-import {fetchDiscoverData, Game} from "./api/igdbService";
+import {fetchDiscoverData} from "./api/igdbService";
+import {Game} from "@/src/feature_discover/domain/Game";
 
 /**
  * Each one of the seemingly identical sections you see in the discover screen.
