@@ -4,8 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "bunx expo start",
-    "android": "bunx expo run:android",
-    "web": "expo start --web"
+    "android": "bunx expo run:android"
   },
   "dependencies": {
     "@expo/ngrok": "^4.1.0",
@@ -28,7 +27,6 @@
     "expo-symbols": "~1.0.8",
     "expo-system-ui": "~6.0.9",
     "expo-updates": "~29.0.16",
-    "expo-web-browser": "~15.0.10",
     "fs-extra": "^11.3.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -38,7 +36,6 @@
     "react-native-safe-area-context": "~5.6.0",
     "react-native-screens": "~4.16.0",
     "react-native-svg": "15.12.1",
-    "react-native-web": "~0.21.0",
     "react-native-worklets": "0.5.1"
   },
   "devDependencies": {
