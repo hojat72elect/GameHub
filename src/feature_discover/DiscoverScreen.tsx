@@ -5,6 +5,7 @@ import SearchIcon from "@/assets/svg/magnify.svg";
 import React from "react";
 import {getGamesUseCase} from "./api/getGamesUseCase";
 import {Game} from "@/src/feature_discover/domain/Game";
+import {router} from "expo-router";
 
 /**
  * Each one of the seemingly identical sections you see in the discover screen.
@@ -36,12 +37,16 @@ function DiscoverScreenSection({title, data}: { title: string, data: Game[] }) {
                     ? {uri: `https://images.igdb.com/igdb/image/upload/t_cover_big/${item.cover.image_id}.jpg`}
                     : idleImage;
                 return (
-                    <TouchableOpacity key={item.id} style={{
-                        marginRight: 12,
-                        borderRadius: 8,
-                        overflow: "hidden",
-                        backgroundColor: "#EEE"
-                    }}>
+                    <TouchableOpacity 
+                        key={item.id} 
+                        style={{
+                            marginRight: 12,
+                            borderRadius: 8,
+                            overflow: "hidden",
+                            backgroundColor: "#EEE"
+                        }}
+                        onPress={() => router.push('/game-details')}
+                    >
                         <Image source={coverUrl} resizeMode="cover" style={{width: 110, height: 180}}/>
                     </TouchableOpacity>
                 );
