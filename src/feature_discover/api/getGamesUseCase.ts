@@ -18,28 +18,28 @@ query games "popular" {
     fields name, cover.image_id, follows;
     where cover != null & game_type = 0;
     sort follows desc;
-    limit 10;
+    limit 20;
 };
 
 query games "recent" {
     fields name, cover.image_id, first_release_date;
     where first_release_date <= ${currentTimestamp} & cover != null & game_type = 0;
     sort first_release_date desc;
-    limit 10;
+    limit 20;
 };
 
 query games "soon" {
     fields name, cover.image_id, first_release_date;
     where first_release_date > ${currentTimestamp} & cover != null & game_type = 0;
     sort first_release_date asc;
-    limit 10;
+    limit 20;
 };
 
 query games "anticipated" {
     fields name, cover.image_id, hypes, first_release_date;
     where hypes != null & first_release_date > ${currentTimestamp} & cover != null & game_type = 0;
     sort hypes desc;
-    limit 10;
+    limit 20;
 };
 `.trim();
 
