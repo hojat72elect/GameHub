@@ -27,7 +27,10 @@ function DiscoverScreenSection({title, data}: { title: string, data: Game[] }) {
         }}>
             <Text style={{fontSize: 22, fontWeight: "bold", fontFamily: "serif", color: "#333"}}>{title}</Text>
             <TouchableOpacity>
-                <Text style={{color: "#FF4B7D", fontWeight: "600", fontSize: 14}}>SEE ALL</Text>
+                <Text
+                    style={{color: "#FF4B7D", fontWeight: "600", fontSize: 14}}
+                    onPress={() => router.push('/category-games')}
+                >SEE ALL</Text>
             </TouchableOpacity>
         </View>
 
