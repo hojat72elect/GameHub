@@ -138,7 +138,7 @@ export function DiscoverScreen() {
                 borderBottomColor: "#F0F0F0"
             }}>
                 <Text style={{fontSize: 28, fontWeight: "bold"}}>Discover</Text>
-                <TouchableOpacity>
+                <TouchableOpacity   onPress={() => router.push('/search')}>
                     <SearchIcon width={24} height={24} color="black"/>
                 </TouchableOpacity>
             </View>
