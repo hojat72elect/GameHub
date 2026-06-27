@@ -6,6 +6,5 @@ export interface Game {
         image_id: string;
     };
     first_release_date?: number;
-    follows?: number;
     hypes?: number;
 }
