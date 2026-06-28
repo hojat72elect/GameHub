@@ -6,6 +6,7 @@ import React from "react";
 import {getGamesUseCase} from "./api/getGamesUseCase";
 import {Game} from "@/src/feature_discover/domain/Game";
 import {router} from "expo-router";
+import {GameCategory} from "@/src/feature_discover/domain/GameCategory";
 
 /**
  * Each one of the seemingly identical sections you see in the discover screen.
@@ -16,7 +17,7 @@ import {router} from "expo-router";
  * 3 - Coming Soon
  * 4 - Most anticipated
  */
-function DiscoverScreenSection({title, data}: { title: string, data: Game[] }) {
+function DiscoverScreenSection({title, data}: { title: GameCategory, data: Game[] }) {
     return (<View style={{marginBottom: 25}}>
         <View style={{
             flexDirection: "row",
@@ -25,11 +26,22 @@ function DiscoverScreenSection({title, data}: { title: string, data: Game[] }) {
             paddingHorizontal: 15,
             marginBottom: 10
         }}>
-            <Text style={{fontSize: 22, fontWeight: "bold", fontFamily: "serif", color: "#333"}}>{title}</Text>
+            <Text style={{fontSize: 22, fontWeight: "bold", fontFamily: "serif", color: "#333"}}>{(() => {
+                switch (title) {
+                    case GameCategory.Popular:
+                        return "Popular";
+                    case GameCategory.RecentlyReleased:
+                        return "Recently Released";
+                    case GameCategory.ComingSoon:
+                        return "Coming Soon";
+                    case GameCategory.MostAnticipated:
+                        return "Most Anticipated"
+                }
+            })()}</Text>
             <TouchableOpacity>
                 <Text
                     style={{color: "#FF4B7D", fontWeight: "600", fontSize: 14}}
-                    onPress={() => router.push('/category-games')}
+                    onPress={() => router.push({pathname: '/category-games', params: {category: title}})}
                 >SEE ALL</Text>
             </TouchableOpacity>
         </View>
@@ -40,8 +52,8 @@ function DiscoverScreenSection({title, data}: { title: string, data: Game[] }) {
                     ? {uri: `https://images.igdb.com/igdb/image/upload/t_cover_big/${item.cover.image_id}.jpg`}
                     : idleImage;
                 return (
-                    <TouchableOpacity 
-                        key={item.id} 
+                    <TouchableOpacity
+                        key={item.id}
                         style={{
                             marginRight: 12,
                             borderRadius: 8,
@@ -138,7 +150,7 @@ export function DiscoverScreen() {
                 borderBottomColor: "#F0F0F0"
             }}>
                 <Text style={{fontSize: 28, fontWeight: "bold"}}>Discover</Text>
-                <TouchableOpacity   onPress={() => router.push('/search')}>
+                <TouchableOpacity onPress={() => router.push('/search')}>
                     <SearchIcon width={24} height={24} color="black"/>
                 </TouchableOpacity>
             </View>
@@ -150,10 +162,10 @@ export function DiscoverScreen() {
                                     tintColor="#FF4B7D"/>
                 }
             >
-                <DiscoverScreenSection title="Popular" data={popular}/>
-                <DiscoverScreenSection title="Recently Released" data={recent}/>
-                <DiscoverScreenSection title="Coming Soon" data={soon}/>
-                <DiscoverScreenSection title="Most Anticipated" data={anticipated}/>
+                <DiscoverScreenSection title={GameCategory.Popular} data={popular}/>
+                <DiscoverScreenSection title={GameCategory.RecentlyReleased} data={recent}/>
+                <DiscoverScreenSection title={GameCategory.ComingSoon} data={soon}/>
+                <DiscoverScreenSection title={GameCategory.MostAnticipated} data={anticipated}/>
             </ScrollView>
         </SafeAreaProvider>
     );
