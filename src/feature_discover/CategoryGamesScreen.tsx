@@ -1,6 +1,6 @@
 import {ActivityIndicator, Image, RefreshControl, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {SafeAreaProvider} from "react-native-safe-area-context";
-import {useLocalSearchParams} from "expo-router";
+import {router, useLocalSearchParams} from "expo-router";
 import {GameCategory} from "@/src/feature_discover/domain/GameCategory";
 import {Game} from "@/src/feature_discover/domain/Game";
 import {getGamesByCategoryUseCase} from "./api/getGamesByCategoryUseCase";
@@ -127,6 +127,7 @@ export function CategoryGamesScreen() {
                                     overflow: "hidden",
                                     backgroundColor: "#EEE"
                                 }}
+                                onPress={()=> router.push("/game-details")}
                             >
                                 <Image source={coverUrl} resizeMode="cover" style={{width: "100%", height: 200}}/>
                                 <View style={{padding: 10}}>
