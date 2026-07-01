@@ -127,7 +127,7 @@ export function CategoryGamesScreen() {
                                     overflow: "hidden",
                                     backgroundColor: "#EEE"
                                 }}
-                                onPress={()=> router.push("/game-details")}
+                                onPress={()=> router.push({pathname: '/game-details', params: {gameId: item.id}})}
                             >
                                 <Image source={coverUrl} resizeMode="cover" style={{width: "100%", height: 200}}/>
                                 <View style={{padding: 10}}>

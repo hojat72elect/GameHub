@@ -2,7 +2,7 @@ import {ActivityIndicator, Image, RefreshControl, ScrollView, Text, TouchableOpa
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SearchIcon from "@/assets/svg/magnify.svg";
-import {useState, useEffect} from "react";
+import {useEffect, useState} from "react";
 import {getGamesUseCase} from "./api/getGamesUseCase";
 import {Game} from "@/src/feature_discover/domain/Game";
 import {router} from "expo-router";
@@ -60,7 +60,7 @@ function DiscoverScreenSection({title, data}: { title: GameCategory, data: Game[
                             overflow: "hidden",
                             backgroundColor: "#EEE"
                         }}
-                        onPress={() => router.push('/game-details')}
+                        onPress={() => router.push({pathname: '/game-details', params: {gameId: item.id}})}
                     >
                         <Image source={coverUrl} resizeMode="cover" style={{width: 110, height: 180}}/>
                     </TouchableOpacity>
