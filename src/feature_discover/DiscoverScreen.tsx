@@ -2,7 +2,7 @@ import {ActivityIndicator, Image, RefreshControl, ScrollView, Text, TouchableOpa
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SearchIcon from "@/assets/svg/magnify.svg";
-import React from "react";
+import {useState, useEffect} from "react";
 import {getGamesUseCase} from "./api/getGamesUseCase";
 import {Game} from "@/src/feature_discover/domain/Game";
 import {router} from "expo-router";
@@ -71,13 +71,13 @@ function DiscoverScreenSection({title, data}: { title: GameCategory, data: Game[
 }
 
 export function DiscoverScreen() {
-    const [popular, setPopular] = React.useState<Game[]>([]);
-    const [recent, setRecent] = React.useState<Game[]>([]);
-    const [soon, setSoon] = React.useState<Game[]>([]);
-    const [anticipated, setAnticipated] = React.useState<Game[]>([]);
-    const [isLoading, setIsLoading] = React.useState<boolean>(true);
-    const [refreshing, setRefreshing] = React.useState<boolean>(false);
-    const [error, setError] = React.useState<string | null>(null);
+    const [popular, setPopular] = useState<Game[]>([]);
+    const [recent, setRecent] = useState<Game[]>([]);
+    const [soon, setSoon] = useState<Game[]>([]);
+    const [anticipated, setAnticipated] = useState<Game[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [refreshing, setRefreshing] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
     const loadData = async (showRefreshIndicator = false) => {
         if (showRefreshIndicator) {
@@ -101,7 +101,7 @@ export function DiscoverScreen() {
         }
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         loadData();
     }, []);
 
