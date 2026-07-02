@@ -1,30 +1,30 @@
 import {ActivityIndicator, Image, RefreshControl, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {router, useLocalSearchParams} from "expo-router";
-import {GameCategory} from "@/src/feature_discover/domain/GameCategory";
+import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
 import {Game} from "@/src/feature_discover/domain/Game";
 import {getGamesByCategoryUseCase} from "./api/getGamesByCategoryUseCase";
 import React, {useEffect, useState} from "react";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 
-export function CategoryGamesScreen() {
+export function GamesCategoryScreen() {
     const {category} = useLocalSearchParams<{ category?: string }>();
     const [games, setGames] = useState<Game[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
-    const chosenCategory = category ? parseInt(category, 10) as GameCategory : null;
+    const chosenCategory = category ? parseInt(category, 10) as GamesCategory : null;
 
     const getCategoryTitle = () => {
         switch (chosenCategory) {
-            case GameCategory.Popular:
+            case GamesCategory.Popular:
                 return "Popular Games";
-            case GameCategory.RecentlyReleased:
+            case GamesCategory.RecentlyReleased:
                 return "Recently Released Games";
-            case GameCategory.ComingSoon:
+            case GamesCategory.ComingSoon:
                 return "Coming Soon Games";
-            case GameCategory.MostAnticipated:
+            case GamesCategory.MostAnticipated:
                 return "Most Anticipated Games";
             default:
                 return "";

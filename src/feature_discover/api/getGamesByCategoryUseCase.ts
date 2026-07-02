@@ -1,5 +1,5 @@
 import {Game} from "@/src/feature_discover/domain/Game";
-import {GameCategory} from "@/src/feature_discover/domain/GameCategory";
+import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
 import {getAccessTokenUseCase} from "@/src/feature_discover/api/getAccessTokenUseCase";
 
 /**
@@ -7,7 +7,7 @@ import {getAccessTokenUseCase} from "@/src/feature_discover/api/getAccessTokenUs
  *
  * TODO : I still need to add pagination to this UseCase.
  */
-export async function getGamesByCategoryUseCase(category: GameCategory): Promise<Game[]> {
+export async function getGamesByCategoryUseCase(category: GamesCategory): Promise<Game[]> {
     const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
     const token = await getAccessTokenUseCase();
 
@@ -16,7 +16,7 @@ export async function getGamesByCategoryUseCase(category: GameCategory): Promise
     let query: string;
 
     switch (category) {
-        case GameCategory.Popular:
+        case GamesCategory.Popular:
             query = `
                 fields name, cover.image_id, follows;
                 where cover != null & game_type = 0;
@@ -24,7 +24,7 @@ export async function getGamesByCategoryUseCase(category: GameCategory): Promise
                 limit 50;
             `;
             break;
-        case GameCategory.RecentlyReleased:
+        case GamesCategory.RecentlyReleased:
             query = `
                 fields name, cover.image_id, first_release_date;
                 where first_release_date <= ${currentTimestamp} & cover != null & game_type = 0;
@@ -32,7 +32,7 @@ export async function getGamesByCategoryUseCase(category: GameCategory): Promise
                 limit 50;
             `;
             break;
-        case GameCategory.ComingSoon:
+        case GamesCategory.ComingSoon:
             query = `
                 fields name, cover.image_id, first_release_date;
                 where first_release_date > ${currentTimestamp} & cover != null & game_type = 0;
@@ -40,7 +40,7 @@ export async function getGamesByCategoryUseCase(category: GameCategory): Promise
                 limit 50;
             `;
             break;
-        case GameCategory.MostAnticipated:
+        case GamesCategory.MostAnticipated:
             query = `
                 fields name, cover.image_id, hypes, first_release_date;
                 where hypes != null & first_release_date > ${currentTimestamp} & cover != null & game_type = 0;

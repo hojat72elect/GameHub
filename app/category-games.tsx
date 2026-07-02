@@ -1,7 +1,7 @@
-import {CategoryGamesScreen} from "@/src/feature_discover/CategoryGamesScreen";
+import {GamesCategoryScreen} from "@/src/feature_discover/GamesCategoryScreen";
 
 export default function category_games() {
     return (
-        <CategoryGamesScreen/>
+        <GamesCategoryScreen/>
     );
 }

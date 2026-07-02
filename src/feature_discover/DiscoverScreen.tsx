@@ -1,74 +1,12 @@
-import {ActivityIndicator, Image, RefreshControl, ScrollView, Text, TouchableOpacity, View} from "react-native";
-import idleImage from "@/assets/images/game_portrait_placeholder.webp";
+import {ActivityIndicator, RefreshControl, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SearchIcon from "@/assets/svg/magnify.svg";
 import {useEffect, useState} from "react";
 import {getGamesUseCase} from "./api/getGamesUseCase";
 import {Game} from "@/src/feature_discover/domain/Game";
 import {router} from "expo-router";
-import {GameCategory} from "@/src/feature_discover/domain/GameCategory";
-
-/**
- * Each one of the seemingly identical sections you see in the discover screen.
- * Right now, we have these 4 sections :
- *
- * 1 - Popular
- * 2 - Recently released
- * 3 - Coming Soon
- * 4 - Most anticipated
- */
-function DiscoverScreenSection({title, data}: { title: GameCategory, data: Game[] }) {
-    return (<View style={{marginBottom: 25}}>
-        <View style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingHorizontal: 15,
-            marginBottom: 10
-        }}>
-            <Text style={{fontSize: 22, fontWeight: "bold", fontFamily: "serif", color: "#333"}}>{(() => {
-                switch (title) {
-                    case GameCategory.Popular:
-                        return "Popular";
-                    case GameCategory.RecentlyReleased:
-                        return "Recently Released";
-                    case GameCategory.ComingSoon:
-                        return "Coming Soon";
-                    case GameCategory.MostAnticipated:
-                        return "Most Anticipated"
-                }
-            })()}</Text>
-            <TouchableOpacity>
-                <Text
-                    style={{color: "#FF4B7D", fontWeight: "600", fontSize: 14}}
-                    onPress={() => router.push({pathname: '/category-games', params: {category: title}})}
-                >SEE ALL</Text>
-            </TouchableOpacity>
-        </View>
-
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{paddingLeft: 12}}>
-            {data.map((item) => {
-                const coverUrl = item.cover?.image_id
-                    ? {uri: `https://images.igdb.com/igdb/image/upload/t_cover_big/${item.cover.image_id}.jpg`}
-                    : idleImage;
-                return (
-                    <TouchableOpacity
-                        key={item.id}
-                        style={{
-                            marginRight: 12,
-                            borderRadius: 8,
-                            overflow: "hidden",
-                            backgroundColor: "#EEE"
-                        }}
-                        onPress={() => router.push({pathname: '/game-details', params: {gameId: item.id}})}
-                    >
-                        <Image source={coverUrl} resizeMode="cover" style={{width: 110, height: 180}}/>
-                    </TouchableOpacity>
-                );
-            })}
-        </ScrollView>
-    </View>);
-}
+import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
+import {DiscoverScreenSection} from "@/src/feature_discover/DiscoverScreenSection";
 
 export function DiscoverScreen() {
     const [popular, setPopular] = useState<Game[]>([]);
@@ -162,12 +100,11 @@ export function DiscoverScreen() {
                                     tintColor="#FF4B7D"/>
                 }
             >
-                <DiscoverScreenSection title={GameCategory.Popular} data={popular}/>
-                <DiscoverScreenSection title={GameCategory.RecentlyReleased} data={recent}/>
-                <DiscoverScreenSection title={GameCategory.ComingSoon} data={soon}/>
-                <DiscoverScreenSection title={GameCategory.MostAnticipated} data={anticipated}/>
+                <DiscoverScreenSection title={GamesCategory.Popular} data={popular}/>
+                <DiscoverScreenSection title={GamesCategory.RecentlyReleased} data={recent}/>
+                <DiscoverScreenSection title={GamesCategory.ComingSoon} data={soon}/>
+                <DiscoverScreenSection title={GamesCategory.MostAnticipated} data={anticipated}/>
             </ScrollView>
         </SafeAreaProvider>
     );
 }
-
