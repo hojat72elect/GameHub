@@ -1,12 +1,16 @@
 import {Game} from "@/src/feature_discover/domain/Game";
-import {DiscoverScreenData} from "@/src/feature_discover/domain/DiscoverScreenData";
 import {AccessTokenDatasource} from "@/src/feature_discover/api/AccessTokenDatasource";
 
 /**
  * Fetches popular, recently released, coming soon, and most anticipated games
  * in a single batch request using the IGDB multi-query endpoint.
  */
-export async function getGamesUseCase(): Promise<DiscoverScreenData> {
+export async function getGamesUseCase(): Promise<{
+    popularGames: Game[];
+    recentlyReleasedGames: Game[];
+    comingSoonGames: Game[];
+    mostAnticipatedGames: Game[];
+}> {
     const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
     const token = await AccessTokenDatasource.get();
 
