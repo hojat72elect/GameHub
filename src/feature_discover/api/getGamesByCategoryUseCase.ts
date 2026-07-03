@@ -1,6 +1,6 @@
 import {Game} from "@/src/feature_discover/domain/Game";
 import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
-import {getAccessTokenUseCase} from "@/src/feature_discover/api/getAccessTokenUseCase";
+import {AccessTokenDatasource} from "@/src/feature_discover/api/AccessTokenDatasource";
 
 /**
  * Fetches games for a specific category with a larger limit for the "See All" screen.
@@ -9,7 +9,7 @@ import {getAccessTokenUseCase} from "@/src/feature_discover/api/getAccessTokenUs
  */
 export async function getGamesByCategoryUseCase(category: GamesCategory): Promise<Game[]> {
     const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
-    const token = await getAccessTokenUseCase();
+    const token = await AccessTokenDatasource.get();
 
     const currentTimestamp = Math.floor(Date.now() / 1000);
 

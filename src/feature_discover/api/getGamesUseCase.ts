@@ -1,6 +1,6 @@
 import {Game} from "@/src/feature_discover/domain/Game";
 import {DiscoverScreenData} from "@/src/feature_discover/domain/DiscoverScreenData";
-import {getAccessTokenUseCase} from "@/src/feature_discover/api/getAccessTokenUseCase";
+import {AccessTokenDatasource} from "@/src/feature_discover/api/AccessTokenDatasource";
 
 /**
  * Fetches popular, recently released, coming soon, and most anticipated games
@@ -8,7 +8,7 @@ import {getAccessTokenUseCase} from "@/src/feature_discover/api/getAccessTokenUs
  */
 export async function getGamesUseCase(): Promise<DiscoverScreenData> {
     const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
-    const token = await getAccessTokenUseCase();
+    const token = await AccessTokenDatasource.get();
 
     const currentTimestamp = Math.floor(Date.now() / 1000);
 

@@ -1,12 +1,12 @@
 import {GameDetails} from "@/src/feature_game_details/domain/GameDetails";
-import {getAccessTokenUseCase} from "@/src/feature_discover/api/getAccessTokenUseCase";
+import {AccessTokenDatasource} from "@/src/feature_discover/api/AccessTokenDatasource";
 
 /**
  * Fetches detailed information about a specific game by its ID from IGDB.
  */
 export async function getGameDetailsByIdUseCase(gameId: string): Promise<GameDetails> {
     const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
-    const token = await getAccessTokenUseCase();
+    const token = await AccessTokenDatasource.get();
 
     // Build the Apicalypse query to fetch required fields
     const body = `
