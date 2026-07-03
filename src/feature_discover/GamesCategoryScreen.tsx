@@ -3,9 +3,9 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {router, useLocalSearchParams} from "expo-router";
 import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
 import {Game} from "@/src/feature_discover/domain/Game";
-import {getGamesByCategoryUseCase} from "./api/getGamesByCategoryUseCase";
 import React, {useEffect, useState} from "react";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
+import {GamesCategoryDatasource} from "@/src/feature_discover/api/GamesCategoryDatasource";
 
 export function GamesCategoryScreen() {
     const {category} = useLocalSearchParams<{ category?: string }>();
@@ -39,7 +39,7 @@ export function GamesCategoryScreen() {
         }
         setError(null);
         try {
-            const data = await getGamesByCategoryUseCase(chosenCategory!);
+            const data = await GamesCategoryDatasource.get(chosenCategory!);
             setGames(data);
         } catch (err: any) {
             console.error("Error loading category games:", err);
@@ -127,7 +127,7 @@ export function GamesCategoryScreen() {
                                     overflow: "hidden",
                                     backgroundColor: "#EEE"
                                 }}
-                                onPress={()=> router.push({pathname: '/game-details', params: {gameId: item.id}})}
+                                onPress={() => router.push({pathname: '/game-details', params: {gameId: item.id}})}
                             >
                                 <Image source={coverUrl} resizeMode="cover" style={{width: "100%", height: 200}}/>
                                 <View style={{padding: 10}}>
