@@ -2,11 +2,11 @@ import {ActivityIndicator, RefreshControl, ScrollView, Text, TouchableOpacity, V
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SearchIcon from "@/assets/svg/magnify.svg";
 import {useEffect, useState} from "react";
-import {getGamesUseCase} from "./api/getGamesUseCase";
 import {Game} from "@/src/feature_discover/domain/Game";
 import {router} from "expo-router";
 import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
 import {DiscoverScreenSection} from "@/src/feature_discover/DiscoverScreenSection";
+import {DiscoverScreenDatasource} from "@/src/feature_discover/api/DiscoverScreenDatasource";
 
 export function DiscoverScreen() {
     const [popular, setPopular] = useState<Game[]>([]);
@@ -25,7 +25,7 @@ export function DiscoverScreen() {
         }
         setError(null);
         try {
-            const data = await getGamesUseCase();
+            const data = await DiscoverScreenDatasource.get();
             setPopular(data.popularGames);
             setRecent(data.recentlyReleasedGames);
             setSoon(data.comingSoonGames);
