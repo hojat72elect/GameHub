@@ -1,81 +1,122 @@
 # GameHub 🎮
 
-A modern mobile app for gaming discovery and news hub. GameHub helps users to discover new games, stay updated with latest news of gaming industry, and follow favorite titles.
+[![Platform](https://img.shields.io/badge/platform-Android-green.svg)](http://developer.android.com/index.html)
 
-## Main Features
+A multiplatform mobile app for browsing video games and checking the latest gaming news from around the world.
+Built entirely using TypeScript technologies.
 
-- **Discovery**: Browse games across categories of `Popular`, `Recently Released`, `Coming Soon`, and `Most Anticipated`.
-- **News**: Stay updated with the latest news about gaming and other related industries.
-- **Likes**: Save and manage your favorite games.
-- **Dark Mode Support**: Automatic theme switching based on system preferences.
-- **Responsive Design**: Optimized for various screen sizes with safe area handling.
+## Contents
+
+* [Demonstration](#demonstration)
+    * [Video](#video)
+    * [Screenshots](#screenshots)
+* [Tech Stack](#tech-stack)
+* [Development Setup](#development-setup)
+    * [IGDB](#igdb)
+    * [Gamespot](#gamespot)
+* [Contributing](#contributing)
+
+## Demonstration
+
+### Video
+
+https://github.com/user-attachments/assets/a8cde6c6-1e89-4986-a5d7-3dc98cb014c5
+
+### Screenshots
+
+<p>
+<img src="/media/screenshot1.png" width="32%"/>
+<img src="/media/screenshot2.png" width="32%"/>
+<img src="/media/screenshot3.png" width="32%"/>
+</p>
+<p>
+<img src="/media/screenshot4.png" width="32%"/>
+<img src="/media/screenshot5.png" width="32%"/>
+<img src="/media/screenshot6.png" width="32%"/>
+</p>
 
 ## Tech Stack
 
-- **Framework**: React Native 0.81.5 with React 19.1.0
-- **Platform**: Expo SDK ~54.0.33
-- **Language**: TypeScript
-- **Navigation**: expo-router (file-based routing) with React Navigation bottom tabs
-- **HTTP Client**: Axios for API requests
-- **UI Components**:
-  - react-native-reanimated for animations
-  - react-native-gesture-handler for gestures
-  - react-native-safe-area-context for safe areas
-  - react-native-svg for custom icons
-- **Expo Modules**:
-  - expo-haptics for haptic feedback
-  - expo-image for optimized image handling
-  - expo-file-system for file operations
-  - expo-web-browser for in-app browsing
-  - expo-splash-screen for splash screen
-  - expo-updates for OTA updates
-- **Package Manager**: Bun
+- [React Native](https://kotlinlang.org/) - First class and official programming language for Android
+  development.
+- [React](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
+  building native UI.
+- [Expo SDK](https://kotlinlang.org/) - First class and official programming language for Android
+    development.
+- [expo-router](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
+    building native UI.
+- [Axios ](https://kotlinlang.org/) - First class and official programming language for Android
+  development.
+- [react-native-reanimated](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
+  building native UI.
+- [react-native-gesture-handler](https://kotlinlang.org/) - First class and official programming language for Android
+    development.
+- [react-native-safe-area-context](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
+    building native UI.
+- [react-native-svg](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
+    building native UI.
+- [expo-haptics](https://kotlinlang.org/) - First class and official programming language for Android
+    development.
+- [expo-image](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
+    building native UI.
+- [expo-file-system](https://kotlinlang.org/) - First class and official programming language for Android
+  development.
+- [expo-web-browser](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
+  building native UI.
+- [expo-splash-screen](https://kotlinlang.org/) - First class and official programming language for Android
+    development.
+- [expo-updates](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
+    building native UI.
+- [Bun](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
+    building native UI.
 
-## Getting Started
+## Development Setup
 
-### Prerequisites
+You'll need to supply API/client keys for the various services that the app uses in order to build
+the application.
 
-**Please pay attention tht at the time of writing, this app is only optimised for Android OS; if you are interested in porting this app to iOS, web, and/or desktop, fell free to fork the repo.**
+### IGDB
 
-- Node.js (recommended to use Bun as package manager)
-- Expo CLI
-- For Android: Android Studio with Android SDK
+[IGDB](https://www.igdb.com/discover) is a website dedicated to combining all the relevant
+information about games into a comprehensive resource for gamers everywhere. This is the main API
+that the app uses to fetch information about pretty much any video game there is.
 
-### Development
+Check [this link](https://api-docs.igdb.com/#account-creation) on how to obtain a client ID and
+secret. Once you have obtained the keys, you can set them in your `.env`:
 
-1. Install dependencies:
-
-```bash
-bun install
+```
+TWITCH_APP_CLIENT_ID=your_client_id_here
+TWITCH_APP_CLIENT_SECRET=your_client_secret_here
 ```
 
-2. Start the development server:
+### Gamespot
 
-```bash
-bunx expo start
+[Gamespot](https://www.gamespot.com/) is a video gaming website that provides news, reviews,
+previews, downloads, and other information on video games. The app uses its API to solely retrieve
+the latest news in the gaming world.
+
+Check [this link](https://www.gamespot.com/api/) on how to obtain an API key. Once you have obtained
+the key, you can set it in your `.env`:
+
+```
+GAMESPOT_API_KEY=your_api_key_here
 ```
 
-3. Run on your preferred platform:
-
-- **Android**: Press `a` in the terminal
-- **Web Browser**: Press `w` in the terminal
-
-## Current Status
-
-- ✅ Discover screen with game categories
-- ✅ News screen with Gamespot integration (mocked data)
-- ✅ Settings screen with theme options
-- ⏳ Likes screen (placeholder - needs implementation)
-- ⏳ Real API integration for news
-- ⏳ Game details screen
-- ⏳ Search functionality
-- ⏳ User authentication
-- ⏳ Persistent storage for likes
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a PR or open an issue about anything you like to see in this app.
+❤️ Contributions are always welcome! ❤️
 
-## License
+If you'd like to help, please have a look at
+the [open issues](https://github.com/hojat72elect/GameHub/issues).
+Currently, we are particularly interested in help with migrating the application to Kotlin
+Multiplatform (KMP).
 
-This project is private and proprietary.
+Please feel free to open a pull request or an issue if you have any suggestions or improvements.
+
+
+<p align="center">
+  <a href="https://buymeacoffee.com/hojat" target="_blank">
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2tqa3dkMzFjOHFub25kZmhwbXZ3aG5jZzU0Nnc4cjhzenI5b21zbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/o7RZbs4KAA6tvM4H6j/giphy.gif" alt="buy me a cup of tea"/>
+  </a>
+</p>
