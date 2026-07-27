@@ -37,38 +37,22 @@ https://github.com/user-attachments/assets/a8cde6c6-1e89-4986-a5d7-3dc98cb014c5
 
 ## Tech Stack
 
-- [React Native](https://kotlinlang.org/) - First class and official programming language for Android
-  development.
-- [React](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
-  building native UI.
-- [Expo SDK](https://kotlinlang.org/) - First class and official programming language for Android
-    development.
-- [expo-router](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
-    building native UI.
-- [Axios ](https://kotlinlang.org/) - First class and official programming language for Android
-  development.
-- [react-native-reanimated](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
-  building native UI.
-- [react-native-gesture-handler](https://kotlinlang.org/) - First class and official programming language for Android
-    development.
-- [react-native-safe-area-context](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
-    building native UI.
-- [react-native-svg](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
-    building native UI.
-- [expo-haptics](https://kotlinlang.org/) - First class and official programming language for Android
-    development.
-- [expo-image](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
-    building native UI.
-- [expo-file-system](https://kotlinlang.org/) - First class and official programming language for Android
-  development.
-- [expo-web-browser](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
-  building native UI.
-- [expo-splash-screen](https://kotlinlang.org/) - First class and official programming language for Android
-    development.
-- [expo-updates](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
-    building native UI.
-- [Bun](https://developer.android.com/jetpack/compose) - Android’s modern toolkit for
-    building native UI.
+- [React Native](https://reactnative.dev/) - Multiplatform app development framework for JavaScript/TypeScript.
+- [React](https://react.dev/) - Component based UI framework for JavaScript/typeScript.
+- [Expo SDK](https://docs.expo.dev/versions/latest/) - Toolset built around React Native which streamlines mobile app development by allowing easy access to native device features.
+- [expo-router](https://docs.expo.dev/router/introduction/) - A file-based router for React Native and web applications.
+- [Axios](https://github.com/axios/axios) - Lightweight, promise-based HTTP client for node.JS.
+- [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/) - Powerful React Native library for native, smooth animations and gesture driven interactions.
+- [react-native-gesture-handler](https://docs.swmansion.com/react-native-gesture-handler/) - Declarative API exposing platform native touch and gesture system to React Native (runs on the native thread).
+- [react-native-safe-area-context](https://docs.expo.dev/versions/latest/sdk/safe-area-context/) - Flexible API for accessing the device's safe area inset information (works for both Android and iOS).
+- [react-native-svg](https://docs.expo.dev/versions/latest/sdk/svg/) - SVG support for React Native apps.
+- [expo-haptics](https://docs.expo.dev/versions/latest/sdk/haptics/) - Provides access to native platform's vibration/haptics effects.
+- [expo-image](https://docs.expo.dev/versions/latest/sdk/image/) - React component for loading and rendering images.
+- [expo-file-system](https://docs.expo.dev/versions/latest/sdk/filesystem/) - Provides access to the local file system on the device.
+- [expo-web-browser](https://docs.expo.dev/versions/latest/sdk/webbrowser/) - Provides access to the system's web browser and supports handling redirects.
+- [expo-splash-screen](https://docs.expo.dev/versions/latest/sdk/splash-screen/) - Provides access to controlling the visibility behavior of native splash screen.
+- [expo-updates](https://docs.expo.dev/versions/latest/sdk/updates/) - Enables your app to manage remote updates to your application code.
+- [Bun](https://bun.com/) - Pretty fast runtime, bundler, test runner, and package manager for JavaScript and TypeScript.
 
 ## Development Setup
 
