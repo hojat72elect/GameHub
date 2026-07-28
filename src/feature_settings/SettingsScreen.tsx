@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {ThemeMode, useTheme} from "@/src/ThemeContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export function SettingsScreen(): React.JSX.Element {
+export function SettingsScreen() {
     const {themeMode, colors, setThemeMode} = useTheme();
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -63,7 +63,7 @@ export function SettingsScreen(): React.JSX.Element {
             >
                 <Pressable style={styles.modalOverlay} onPress={() => setModalVisible(false)}>
                     <View style={[styles.modalContent, {backgroundColor: colors.card, borderColor: colors.border}]}>
-                        <Text style={[styles.modalTitle, {color: colors.text}]}>Choose Theme</Text>
+                        <Text style={[styles.modalTitle, {color: colors.text}]}>Theme</Text>
 
                         <TouchableOpacity
                             style={[
@@ -113,13 +113,6 @@ export function SettingsScreen(): React.JSX.Element {
                                 <Ionicons name="checkmark" size={20} color={colors.tint}/>
                             )}
                         </TouchableOpacity>
-
-                        <TouchableOpacity
-                            style={[styles.closeButton, {backgroundColor: colors.tint}]}
-                            onPress={() => setModalVisible(false)}
-                        >
-                            <Text style={styles.closeButtonText}>Cancel</Text>
-                        </TouchableOpacity>
                     </View>
                 </Pressable>
             </Modal>
@@ -156,7 +149,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
         marginBottom: 20,
-        textAlign: "center",
+        textAlign: "left",
     },
     optionItem: {
         flexDirection: "row",
