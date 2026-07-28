@@ -1,4 +1,4 @@
-import {Modal, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Linking, Modal, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
 import {ThemeMode, useTheme} from "@/src/ThemeContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -44,7 +44,10 @@ export function SettingsScreen() {
 
             <View style={[styles.section, {borderTopWidth: 1, borderTopColor: colors.border, paddingTop: 20}]}>
                 <Text style={[styles.sectionHeader, {color: colors.tint}]}>About</Text>
-                <TouchableOpacity style={styles.item}>
+                <TouchableOpacity
+                    style={styles.item}
+                    onPress={() => Linking.openURL("https://github.com/hojat72elect/GameHub")}
+                >
                     <Text style={[styles.itemLabel, {color: colors.text}]}>Source Code</Text>
                     <Text style={[styles.itemValue, {color: colors.secondaryText}]}>View the source code of the
                         app</Text>
