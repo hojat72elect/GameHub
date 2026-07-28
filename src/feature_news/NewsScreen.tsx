@@ -1,39 +1,35 @@
-import {FlatList, Image, Linking, Text, TouchableOpacity, View} from "react-native";
+import {ActivityIndicator, FlatList, Image, Linking, Text, TouchableOpacity, View} from "react-native";
 import idleImage from "@/assets/images/game_landscape_placeholder.webp";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {useEffect, useState} from "react";
-import mockedNewsApiResponse from "../feature_news/api/mocked_news_api_response.json";
+import axios from "axios";
 import {NewsApiResultItem} from "@/src/feature_news/domain/NewsApiResultItem";
 import {useTheme} from "@/src/ThemeContext";
-
-function fetchGamespotArticles(): NewsApiResultItem[] {
-
-    const mapJsonToNewsItems = (rawItems: typeof mockedNewsApiResponse): NewsApiResultItem[] => {
-        return rawItems.map((item, index) => ({
-            id: index,
-            title: item.title,
-            deck: item.lede,
-            publish_date: item.release_time,
-            site_detail_url: item.link,
-            image: {
-                square_tiny: item.image_url,
-                screen_tiny: item.image_url,
-                square_small: item.image_url,
-                original: item.image_url,
-            }
-        }));
-
-    };
-
-    return mapJsonToNewsItems(mockedNewsApiResponse);
-}
+import {GAMESPOT_FEED_URL, getRemoteArticlesUseCase} from "@/src/feature_news/api/getRemoteArticlesUseCase";
 
 export function NewsScreen() {
     const [newsData, setNewsData] = useState<NewsApiResultItem[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
     const {colors} = useTheme();
 
+    const fetchFeed = async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            const response = await axios.get(GAMESPOT_FEED_URL);
+            const parsedItems = getRemoteArticlesUseCase(response.data);
+            setNewsData(parsedItems);
+        } catch (err: any) {
+            console.error("Error fetching gamespot feed:", err);
+            setError("Failed to load news feed. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        setNewsData(fetchGamespotArticles());
+        fetchFeed();
     }, []);
 
     const NewsCard = (item: {
@@ -94,13 +90,37 @@ export function NewsScreen() {
                 <Text style={{fontSize: 28, fontWeight: "300", fontFamily: "System", color: colors.text}}>News</Text>
             </View>
 
-            <FlatList
-                data={newsData || []}
-                renderItem={({item}) => <NewsCard {...item}/>}
-                keyExtractor={(item) => String(item.id)}
-                showsVerticalScrollIndicator={true}
-                contentContainerStyle={{paddingBottom: 80, padding:20}}
-            />
+            {loading ? (
+                <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+                    <ActivityIndicator size="large" color={colors.text}/>
+                </View>
+            ) : error ? (
+                <View style={{flex: 1, justifyContent: "center", alignItems: "center", padding: 20}}>
+                    <Text style={{fontSize: 16, color: colors.secondaryText, textAlign: "center", marginBottom: 20}}>
+                        {error}
+                    </Text>
+                    <TouchableOpacity
+                        onPress={fetchFeed}
+                        activeOpacity={0.7}
+                        style={{
+                            backgroundColor: colors.text,
+                            paddingHorizontal: 24,
+                            paddingVertical: 12,
+                            borderRadius: 8
+                        }}
+                    >
+                        <Text style={{color: colors.background, fontWeight: "600", fontSize: 16}}>Try Again</Text>
+                    </TouchableOpacity>
+                </View>
+            ) : (
+                <FlatList
+                    data={newsData || []}
+                    renderItem={({item}) => <NewsCard {...item}/>}
+                    keyExtractor={(item) => String(item.id)}
+                    showsVerticalScrollIndicator={true}
+                    contentContainerStyle={{paddingBottom: 80, padding: 20}}
+                />
+            )}
         </SafeAreaProvider>
     );
 }
