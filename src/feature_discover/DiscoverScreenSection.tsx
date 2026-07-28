@@ -3,6 +3,7 @@ import {Game} from "@/src/feature_discover/domain/Game";
 import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {router} from "expo-router";
+import {useTheme} from "@/src/ThemeContext";
 
 /**
  * Each one of the seemingly identical sections you see in the discover screen.
@@ -14,6 +15,8 @@ import {router} from "expo-router";
  * 4 - Most anticipated
  */
 export function DiscoverScreenSection({title, data}: { title: GamesCategory, data: Game[] }) {
+    const {colors} = useTheme();
+
     return (<View style={{marginBottom: 25}}>
         <View style={{
             flexDirection: "row",
@@ -22,7 +25,7 @@ export function DiscoverScreenSection({title, data}: { title: GamesCategory, dat
             paddingHorizontal: 15,
             marginBottom: 10
         }}>
-            <Text style={{fontSize: 22, fontWeight: "bold", fontFamily: "serif", color: "#333"}}>{(() => {
+            <Text style={{fontSize: 22, fontWeight: "bold", fontFamily: "serif", color: colors.text}}>{(() => {
                 switch (title) {
                     case GamesCategory.Popular:
                         return "Popular";
@@ -54,7 +57,7 @@ export function DiscoverScreenSection({title, data}: { title: GamesCategory, dat
                             marginRight: 12,
                             borderRadius: 8,
                             overflow: "hidden",
-                            backgroundColor: "#EEE"
+                            backgroundColor: colors.placeholder
                         }}
                         onPress={() => router.push({pathname: '/game-details', params: {gameId: item.id}})}
                     >

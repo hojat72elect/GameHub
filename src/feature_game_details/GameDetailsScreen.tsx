@@ -5,12 +5,14 @@ import {useEffect, useState} from "react";
 import {getGameDetailsByIdUseCase} from "@/src/feature_game_details/api/getGameDetailsByIdUseCase";
 import {GameDetails} from "@/src/feature_game_details/domain/GameDetails";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
+import {useTheme} from "@/src/ThemeContext";
 
 export function GameDetailsScreen() {
     const {gameId} = useLocalSearchParams<{ gameId: string }>();
     const [gameDetails, setGameDetails] = useState<GameDetails | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const {colors} = useTheme();
 
     useEffect(() => {
         const loadGameDetails = async () => {
@@ -78,7 +80,7 @@ export function GameDetailsScreen() {
     if (isLoading) {
         return (
             <SafeAreaProvider
-                style={{flex: 1, backgroundColor: "#FFF", justifyContent: "center", alignItems: "center"}}>
+                style={{flex: 1, backgroundColor: colors.background, justifyContent: "center", alignItems: "center"}}>
                 <ActivityIndicator size="large" color="#FF4B7D"/>
             </SafeAreaProvider>
         );
@@ -88,15 +90,26 @@ export function GameDetailsScreen() {
         return (
             <SafeAreaProvider style={{
                 flex: 1,
-                backgroundColor: "#FFF",
+                backgroundColor: colors.background,
                 justifyContent: "center",
                 alignItems: "center",
                 paddingHorizontal: 20
             }}>
-                <Text style={{fontSize: 20, fontWeight: "bold", color: "#333", marginBottom: 10, textAlign: "center"}}>
+                <Text style={{
+                    fontSize: 20,
+                    fontWeight: "bold",
+                    color: colors.text,
+                    marginBottom: 10,
+                    textAlign: "center"
+                }}>
                     Something went wrong
                 </Text>
-                <Text style={{fontSize: 14, color: "#666", marginBottom: 20, textAlign: "center"}}>{error}</Text>
+                <Text style={{
+                    fontSize: 14,
+                    color: colors.secondaryText,
+                    marginBottom: 20,
+                    textAlign: "center"
+                }}>{error}</Text>
                 <TouchableOpacity onPress={() => router.back()} style={{
                     backgroundColor: "#FF4B7D",
                     paddingHorizontal: 25,
@@ -118,7 +131,21 @@ export function GameDetailsScreen() {
         : coverUrl;
 
     return (
-        <SafeAreaProvider style={{flex: 1, backgroundColor: "#FFF"}}>
+        <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>
+            <View style={{
+                paddingHorizontal: 20,
+                paddingVertical: 15,
+                borderBottomWidth: 1,
+                borderBottomColor: colors.border,
+                flexDirection: "row",
+                alignItems: "center"
+            }}>
+                <TouchableOpacity onPress={() => router.back()} style={{marginRight: 15}}>
+                    <Text style={{fontSize: 18, color: "#FF4B7D", fontWeight: "600"}}>Back</Text>
+                </TouchableOpacity>
+                <Text style={{fontSize: 24, fontWeight: "bold", color: colors.text}} numberOfLines={1}>Details</Text>
+            </View>
+
             <ScrollView showsVerticalScrollIndicator={false}>
                 {/* Cover Image */}
                 <Image source={coverUrl} resizeMode="cover" style={{width: "100%", height: 300}}/>
@@ -132,13 +159,13 @@ export function GameDetailsScreen() {
                             style={{width: 100, height: 150, borderRadius: 8, marginRight: 15}}
                         />
                         <View style={{flex: 1, justifyContent: "center"}}>
-                            <Text style={{fontSize: 24, fontWeight: "bold", color: "#333", marginBottom: 8}}>
+                            <Text style={{fontSize: 24, fontWeight: "bold", color: colors.text, marginBottom: 8}}>
                                 {gameDetails.name}
                             </Text>
-                            <Text style={{fontSize: 14, color: "#666", marginBottom: 4}}>
+                            <Text style={{fontSize: 14, color: colors.secondaryText, marginBottom: 4}}>
                                 Release Date: {formatDate(gameDetails.first_release_date)}
                             </Text>
-                            <Text style={{fontSize: 14, color: "#666"}}>
+                            <Text style={{fontSize: 14, color: colors.secondaryText}}>
                                 Developer: {getDeveloperName()}
                             </Text>
                         </View>
@@ -147,7 +174,7 @@ export function GameDetailsScreen() {
                     {/* Videos Section */}
                     {gameDetails.videos && gameDetails.videos.length > 0 && (
                         <View style={{marginBottom: 20}}>
-                            <Text style={{fontSize: 18, fontWeight: "bold", color: "#333", marginBottom: 10}}>
+                            <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
                                 Videos
                             </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -179,7 +206,7 @@ export function GameDetailsScreen() {
                     {/* Screenshots Section */}
                     {gameDetails.screenshots && gameDetails.screenshots.length > 0 && (
                         <View style={{marginBottom: 20}}>
-                            <Text style={{fontSize: 18, fontWeight: "bold", color: "#333", marginBottom: 10}}>
+                            <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
                                 Screenshots
                             </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -198,7 +225,7 @@ export function GameDetailsScreen() {
                     {/* Websites Section */}
                     {gameDetails.websites && gameDetails.websites.length > 0 && (
                         <View style={{marginBottom: 20}}>
-                            <Text style={{fontSize: 18, fontWeight: "bold", color: "#333", marginBottom: 10}}>
+                            <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
                                 Links
                             </Text>
                             {gameDetails.websites.map((website) => (
@@ -221,10 +248,10 @@ export function GameDetailsScreen() {
                     {/* More Games by Developer Section */}
                     {gameDetails.involved_companies && gameDetails.involved_companies.length > 0 && (
                         <View style={{marginBottom: 20}}>
-                            <Text style={{fontSize: 18, fontWeight: "bold", color: "#333", marginBottom: 10}}>
+                            <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
                                 More by {getDeveloperName()}
                             </Text>
-                            <Text style={{fontSize: 14, color: "#666"}}>
+                            <Text style={{fontSize: 14, color: colors.secondaryText}}>
                                 This feature would require an additional API call to fetch more games by this developer.
                             </Text>
                         </View>
@@ -233,7 +260,7 @@ export function GameDetailsScreen() {
                     {/* Similar Games Section */}
                     {gameDetails.similar_games && gameDetails.similar_games.length > 0 && (
                         <View style={{marginBottom: 20}}>
-                            <Text style={{fontSize: 18, fontWeight: "bold", color: "#333", marginBottom: 10}}>
+                            <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
                                 Similar Games
                             </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -255,7 +282,7 @@ export function GameDetailsScreen() {
                                                 resizeMode="cover"
                                                 style={{width: 100, height: 150, borderRadius: 8}}
                                             />
-                                            <Text style={{fontSize: 12, color: "#333", marginTop: 4, width: 100}}
+                                            <Text style={{fontSize: 12, color: colors.text, marginTop: 4, width: 100}}
                                                   numberOfLines={2}>
                                                 {similarGame.name}
                                             </Text>

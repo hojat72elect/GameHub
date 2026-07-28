@@ -6,6 +6,7 @@ import {Game} from "@/src/feature_discover/domain/Game";
 import React, {useEffect, useState} from "react";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {GamesCategoryDatasource} from "@/src/feature_discover/api/GamesCategoryDatasource";
+import {useTheme} from "@/src/ThemeContext";
 
 export function GamesCategoryScreen() {
     const {category} = useLocalSearchParams<{ category?: string }>();
@@ -13,6 +14,7 @@ export function GamesCategoryScreen() {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const {colors} = useTheme();
 
     const chosenCategory = category ? parseInt(category, 10) as GamesCategory : null;
 
@@ -59,7 +61,7 @@ export function GamesCategoryScreen() {
     if (isLoading && !isRefreshing) {
         return (
             <SafeAreaProvider
-                style={{flex: 1, backgroundColor: "#FFF", justifyContent: "center", alignItems: "center"}}>
+                style={{flex: 1, backgroundColor: colors.background, justifyContent: "center", alignItems: "center"}}>
                 <ActivityIndicator size="large" color="#FF4B7D"/>
             </SafeAreaProvider>
         );
@@ -69,14 +71,25 @@ export function GamesCategoryScreen() {
         return (
             <SafeAreaProvider style={{
                 flex: 1,
-                backgroundColor: "#FFF",
+                backgroundColor: colors.background,
                 justifyContent: "center",
                 alignItems: "center",
                 paddingHorizontal: 20
             }}>
-                <Text style={{fontSize: 20, fontWeight: "bold", color: "#333", marginBottom: 10, textAlign: "center"}}>Something
+                <Text style={{
+                    fontSize: 20,
+                    fontWeight: "bold",
+                    color: colors.text,
+                    marginBottom: 10,
+                    textAlign: "center"
+                }}>Something
                     went wrong</Text>
-                <Text style={{fontSize: 14, color: "#666", marginBottom: 20, textAlign: "center"}}>{error}</Text>
+                <Text style={{
+                    fontSize: 14,
+                    color: colors.secondaryText,
+                    marginBottom: 20,
+                    textAlign: "center"
+                }}>{error}</Text>
                 <TouchableOpacity onPress={() => loadData()} style={{
                     backgroundColor: "#FF4B7D",
                     paddingHorizontal: 25,
@@ -90,14 +103,19 @@ export function GamesCategoryScreen() {
     }
 
     return (
-        <SafeAreaProvider style={{flex: 1, backgroundColor: "#FFF"}}>
+        <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>
             <View style={{
                 paddingHorizontal: 20,
                 paddingVertical: 15,
                 borderBottomWidth: 1,
-                borderBottomColor: "#F0F0F0"
+                borderBottomColor: colors.border,
+                flexDirection: "row",
+                alignItems: "center"
             }}>
-                <Text style={{fontSize: 28, fontWeight: "bold"}}>{getCategoryTitle()}</Text>
+                <TouchableOpacity onPress={() => router.back()} style={{marginRight: 15}}>
+                    <Text style={{fontSize: 18, color: "#FF4B7D", fontWeight: "600"}}>Back</Text>
+                </TouchableOpacity>
+                <Text style={{fontSize: 24, fontWeight: "bold", color: colors.text}}>{getCategoryTitle()}</Text>
             </View>
 
             <ScrollView
@@ -125,13 +143,16 @@ export function GamesCategoryScreen() {
                                     marginBottom: 15,
                                     borderRadius: 8,
                                     overflow: "hidden",
-                                    backgroundColor: "#EEE"
+                                    backgroundColor: colors.card,
+                                    borderWidth: 1,
+                                    borderColor: colors.border
                                 }}
                                 onPress={() => router.push({pathname: '/game-details', params: {gameId: item.id}})}
                             >
                                 <Image source={coverUrl} resizeMode="cover" style={{width: "100%", height: 200}}/>
                                 <View style={{padding: 10}}>
-                                    <Text style={{fontSize: 14, fontWeight: "600", color: "#333"}} numberOfLines={2}>
+                                    <Text style={{fontSize: 14, fontWeight: "600", color: colors.text}}
+                                          numberOfLines={2}>
                                         {item.name}
                                     </Text>
                                 </View>
@@ -142,7 +163,7 @@ export function GamesCategoryScreen() {
 
                 {games.length === 0 && (
                     <View style={{flex: 1, justifyContent: "center", alignItems: "center", marginTop: 50}}>
-                        <Text style={{fontSize: 16, color: "#666"}}>No games found</Text>
+                        <Text style={{fontSize: 16, color: colors.secondaryText}}>No games found</Text>
                     </View>
                 )}
             </ScrollView>

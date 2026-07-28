@@ -4,6 +4,7 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {useEffect, useState} from "react";
 import mockedNewsApiResponse from "../feature_news/api/mocked_news_api_response.json";
 import {NewsApiResultItem} from "@/src/feature_news/domain/NewsApiResultItem";
+import {useTheme} from "@/src/ThemeContext";
 
 function fetchGamespotArticles(): NewsApiResultItem[] {
 
@@ -29,6 +30,7 @@ function fetchGamespotArticles(): NewsApiResultItem[] {
 
 export function NewsScreen() {
     const [newsData, setNewsData] = useState<NewsApiResultItem[]>([]);
+    const {colors} = useTheme();
 
     useEffect(() => {
         setNewsData(fetchGamespotArticles());
@@ -44,7 +46,14 @@ export function NewsScreen() {
     }) => (
         <TouchableOpacity
             activeOpacity={0.9}
-            style={{backgroundColor: "#FFF", marginBottom: 25, overflow: "hidden"}}
+            style={{
+                backgroundColor: colors.card,
+                marginBottom: 25,
+                overflow: "hidden",
+                borderWidth: 1,
+                borderColor: colors.border,
+                borderRadius: 8
+            }}
             onPress={() => Linking.openURL(item.site_detail_url)}
         >
             <Image
@@ -56,17 +65,17 @@ export function NewsScreen() {
                 <Text style={{
                     fontSize: 20,
                     fontWeight: "600",
-                    color: "#1A1A1A",
+                    color: colors.text,
                     lineHeight: 26,
                     marginBottom: 8
                 }}>{item.title}</Text>
                 <Text numberOfLines={3}
-                      style={{fontSize: 16, color: "#444", lineHeight: 22, marginBottom: 10}}
+                      style={{fontSize: 16, color: colors.secondaryText, lineHeight: 22, marginBottom: 10}}
                 >{item.deck}</Text>
                 <View>
                     <Text style={{
                         fontSize: 14,
-                        color: "#888"
+                        color: colors.secondaryText
                     }}>🕒 {new Date(item.publish_date).toLocaleDateString()}</Text>
                 </View>
             </View>
@@ -74,15 +83,15 @@ export function NewsScreen() {
     );
 
     return (
-        <SafeAreaProvider style={{flex: 1, backgroundColor: "#FFF"}}>
+        <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>
             <View style={{
                 paddingTop: 35,
                 paddingBottom: 10,
                 paddingHorizontal: 20,
                 borderBottomWidth: 1,
-                borderBottomColor: "#F0F0F0"
+                borderBottomColor: colors.border
             }}>
-                <Text style={{fontSize: 28, fontWeight: "300", fontFamily: "System", color: "#000"}}>News</Text>
+                <Text style={{fontSize: 28, fontWeight: "300", fontFamily: "System", color: colors.text}}>News</Text>
             </View>
 
             <FlatList
@@ -90,7 +99,7 @@ export function NewsScreen() {
                 renderItem={({item}) => <NewsCard {...item}/>}
                 keyExtractor={(item) => String(item.id)}
                 showsVerticalScrollIndicator={true}
-                contentContainerStyle={{paddingBottom: 100}}
+                contentContainerStyle={{paddingBottom: 80, padding:20}}
             />
         </SafeAreaProvider>
     );

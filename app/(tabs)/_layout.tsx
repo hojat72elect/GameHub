@@ -6,17 +6,21 @@ import DiscoverIcon from '@/assets/svg/compass_rose.svg';
 import LikesIcon from '@/assets/svg/heart.svg';
 import NewsIcon from '@/assets/svg/newspaper.svg';
 
-import {useColorScheme} from "react-native";
+import {useTheme} from "@/src/ThemeContext";
 import {HapticTab} from "@/src/HapticTab";
-import {Colors} from "@/src/Color";
 
 export default function TabLayout() {
-    const colorScheme = useColorScheme();
+    const {colors} = useTheme();
 
     return (
         <Tabs
             screenOptions={{
-                tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+                tabBarActiveTintColor: colors.tint,
+                tabBarInactiveTintColor: colors.icon,
+                tabBarStyle: {
+                    backgroundColor: colors.background,
+                    borderTopColor: colors.border,
+                },
                 headerShown: false,
                 tabBarButton: HapticTab,
             }}>

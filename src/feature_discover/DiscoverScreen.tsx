@@ -7,6 +7,7 @@ import {router} from "expo-router";
 import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
 import {DiscoverScreenSection} from "@/src/feature_discover/DiscoverScreenSection";
 import {DiscoverScreenDatasource} from "@/src/feature_discover/api/DiscoverScreenDatasource";
+import {useTheme} from "@/src/ThemeContext";
 
 export function DiscoverScreen() {
     const [popular, setPopular] = useState<Game[]>([]);
@@ -16,6 +17,7 @@ export function DiscoverScreen() {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [refreshing, setRefreshing] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const {colors} = useTheme();
 
     const loadData = async (showRefreshIndicator = false) => {
         if (showRefreshIndicator) {
@@ -46,7 +48,7 @@ export function DiscoverScreen() {
     if (isLoading && !refreshing) {
         return (
             <SafeAreaProvider
-                style={{flex: 1, backgroundColor: "#FFF", justifyContent: "center", alignItems: "center"}}>
+                style={{flex: 1, backgroundColor: colors.background, justifyContent: "center", alignItems: "center"}}>
                 <ActivityIndicator size="large" color="#FF4B7D"/>
             </SafeAreaProvider>
         );
@@ -56,14 +58,25 @@ export function DiscoverScreen() {
         return (
             <SafeAreaProvider style={{
                 flex: 1,
-                backgroundColor: "#FFF",
+                backgroundColor: colors.background,
                 justifyContent: "center",
                 alignItems: "center",
                 paddingHorizontal: 20
             }}>
-                <Text style={{fontSize: 20, fontWeight: "bold", color: "#333", marginBottom: 10, textAlign: "center"}}>Something
+                <Text style={{
+                    fontSize: 20,
+                    fontWeight: "bold",
+                    color: colors.text,
+                    marginBottom: 10,
+                    textAlign: "center"
+                }}>Something
                     went wrong</Text>
-                <Text style={{fontSize: 14, color: "#666", marginBottom: 20, textAlign: "center"}}>{error}</Text>
+                <Text style={{
+                    fontSize: 14,
+                    color: colors.secondaryText,
+                    marginBottom: 20,
+                    textAlign: "center"
+                }}>{error}</Text>
                 <TouchableOpacity onPress={() => loadData()} style={{
                     backgroundColor: "#FF4B7D",
                     paddingHorizontal: 25,
@@ -77,7 +90,7 @@ export function DiscoverScreen() {
     }
 
     return (
-        <SafeAreaProvider style={{flex: 1, backgroundColor: "#FFF"}}>
+        <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>
             <View style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
@@ -85,11 +98,11 @@ export function DiscoverScreen() {
                 paddingHorizontal: 20,
                 paddingVertical: 15,
                 borderBottomWidth: 1,
-                borderBottomColor: "#F0F0F0"
+                borderBottomColor: colors.border
             }}>
-                <Text style={{fontSize: 28, fontWeight: "bold"}}>Discover</Text>
+                <Text style={{fontSize: 28, fontWeight: "bold", color: colors.text}}>Discover</Text>
                 <TouchableOpacity onPress={() => router.push('/search')}>
-                    <SearchIcon width={24} height={24} color="black"/>
+                    <SearchIcon width={24} height={24} color={colors.text}/>
                 </TouchableOpacity>
             </View>
 
