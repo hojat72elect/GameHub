@@ -1,4 +1,4 @@
-import {SettingsScreen} from "@/src/SettingsScreen";
+import {SettingsScreen} from "@/src/feature_settings/SettingsScreen";
 
 export default function TabFourScreen() {
     return (
