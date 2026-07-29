@@ -146,14 +146,17 @@ export function GameDetailsScreen() {
                 </TouchableOpacity>
                 <Text style={{flex: 1, fontSize: 24, fontWeight: "bold", color: colors.text}}
                       numberOfLines={1}>Details</Text>
-                <LikeButton gameId={gameId}/>
+
             </View>
 
             <ScrollView showsVerticalScrollIndicator={false}>
-                {/* Cover Image */}
-                <Image source={coverUrl} resizeMode="cover" style={{width: "100%", height: 300}}/>
 
-                {/* Title Picture and Basic Info */}
+                <View>
+                    <Image source={coverUrl} resizeMode="cover" style={{width: "100%", height: 300}}/>
+                    <View style={{position: "absolute", bottom: 0, right: 20, marginBottom: -20}}>
+                        <LikeButton gameId={gameId}/>
+                    </View>
+                </View>
                 <View style={{padding: 20}}>
                     <View style={{flexDirection: "row", marginBottom: 15}}>
                         <Image
@@ -174,7 +177,7 @@ export function GameDetailsScreen() {
                         </View>
                     </View>
 
-                    {/* Videos Section */}
+
                     {gameDetails.videos && gameDetails.videos.length > 0 && (
                         <View style={{marginBottom: 20}}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
@@ -206,7 +209,6 @@ export function GameDetailsScreen() {
                         </View>
                     )}
 
-                    {/* Screenshots Section */}
                     {gameDetails.screenshots && gameDetails.screenshots.length > 0 && (
                         <View style={{marginBottom: 20}}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
@@ -225,7 +227,6 @@ export function GameDetailsScreen() {
                         </View>
                     )}
 
-                    {/* Websites Section */}
                     {gameDetails.websites && gameDetails.websites.length > 0 && (
                         <View style={{marginBottom: 20}}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
@@ -248,7 +249,6 @@ export function GameDetailsScreen() {
                         </View>
                     )}
 
-                    {/* More Games by Developer Section */}
                     {gameDetails.involved_companies && gameDetails.involved_companies.length > 0 && (
                         <View style={{marginBottom: 20}}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
@@ -260,7 +260,6 @@ export function GameDetailsScreen() {
                         </View>
                     )}
 
-                    {/* Similar Games Section */}
                     {gameDetails.similar_games && gameDetails.similar_games.length > 0 && (
                         <View style={{marginBottom: 20}}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>

@@ -9,7 +9,7 @@ const HEART_PATH =
 const HEART_COLOR = "#FF4B7D";
 const HEART_OUTLINE_COLOR = "#999";
 
-export function LikeButton({gameId, size = 28}: {
+export function LikeButton({gameId, size = 32}: {
     gameId: string;
     size?: number;
 }) {
