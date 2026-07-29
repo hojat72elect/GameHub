@@ -1,13 +1,152 @@
-import {Text, View} from "react-native";
-import React from "react";
+import {FlatList, Image, SafeAreaView, Text, TouchableOpacity, View} from "react-native";
+import React, {useEffect, useState} from "react";
 import {useTheme} from "@/src/ThemeContext";
+import {useLikes} from "@/src/feature_likes/LikesContext";
+import {GameDetails} from "@/src/feature_game_details/domain/GameDetails";
+import {router} from "expo-router";
+import {ActivityIndicator} from "react-native";
+import idleImage from "@/assets/images/game_portrait_placeholder.webp";
+import {getGamesByIdsUseCase} from "@/src/feature_likes/getGamesByIdsUseCase";
 
 export function LikesScreen(): React.JSX.Element {
     const {colors} = useTheme();
+    const {likedGameIds} = useLikes();
+    const [likedGames, setLikedGames] = useState<GameDetails[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const loadLikedGames = async () => {
+            setIsLoading(true);
+            setError(null);
+            
+            if (likedGameIds.size === 0) {
+                setLikedGames([]);
+                setIsLoading(false);
+                return;
+            }
+
+            try {
+                const gameIds = Array.from(likedGameIds);
+                const games = await getGamesByIdsUseCase(gameIds);
+                setLikedGames(games);
+            } catch (err: any) {
+                console.error("Error loading liked games:", err);
+                setError(err.message || "Failed to load liked games");
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        loadLikedGames();
+    }, [likedGameIds]);
+
+    const getCoverUrl = (imageId: string, size: "cover_big" | "1080p" = "cover_big") => {
+        return `https://images.igdb.com/igdb/image/upload/t_${size}/${imageId}.jpg`;
+    };
+
+    const formatDate = (timestamp?: number) => {
+        if (!timestamp) return "TBD";
+        return new Date(timestamp * 1000).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        });
+    };
+
+    const renderGameCard = ({item}: {item: GameDetails}) => {
+        const coverUrl = item.cover?.image_id
+            ? {uri: getCoverUrl(item.cover.image_id)}
+            : idleImage;
+
+        return (
+            <TouchableOpacity
+                style={{
+                    flexDirection: "row",
+                    backgroundColor: colors.card,
+                    borderRadius: 12,
+                    marginHorizontal: 16,
+                    marginVertical: 8,
+                    padding: 12,
+                    shadowColor: "#000",
+                    shadowOffset: {width: 0, height: 2},
+                    shadowOpacity: 0.1,
+                    shadowRadius: 4,
+                    elevation: 3,
+                }}
+                onPress={() => router.push({
+                    pathname: '/game-details',
+                    params: {gameId: item.id.toString()}
+                })}
+            >
+                <Image
+                    source={coverUrl}
+                    resizeMode="cover"
+                    style={{width: 80, height: 120, borderRadius: 8}}
+                />
+                <View style={{flex: 1, marginLeft: 12, justifyContent: "center"}}>
+                    <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 4}} numberOfLines={2}>
+                        {item.name}
+                    </Text>
+                    <Text style={{fontSize: 14, color: colors.secondaryText}}>
+                        Release: {formatDate(item.first_release_date)}
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        );
+    };
+
+    const renderEmptyState = () => (
+        <View style={{flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 20}}>
+            <Text style={{fontSize: 20, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
+                No liked games yet
+            </Text>
+            <Text style={{fontSize: 14, color: colors.secondaryText, textAlign: "center"}}>
+                Start liking games to see them here!
+            </Text>
+        </View>
+    );
+
+    if (isLoading) {
+        return (
+            <SafeAreaView style={{flex: 1, backgroundColor: colors.background, justifyContent: "center", alignItems: "center"}}>
+                <ActivityIndicator size="large" color="#FF4B7D"/>
+            </SafeAreaView>
+        );
+    }
+
+    if (error) {
+        return (
+            <SafeAreaView style={{flex: 1, backgroundColor: colors.background, justifyContent: "center", alignItems: "center", paddingHorizontal: 20}}>
+                <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10, textAlign: "center"}}>
+                    Something went wrong
+                </Text>
+                <Text style={{fontSize: 14, color: colors.secondaryText, textAlign: "center"}}>
+                    {error}
+                </Text>
+            </SafeAreaView>
+        );
+    }
 
     return (
-        <View style={{flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: colors.background}}>
-            <Text style={{color: colors.text}}>Hello from new Likes Screen</Text>
-        </View>
+        <SafeAreaView style={{flex: 1, backgroundColor: colors.background}}>
+            <View style={{
+                paddingHorizontal: 20,
+                paddingVertical: 15,
+                borderBottomWidth: 1,
+                borderBottomColor: colors.border,
+            }}>
+                <Text style={{fontSize: 24, fontWeight: "bold", color: colors.text}}>
+                    Liked Games
+                </Text>
+            </View>
+            <FlatList
+                data={likedGames}
+                renderItem={renderGameCard}
+                keyExtractor={(item) => item.id.toString()}
+                ListEmptyComponent={renderEmptyState}
+                contentContainerStyle={{paddingVertical: 8}}
+            />
+        </SafeAreaView>
     );
 }
