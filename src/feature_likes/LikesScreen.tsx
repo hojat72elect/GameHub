@@ -1,4 +1,5 @@
-import {FlatList, Image, SafeAreaView, Text, TouchableOpacity, View} from "react-native";
+import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
+import {SafeAreaView} from "react-native-safe-area-context";
 import React, {useEffect, useState} from "react";
 import {useTheme} from "@/src/ThemeContext";
 import {useLikes} from "@/src/feature_likes/LikesContext";
