@@ -6,6 +6,7 @@ import {getGameDetailsByIdUseCase} from "@/src/feature_game_details/api/getGameD
 import {GameDetails} from "@/src/feature_game_details/domain/GameDetails";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {useTheme} from "@/src/ThemeContext";
+import {LikeButton} from "@/src/feature_game_details/LikeButton";
 
 export function GameDetailsScreen() {
     const {gameId} = useLocalSearchParams<{ gameId: string }>();
@@ -143,7 +144,9 @@ export function GameDetailsScreen() {
                 <TouchableOpacity onPress={() => router.back()} style={{marginRight: 15}}>
                     <Text style={{fontSize: 18, color: "#FF4B7D", fontWeight: "600"}}>Back</Text>
                 </TouchableOpacity>
-                <Text style={{fontSize: 24, fontWeight: "bold", color: colors.text}} numberOfLines={1}>Details</Text>
+                <Text style={{flex: 1, fontSize: 24, fontWeight: "bold", color: colors.text}}
+                      numberOfLines={1}>Details</Text>
+                <LikeButton gameId={gameId}/>
             </View>
 
             <ScrollView showsVerticalScrollIndicator={false}>
