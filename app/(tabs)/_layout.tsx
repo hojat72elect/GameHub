@@ -21,6 +21,9 @@ export default function TabLayout() {
                     backgroundColor: colors.background,
                     borderTopColor: colors.border,
                 },
+                tabBarLabelStyle: {
+                    fontSize: 11,
+                },
                 headerShown: false,
                 tabBarButton: HapticTab,
             }}>
