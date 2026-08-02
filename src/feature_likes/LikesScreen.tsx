@@ -65,15 +65,9 @@ export function LikesScreen(): React.JSX.Element {
                 style={{
                     flexDirection: "row",
                     backgroundColor: colors.card,
-                    borderRadius: 12,
-                    marginHorizontal: 16,
-                    marginVertical: 8,
+                    marginBottom: 8,
                     padding: 12,
-                    shadowColor: "#000",
-                    shadowOffset: {width: 0, height: 2},
-                    shadowOpacity: 0.1,
-                    shadowRadius: 4,
-                    elevation: 3,
+                    elevation: 2,
                 }}
                 onPress={() => router.push({
                     pathname: '/game-details',
@@ -83,15 +77,14 @@ export function LikesScreen(): React.JSX.Element {
                 <Image
                     source={coverUrl}
                     resizeMode="cover"
-                    style={{width: 80, height: 120, borderRadius: 8}}
+                    style={{width: 100, height: 140, borderRadius: 8}}
                 />
-                <View style={{flex: 1, marginLeft: 12, justifyContent: "center"}}>
-                    <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 4}} numberOfLines={2}>
+                <View style={{flex: 1, marginLeft: 12, justifyContent: "flex-start"}}>
+                    <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 4}} numberOfLines={2}>
                         {item.name}
                     </Text>
-                    <Text style={{fontSize: 14, color: colors.secondaryText}}>
-                        Release: {formatDate(item.first_release_date)}
-                    </Text>
+                    <Text style={{fontSize: 14, color: colors.secondaryText}}>{formatDate(item.first_release_date)}</Text>
+                    <Text style={{fontSize: 14, color: colors.secondaryText}}>{item.involved_companies ? item.involved_companies[0].company.name : ""}</Text>
                 </View>
             </TouchableOpacity>
         );
@@ -133,12 +126,12 @@ export function LikesScreen(): React.JSX.Element {
         <SafeAreaView style={{flex: 1, backgroundColor: colors.background}}>
             <View style={{
                 paddingHorizontal: 20,
-                paddingVertical: 15,
+                paddingVertical: 12,
                 borderBottomWidth: 1,
                 borderBottomColor: colors.border,
             }}>
-                <Text style={{fontSize: 24, fontWeight: "bold", color: colors.text}}>
-                    Liked Games
+                <Text style={{fontSize: 20, fontWeight: "500", color: colors.text}}>
+                    Likes
                 </Text>
             </View>
             <FlatList
@@ -146,7 +139,6 @@ export function LikesScreen(): React.JSX.Element {
                 renderItem={renderGameCard}
                 keyExtractor={(item) => item.id.toString()}
                 ListEmptyComponent={renderEmptyState}
-                contentContainerStyle={{paddingVertical: 8}}
             />
         </SafeAreaView>
     );
