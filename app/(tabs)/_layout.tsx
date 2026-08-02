@@ -15,7 +15,7 @@ export default function TabLayout() {
     return (
         <Tabs
             screenOptions={{
-                tabBarActiveTintColor: colors.tint,
+                tabBarActiveTintColor: '#FF4B7D',
                 tabBarInactiveTintColor: colors.icon,
                 tabBarStyle: {
                     backgroundColor: colors.background,
@@ -28,28 +28,32 @@ export default function TabLayout() {
                 name="index"
                 options={{
                     title: 'Discover',
-                    tabBarIcon: ({color}) => <DiscoverIcon width={28} height={28} fill={color}/>,
+                    // @ts-ignore
+                    tabBarIcon: ({color}) => <DiscoverIcon width={28} height={28} style={{color}}/>,
                 }}
             />
             <Tabs.Screen
                 name="likes"
                 options={{
                     title: 'Likes',
-                    tabBarIcon: ({color}) => <LikesIcon width={28} height={28} fill={color}/>,
+                    // @ts-ignore
+                    tabBarIcon: ({color}) => <LikesIcon width={28} height={28} style={{color}}/>,
                 }}
             />
             <Tabs.Screen
                 name="news"
                 options={{
                     title: 'News',
-                    tabBarIcon: ({color}) => <NewsIcon width={28} height={28} fill={color}/>,
+                    // @ts-ignore
+                    tabBarIcon: ({color}) => <NewsIcon width={28} height={28} style={{color}}/>,
                 }}
             />
             <Tabs.Screen
                 name="settings"
                 options={{
                     title: 'Settings',
-                    tabBarIcon: ({color}) => <SettingsIcon width={28} height={28} fill={color}/>,
+                    // @ts-ignore
+                    tabBarIcon: ({color}) => <SettingsIcon width={28} height={28} style={{color}}/>,
                 }}
             />
         </Tabs>
