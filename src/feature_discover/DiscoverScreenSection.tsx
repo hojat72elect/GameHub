@@ -17,12 +17,18 @@ import {useTheme} from "@/src/ThemeContext";
 export function DiscoverScreenSection({title, data}: { title: GamesCategory, data: Game[] }) {
     const {colors} = useTheme();
 
-    return (<View style={{marginBottom: 25}}>
+    return (<View style={{
+        marginBottom: 16,
+        backgroundColor: colors.card,
+        padding: 16,
+        borderWidth: 1,
+        borderColor: colors.border,
+        elevation: 2
+    }}>
         <View style={{
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
-            paddingHorizontal: 15,
             marginBottom: 10
         }}>
             <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>{(() => {
@@ -45,7 +51,7 @@ export function DiscoverScreenSection({title, data}: { title: GamesCategory, dat
             </TouchableOpacity>
         </View>
 
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={{paddingLeft: 12}}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             {data.map((item) => {
                 const coverUrl = item.cover?.image_id
                     ? {uri: `https://images.igdb.com/igdb/image/upload/t_cover_big/${item.cover.image_id}.jpg`}
