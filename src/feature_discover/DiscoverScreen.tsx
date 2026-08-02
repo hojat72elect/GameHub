@@ -108,9 +108,6 @@ export function DiscoverScreen() {
             </View>
 
             <ScrollView
-                style={{
-                    paddingTop: 6,
-                }}
                 showsVerticalScrollIndicator={false}
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={() => loadData(true)} colors={["#FF4B7D"]}
