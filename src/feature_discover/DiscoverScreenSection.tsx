@@ -25,7 +25,7 @@ export function DiscoverScreenSection({title, data}: { title: GamesCategory, dat
             paddingHorizontal: 15,
             marginBottom: 10
         }}>
-            <Text style={{fontSize: 22, fontWeight: "bold", fontFamily: "serif", color: colors.text}}>{(() => {
+            <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>{(() => {
                 switch (title) {
                     case GamesCategory.Popular:
                         return "Popular";
