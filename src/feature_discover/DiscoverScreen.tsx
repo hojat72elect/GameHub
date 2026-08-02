@@ -96,11 +96,12 @@ export function DiscoverScreen() {
                 justifyContent: "space-between",
                 alignItems: "center",
                 paddingHorizontal: 20,
-                paddingVertical: 15,
+                paddingBottom: 14,
+                paddingTop: 24,
                 borderBottomWidth: 1,
                 borderBottomColor: colors.border
             }}>
-                <Text style={{fontSize: 28, fontWeight: "bold", color: colors.text}}>Discover</Text>
+                <Text style={{fontSize: 24, fontWeight: "400", color: colors.text}}>Discover</Text>
                 <TouchableOpacity onPress={() => router.push('/search')}>
                     <SearchIcon width={24} height={24} color={colors.text}/>
                 </TouchableOpacity>
