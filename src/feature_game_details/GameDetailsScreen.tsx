@@ -1,5 +1,5 @@
 import {SafeAreaProvider} from "react-native-safe-area-context";
-import {ActivityIndicator, Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {ActivityIndicator, Image, Linking, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {router, useLocalSearchParams} from "expo-router";
 import {useEffect, useState} from "react";
 import {getGameDetailsByIdUseCase} from "@/src/feature_game_details/api/getGameDetailsByIdUseCase";
@@ -39,6 +39,10 @@ export function GameDetailsScreen() {
 
     const getYouTubeUrl = (videoId: string) => {
         return `https://www.youtube.com/watch?v=${videoId}`;
+    };
+
+    const getYouTubeThumbnailUrl = (videoId: string) => {
+        return `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
     };
 
     const getWebsiteCategoryName = (category: number) => {
@@ -164,7 +168,7 @@ export function GameDetailsScreen() {
 
                     {gameDetails.videos && gameDetails.videos.length > 0 && (
                         <View style={{marginBottom: 20}}>
-                            <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
+                            <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
                                 Videos
                             </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -173,17 +177,17 @@ export function GameDetailsScreen() {
                                         key={video.id}
                                         style={{marginRight: 10}}
                                         onPress={() => {
-                                            // In a real app, you might want to open this in a web view or YouTube app
-                                            console.log("Open video:", getYouTubeUrl(video.video_id));
+                                            Linking.openURL(getYouTubeUrl(video.video_id));
                                         }}
                                     >
-                                        <View style={{
-                                            backgroundColor: "#FF4B7D",
-                                            paddingHorizontal: 15,
-                                            paddingVertical: 8,
-                                            borderRadius: 6
-                                        }}>
-                                            <Text style={{color: "#FFF", fontSize: 12, fontWeight: "600"}}>
+                                        <View>
+                                            <Image
+                                                source={{uri: getYouTubeThumbnailUrl(video.video_id)}}
+                                                resizeMode="cover"
+                                                style={{width: 200, height: 120, borderRadius: 6}}
+                                            />
+                                            <Text style={{fontSize: 13, color: colors.secondaryText, marginTop: 4, width: 200}}
+                                                  numberOfLines={1}>
                                                 {video.name || "Watch Video"}
                                             </Text>
                                         </View>
@@ -195,7 +199,7 @@ export function GameDetailsScreen() {
 
                     {gameDetails.screenshots && gameDetails.screenshots.length > 0 && (
                         <View style={{marginBottom: 20}}>
-                            <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
+                            <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
                                 Screenshots
                             </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
