@@ -133,22 +133,6 @@ export function GameDetailsScreen() {
 
     return (
         <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>
-            <View style={{
-                paddingHorizontal: 20,
-                paddingVertical: 15,
-                borderBottomWidth: 1,
-                borderBottomColor: colors.border,
-                flexDirection: "row",
-                alignItems: "center"
-            }}>
-                <TouchableOpacity onPress={() => router.back()} style={{marginRight: 15}}>
-                    <Text style={{fontSize: 18, color: "#FF4B7D", fontWeight: "600"}}>Back</Text>
-                </TouchableOpacity>
-                <Text style={{flex: 1, fontSize: 24, fontWeight: "bold", color: colors.text}}
-                      numberOfLines={1}>Details</Text>
-
-            </View>
-
             <ScrollView showsVerticalScrollIndicator={false}>
 
                 <View>
