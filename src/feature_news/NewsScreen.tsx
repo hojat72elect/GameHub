@@ -75,7 +75,13 @@ export function NewsScreen() {
                         fontSize: 14,
                         color: colors.secondaryText,
                         paddingLeft: 5,
-                    }}>{new Date(item.publish_date).toLocaleDateString()}</Text>
+                    }}>{new Date(item.publish_date).toLocaleString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                        hour12: true
+                    })}</Text>
                 </View>
             </View>
         </TouchableOpacity>
