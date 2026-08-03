@@ -1,15 +1,14 @@
-import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
+import {ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 import React, {useEffect, useState} from "react";
 import {useTheme} from "@/src/ThemeContext";
 import {useLikes} from "@/src/feature_likes/LikesContext";
 import {GameDetails} from "@/src/feature_game_details/domain/GameDetails";
 import {router} from "expo-router";
-import {ActivityIndicator} from "react-native";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {getGamesByIdsUseCase} from "@/src/feature_likes/getGamesByIdsUseCase";
 
-export function LikesScreen(): React.JSX.Element {
+export function LikesScreen() {
     const {colors} = useTheme();
     const {likedGameIds} = useLikes();
     const [likedGames, setLikedGames] = useState<GameDetails[]>([]);
@@ -20,7 +19,7 @@ export function LikesScreen(): React.JSX.Element {
         const loadLikedGames = async () => {
             setIsLoading(true);
             setError(null);
-            
+
             if (likedGameIds.size === 0) {
                 setLikedGames([]);
                 setIsLoading(false);
@@ -55,7 +54,7 @@ export function LikesScreen(): React.JSX.Element {
         });
     };
 
-    const renderGameCard = ({item}: {item: GameDetails}) => {
+    const renderGameCard = ({item}: { item: GameDetails }) => {
         const coverUrl = item.cover?.image_id
             ? {uri: getCoverUrl(item.cover.image_id)}
             : idleImage;
@@ -80,11 +79,16 @@ export function LikesScreen(): React.JSX.Element {
                     style={{width: 100, height: 140, borderRadius: 8}}
                 />
                 <View style={{flex: 1, marginLeft: 12, justifyContent: "flex-start"}}>
-                    <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 4}} numberOfLines={2}>
+                    <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 4}}
+                          numberOfLines={2}>
                         {item.name}
                     </Text>
-                    <Text style={{fontSize: 14, color: colors.secondaryText}}>{formatDate(item.first_release_date)}</Text>
-                    <Text style={{fontSize: 14, color: colors.secondaryText}}>{item.involved_companies ? item.involved_companies[0].company.name : ""}</Text>
+                    <Text
+                        style={{fontSize: 14, color: colors.secondaryText}}>{formatDate(item.first_release_date)}</Text>
+                    <Text style={{
+                        fontSize: 14,
+                        color: colors.secondaryText
+                    }}>{item.involved_companies ? item.involved_companies[0].company.name : ""}</Text>
                 </View>
             </TouchableOpacity>
         );
@@ -103,7 +107,8 @@ export function LikesScreen(): React.JSX.Element {
 
     if (isLoading) {
         return (
-            <SafeAreaView style={{flex: 1, backgroundColor: colors.background, justifyContent: "center", alignItems: "center"}}>
+            <SafeAreaView
+                style={{flex: 1, backgroundColor: colors.background, justifyContent: "center", alignItems: "center"}}>
                 <ActivityIndicator size="large" color="#FF4B7D"/>
             </SafeAreaView>
         );
@@ -111,8 +116,20 @@ export function LikesScreen(): React.JSX.Element {
 
     if (error) {
         return (
-            <SafeAreaView style={{flex: 1, backgroundColor: colors.background, justifyContent: "center", alignItems: "center", paddingHorizontal: 20}}>
-                <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10, textAlign: "center"}}>
+            <SafeAreaView style={{
+                flex: 1,
+                backgroundColor: colors.background,
+                justifyContent: "center",
+                alignItems: "center",
+                paddingHorizontal: 20
+            }}>
+                <Text style={{
+                    fontSize: 18,
+                    fontWeight: "bold",
+                    color: colors.text,
+                    marginBottom: 10,
+                    textAlign: "center"
+                }}>
                     Something went wrong
                 </Text>
                 <Text style={{fontSize: 14, color: colors.secondaryText, textAlign: "center"}}>
