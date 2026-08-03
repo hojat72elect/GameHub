@@ -6,6 +6,7 @@ import axios from "axios";
 import {NewsApiResultItem} from "@/src/feature_news/domain/NewsApiResultItem";
 import {useTheme} from "@/src/ThemeContext";
 import {GAMESPOT_FEED_URL, getRemoteArticlesUseCase} from "@/src/feature_news/api/getRemoteArticlesUseCase";
+import ClockIcon from "@/assets/svg/clock_outline_16dp.svg";
 
 export function NewsScreen() {
     const [newsData, setNewsData] = useState<NewsApiResultItem[]>([]);
@@ -44,35 +45,37 @@ export function NewsScreen() {
             activeOpacity={0.9}
             style={{
                 backgroundColor: colors.card,
-                marginBottom: 25,
+                marginBottom: 18,
                 overflow: "hidden",
                 borderWidth: 1,
                 borderColor: colors.border,
-                borderRadius: 8
+                elevation: 2,
             }}
             onPress={() => Linking.openURL(item.site_detail_url)}
         >
             <Image
                 source={item.image?.original ? {uri: item.image.original} : idleImage}
                 resizeMode="cover"
-                style={{width: "100%", height: 200}}
+                style={{width: "90%", height: 200, alignSelf: "center", borderRadius: 6, marginTop:16}}
             />
             <View style={{padding: 15}}>
                 <Text style={{
-                    fontSize: 20,
-                    fontWeight: "600",
+                    fontSize: 18,
+                    fontWeight: "semibold",
                     color: colors.text,
                     lineHeight: 26,
                     marginBottom: 8
                 }}>{item.title}</Text>
                 <Text numberOfLines={3}
-                      style={{fontSize: 16, color: colors.secondaryText, lineHeight: 22, marginBottom: 10}}
+                      style={{fontSize: 14, color: colors.secondaryText, lineHeight: 22, marginBottom: 10}}
                 >{item.deck}</Text>
-                <View>
+                <View style={{flexDirection: "row", alignItems: "center"}}>
+                    <ClockIcon width={20} height={20} fill={colors.icon}/>
                     <Text style={{
                         fontSize: 14,
-                        color: colors.secondaryText
-                    }}>🕒 {new Date(item.publish_date).toLocaleDateString()}</Text>
+                        color: colors.secondaryText,
+                        paddingLeft: 5,
+                    }}>{new Date(item.publish_date).toLocaleDateString()}</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -118,7 +121,6 @@ export function NewsScreen() {
                     renderItem={({item}) => <NewsCard {...item}/>}
                     keyExtractor={(item) => String(item.id)}
                     showsVerticalScrollIndicator={true}
-                    contentContainerStyle={{paddingBottom: 80, padding: 20}}
                 />
             )}
         </SafeAreaProvider>
