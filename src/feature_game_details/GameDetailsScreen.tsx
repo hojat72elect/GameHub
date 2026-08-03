@@ -7,6 +7,19 @@ import {GameDetails} from "@/src/feature_game_details/domain/GameDetails";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {useTheme} from "@/src/ThemeContext";
 import {LikeButton} from "@/src/feature_game_details/LikeButton";
+import WebIcon from "@/assets/svg/web.svg";
+import WikipediaIcon from "@/assets/svg/wikipedia.svg";
+import TwitterIcon from "@/assets/svg/twitter.svg";
+import FacebookIcon from "@/assets/svg/facebook.svg";
+import TwitchIcon from "@/assets/svg/twitch.svg";
+import InstagramIcon from "@/assets/svg/instagram.svg";
+import YoutubeIcon from "@/assets/svg/youtube.svg";
+import AppleIcon from "@/assets/svg/apple.svg";
+import GooglePlayIcon from "@/assets/svg/google_play.svg";
+import SteamIcon from "@/assets/svg/steam.svg";
+import RedditIcon from "@/assets/svg/reddit.svg";
+import GogIcon from "@/assets/svg/gog.svg";
+import DiscordIcon from "@/assets/svg/discord.svg";
 
 export function GameDetailsScreen() {
     const {gameId} = useLocalSearchParams<{ gameId: string }>();
@@ -65,6 +78,52 @@ export function GameDetailsScreen() {
             17: "Discord",
         };
         return categories[category] || "Website";
+    };
+
+    const getWebsiteInfoFromUrl = (url: string) => {
+        const lowerUrl = url.toLowerCase();
+
+        if (lowerUrl.includes('wikipedia.org')) {
+            return {icon: WikipediaIcon, name: 'Wikipedia'};
+        }
+        if (lowerUrl.includes('twitter.com')) {
+            return {icon: TwitterIcon, name: 'X'};
+        }
+        if (lowerUrl.includes('facebook.com')) {
+            return {icon: FacebookIcon, name: 'Facebook'};
+        }
+        if (lowerUrl.includes('twitch.tv')) {
+            return {icon: TwitchIcon, name: 'Twitch'};
+        }
+        if (lowerUrl.includes('instagram.com')) {
+            return {icon: InstagramIcon, name: 'Instagram'};
+        }
+        if (lowerUrl.includes('youtube.com') || lowerUrl.includes('youtu.be')) {
+            return {icon: YoutubeIcon, name: 'YouTube'};
+        }
+        if (lowerUrl.includes('steam')) {
+            return {icon: SteamIcon, name: 'Steam'};
+        }
+        if (lowerUrl.includes('reddit.com')) {
+            return {icon: RedditIcon, name: 'Reddit'};
+        }
+        if (lowerUrl.includes('discord')) {
+            return {icon: DiscordIcon, name: 'Discord'};
+        }
+        if (lowerUrl.includes('gog.com')) {
+            return {icon: GogIcon, name: 'GOG'};
+        }
+        if (lowerUrl.includes('apple.com') || lowerUrl.includes('itunes')) {
+            return {icon: AppleIcon, name: 'Apple'};
+        }
+        if (lowerUrl.includes('play.google.com')) {
+            return {icon: GooglePlayIcon, name: 'Google Play'};
+        }
+        if(lowerUrl.includes("epicgames.com")){
+            return {icon:WebIcon, name:"Epic Games"}
+        }
+
+        return {icon: WebIcon, name: 'Website'};
     };
 
     const getDeveloperName = () => {
@@ -220,20 +279,34 @@ export function GameDetailsScreen() {
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
                                 Links
                             </Text>
-                            {gameDetails.websites.map((website) => (
-                                <TouchableOpacity
-                                    key={website.id}
-                                    style={{marginBottom: 8}}
-                                    onPress={() => {
-                                        // In a real app, you might want to use Linking.openURL
-                                        console.log("Open website:", website.url);
-                                    }}
-                                >
-                                    <Text style={{color: "#FF4B7D", fontSize: 14}}>
-                                        {getWebsiteCategoryName(website.category)}
-                                    </Text>
-                                </TouchableOpacity>
-                            ))}
+                            <View style={{flexDirection: "row", flexWrap: "wrap", gap: 8}}>
+                                {gameDetails.websites.map((website) => {
+                                    const {icon: IconComponent, name} = getWebsiteInfoFromUrl(website.url);
+                                    return (
+                                        <TouchableOpacity
+                                            key={website.id}
+                                            style={{
+                                                backgroundColor: colors.card,
+                                                paddingHorizontal: 12,
+                                                paddingVertical: 8,
+                                                borderRadius: 20,
+                                                flexDirection: "row",
+                                                alignItems: "center",
+                                                gap: 6,
+                                                elevation: 3,
+                                            }}
+                                            onPress={() => {
+                                                Linking.openURL(website.url);
+                                            }}
+                                        >
+                                            <IconComponent width={16} height={16} style={{color: colors.secondaryText}}/>
+                                            <Text style={{color: colors.secondaryText, fontSize: 14}}>
+                                                {name}
+                                            </Text>
+                                        </TouchableOpacity>
+                                    );
+                                })}
+                            </View>
                         </View>
                     )}
 
