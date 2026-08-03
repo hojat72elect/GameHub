@@ -76,7 +76,7 @@ export function LikesScreen() {
                 <Image
                     source={coverUrl}
                     resizeMode="cover"
-                    style={{width: 100, height: 140, borderRadius: 8}}
+                    style={{width: 120, height: 160, borderRadius: 8}}
                 />
                 <View style={{flex: 1, marginLeft: 12, justifyContent: "flex-start"}}>
                     <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 4}}
@@ -89,6 +89,7 @@ export function LikesScreen() {
                         fontSize: 14,
                         color: colors.secondaryText
                     }}>{item.involved_companies ? item.involved_companies[0].company.name : ""}</Text>
+                    <Text style={{color: colors.secondaryText, paddingTop: 8}}>Some information about the game</Text>
                 </View>
             </TouchableOpacity>
         );
