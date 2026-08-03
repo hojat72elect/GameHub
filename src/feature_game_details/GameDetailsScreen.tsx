@@ -58,28 +58,6 @@ export function GameDetailsScreen() {
         return `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
     };
 
-    const getWebsiteCategoryName = (category: number) => {
-        const categories: { [key: number]: string } = {
-            1: "Official",
-            2: "Wikipedia",
-            3: "Twitter",
-            4: "Facebook",
-            5: "Twitch",
-            6: "Instagram",
-            8: "YouTube",
-            9: "iPhone",
-            10: "iPad",
-            11: "Android",
-            12: "Steam",
-            13: "Reddit",
-            14: "Itch",
-            15: "Epic Games",
-            16: "GOG",
-            17: "Discord",
-        };
-        return categories[category] || "Website";
-    };
-
     const getWebsiteInfoFromUrl = (url: string) => {
         const lowerUrl = url.toLowerCase();
 
@@ -119,8 +97,8 @@ export function GameDetailsScreen() {
         if (lowerUrl.includes('play.google.com')) {
             return {icon: GooglePlayIcon, name: 'Google Play'};
         }
-        if(lowerUrl.includes("epicgames.com")){
-            return {icon:WebIcon, name:"Epic Games"}
+        if (lowerUrl.includes("epicgames.com")) {
+            return {icon: WebIcon, name: "Epic Games"}
         }
 
         return {icon: WebIcon, name: 'Website'};
@@ -245,7 +223,12 @@ export function GameDetailsScreen() {
                                                 resizeMode="cover"
                                                 style={{width: 200, height: 120, borderRadius: 6}}
                                             />
-                                            <Text style={{fontSize: 13, color: colors.secondaryText, marginTop: 4, width: 200}}
+                                            <Text style={{
+                                                fontSize: 13,
+                                                color: colors.secondaryText,
+                                                marginTop: 4,
+                                                width: 200
+                                            }}
                                                   numberOfLines={1}>
                                                 {video.name || "Watch Video"}
                                             </Text>
@@ -299,7 +282,7 @@ export function GameDetailsScreen() {
                                                 Linking.openURL(website.url);
                                             }}
                                         >
-                                            <IconComponent width={16} height={16} style={{color: colors.secondaryText}}/>
+                                            <IconComponent width={16} height={16} fill={colors.secondaryText}/>
                                             <Text style={{color: colors.secondaryText, fontSize: 14}}>
                                                 {name}
                                             </Text>
