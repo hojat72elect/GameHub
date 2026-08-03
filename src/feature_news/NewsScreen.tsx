@@ -56,7 +56,7 @@ export function NewsScreen() {
             <Image
                 source={item.image?.original ? {uri: item.image.original} : idleImage}
                 resizeMode="cover"
-                style={{width: "90%", height: 200, alignSelf: "center", borderRadius: 6, marginTop:16}}
+                style={{width: "90%", height: 200, alignSelf: "center", borderRadius: 6, marginTop: 16}}
             />
             <View style={{padding: 15}}>
                 <Text style={{
