@@ -293,17 +293,6 @@ export function GameDetailsScreen() {
                         </View>
                     )}
 
-                    {gameDetails.involved_companies && gameDetails.involved_companies.length > 0 && (
-                        <View style={{marginBottom: 20}}>
-                            <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
-                                More by {getDeveloperName()}
-                            </Text>
-                            <Text style={{fontSize: 14, color: colors.secondaryText}}>
-                                This feature would require an additional API call to fetch more games by this developer.
-                            </Text>
-                        </View>
-                    )}
-
                     {gameDetails.similar_games && gameDetails.similar_games.length > 0 && (
                         <View style={{marginBottom: 20}}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
