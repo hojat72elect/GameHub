@@ -14,7 +14,9 @@ export async function getGameDetailsByIdUseCase(gameId: string): Promise<GameDet
            involved_companies.company.name, involved_companies.developer, involved_companies.publisher,
            videos.name, videos.video_id, screenshots.image_id, 
            websites.category, websites.url,
-           similar_games.name, similar_games.cover.image_id;
+           similar_games.name, similar_games.cover.image_id,
+           summary, genres.name, platforms.name, game_modes.name, 
+           player_perspectives.name, themes.name;
     where id = ${gameId};
     limit 1;
     `.trim();
