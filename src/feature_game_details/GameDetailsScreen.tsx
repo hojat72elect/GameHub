@@ -311,61 +311,61 @@ export function GameDetailsScreen() {
                             </Text>
 
                             {gameDetails.genres && gameDetails.genres.length > 0 && (
-                                <View style={{marginBottom: 12}}>
+                                <View style={{marginBottom: 12, marginEnd: 2}}>
                                     <Text
                                         style={{fontSize: 14, fontWeight: "600", color: colors.text, marginBottom: 4}}>
                                         Genres
                                     </Text>
                                     <Text style={{fontSize: 14, color: colors.secondaryText}}>
-                                        {gameDetails.genres.map(g => g.name).join(", ")}
+                                        {gameDetails.genres.map(g => g.name).join(". ")}
                                     </Text>
                                 </View>
                             )}
 
                             {gameDetails.platforms && gameDetails.platforms.length > 0 && (
-                                <View style={{marginBottom: 12}}>
+                                <View style={{marginBottom: 12, marginEnd: 2}}>
                                     <Text
                                         style={{fontSize: 14, fontWeight: "600", color: colors.text, marginBottom: 4}}>
                                         Platforms
                                     </Text>
                                     <Text style={{fontSize: 14, color: colors.secondaryText}}>
-                                        {gameDetails.platforms.map(p => p.name).join(", ")}
+                                        {gameDetails.platforms.map(p => p.name).join(". ")}
                                     </Text>
                                 </View>
                             )}
 
                             {gameDetails.game_modes && gameDetails.game_modes.length > 0 && (
-                                <View style={{marginBottom: 12}}>
+                                <View style={{marginBottom: 12, marginEnd: 2}}>
                                     <Text
                                         style={{fontSize: 14, fontWeight: "600", color: colors.text, marginBottom: 4}}>
                                         Modes
                                     </Text>
                                     <Text style={{fontSize: 14, color: colors.secondaryText}}>
-                                        {gameDetails.game_modes.map(m => m.name).join(", ")}
+                                        {gameDetails.game_modes.map(m => m.name).join(". ")}
                                     </Text>
                                 </View>
                             )}
 
                             {gameDetails.player_perspectives && gameDetails.player_perspectives.length > 0 && (
-                                <View style={{marginBottom: 12}}>
+                                <View style={{marginBottom: 12, marginEnd: 2}}>
                                     <Text
                                         style={{fontSize: 14, fontWeight: "600", color: colors.text, marginBottom: 4}}>
                                         Player Perspectives
                                     </Text>
                                     <Text style={{fontSize: 14, color: colors.secondaryText}}>
-                                        {gameDetails.player_perspectives.map(p => p.name).join(", ")}
+                                        {gameDetails.player_perspectives.map(p => p.name).join(". ")}
                                     </Text>
                                 </View>
                             )}
 
                             {gameDetails.themes && gameDetails.themes.length > 0 && (
-                                <View style={{marginBottom: 12}}>
+                                <View style={{marginBottom: 12, marginEnd: 2}}>
                                     <Text
                                         style={{fontSize: 14, fontWeight: "600", color: colors.text, marginBottom: 4}}>
                                         Themes
                                     </Text>
                                     <Text style={{fontSize: 14, color: colors.secondaryText}}>
-                                        {gameDetails.themes.map(t => t.name).join(", ")}
+                                        {gameDetails.themes.map(t => t.name).join(". ")}
                                     </Text>
                                 </View>
                             )}
