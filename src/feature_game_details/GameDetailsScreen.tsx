@@ -1,5 +1,14 @@
 import {SafeAreaProvider} from "react-native-safe-area-context";
-import {ActivityIndicator, Image, Linking, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {
+    ActivityIndicator,
+    Image,
+    LayoutAnimation,
+    Linking,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    View
+} from "react-native";
 import {router, useLocalSearchParams} from "expo-router";
 import {useEffect, useState} from "react";
 import {getGameDetailsByIdUseCase} from "@/src/feature_game_details/api/getGameDetailsByIdUseCase";
@@ -27,6 +36,7 @@ export function GameDetailsScreen() {
     const [gameDetails, setGameDetails] = useState<GameDetails | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const [isSummaryExpanded, setIsSummaryExpanded] = useState<boolean>(false);
     const {colors} = useTheme();
 
     useEffect(() => {
@@ -46,6 +56,20 @@ export function GameDetailsScreen() {
 
         loadGameDetails();
     }, [gameId]);
+
+    const toggleSummary = () => {
+        LayoutAnimation.configureNext({
+            duration: 500,
+            create: {
+                type: LayoutAnimation.Types.easeInEaseOut,
+                property: LayoutAnimation.Properties.opacity,
+            },
+            update: {
+                type: LayoutAnimation.Types.easeInEaseOut,
+            },
+        });
+        setIsSummaryExpanded(!isSummaryExpanded);
+    };
 
     const getCoverUrl = (imageId: string, size: "cover_big" | "1080p" = "cover_big") => {
         return `https://images.igdb.com/igdb/image/upload/t_${size}/${imageId}.jpg`;
@@ -329,22 +353,35 @@ export function GameDetailsScreen() {
                     )}
 
                     {gameDetails.summary && (
-                        <View style={{
-                            backgroundColor: colors.card,
-                            paddingTop: 14,
-                            paddingStart: 14,
-                            paddingBottom: 14,
-                            elevation: 2,
-                            borderTopWidth: 12,
-                            borderTopColor: colors.border,
-                        }}>
-                            <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
-                                Summary
-                            </Text>
-                            <Text style={{fontSize: 14, color: colors.secondaryText, lineHeight: 22}}>
-                                {gameDetails.summary}
-                            </Text>
-                        </View>
+                        <TouchableOpacity
+                            activeOpacity={0.7}
+                            onPress={toggleSummary}
+                        >
+                            <View style={{
+                                backgroundColor: colors.card,
+                                paddingTop: 14,
+                                paddingStart: 14,
+                                paddingBottom: 14,
+                                elevation: 2,
+                                borderTopWidth: 12,
+                                borderTopColor: colors.border,
+                            }}>
+                                <Text style={{
+                                    fontSize: 18,
+                                    fontWeight: "semibold",
+                                    color: colors.text,
+                                    marginBottom: 10
+                                }}>
+                                    Summary
+                                </Text>
+                                <Text style={{fontSize: 14, color: colors.secondaryText, lineHeight: 22, marginEnd: 8}}>
+                                    {isSummaryExpanded
+                                        ? gameDetails.summary
+                                        : gameDetails.summary.slice(0, 100) + (gameDetails.summary.length > 100 ? "..." : "")
+                                    }
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
                     )}
 
                     {(gameDetails.genres || gameDetails.platforms || gameDetails.game_modes ||
