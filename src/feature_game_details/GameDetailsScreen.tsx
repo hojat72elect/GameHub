@@ -20,6 +20,7 @@ import SteamIcon from "@/assets/svg/steam.svg";
 import RedditIcon from "@/assets/svg/reddit.svg";
 import GogIcon from "@/assets/svg/gog.svg";
 import DiscordIcon from "@/assets/svg/discord.svg";
+import PlayIcon from "@/assets/svg/play.svg";
 
 export function GameDetailsScreen() {
     const {gameId} = useLocalSearchParams<{ gameId: string }>();
@@ -229,11 +230,35 @@ export function GameDetailsScreen() {
                                         }}
                                     >
                                         <View>
-                                            <Image
-                                                source={{uri: getYouTubeThumbnailUrl(video.video_id)}}
-                                                resizeMode="cover"
-                                                style={{width: 200, height: 120, borderRadius: 6}}
-                                            />
+                                            <View>
+                                                <Image
+                                                    source={{uri: getYouTubeThumbnailUrl(video.video_id)}}
+                                                    resizeMode="cover"
+                                                    style={{width: 200, height: 120, borderRadius: 6}}
+                                                />
+                                                <View style={{
+                                                    position: "absolute",
+                                                    top: 0,
+                                                    left: 0,
+                                                    right: 0,
+                                                    bottom: 0,
+                                                    justifyContent: "center",
+                                                    alignItems: "center"
+                                                }}>
+                                                    <View style={{
+                                                        width: 48,
+                                                        height: 48,
+                                                        borderRadius: 28,
+                                                        borderWidth: 2,
+                                                        borderColor: "#FFF",
+                                                        justifyContent: "center",
+                                                        alignItems: "center",
+                                                        backgroundColor: "rgba(0, 0, 0, 0.3)"
+                                                    }}>
+                                                        <PlayIcon width={36} height={36} fill="#FFF"/>
+                                                    </View>
+                                                </View>
+                                            </View>
                                             <Text style={{
                                                 fontSize: 13,
                                                 color: colors.secondaryText,
