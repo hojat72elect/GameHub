@@ -40,4 +40,25 @@ export interface GameDetails {
             image_id: string;
         };
     }>;
+    summary?: string;
+    genres?: Array<{
+        id: number;
+        name: string;
+    }>;
+    platforms?: Array<{
+        id: number;
+        name: string;
+    }>;
+    game_modes?: Array<{
+        id: number;
+        name: string;
+    }>;
+    player_perspectives?: Array<{
+        id: number;
+        name: string;
+    }>;
+    themes?: Array<{
+        id: number;
+        name: string;
+    }>;
 }
