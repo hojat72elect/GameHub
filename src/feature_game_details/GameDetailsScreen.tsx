@@ -205,12 +205,13 @@ export function GameDetailsScreen() {
 
                     {gameDetails.videos && gameDetails.videos.length > 0 && (
                         <View style={{
+                            backgroundColor: colors.card,
                             paddingTop: 14,
                             paddingStart: 14,
                             paddingBottom: 14,
                             elevation: 2,
-                            borderWidth: 1,
-                            borderColor: colors.border,
+                            borderTopWidth: 12,
+                            borderTopColor: colors.border,
                         }}>
                             <Text style={{
                                 fontSize: 18,
@@ -251,12 +252,13 @@ export function GameDetailsScreen() {
 
                     {gameDetails.screenshots && gameDetails.screenshots.length > 0 && (
                         <View style={{
+                            backgroundColor: colors.card,
                             paddingTop: 14,
                             paddingStart: 14,
                             paddingBottom: 14,
                             elevation: 2,
-                            borderWidth: 1,
-                            borderColor: colors.border,
+                            borderTopWidth: 12,
+                            borderTopColor: colors.border,
                         }}>
                             <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
                                 Screenshots
@@ -276,12 +278,13 @@ export function GameDetailsScreen() {
 
                     {gameDetails.summary && (
                         <View style={{
+                            backgroundColor: colors.card,
                             paddingTop: 14,
                             paddingStart: 14,
                             paddingBottom: 14,
                             elevation: 2,
-                            borderWidth: 1,
-                            borderColor: colors.border
+                            borderTopWidth: 12,
+                            borderTopColor: colors.border,
                         }}>
                             <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
                                 Summary
@@ -295,12 +298,13 @@ export function GameDetailsScreen() {
                     {(gameDetails.genres || gameDetails.platforms || gameDetails.game_modes ||
                         gameDetails.player_perspectives || gameDetails.themes) && (
                         <View style={{
+                            backgroundColor: colors.card,
                             paddingTop: 14,
                             paddingStart: 14,
                             paddingBottom: 14,
                             elevation: 2,
-                            borderWidth: 1,
-                            borderColor: colors.border
+                            borderTopWidth: 12,
+                            borderTopColor: colors.border,
                         }}>
                             <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
                                 Details
@@ -370,12 +374,13 @@ export function GameDetailsScreen() {
 
                     {gameDetails.websites && gameDetails.websites.length > 0 && (
                         <View style={{
+                            backgroundColor: colors.card,
                             paddingTop: 14,
                             paddingStart: 14,
                             paddingBottom: 14,
                             elevation: 2,
-                            borderWidth: 1,
-                            borderColor: colors.border
+                            borderTopWidth: 12,
+                            borderTopColor: colors.border,
                         }}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
                                 Links
@@ -413,12 +418,13 @@ export function GameDetailsScreen() {
 
                     {gameDetails.similar_games && gameDetails.similar_games.length > 0 && (
                         <View style={{
+                            backgroundColor: colors.card,
                             paddingTop: 14,
                             paddingStart: 14,
                             paddingBottom: 14,
                             elevation: 2,
-                            borderWidth: 1,
-                            borderColor: colors.border
+                            borderTopWidth: 12,
+                            borderTopColor: colors.border,
                         }}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
                                 Similar Games
