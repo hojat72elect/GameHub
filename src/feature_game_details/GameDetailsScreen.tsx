@@ -182,32 +182,40 @@ export function GameDetailsScreen() {
                         <LikeButton gameId={gameId}/>
                     </View>
                 </View>
-                <View style={{padding: 20}}>
-                    <View style={{flexDirection: "row", marginBottom: 15}}>
+                <View>
+                    <View style={{flexDirection: "row", marginStart: 18}}>
                         <Image
                             source={titlePictureUrl}
                             resizeMode="cover"
-                            style={{width: 100, height: 150, borderRadius: 8, marginRight: 15}}
+                            style={{width: 100, height: 150, borderRadius: 8, marginRight: 15, marginTop: -26}}
                         />
                         <View style={{flex: 1, justifyContent: "center"}}>
-                            <Text style={{fontSize: 24, fontWeight: "bold", color: colors.text, marginBottom: 8}}>
+                            <Text style={{fontSize: 20, fontWeight: "bold", color: colors.text}}>
                                 {gameDetails.name}
                             </Text>
-                            <Text style={{fontSize: 14, color: colors.secondaryText, marginBottom: 4}}>
-                                Release Date: {formatDate(gameDetails.first_release_date)}
+                            <Text style={{fontSize: 14, color: colors.secondaryText, marginTop: 8}}>
+                                {formatDate(gameDetails.first_release_date)}
                             </Text>
-                            <Text style={{fontSize: 14, color: colors.secondaryText}}>
-                                Developer: {getDeveloperName()}
+                            <Text style={{fontSize: 14, color: colors.secondaryText, marginTop: 4}}>
+                                {getDeveloperName()}
                             </Text>
                         </View>
                     </View>
 
 
                     {gameDetails.videos && gameDetails.videos.length > 0 && (
-                        <View style={{marginBottom: 20}}>
-                            <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
-                                Videos
-                            </Text>
+                        <View style={{
+                            marginBottom: 20,
+                            elevation: 2,
+                            borderWidth: 1,
+                            borderColor: colors.border,
+                        }}>
+                            <Text style={{
+                                fontSize: 18,
+                                fontWeight: "semibold",
+                                color: colors.text,
+                                marginBottom: 10
+                            }}>Videos</Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {gameDetails.videos.map((video) => (
                                     <TouchableOpacity
