@@ -25,39 +25,48 @@ export function SettingsScreen() {
 
     return (
         <ScrollView style={{backgroundColor: colors.background}}
-                    contentContainerStyle={{marginTop: 30, paddingStart: 20}}>
+                    contentContainerStyle={{marginTop: 36}}>
             <Text style={{
-                fontSize: 24, fontWeight: "400", color: colors.text
+                fontSize: 24, fontWeight: "400", color: colors.text, marginStart:18
             }}>Settings</Text>
 
             <View style={{
+                marginTop:14,
                 backgroundColor: colors.card,
-                padding: 16,
+                paddingTop: 14,
+                paddingStart:14,
+                paddingBottom:14,
                 borderWidth: 1,
                 borderColor: colors.border,
                 elevation: 2
             }}>
-                <Text style={{color: "#FF4B7D", fontWeight: "600", fontSize: 14}}>Appearance</Text>
+                <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>Appearance</Text>
                 <TouchableOpacity style={{marginTop: 8}} onPress={() => setModalVisible(true)}>
                     <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>Theme</Text>
                     <Text
-                        style={{fontSize: 18, color: colors.secondaryText}}>{getThemeModeLabel(themeMode)}</Text>
+                        style={{fontSize: 14, color: colors.secondaryText}}>{getThemeModeLabel(themeMode)}</Text>
                 </TouchableOpacity>
             </View>
 
-            <View style={{}}>
-                <Text style={{}}>About</Text>
+            <View style={{  marginTop:14,
+                backgroundColor: colors.card,
+                paddingTop: 14,
+                paddingStart:14,
+                paddingBottom:14,
+                borderWidth: 1,
+                borderColor: colors.border,
+                elevation: 2}}>
+                <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>About</Text>
                 <TouchableOpacity
-                    style={{}}
+                    style={{paddingTop:10}}
                     onPress={() => Linking.openURL("https://github.com/hojat72elect/GameHub")}
                 >
-                    <Text style={{}}>Source Code</Text>
-                    <Text style={{}}>View the source code of the
-                        app</Text>
+                    <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>Source Code</Text>
+                    <Text style={{fontSize: 14, color: colors.secondaryText}}>View the source code of the app</Text>
                 </TouchableOpacity>
-                <View style={{}}>
-                    <Text style={{}}>Version</Text>
-                    <Text style={{}}>v0.0.1-debug</Text>
+                <View style={{paddingTop:10}}>
+                    <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>Version</Text>
+                    <Text style={{fontSize: 14, color: colors.secondaryText}}>v0.0.1-debug</Text>
                 </View>
             </View>
 
