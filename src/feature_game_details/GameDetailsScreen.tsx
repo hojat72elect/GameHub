@@ -205,7 +205,9 @@ export function GameDetailsScreen() {
 
                     {gameDetails.videos && gameDetails.videos.length > 0 && (
                         <View style={{
-                            marginBottom: 20,
+                            paddingTop: 14,
+                            paddingStart: 14,
+                            paddingBottom: 14,
                             elevation: 2,
                             borderWidth: 1,
                             borderColor: colors.border,
@@ -248,7 +250,14 @@ export function GameDetailsScreen() {
                     )}
 
                     {gameDetails.screenshots && gameDetails.screenshots.length > 0 && (
-                        <View style={{marginBottom: 20}}>
+                        <View style={{
+                            paddingTop: 14,
+                            paddingStart: 14,
+                            paddingBottom: 14,
+                            elevation: 2,
+                            borderWidth: 1,
+                            borderColor: colors.border,
+                        }}>
                             <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
                                 Screenshots
                             </Text>
@@ -266,7 +275,14 @@ export function GameDetailsScreen() {
                     )}
 
                     {gameDetails.summary && (
-                        <View style={{marginBottom: 20}}>
+                        <View style={{
+                            paddingTop: 14,
+                            paddingStart: 14,
+                            paddingBottom: 14,
+                            elevation: 2,
+                            borderWidth: 1,
+                            borderColor: colors.border
+                        }}>
                             <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
                                 Summary
                             </Text>
@@ -278,7 +294,14 @@ export function GameDetailsScreen() {
 
                     {(gameDetails.genres || gameDetails.platforms || gameDetails.game_modes ||
                         gameDetails.player_perspectives || gameDetails.themes) && (
-                        <View style={{marginBottom: 20}}>
+                        <View style={{
+                            paddingTop: 14,
+                            paddingStart: 14,
+                            paddingBottom: 14,
+                            elevation: 2,
+                            borderWidth: 1,
+                            borderColor: colors.border
+                        }}>
                             <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
                                 Details
                             </Text>
@@ -346,7 +369,14 @@ export function GameDetailsScreen() {
                     )}
 
                     {gameDetails.websites && gameDetails.websites.length > 0 && (
-                        <View style={{marginBottom: 20}}>
+                        <View style={{
+                            paddingTop: 14,
+                            paddingStart: 14,
+                            paddingBottom: 14,
+                            elevation: 2,
+                            borderWidth: 1,
+                            borderColor: colors.border
+                        }}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
                                 Links
                             </Text>
@@ -382,7 +412,14 @@ export function GameDetailsScreen() {
                     )}
 
                     {gameDetails.similar_games && gameDetails.similar_games.length > 0 && (
-                        <View style={{marginBottom: 20}}>
+                        <View style={{
+                            paddingTop: 14,
+                            paddingStart: 14,
+                            paddingBottom: 14,
+                            elevation: 2,
+                            borderWidth: 1,
+                            borderColor: colors.border
+                        }}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
                                 Similar Games
                             </Text>
