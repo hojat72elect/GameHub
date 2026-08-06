@@ -7,6 +7,7 @@ import {GameDetails} from "@/src/feature_game_details/domain/GameDetails";
 import {router} from "expo-router";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {getGamesByIdsUseCase} from "@/src/feature_likes/getGamesByIdsUseCase";
+import {getRelativeTimeTextUseCase} from "@/src/shared/getRelativeTimeTextUseCase";
 
 export function LikesScreen() {
     const {colors} = useTheme();
@@ -83,8 +84,7 @@ export function LikesScreen() {
                           numberOfLines={2}>
                         {item.name}
                     </Text>
-                    <Text
-                        style={{fontSize: 14, color: colors.secondaryText}}>{formatDate(item.first_release_date)}</Text>
+                    <Text style={{fontSize: 14, color: colors.secondaryText}}>{formatDate(item.first_release_date)} {item.first_release_date ? getRelativeTimeTextUseCase(item.first_release_date!) : ""}</Text>
                     <Text style={{
                         fontSize: 14,
                         color: colors.secondaryText
