@@ -30,6 +30,7 @@ import RedditIcon from "@/assets/svg/reddit.svg";
 import GogIcon from "@/assets/svg/gog.svg";
 import DiscordIcon from "@/assets/svg/discord.svg";
 import PlayIcon from "@/assets/svg/play.svg";
+import {getRelativeTimeTextUseCase} from "@/src/shared/getRelativeTimeTextUseCase";
 
 export function GameDetailsScreen() {
     const {gameId} = useLocalSearchParams<{ gameId: string }>();
@@ -144,33 +145,6 @@ export function GameDetailsScreen() {
         });
     };
 
-    const getRelativeTimeText = (timestamp?: number) => {
-        if (!timestamp) return "";
-
-        const releaseDate = new Date(timestamp * 1000);
-        const now = new Date();
-        const diffInMs = releaseDate.getTime() - now.getTime();
-        const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-        const absDays = Math.abs(diffInDays);
-
-        if (absDays === 0) return "(today)";
-
-        const years = Math.floor(absDays / 365);
-        const months = Math.floor(absDays / 30);
-        const days = absDays;
-
-        let timeString = "";
-        if (years > 0) {
-            timeString = `${years} year${years > 1 ? 's' : ''}`;
-        } else if (months > 0) {
-            timeString = `${months} month${months > 1 ? 's' : ''}`;
-        } else {
-            timeString = `${days} day${days > 1 ? 's' : ''}`;
-        }
-
-        return diffInDays > 0 ? `(in ${timeString})` : `(${timeString} ago)`;
-    };
-
     if (isLoading) {
         return (
             <SafeAreaProvider
@@ -246,7 +220,7 @@ export function GameDetailsScreen() {
                                 {gameDetails.name}
                             </Text>
                             <Text style={{fontSize: 14, color: colors.secondaryText, marginTop: 8}}>
-                                {formatDate(gameDetails.first_release_date)} {getRelativeTimeText(gameDetails.first_release_date)}
+                                {formatDate(gameDetails.first_release_date)} {gameDetails.first_release_date ? getRelativeTimeTextUseCase(gameDetails.first_release_date!) : ""}
                             </Text>
                             <Text style={{fontSize: 14, color: colors.secondaryText, marginTop: 4}}>
                                 {getDeveloperName()}
