@@ -15,7 +15,7 @@ export async function getGamesByIdsUseCase(gameIds: string[]): Promise<GameDetai
            involved_companies.company.name, involved_companies.developer, involved_companies.publisher,
            videos.name, videos.video_id, screenshots.image_id, 
            websites.category, websites.url,
-           similar_games.name, similar_games.cover.image_id;
+           similar_games.name, similar_games.cover.image_id, summary;
     where id = (${gameIds.join(",")});
     limit ${gameIds.length};
     `.trim();

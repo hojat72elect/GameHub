@@ -84,19 +84,31 @@ export function LikesScreen() {
                           numberOfLines={2}>
                         {item.name}
                     </Text>
-                    <Text style={{fontSize: 14, color: colors.secondaryText}}>{formatDate(item.first_release_date)} {item.first_release_date ? getRelativeTimeTextUseCase(item.first_release_date!) : ""}</Text>
+                    <Text style={{
+                        fontSize: 14,
+                        color: colors.secondaryText
+                    }}>{formatDate(item.first_release_date)} {item.first_release_date ? getRelativeTimeTextUseCase(item.first_release_date!) : ""}</Text>
                     <Text style={{
                         fontSize: 14,
                         color: colors.secondaryText
                     }}>{item.involved_companies ? item.involved_companies[0].company.name : ""}</Text>
-                    <Text style={{color: colors.secondaryText, paddingTop: 8}}>Some information about the game</Text>
+                    <Text style={{
+                        color: colors.secondaryText,
+                        paddingTop: 8
+                    }}>{item.summary ? item.summary.slice(0, 50) + (item.summary.length > 50 ? "..." : "") : ""}</Text>
                 </View>
             </TouchableOpacity>
         );
     };
 
     const renderEmptyState = () => (
-        <View style={{flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 20}}>
+        <View style={{
+            flex: 1,
+            alignSelf: "center",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingHorizontal: 20
+        }}>
             <Text style={{fontSize: 20, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
                 No liked games yet
             </Text>
@@ -152,12 +164,13 @@ export function LikesScreen() {
                     Likes
                 </Text>
             </View>
-            <FlatList
-                data={likedGames}
-                renderItem={renderGameCard}
-                keyExtractor={(item) => item.id.toString()}
-                ListEmptyComponent={renderEmptyState}
-            />
+            {likedGames.length === 0 ? renderEmptyState() : (
+                <FlatList
+                    data={likedGames}
+                    renderItem={renderGameCard}
+                    keyExtractor={(item) => item.id.toString()}
+                />
+            )}
         </SafeAreaView>
     );
 }
