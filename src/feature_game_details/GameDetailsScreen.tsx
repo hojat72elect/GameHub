@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import {router, useLocalSearchParams} from "expo-router";
 import {useEffect, useState} from "react";
+import {useTranslation} from "react-i18next";
 import {getGameDetailsByIdUseCase} from "@/src/feature_game_details/api/getGameDetailsByIdUseCase";
 import {GameDetails} from "@/src/feature_game_details/domain/GameDetails";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
@@ -39,6 +40,7 @@ export function GameDetailsScreen() {
     const [error, setError] = useState<string | null>(null);
     const [isSummaryExpanded, setIsSummaryExpanded] = useState<boolean>(false);
     const {colors} = useTheme();
+    const {t} = useTranslation();
 
     useEffect(() => {
         const loadGameDetails = async () => {
@@ -88,56 +90,56 @@ export function GameDetailsScreen() {
         const lowerUrl = url.toLowerCase();
 
         if (lowerUrl.includes('wikipedia.org')) {
-            return {icon: WikipediaIcon, name: 'Wikipedia'};
+            return {icon: WikipediaIcon, name: t('wikipedia')};
         }
         if (lowerUrl.includes('twitter.com')) {
-            return {icon: TwitterIcon, name: 'X'};
+            return {icon: TwitterIcon, name: t('x')};
         }
         if (lowerUrl.includes('facebook.com')) {
-            return {icon: FacebookIcon, name: 'Facebook'};
+            return {icon: FacebookIcon, name: t('facebook')};
         }
         if (lowerUrl.includes('twitch.tv')) {
-            return {icon: TwitchIcon, name: 'Twitch'};
+            return {icon: TwitchIcon, name: t('twitch')};
         }
         if (lowerUrl.includes('instagram.com')) {
-            return {icon: InstagramIcon, name: 'Instagram'};
+            return {icon: InstagramIcon, name: t('instagram')};
         }
         if (lowerUrl.includes('youtube.com') || lowerUrl.includes('youtu.be')) {
-            return {icon: YoutubeIcon, name: 'YouTube'};
+            return {icon: YoutubeIcon, name: t('youtube')};
         }
         if (lowerUrl.includes('steam')) {
-            return {icon: SteamIcon, name: 'Steam'};
+            return {icon: SteamIcon, name: t('steam')};
         }
         if (lowerUrl.includes('reddit.com')) {
-            return {icon: RedditIcon, name: 'Reddit'};
+            return {icon: RedditIcon, name: t('reddit')};
         }
         if (lowerUrl.includes('discord')) {
-            return {icon: DiscordIcon, name: 'Discord'};
+            return {icon: DiscordIcon, name: t('discord')};
         }
         if (lowerUrl.includes('gog.com')) {
-            return {icon: GogIcon, name: 'GOG'};
+            return {icon: GogIcon, name: t('gog')};
         }
         if (lowerUrl.includes('apple.com') || lowerUrl.includes('itunes')) {
-            return {icon: AppleIcon, name: 'Apple'};
+            return {icon: AppleIcon, name: t('apple')};
         }
         if (lowerUrl.includes('play.google.com')) {
-            return {icon: GooglePlayIcon, name: 'Google Play'};
+            return {icon: GooglePlayIcon, name: t('googlePlay')};
         }
         if (lowerUrl.includes("epicgames.com")) {
-            return {icon: WebIcon, name: "Epic Games"}
+            return {icon: WebIcon, name: t('epicGames')}
         }
 
-        return {icon: WebIcon, name: 'Website'};
+        return {icon: WebIcon, name: t('website')};
     };
 
     const getDeveloperName = () => {
-        if (!gameDetails?.involved_companies) return "Unknown";
+        if (!gameDetails?.involved_companies) return t('unknown');
         const developer = gameDetails.involved_companies.find(ic => ic.developer);
-        return developer?.company.name || "Unknown";
+        return developer?.company.name || t('unknown');
     };
 
     const formatDate = (timestamp?: number) => {
-        if (!timestamp) return "TBD";
+        if (!timestamp) return t('tbd');
         return new Date(timestamp * 1000).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
@@ -170,7 +172,7 @@ export function GameDetailsScreen() {
                     marginBottom: 10,
                     textAlign: "center"
                 }}>
-                    Something went wrong
+                    {t('somethingWentWrong')}
                 </Text>
                 <Text style={{
                     fontSize: 14,
@@ -184,7 +186,7 @@ export function GameDetailsScreen() {
                     paddingVertical: 12,
                     borderRadius: 8
                 }}>
-                    <Text style={{color: "#FFF", fontWeight: "600"}}>Go Back</Text>
+                    <Text style={{color: "#FFF", fontWeight: "600"}}>{t('goBack')}</Text>
                 </TouchableOpacity>
             </SafeAreaProvider>
         );
@@ -244,7 +246,7 @@ export function GameDetailsScreen() {
                                 fontWeight: "semibold",
                                 color: colors.text,
                                 marginBottom: 10
-                            }}>Videos</Text>
+                            }}>{t('videos')}</Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {gameDetails.videos.map((video) => (
                                     <TouchableOpacity
@@ -291,7 +293,7 @@ export function GameDetailsScreen() {
                                                 width: 200
                                             }}
                                                   numberOfLines={1}>
-                                                {video.name || "Watch Video"}
+                                                {video.name || t('watchVideo')}
                                             </Text>
                                         </View>
                                     </TouchableOpacity>
@@ -311,7 +313,7 @@ export function GameDetailsScreen() {
                             borderTopColor: colors.border,
                         }}>
                             <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
-                                Screenshots
+                                {t('screenshots')}
                             </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {gameDetails.screenshots.map((screenshot) => (
@@ -346,7 +348,7 @@ export function GameDetailsScreen() {
                                     color: colors.text,
                                     marginBottom: 10
                                 }}>
-                                    Summary
+                                    {t('summary')}
                                 </Text>
                                 <Text style={{fontSize: 14, color: colors.secondaryText, lineHeight: 22, marginEnd: 8}}>
                                     {isSummaryExpanded
@@ -370,14 +372,14 @@ export function GameDetailsScreen() {
                             borderTopColor: colors.border,
                         }}>
                             <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 10}}>
-                                Details
+                                {t('details')}
                             </Text>
 
                             {gameDetails.genres && gameDetails.genres.length > 0 && (
                                 <View style={{marginBottom: 12, marginEnd: 2}}>
                                     <Text
                                         style={{fontSize: 14, fontWeight: "600", color: colors.text, marginBottom: 4}}>
-                                        Genres
+                                        {t('genres')}
                                     </Text>
                                     <Text style={{fontSize: 14, color: colors.secondaryText}}>
                                         {gameDetails.genres.map(g => g.name).join(". ")}
@@ -389,7 +391,7 @@ export function GameDetailsScreen() {
                                 <View style={{marginBottom: 12, marginEnd: 2}}>
                                     <Text
                                         style={{fontSize: 14, fontWeight: "600", color: colors.text, marginBottom: 4}}>
-                                        Platforms
+                                        {t('platforms')}
                                     </Text>
                                     <Text style={{fontSize: 14, color: colors.secondaryText}}>
                                         {gameDetails.platforms.map(p => p.name).join(". ")}
@@ -401,7 +403,7 @@ export function GameDetailsScreen() {
                                 <View style={{marginBottom: 12, marginEnd: 2}}>
                                     <Text
                                         style={{fontSize: 14, fontWeight: "600", color: colors.text, marginBottom: 4}}>
-                                        Modes
+                                        {t('modes')}
                                     </Text>
                                     <Text style={{fontSize: 14, color: colors.secondaryText}}>
                                         {gameDetails.game_modes.map(m => m.name).join(". ")}
@@ -413,7 +415,7 @@ export function GameDetailsScreen() {
                                 <View style={{marginBottom: 12, marginEnd: 2}}>
                                     <Text
                                         style={{fontSize: 14, fontWeight: "600", color: colors.text, marginBottom: 4}}>
-                                        Player Perspectives
+                                        {t('playerPerspectives')}
                                     </Text>
                                     <Text style={{fontSize: 14, color: colors.secondaryText}}>
                                         {gameDetails.player_perspectives.map(p => p.name).join(". ")}
@@ -425,7 +427,7 @@ export function GameDetailsScreen() {
                                 <View style={{marginBottom: 12, marginEnd: 2}}>
                                     <Text
                                         style={{fontSize: 14, fontWeight: "600", color: colors.text, marginBottom: 4}}>
-                                        Themes
+                                        {t('themes')}
                                     </Text>
                                     <Text style={{fontSize: 14, color: colors.secondaryText}}>
                                         {gameDetails.themes.map(t => t.name).join(". ")}
@@ -446,7 +448,7 @@ export function GameDetailsScreen() {
                             borderTopColor: colors.border,
                         }}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
-                                Links
+                                {t('links')}
                             </Text>
                             <View style={{flexDirection: "row", flexWrap: "wrap", gap: 8}}>
                                 {gameDetails.websites.map((website) => {
@@ -490,7 +492,7 @@ export function GameDetailsScreen() {
                             borderTopColor: colors.border,
                         }}>
                             <Text style={{fontSize: 18, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
-                                Similar Games
+                                {t('similarGames')}
                             </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {gameDetails.similar_games.map((similarGame) => {

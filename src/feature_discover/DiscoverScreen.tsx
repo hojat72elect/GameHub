@@ -2,6 +2,7 @@ import {ActivityIndicator, RefreshControl, ScrollView, Text, TouchableOpacity, V
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SearchIcon from "@/assets/svg/magnify.svg";
 import {useEffect, useState} from "react";
+import {useTranslation} from "react-i18next";
 import {Game} from "@/src/feature_discover/domain/Game";
 import {router} from "expo-router";
 import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
@@ -18,6 +19,7 @@ export function DiscoverScreen() {
     const [refreshing, setRefreshing] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const {colors} = useTheme();
+    const {t} = useTranslation();
 
     const loadData = async (showRefreshIndicator = false) => {
         if (showRefreshIndicator) {
@@ -69,8 +71,7 @@ export function DiscoverScreen() {
                     color: colors.text,
                     marginBottom: 10,
                     textAlign: "center"
-                }}>Something
-                    went wrong</Text>
+                }}>{t('somethingWentWrong')}</Text>
                 <Text style={{
                     fontSize: 14,
                     color: colors.secondaryText,
@@ -83,7 +84,7 @@ export function DiscoverScreen() {
                     paddingVertical: 12,
                     borderRadius: 8
                 }}>
-                    <Text style={{color: "#FFF", fontWeight: "600"}}>Retry</Text>
+                    <Text style={{color: "#FFF", fontWeight: "600"}}>{t('retry')}</Text>
                 </TouchableOpacity>
             </SafeAreaProvider>
         );
@@ -101,7 +102,7 @@ export function DiscoverScreen() {
                 borderBottomWidth: 1,
                 borderBottomColor: colors.border
             }}>
-                <Text style={{fontSize: 24, fontWeight: "400", color: colors.text}}>Discover</Text>
+                <Text style={{fontSize: 24, fontWeight: "400", color: colors.text}}>{t('discoverTitle')}</Text>
                 <TouchableOpacity onPress={() => router.push('/search')}>
                     <SearchIcon width={24} height={24} color={colors.text}/>
                 </TouchableOpacity>

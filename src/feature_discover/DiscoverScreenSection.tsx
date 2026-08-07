@@ -1,6 +1,7 @@
 import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
 import {Game} from "@/src/feature_discover/domain/Game";
 import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {useTranslation} from "react-i18next";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {router} from "expo-router";
 import {useTheme} from "@/src/ThemeContext";
@@ -16,6 +17,7 @@ import {useTheme} from "@/src/ThemeContext";
  */
 export function DiscoverScreenSection({title, data}: { title: GamesCategory, data: Game[] }) {
     const {colors} = useTheme();
+    const {t} = useTranslation();
 
     return (<View style={{
         marginBottom: 16,
@@ -34,13 +36,13 @@ export function DiscoverScreenSection({title, data}: { title: GamesCategory, dat
             <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>{(() => {
                 switch (title) {
                     case GamesCategory.Popular:
-                        return "Popular";
+                        return t('popular');
                     case GamesCategory.RecentlyReleased:
-                        return "Recently Released";
+                        return t('recentlyReleased');
                     case GamesCategory.ComingSoon:
-                        return "Coming Soon";
+                        return t('comingSoon');
                     case GamesCategory.MostAnticipated:
-                        return "Most Anticipated"
+                        return t('mostAnticipated')
                 }
             })()}</Text>
             <TouchableOpacity>
