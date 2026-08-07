@@ -2,6 +2,7 @@ import {ActivityIndicator, Image, ScrollView, Text, TextInput, TouchableOpacity,
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {router} from "expo-router";
 import {useState} from "react";
+import {useTranslation} from "react-i18next";
 import {Game} from "@/src/feature_discover/domain/Game";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import SearchIcon from "@/assets/svg/magnify.svg";
@@ -15,6 +16,7 @@ export function SearchScreen() {
     const [hasSearched, setHasSearched] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const {colors} = useTheme();
+    const {t} = useTranslation();
 
     const performSearch = async () => {
         const trimmedQuery = query.trim();
@@ -45,9 +47,9 @@ export function SearchScreen() {
                 alignItems: "center"
             }}>
                 <TouchableOpacity onPress={() => router.back()} style={{marginRight: 15}}>
-                    <Text style={{fontSize: 18, color: "#FF4B7D", fontWeight: "600"}}>Back</Text>
+                    <Text style={{fontSize: 18, color: "#FF4B7D", fontWeight: "600"}}>{t('back')}</Text>
                 </TouchableOpacity>
-                <Text style={{flex: 1, fontSize: 24, fontWeight: "bold", color: colors.text}}>Search</Text>
+                <Text style={{flex: 1, fontSize: 24, fontWeight: "bold", color: colors.text}}>{t('searchTitle')}</Text>
             </View>
 
             <View style={{paddingHorizontal: 15, paddingVertical: 12}}>
@@ -69,7 +71,7 @@ export function SearchScreen() {
                             paddingVertical: 12,
                             marginLeft: 10
                         }}
-                        placeholder="Search games..."
+                        placeholder={t('placeholder')}
                         placeholderTextColor={colors.secondaryText}
                         value={query}
                         onChangeText={setQuery}
@@ -94,8 +96,7 @@ export function SearchScreen() {
                         color: colors.text,
                         marginBottom: 10,
                         textAlign: "center"
-                    }}>Something
-                        went wrong</Text>
+                    }}>{t('somethingWentWrong')}</Text>
                     <Text style={{
                         fontSize: 14,
                         color: colors.secondaryText,
@@ -108,14 +109,14 @@ export function SearchScreen() {
                         paddingVertical: 12,
                         borderRadius: 8
                     }}>
-                        <Text style={{color: "#FFF", fontWeight: "600"}}>Retry</Text>
+                        <Text style={{color: "#FFF", fontWeight: "600"}}>{t('retry')}</Text>
                     </TouchableOpacity>
                 </View>
             )}
 
             {!isLoading && !error && hasSearched && results.length === 0 && (
                 <View style={{flex: 1, justifyContent: "center", alignItems: "center", marginTop: 50}}>
-                    <Text style={{fontSize: 16, color: colors.secondaryText}}>No games found</Text>
+                    <Text style={{fontSize: 16, color: colors.secondaryText}}>{t('noGamesFound')}</Text>
                 </View>
             )}
 

@@ -4,6 +4,7 @@ import {router, useLocalSearchParams} from "expo-router";
 import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
 import {Game} from "@/src/feature_discover/domain/Game";
 import React, {useEffect, useState} from "react";
+import {useTranslation} from "react-i18next";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {GamesCategoryDatasource} from "@/src/feature_discover/api/GamesCategoryDatasource";
 import {useTheme} from "@/src/ThemeContext";
@@ -15,19 +16,20 @@ export function GamesCategoryScreen() {
     const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const {colors} = useTheme();
+    const {t} = useTranslation();
 
     const chosenCategory = category ? parseInt(category, 10) as GamesCategory : null;
 
     const getCategoryTitle = () => {
         switch (chosenCategory) {
             case GamesCategory.Popular:
-                return "Popular Games";
+                return t('popular');
             case GamesCategory.RecentlyReleased:
-                return "Recently Released Games";
+                return t('recentlyReleased');
             case GamesCategory.ComingSoon:
-                return "Coming Soon Games";
+                return t('comingSoon');
             case GamesCategory.MostAnticipated:
-                return "Most Anticipated Games";
+                return t('mostAnticipated');
             default:
                 return "";
         }
@@ -82,8 +84,7 @@ export function GamesCategoryScreen() {
                     color: colors.text,
                     marginBottom: 10,
                     textAlign: "center"
-                }}>Something
-                    went wrong</Text>
+                }}>{t('somethingWentWrong')}</Text>
                 <Text style={{
                     fontSize: 14,
                     color: colors.secondaryText,
@@ -96,7 +97,7 @@ export function GamesCategoryScreen() {
                     paddingVertical: 12,
                     borderRadius: 8
                 }}>
-                    <Text style={{color: "#FFF", fontWeight: "600"}}>Retry</Text>
+                    <Text style={{color: "#FFF", fontWeight: "600"}}>{t('retry')}</Text>
                 </TouchableOpacity>
             </SafeAreaProvider>
         );
@@ -113,7 +114,7 @@ export function GamesCategoryScreen() {
                 alignItems: "center"
             }}>
                 <TouchableOpacity onPress={() => router.back()} style={{marginRight: 15}}>
-                    <Text style={{fontSize: 18, color: "#FF4B7D", fontWeight: "600"}}>Back</Text>
+                    <Text style={{fontSize: 18, color: "#FF4B7D", fontWeight: "600"}}>{t('back')}</Text>
                 </TouchableOpacity>
                 <Text style={{fontSize: 24, fontWeight: "bold", color: colors.text}}>{getCategoryTitle()}</Text>
             </View>
@@ -163,7 +164,7 @@ export function GamesCategoryScreen() {
 
                 {games.length === 0 && (
                     <View style={{flex: 1, justifyContent: "center", alignItems: "center", marginTop: 50}}>
-                        <Text style={{fontSize: 16, color: colors.secondaryText}}>No games found</Text>
+                        <Text style={{fontSize: 16, color: colors.secondaryText}}>{t('noGamesFound')}</Text>
                     </View>
                 )}
             </ScrollView>

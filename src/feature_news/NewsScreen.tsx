@@ -2,6 +2,7 @@ import {ActivityIndicator, FlatList, Image, Linking, Text, TouchableOpacity, Vie
 import idleImage from "@/assets/images/game_landscape_placeholder.webp";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {useEffect, useState} from "react";
+import {useTranslation} from "react-i18next";
 import axios from "axios";
 import {NewsApiResultItem} from "@/src/feature_news/domain/NewsApiResultItem";
 import {useTheme} from "@/src/ThemeContext";
@@ -13,6 +14,7 @@ export function NewsScreen() {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const {colors} = useTheme();
+    const {t} = useTranslation();
 
     const fetchFeed = async () => {
         try {
@@ -23,7 +25,7 @@ export function NewsScreen() {
             setNewsData(parsedItems);
         } catch (err: any) {
             console.error("Error fetching gamespot feed:", err);
-            setError("Failed to load news feed. Please try again.");
+            setError(t('failedToLoad'));
         } finally {
             setLoading(false);
         }
@@ -96,7 +98,7 @@ export function NewsScreen() {
                 borderBottomWidth: 1,
                 borderBottomColor: colors.border
             }}>
-                <Text style={{fontSize: 28, fontWeight: "300", fontFamily: "System", color: colors.text}}>News</Text>
+                <Text style={{fontSize: 28, fontWeight: "300", fontFamily: "System", color: colors.text}}>{t('newsTitle')}</Text>
             </View>
 
             {loading ? (
@@ -118,7 +120,7 @@ export function NewsScreen() {
                             borderRadius: 8
                         }}
                     >
-                        <Text style={{color: colors.background, fontWeight: "600", fontSize: 16}}>Try Again</Text>
+                        <Text style={{color: colors.background, fontWeight: "600", fontSize: 16}}>{t('tryAgain')}</Text>
                     </TouchableOpacity>
                 </View>
             ) : (

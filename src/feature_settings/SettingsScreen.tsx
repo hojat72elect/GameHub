@@ -1,20 +1,22 @@
 import {Linking, Modal, Pressable, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
+import {useTranslation} from "react-i18next";
 import {ThemeMode, useTheme} from "@/src/ThemeContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 export function SettingsScreen() {
+    const {t} = useTranslation();
     const {themeMode, colors, setThemeMode} = useTheme();
     const [modalVisible, setModalVisible] = useState(false);
 
     const getThemeModeLabel = (mode: ThemeMode) => {
         switch (mode) {
             case "light":
-                return "Light";
+                return t('light');
             case "dark":
-                return "Dark";
+                return t('dark');
             case "system":
-                return "System Default";
+                return t('systemDefault');
         }
     };
 
@@ -28,7 +30,7 @@ export function SettingsScreen() {
                     contentContainerStyle={{marginTop: 36}}>
             <Text style={{
                 fontSize: 24, fontWeight: "400", color: colors.text, marginStart: 18
-            }}>Settings</Text>
+            }}>{t('settingsTitle')}</Text>
 
             <View style={{
                 marginTop: 14,
@@ -40,11 +42,10 @@ export function SettingsScreen() {
                 borderColor: colors.border,
                 elevation: 2
             }}>
-                <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>Appearance</Text>
+                <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>{t('appearance')}</Text>
                 <TouchableOpacity style={{marginTop: 8}} onPress={() => setModalVisible(true)}>
-                    <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>Theme</Text>
-                    <Text
-                        style={{fontSize: 14, color: colors.secondaryText}}>{getThemeModeLabel(themeMode)}</Text>
+                    <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>{t('theme')}</Text>
+                    <Text style={{fontSize: 14, color: colors.secondaryText}}>{getThemeModeLabel(themeMode)}</Text>
                 </TouchableOpacity>
             </View>
 
@@ -58,16 +59,25 @@ export function SettingsScreen() {
                 borderColor: colors.border,
                 elevation: 2
             }}>
-                <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>About</Text>
+                <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>{t('about')}</Text>
                 <TouchableOpacity
                     style={{paddingTop: 10}}
                     onPress={() => Linking.openURL("https://github.com/hojat72elect/GameHub")}
                 >
-                    <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>Source Code</Text>
-                    <Text style={{fontSize: 14, color: colors.secondaryText}}>View the source code of the app</Text>
+                    <Text style={{
+                        fontSize: 20,
+                        fontWeight: "semibold",
+                        color: colors.text
+                    }}>{t('sourceCode')}</Text>
+                    <Text
+                        style={{fontSize: 14, color: colors.secondaryText}}>{t('sourceCodeDescription')}</Text>
                 </TouchableOpacity>
                 <View style={{paddingTop: 10}}>
-                    <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>Version</Text>
+                    <Text style={{
+                        fontSize: 20,
+                        fontWeight: "semibold",
+                        color: colors.text
+                    }}>{t('version')}</Text>
                     <Text style={{fontSize: 14, color: colors.secondaryText}}>v0.0.1-debug</Text>
                 </View>
             </View>
@@ -105,7 +115,7 @@ export function SettingsScreen() {
                             marginBottom: 20,
                             textAlign: "left",
                             color: colors.text
-                        }}>Theme</Text>
+                        }}>{t('theme')}</Text>
 
                         <TouchableOpacity
                             style={[
@@ -131,7 +141,7 @@ export function SettingsScreen() {
                                     fontSize: 16,
                                     fontWeight: "500",
                                     color: colors.text,
-                                }}>Light</Text>
+                                }}>{t('light')}</Text>
                             </View>
                             {themeMode === "light" && (
                                 <Ionicons name="checkmark" size={20} color={colors.tint}/>
@@ -161,7 +171,7 @@ export function SettingsScreen() {
                                 <Text style={[{
                                     fontSize: 16,
                                     fontWeight: "500"
-                                }, {color: colors.text}]}>Dark</Text>
+                                }, {color: colors.text}]}>{t('dark')}</Text>
                             </View>
                             {themeMode === "dark" && (
                                 <Ionicons name="checkmark" size={20} color={colors.tint}/>
@@ -193,7 +203,7 @@ export function SettingsScreen() {
                                     fontSize: 16,
                                     fontWeight: "500",
                                     color: colors.text
-                                }}>System Default</Text>
+                                }}>{t('systemDefault')}</Text>
                             </View>
                             {themeMode === "system" && (
                                 <Ionicons name="checkmark" size={20} color={colors.tint}/>

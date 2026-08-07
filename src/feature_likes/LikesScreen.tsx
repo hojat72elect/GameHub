@@ -1,6 +1,7 @@
 import {ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 import React, {useEffect, useState} from "react";
+import {useTranslation} from "react-i18next";
 import {useTheme} from "@/src/ThemeContext";
 import {useLikes} from "@/src/feature_likes/LikesContext";
 import {GameDetails} from "@/src/feature_game_details/domain/GameDetails";
@@ -15,6 +16,7 @@ export function LikesScreen() {
     const [likedGames, setLikedGames] = useState<GameDetails[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const {t} = useTranslation();
 
     useEffect(() => {
         const loadLikedGames = async () => {
@@ -110,10 +112,10 @@ export function LikesScreen() {
             paddingHorizontal: 20
         }}>
             <Text style={{fontSize: 20, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
-                No liked games yet
+                {t('noLikedGames')}
             </Text>
             <Text style={{fontSize: 14, color: colors.secondaryText, textAlign: "center"}}>
-                Start liking games to see them here!
+                {t('startLiking')}
             </Text>
         </View>
     );
@@ -143,7 +145,7 @@ export function LikesScreen() {
                     marginBottom: 10,
                     textAlign: "center"
                 }}>
-                    Something went wrong
+                    {t('somethingWentWrong')}
                 </Text>
                 <Text style={{fontSize: 14, color: colors.secondaryText, textAlign: "center"}}>
                     {error}
@@ -161,7 +163,7 @@ export function LikesScreen() {
                 borderBottomColor: colors.border,
             }}>
                 <Text style={{fontSize: 20, fontWeight: "500", color: colors.text}}>
-                    Likes
+                    {t('likesTitle')}
                 </Text>
             </View>
             {likedGames.length === 0 ? renderEmptyState() : (
