@@ -2,12 +2,16 @@ import {Linking, Modal, Pressable, ScrollView, Text, TouchableOpacity, View} fro
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {ThemeMode, useTheme} from "@/src/ThemeContext";
+import {useLanguage} from "@/src/LanguageContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import {Language} from "@/src/shared/Language";
 
 export function SettingsScreen() {
     const {t} = useTranslation();
     const {themeMode, colors, setThemeMode} = useTheme();
-    const [modalVisible, setModalVisible] = useState(false);
+    const {language, setLanguage} = useLanguage();
+    const [isThemeModalVisible, setIsThemeModalVisible] = useState(false);
+    const [isLanguageModalVisible, setIsLanguageModalVisible] = useState(false);
 
     const getThemeModeLabel = (mode: ThemeMode) => {
         switch (mode) {
@@ -20,9 +24,25 @@ export function SettingsScreen() {
         }
     };
 
+    const getLanguageLabel = (lang: Language) => {
+        switch (lang) {
+            case "en":
+                return t('english');
+            case "fa":
+                return t('persian');
+            case "system":
+                return t('systemDefault');
+        }
+    };
+
     const handleSelectTheme = (mode: ThemeMode) => {
         setThemeMode(mode);
-        setModalVisible(false);
+        setIsThemeModalVisible(false);
+    };
+
+    const handleSelectLanguage = (lang: Language) => {
+        setLanguage(lang);
+        setIsLanguageModalVisible(false);
     };
 
     return (
@@ -43,9 +63,13 @@ export function SettingsScreen() {
                 elevation: 2
             }}>
                 <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>{t('appearance')}</Text>
-                <TouchableOpacity style={{marginTop: 8}} onPress={() => setModalVisible(true)}>
+                <TouchableOpacity style={{marginTop: 8}} onPress={() => setIsThemeModalVisible(true)}>
                     <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>{t('theme')}</Text>
                     <Text style={{fontSize: 14, color: colors.secondaryText}}>{getThemeModeLabel(themeMode)}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{marginTop: 8}} onPress={() => setIsLanguageModalVisible(true)}>
+                    <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>{t('language')}</Text>
+                    <Text style={{fontSize: 14, color: colors.secondaryText}}>{getLanguageLabel(language)}</Text>
                 </TouchableOpacity>
             </View>
 
@@ -85,8 +109,8 @@ export function SettingsScreen() {
             <Modal
                 animationType="fade"
                 transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => setModalVisible(false)}
+                visible={isThemeModalVisible}
+                onRequestClose={() => setIsThemeModalVisible(false)}
             >
                 <Pressable style={{
                     flex: 1,
@@ -94,7 +118,7 @@ export function SettingsScreen() {
                     justifyContent: "center",
                     alignItems: "center",
                     padding: 20
-                }} onPress={() => setModalVisible(false)}>
+                }} onPress={() => setIsThemeModalVisible(false)}>
                     <View style={{
                         width: "100%",
                         maxWidth: 340,
@@ -206,6 +230,138 @@ export function SettingsScreen() {
                                 }}>{t('systemDefault')}</Text>
                             </View>
                             {themeMode === "system" && (
+                                <Ionicons name="checkmark" size={20} color={colors.tint}/>
+                            )}
+                        </TouchableOpacity>
+                    </View>
+                </Pressable>
+            </Modal>
+
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={isLanguageModalVisible}
+                onRequestClose={() => setIsLanguageModalVisible(false)}
+            >
+                <Pressable style={{
+                    flex: 1,
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: 20
+                }} onPress={() => setIsLanguageModalVisible(false)}>
+                    <View style={{
+                        width: "100%",
+                        maxWidth: 340,
+                        borderRadius: 14,
+                        borderWidth: 1,
+                        padding: 20,
+                        elevation: 5,
+                        shadowColor: "#000",
+                        shadowOffset: {width: 0, height: 2},
+                        shadowOpacity: 0.25,
+                        shadowRadius: 4,
+                        backgroundColor: colors.card,
+                        borderColor: colors.border
+                    }}>
+                        <Text style={{
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            marginBottom: 20,
+                            textAlign: "left",
+                            color: colors.text
+                        }}>{t('language')}</Text>
+
+                        <TouchableOpacity
+                            style={[
+                                {
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+                                    paddingVertical: 12,
+                                    paddingHorizontal: 16,
+                                    borderRadius: 10,
+                                    marginBottom: 10,
+                                },
+                                language === "fa" && {backgroundColor: colors.border}
+                            ]}
+                            onPress={() => handleSelectLanguage("fa")}
+                        >
+                            <View style={{
+                                flexDirection: "row",
+                                alignItems: "center"
+                            }}>
+                                <Ionicons name="language-outline" size={24} color={colors.text}
+                                          style={{marginRight: 12}}/>
+                                <Text style={{
+                                    fontSize: 16,
+                                    fontWeight: "500",
+                                    color: colors.text,
+                                }}>{t('persian')}</Text>
+                            </View>
+                            {language === "fa" && (
+                                <Ionicons name="checkmark" size={20} color={colors.tint}/>
+                            )}
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={[
+                                {
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+                                    paddingVertical: 12,
+                                    paddingHorizontal: 16,
+                                    borderRadius: 10,
+                                    marginBottom: 10
+                                },
+                                language === "en" && {backgroundColor: colors.border}
+                            ]}
+                            onPress={() => handleSelectLanguage("en")}
+                        >
+                            <View style={{
+                                flexDirection: "row",
+                                alignItems: "center"
+                            }}>
+                                <Ionicons name="globe-outline" size={24} color={colors.text} style={{marginRight: 12}}/>
+                                <Text style={[{
+                                    fontSize: 16,
+                                    fontWeight: "500"
+                                }, {color: colors.text}]}>{t('english')}</Text>
+                            </View>
+                            {language === "en" && (
+                                <Ionicons name="checkmark" size={20} color={colors.tint}/>
+                            )}
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={[
+                                {
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+                                    paddingVertical: 12,
+                                    paddingHorizontal: 16,
+                                    borderRadius: 10,
+                                    marginBottom: 10,
+                                },
+                                language === "system" && {backgroundColor: colors.border}
+                            ]}
+                            onPress={() => handleSelectLanguage("system")}
+                        >
+                            <View style={{
+                                flexDirection: "row",
+                                alignItems: "center"
+                            }}>
+                                <Ionicons name="settings-outline" size={24} color={colors.text}
+                                          style={{marginRight: 12}}/>
+                                <Text style={{
+                                    fontSize: 16,
+                                    fontWeight: "500",
+                                    color: colors.text
+                                }}>{t('systemDefault')}</Text>
+                            </View>
+                            {language === "system" && (
                                 <Ionicons name="checkmark" size={20} color={colors.tint}/>
                             )}
                         </TouchableOpacity>
