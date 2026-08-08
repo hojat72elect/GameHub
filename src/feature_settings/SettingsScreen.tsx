@@ -1,4 +1,4 @@
-import {Linking, Modal, Pressable, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {Image, Linking, Modal, Pressable, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {ThemeMode, useTheme} from "@/src/ThemeContext";
@@ -105,6 +105,23 @@ export function SettingsScreen() {
                     <Text style={{fontSize: 14, color: colors.secondaryText}}>v0.0.1-debug</Text>
                 </View>
             </View>
+
+            <TouchableOpacity
+                style={{
+                    marginTop: 20,
+                    alignSelf: "center",
+                }}
+                onPress={() => Linking.openURL("https://buymeacoffee.com/hojat")}
+            >
+                <Image
+                    source={require("@/assets/images/buy_me_a_coffee_yellow_button.png")}
+                    style={{
+                        width: 200,
+                        height: 50,
+                        resizeMode: "contain",
+                    }}
+                />
+            </TouchableOpacity>
 
             <Modal
                 animationType="fade"
