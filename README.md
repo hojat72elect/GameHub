@@ -25,14 +25,14 @@ https://github.com/user-attachments/assets/a8cde6c6-1e89-4986-a5d7-3dc98cb014c5
 ### Screenshots
 
 <p>
-<img src="/media/screenshot1.png" width="32%"/>
-<img src="/media/screenshot2.png" width="32%"/>
-<img src="/media/screenshot3.png" width="32%"/>
+<img src="/media/screenshot1.jpg" width="32%"/>
+<img src="/media/screenshot2.jpg" width="32%"/>
+<img src="/media/screenshot3.jpg" width="32%"/>
 </p>
 <p>
-<img src="/media/screenshot4.png" width="32%"/>
-<img src="/media/screenshot5.png" width="32%"/>
-<img src="/media/screenshot6.png" width="32%"/>
+<img src="/media/screenshot4.jpg" width="32%"/>
+<img src="/media/screenshot5.jpg" width="32%"/>
+<img src="/media/screenshot6.jpg" width="32%"/>
 </p>
 
 ## Tech Stack
