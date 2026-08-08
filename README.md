@@ -20,7 +20,7 @@ Built entirely using TypeScript technologies.
 
 ### Video
 
-https://github.com/user-attachments/assets/a8cde6c6-1e89-4986-a5d7-3dc98cb014c5
+https://github.com/user-attachments/assets/d7193c2e-a76f-470f-bab2-422c09c9a2bd
 
 ### Screenshots
 
