@@ -86,18 +86,12 @@ the key, you can set it in your `.env`:
 GAMESPOT_API_KEY=your_api_key_here
 ```
 
-
 ## Contributing
 
 ❤️ Contributions are always welcome! ❤️
 
 If you'd like to help, please have a look at
-the [open issues](https://github.com/hojat72elect/GameHub/issues).
-Currently, we are particularly interested in help with migrating the application to Kotlin
-Multiplatform (KMP).
-
-Please feel free to open a pull request or an issue if you have any suggestions or improvements.
-
+the [open issues](https://github.com/hojat72elect/GameHub/issues). Please feel free to open a pull request or an issue if you have any suggestions or improvements.
 
 <p align="center">
   <a href="https://buymeacoffee.com/hojat" target="_blank">
