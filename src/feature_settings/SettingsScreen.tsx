@@ -126,7 +126,7 @@ export function SettingsScreen() {
                         fontWeight: "semibold",
                         color: colors.text
                     }}>{t('version')}</Text>
-                    <Text style={{fontSize: 14, color: colors.secondaryText}}>v0.0.1-debug</Text>
+                    <Text style={{fontSize: 14, color: colors.secondaryText}}>v0.1.1-debug</Text>
                 </View>
             </View>
 

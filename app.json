@@ -2,15 +2,12 @@
   "expo": {
     "name": "GameHub",
     "slug": "GameHub",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "gamehub",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
-    },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
@@ -22,10 +19,6 @@
       "predictiveBackGestureEnabled": false,
       "permissions": [],
       "package": "com.hojat72elect.GameHub"
-    },
-    "web": {
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
       "expo-router",
