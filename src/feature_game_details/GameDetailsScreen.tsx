@@ -32,6 +32,7 @@ import GogIcon from "@/assets/svg/gog.svg";
 import DiscordIcon from "@/assets/svg/discord.svg";
 import PlayIcon from "@/assets/svg/play.svg";
 import {getRelativeTimeTextUseCase} from "@/src/shared/getRelativeTimeTextUseCase";
+import GamepadIcon from '@/assets/svg/gamepad_variant_outline.svg';
 
 export function GameDetailsScreen() {
     const {gameId} = useLocalSearchParams<{ gameId: string }>();
@@ -157,6 +158,8 @@ export function GameDetailsScreen() {
     }
 
     if (error || !gameDetails) {
+
+        console.error(`Failed to get API response : ${error}`);
         return (
             <SafeAreaProvider style={{
                 flex: 1,
@@ -165,29 +168,14 @@ export function GameDetailsScreen() {
                 alignItems: "center",
                 paddingHorizontal: 20
             }}>
-                <Text style={{
-                    fontSize: 20,
-                    fontWeight: "bold",
-                    color: colors.text,
-                    marginBottom: 10,
-                    textAlign: "center"
-                }}>
-                    {t('somethingWentWrong')}
-                </Text>
+                <GamepadIcon width={90} height={60} color={colors.icon}/>
                 <Text style={{
                     fontSize: 14,
                     color: colors.secondaryText,
                     marginBottom: 20,
-                    textAlign: "center"
-                }}>{error}</Text>
-                <TouchableOpacity onPress={() => router.back()} style={{
-                    backgroundColor: "#FF4B7D",
-                    paddingHorizontal: 25,
-                    paddingVertical: 12,
-                    borderRadius: 8
-                }}>
-                    <Text style={{color: "#FFF", fontWeight: "600"}}>{t('goBack')}</Text>
-                </TouchableOpacity>
+                    textAlign: "center",
+                    fontWeight: "semibold"
+                }}>No Data Available</Text>
             </SafeAreaProvider>
         );
     }
