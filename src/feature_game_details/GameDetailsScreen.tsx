@@ -93,6 +93,15 @@ export function GameDetailsScreen() {
         if (lowerUrl.includes('wikipedia.org')) {
             return {icon: WikipediaIcon, name: t('wikipedia')};
         }
+        if (lowerUrl.includes("store.playstation.com")) {
+            return {icon: WebIcon, name: t('PlayStation')}
+        }
+        if (lowerUrl.includes("xbox.com")) {
+            return {icon: WebIcon, name: t('Xbox')}
+        }
+        if (lowerUrl.includes("fandom.com")) {
+            return {icon: WebIcon, name: t('Fandom')}
+        }
         if (lowerUrl.includes('twitter.com')) {
             return {icon: TwitterIcon, name: t('x')};
         }
