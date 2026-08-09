@@ -90,56 +90,26 @@ export function GameDetailsScreen() {
     const getWebsiteInfoFromUrl = (url: string) => {
         const lowerUrl = url.toLowerCase();
 
-        if (lowerUrl.includes('wikipedia.org')) {
-            return {icon: WikipediaIcon, name: t('wikipedia')};
-        }
-        if (lowerUrl.includes("store.playstation.com")) {
-            return {icon: WebIcon, name: t('PlayStation')}
-        }
-        if (lowerUrl.includes("xbox.com")) {
-            return {icon: WebIcon, name: t('Xbox')}
-        }
-        if (lowerUrl.includes("fandom.com")) {
-            return {icon: WebIcon, name: t('Fandom')}
-        }
-        if (lowerUrl.includes('twitter.com')) {
-            return {icon: TwitterIcon, name: t('x')};
-        }
-        if (lowerUrl.includes('facebook.com')) {
-            return {icon: FacebookIcon, name: t('facebook')};
-        }
-        if (lowerUrl.includes('twitch.tv')) {
-            return {icon: TwitchIcon, name: t('twitch')};
-        }
-        if (lowerUrl.includes('instagram.com')) {
-            return {icon: InstagramIcon, name: t('instagram')};
-        }
-        if (lowerUrl.includes('youtube.com') || lowerUrl.includes('youtu.be')) {
-            return {icon: YoutubeIcon, name: t('youtube')};
-        }
-        if (lowerUrl.includes('steam')) {
-            return {icon: SteamIcon, name: t('steam')};
-        }
-        if (lowerUrl.includes('reddit.com')) {
-            return {icon: RedditIcon, name: t('reddit')};
-        }
-        if (lowerUrl.includes('discord')) {
-            return {icon: DiscordIcon, name: t('discord')};
-        }
-        if (lowerUrl.includes('gog.com')) {
-            return {icon: GogIcon, name: t('gog')};
-        }
-        if (lowerUrl.includes('apple.com') || lowerUrl.includes('itunes')) {
-            return {icon: AppleIcon, name: t('apple')};
-        }
-        if (lowerUrl.includes('play.google.com')) {
-            return {icon: GooglePlayIcon, name: t('googlePlay')};
-        }
-        if (lowerUrl.includes("epicgames.com")) {
-            return {icon: WebIcon, name: t('epicGames')}
-        }
+        if (lowerUrl.includes('wikipedia.org')) return {icon: WikipediaIcon, name: t('wikipedia')};
+        if (lowerUrl.includes("store.playstation.com")) return {icon: WebIcon, name: t('PlayStation')}
+        if (lowerUrl.includes("xbox.com")) return {icon: WebIcon, name: t('Xbox')}
+        if (lowerUrl.includes("fandom.com")) return {icon: WebIcon, name: t('Fandom')}
+        if (lowerUrl.includes('twitter.com') || lowerUrl.includes("//x.com")) return {icon: TwitterIcon, name: t('x')};
+        if (lowerUrl.includes('nintendo.com')) return {icon: WebIcon, name: t("Nintendo")};
+        if (lowerUrl.includes('facebook.com')) return {icon: FacebookIcon, name: t('facebook')};
+        if (lowerUrl.includes('twitch.tv')) return {icon: TwitchIcon, name: t('twitch')};
+        if (lowerUrl.includes('instagram.com')) return {icon: InstagramIcon, name: t('instagram')};
+        if (lowerUrl.includes('youtube.com') || lowerUrl.includes('youtu.be')) return {icon: YoutubeIcon, name: t('youtube')};
+        if (lowerUrl.includes('steam')) return {icon: SteamIcon, name: t('steam')};
+        if (lowerUrl.includes('reddit.com')) return {icon: RedditIcon, name: t('reddit')};
+        if (lowerUrl.includes('discord')) return {icon: DiscordIcon, name: t('discord')};
+        if (lowerUrl.includes('gog.com')) return {icon: GogIcon, name: t('gog')};
+        if (lowerUrl.includes('apple.com') || lowerUrl.includes('itunes')) return {icon: AppleIcon, name: t('apple')};
+        if (lowerUrl.includes('play.google.com')) return {icon: GooglePlayIcon, name: t('googlePlay')};
+        if (lowerUrl.includes("epicgames.com")) return {icon: WebIcon, name: t('epicGames')}
+        if (lowerUrl.includes("bsky.app")) return {icon: WebIcon, name: t('Bluesky')}
 
-        return {icon: WebIcon, name: t('website')};
+        return {icon: WebIcon, name: t('Official')}; // Any other website is considered to be the official website of the game
     };
 
     const getDeveloperName = () => {
