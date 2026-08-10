@@ -1,4 +1,4 @@
-import {Game} from "@/src/feature_discover/domain/Game";
+import {Game} from "@/src/shared/domain/Game";
 import {AccessTokenDatasource} from "@/src/feature_discover/api/AccessTokenDatasource";
 
 export class SearchGamesDatasource {

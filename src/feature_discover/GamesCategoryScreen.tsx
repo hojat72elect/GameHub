@@ -2,7 +2,7 @@ import {ActivityIndicator, Image, RefreshControl, ScrollView, Text, TouchableOpa
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {router, useLocalSearchParams} from "expo-router";
 import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
-import {Game} from "@/src/feature_discover/domain/Game";
+import {Game} from "@/src/shared/domain/Game";
 import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";

@@ -1,5 +1,5 @@
 import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
-import {Game} from "@/src/feature_discover/domain/Game";
+import {Game} from "@/src/shared/domain/Game";
 import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useTranslation} from "react-i18next";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";

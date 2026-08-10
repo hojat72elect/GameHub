@@ -3,7 +3,7 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {router} from "expo-router";
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
-import {Game} from "@/src/feature_discover/domain/Game";
+import {Game} from "@/src/shared/domain/Game";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import SearchIcon from "@/assets/svg/magnify.svg";
 import {SearchGamesDatasource} from "@/src/feature_search/api/SearchGamesDatasource";

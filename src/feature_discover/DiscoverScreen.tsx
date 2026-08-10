@@ -3,7 +3,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import SearchIcon from "@/assets/svg/magnify.svg";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {Game} from "@/src/feature_discover/domain/Game";
+import {Game} from "@/src/shared/domain/Game";
 import {router} from "expo-router";
 import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
 import {DiscoverScreenSection} from "@/src/feature_discover/DiscoverScreenSection";
