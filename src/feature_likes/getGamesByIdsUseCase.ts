@@ -1,4 +1,4 @@
-import {GameDetails} from "@/src/feature_game_details/domain/GameDetails";
+import {GameDetails} from "@/src/shared/domain/GameDetails";
 import {AccessTokenDatasource} from "@/src/feature_discover/api/AccessTokenDatasource";
 
 /**
