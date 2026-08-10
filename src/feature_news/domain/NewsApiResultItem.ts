@@ -1,4 +1,4 @@
-import {NewsApiImage} from "@/src/feature_news/domain/NewsApiImage";
+import {NewsApiImage} from "@/src/shared/domain/NewsApiImage";
 
 export type NewsApiResultItem = {
     publish_date: string;
