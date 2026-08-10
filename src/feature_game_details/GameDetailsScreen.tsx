@@ -1,4 +1,4 @@
-import {SafeAreaProvider} from "react-native-safe-area-context";
+import {SafeAreaProvider, useSafeAreaInsets} from "react-native-safe-area-context";
 import {
     ActivityIndicator,
     Image,
@@ -42,6 +42,7 @@ export function GameDetailsScreen() {
     const [isSummaryExpanded, setIsSummaryExpanded] = useState<boolean>(false);
     const {colors} = useTheme();
     const {t} = useTranslation();
+    const {bottom} = useSafeAreaInsets();
 
     useEffect(() => {
         const loadGameDetails = async () => {
@@ -169,7 +170,7 @@ export function GameDetailsScreen() {
 
     return (
         <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom: bottom}}>
 
                 <View>
                     <Image source={coverUrl} resizeMode="cover" style={{width: "100%", height: 300}}/>
