@@ -6,6 +6,7 @@ import {ThemeMode, useTheme} from "@/src/ThemeContext";
 import {useLanguage} from "@/src/LanguageContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {Language} from "@/src/shared/domain/Language";
+import {InteractableSettingsSection} from "./InteractableSettingsSection";
 
 export function SettingsScreen() {
     const {t} = useTranslation();
@@ -64,14 +65,16 @@ export function SettingsScreen() {
                 elevation: 2
             }}>
                 <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>{t('appearance')}</Text>
-                <TouchableOpacity style={{marginTop: 8}} onPress={() => setIsThemeModalVisible(true)}>
-                    <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>{t('theme')}</Text>
-                    <Text style={{fontSize: 14, color: colors.secondaryText}}>{getThemeModeLabel(themeMode)}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={{marginTop: 8}} onPress={() => setIsLanguageModalVisible(true)}>
-                    <Text style={{fontSize: 20, fontWeight: "semibold", color: colors.text}}>{t('language')}</Text>
-                    <Text style={{fontSize: 14, color: colors.secondaryText}}>{getLanguageLabel(language)}</Text>
-                </TouchableOpacity>
+                <InteractableSettingsSection
+                    title={t('theme')}
+                    subtitle={getThemeModeLabel(themeMode)}
+                    onPress={() => setIsThemeModalVisible(true)}
+                />
+                <InteractableSettingsSection
+                    title={t('language')}
+                    subtitle={getLanguageLabel(language)}
+                    onPress={() => setIsLanguageModalVisible(true)}
+                />
             </View>
 
             <View style={{
@@ -85,18 +88,11 @@ export function SettingsScreen() {
                 elevation: 2
             }}>
                 <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>{t('about')}</Text>
-                <TouchableOpacity
-                    style={{paddingTop: 10}}
+                <InteractableSettingsSection
+                    title={t('sourceCode')}
+                    subtitle={t('sourceCodeDescription')}
                     onPress={() => Linking.openURL("https://github.com/hojat72elect/GameHub")}
-                >
-                    <Text style={{
-                        fontSize: 20,
-                        fontWeight: "semibold",
-                        color: colors.text
-                    }}>{t('sourceCode')}</Text>
-                    <Text
-                        style={{fontSize: 14, color: colors.secondaryText}}>{t('sourceCodeDescription')}</Text>
-                </TouchableOpacity>
+                />
                 <View style={{paddingTop: 10}}>
                     <Text style={{
                         fontSize: 20,
