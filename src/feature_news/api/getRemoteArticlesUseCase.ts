@@ -1,4 +1,4 @@
-import {NewsApiResultItem} from "@/src/feature_news/domain/NewsApiResultItem";
+import {NewsApiResultItem} from "@/src/shared/domain/NewsApiResultItem";
 
 export const GAMESPOT_FEED_URL = "https://www.gamespot.com/feeds/news/";
 

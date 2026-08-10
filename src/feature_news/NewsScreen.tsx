@@ -4,7 +4,7 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
-import {NewsApiResultItem} from "@/src/feature_news/domain/NewsApiResultItem";
+import {NewsApiResultItem} from "@/src/shared/domain/NewsApiResultItem";
 import {useTheme} from "@/src/ThemeContext";
 import {GAMESPOT_FEED_URL, getRemoteArticlesUseCase} from "@/src/feature_news/api/getRemoteArticlesUseCase";
 import ClockIcon from "@/assets/svg/clock_outline_16dp.svg";
