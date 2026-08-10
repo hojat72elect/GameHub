@@ -1,6 +1,6 @@
 import {Linking, Modal, Pressable, ScrollView, Text, TouchableOpacity, View} from "react-native";
-import React, {useEffect, useState} from "react";
-import Animated, {useAnimatedStyle, useSharedValue, withSequence, withTiming} from "react-native-reanimated";
+import React, {useState} from "react";
+import {BuyCoffeeButton} from "./BuyCoffeeButton";
 import {useTranslation} from "react-i18next";
 import {ThemeMode, useTheme} from "@/src/ThemeContext";
 import {useLanguage} from "@/src/LanguageContext";
@@ -13,29 +13,6 @@ export function SettingsScreen() {
     const {language, setLanguage} = useLanguage();
     const [isThemeModalVisible, setIsThemeModalVisible] = useState(false);
     const [isLanguageModalVisible, setIsLanguageModalVisible] = useState(false);
-    const rotation = useSharedValue(0);
-
-    const shake = () => {
-        rotation.value = withSequence(
-            withTiming(10, {duration: 100}),
-            withTiming(-10, {duration: 100}),
-            withTiming(10, {duration: 100}),
-            withTiming(-10, {duration: 100}),
-            withTiming(0, {duration: 100})
-        );
-    };
-
-    useEffect(() => {
-        shake();
-        const shakeInterval = setInterval(shake, 7_000);
-        return () => {
-            clearInterval(shakeInterval);
-        };
-    }, []);
-
-    const animatedStyle = useAnimatedStyle(() => ({
-        transform: [{rotate: `${rotation.value}deg`}]
-    }));
 
     const getThemeModeLabel = (mode: ThemeMode) => {
         switch (mode) {
@@ -130,25 +107,7 @@ export function SettingsScreen() {
                 </View>
             </View>
 
-            <TouchableOpacity
-                style={{
-                    marginTop: 20,
-                    alignSelf: "center",
-                }}
-                onPress={() => Linking.openURL("https://buymeacoffee.com/hojat")}
-            >
-                <Animated.Image
-                    source={require("@/assets/images/buy_me_a_coffee_yellow_button.png")}
-                    style={[
-                        {
-                            width: 200,
-                            height: 50,
-                            resizeMode: "contain"
-                        },
-                        animatedStyle
-                    ]}
-                />
-            </TouchableOpacity>
+            <BuyCoffeeButton/>
 
             <Modal
                 animationType="fade"
