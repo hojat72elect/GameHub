@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 import {ThemeMode, useTheme} from "@/src/ThemeContext";
 import {useLanguage} from "@/src/LanguageContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import {Language} from "@/src/shared/Language";
+import {Language} from "@/src/shared/domain/Language";
 
 export function SettingsScreen() {
     const {t} = useTranslation();

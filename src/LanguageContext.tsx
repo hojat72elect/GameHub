@@ -2,8 +2,8 @@ import React, {createContext, useCallback, useContext, useEffect, useState} from
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import internationalization from '@/src/shared/internationalization';
 import {AppState, I18nManager} from 'react-native';
-import {Language} from "@/src/shared/Language";
 import {Locale} from "expo-localization";
+import {Language} from "@/src/shared/domain/Language";
 
 interface LanguageContextType {
     language: Language;
