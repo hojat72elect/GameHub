@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Game} from "@/src/shared/domain/Game";
 import {router} from "expo-router";
-import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
+import {GamesCategory} from "@/src/shared/domain/GamesCategory";
 import {DiscoverScreenSection} from "@/src/feature_discover/DiscoverScreenSection";
 import {DiscoverScreenDatasource} from "@/src/feature_discover/api/DiscoverScreenDatasource";
 import {useTheme} from "@/src/ThemeContext";

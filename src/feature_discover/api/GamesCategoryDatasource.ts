@@ -1,4 +1,4 @@
-import {GamesCategory} from "@/src/feature_discover/domain/GamesCategory";
+import {GamesCategory} from "@/src/shared/domain/GamesCategory";
 import {Game} from "@/src/shared/domain/Game";
 import {AccessTokenDatasource} from "@/src/feature_discover/api/AccessTokenDatasource";
 
