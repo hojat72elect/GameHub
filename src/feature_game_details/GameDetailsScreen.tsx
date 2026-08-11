@@ -12,7 +12,7 @@ import {
 import {router, useLocalSearchParams} from "expo-router";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {getGameDetailsByIdUseCase} from "@/src/feature_game_details/api/getGameDetailsByIdUseCase";
+import {GamesDetailedRepository} from "@/src/shared/data/GamesDetailedRepository";
 import {GameDetails} from "@/src/shared/domain/GameDetails";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {useTheme} from "@/src/ThemeContext";
@@ -49,7 +49,7 @@ export function GameDetailsScreen() {
             setIsLoading(true);
             setError(null);
             try {
-                const details = await getGameDetailsByIdUseCase(gameId);
+                const details = await GamesDetailedRepository.getGameDetailsById(parseInt(gameId, 10));
                 setGameDetails(details);
             } catch (err: any) {
                 console.error("Error loading game details:", err);
