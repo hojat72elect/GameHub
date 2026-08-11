@@ -7,7 +7,7 @@ import {Game} from "@/src/shared/domain/Game";
 import {router} from "expo-router";
 import {GamesCategory} from "@/src/shared/domain/GamesCategory";
 import {DiscoverScreenSection} from "@/src/feature_discover/DiscoverScreenSection";
-import {DiscoverScreenDatasource} from "@/src/feature_discover/api/DiscoverScreenDatasource";
+import {GamesGeneralRepository} from "@/src/shared/data/GamesGeneralRepository";
 import {useTheme} from "@/src/ThemeContext";
 
 export function DiscoverScreen() {
@@ -29,7 +29,7 @@ export function DiscoverScreen() {
         }
         setError(null);
         try {
-            const data = await DiscoverScreenDatasource.get();
+            const data = await GamesGeneralRepository.getDiscoverScreenGames();
             setPopular(data.popularGames);
             setRecent(data.recentlyReleasedGames);
             setSoon(data.comingSoonGames);
