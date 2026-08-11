@@ -7,7 +7,7 @@ import {useLikes} from "@/src/feature_likes/LikesContext";
 import {GameDetails} from "@/src/shared/domain/GameDetails";
 import {router} from "expo-router";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
-import {getGamesByIdsUseCase} from "@/src/feature_likes/getGamesByIdsUseCase";
+import {GamesDetailedRepository} from "@/src/shared/data/GamesDetailedRepository";
 import {getRelativeTimeTextUseCase} from "@/src/shared/getRelativeTimeTextUseCase";
 
 export function LikesScreen() {
@@ -30,8 +30,8 @@ export function LikesScreen() {
             }
 
             try {
-                const gameIds = Array.from(likedGameIds);
-                const games = await getGamesByIdsUseCase(gameIds);
+                const gameIds = Array.from(likedGameIds).map(id => parseInt(id, 10));
+                const games = await GamesDetailedRepository.getGamesDetailsByIds(gameIds);
                 setLikedGames(games);
             } catch (err: any) {
                 console.error("Error loading liked games:", err);
