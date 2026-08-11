@@ -6,8 +6,8 @@ import {Game} from "@/src/shared/domain/Game";
 import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
-import {GamesCategoryDatasource} from "@/src/feature_discover/api/GamesCategoryDatasource";
 import {useTheme} from "@/src/ThemeContext";
+import {GamesGeneralRepository} from "@/src/shared/data/GamesGeneralRepository";
 
 export function CategoryScreen() {
     const {category} = useLocalSearchParams<{ category?: string }>();
@@ -43,7 +43,7 @@ export function CategoryScreen() {
         }
         setError(null);
         try {
-            const data = await GamesCategoryDatasource.get(chosenCategory!);
+            const data = await GamesGeneralRepository.getCategoryScreenGames(chosenCategory!);
             setGames(data);
         } catch (err: any) {
             console.error("Error loading category games:", err);
