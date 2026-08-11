@@ -9,7 +9,7 @@ import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {GamesCategoryDatasource} from "@/src/feature_discover/api/GamesCategoryDatasource";
 import {useTheme} from "@/src/ThemeContext";
 
-export function GamesCategoryScreen() {
+export function CategoryScreen() {
     const {category} = useLocalSearchParams<{ category?: string }>();
     const [games, setGames] = useState<Game[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
