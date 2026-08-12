@@ -1,7 +1,7 @@
 import {GameDetails} from "@/src/shared/domain/GameDetails";
 import {AccessTokenDatasource} from "@/src/shared/data/remote/AccessTokenDatasource";
 
-export class GamesDetailedRemoteDataSource {
+export class GameDetailsRemoteDataSource {
     static async getGameDetailsById(gameId: string): Promise<GameDetails> {
 
         const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
@@ -88,5 +88,4 @@ export class GamesDetailedRemoteDataSource {
 
         return data as GameDetails[];
     }
-
 }

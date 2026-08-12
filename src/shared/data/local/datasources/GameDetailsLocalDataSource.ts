@@ -1,7 +1,7 @@
 import {GameDetails} from "@/src/shared/domain/GameDetails";
 import {getDatabase} from "@/src/shared/data/local/Database";
 
-export class GamesDetailedLocalDataSource {
+export class GameDetailsLocalDataSource {
 
     static readonly CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
