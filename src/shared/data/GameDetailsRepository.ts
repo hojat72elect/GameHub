@@ -1,5 +1,5 @@
 import {GameDetails} from "@/src/shared/domain/GameDetails";
-import {GameDetailsLocalDataSource} from "@/src/shared/data/local/datasources/GameDetailsLocalDataSource";
+import {GameDetailsLocalDataSource} from "@/src/shared/data/local/GameDetailsLocalDataSource";
 import {GameDetailsRemoteDataSource} from "@/src/shared/data/remote/GameDetailsRemoteDataSource";
 import {getDatabase} from "@/src/shared/data/local/Database";
 
