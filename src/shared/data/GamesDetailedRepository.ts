@@ -1,7 +1,7 @@
 import {GameDetails} from "@/src/shared/domain/GameDetails";
 import {GamesDetailedLocalDataSource} from "@/src/shared/data/local/datasources/GamesDetailedLocalDataSource";
-import {getGameDetailsByIdUseCase} from "@/src/shared/data/remote/getGameDetailsByIdUseCase";
 import {getGamesByIdsUseCase} from "@/src/shared/getGamesByIdsUseCase";
+import {GamesDetailedRemoteDataSource} from "@/src/shared/data/remote/GamesDetailedRemoteDataSource";
 
 /**
  * This repository is the access point for getting very detailed info about a game.
@@ -11,14 +11,12 @@ export class GamesDetailedRepository {
      * gets detailed info about just one game.
      */
     static async getGameDetailsById(gameId: number): Promise<GameDetails> {
-        // Try to get from local cache first
+        // Check if we have the game in local cache
         const cachedGameDetails = await GamesDetailedLocalDataSource.getGameDetailsById(gameId);
-        if (cachedGameDetails) {
-            return cachedGameDetails;
-        }
+        if (cachedGameDetails) return cachedGameDetails;
 
-        // Otherwise, fetch from remote API
-        const remoteGameDetails = await getGameDetailsByIdUseCase(gameId.toString());
+        // fetch it from remote API
+        const remoteGameDetails = await GamesDetailedRemoteDataSource.getGameDetailsById(gameId.toString());
 
         // Save to local cache
         await GamesDetailedLocalDataSource.saveGameDetails(remoteGameDetails);
