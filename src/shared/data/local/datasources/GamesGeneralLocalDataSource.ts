@@ -75,38 +75,6 @@ export class GamesGeneralLocalDataSource {
     }
 
     /**
-     * Get multiple games by their IDs
-     */
-    static async getGamesByIds(gameIds: number[]): Promise<Game[]> {
-        if (gameIds.length === 0) return [];
-
-        const db = await getDatabase();
-        const now = Date.now();
-        const cacheThreshold = now - this.CACHE_DURATION;
-
-        const placeholders = gameIds.map(() => '?').join(',');
-        const rows = await db.getAllAsync<any>(
-            `SELECT *
-             FROM games_general
-             WHERE id IN (${placeholders})
-               AND cached_at > ?`,
-            [...gameIds, cacheThreshold]
-        );
-
-        return rows.map(row => ({
-            id: row.id,
-            name: row.name,
-            cover: row.cover_id ? {
-                id: row.cover_id,
-                image_id: row.cover_image_id
-            } : undefined,
-            first_release_date: row.first_release_date,
-            hypes: row.hypes,
-            follows: row.follows
-        } as Game));
-    }
-
-    /**
      * Clear old cache entries
      */
     static async clearOldCache(): Promise<void> {
