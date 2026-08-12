@@ -15,13 +15,10 @@ export class GameDetailsRepository {
         const cachedGameDetails = await GameDetailsLocalDataSource.getGameDetailsById(gameId);
         if (cachedGameDetails) return cachedGameDetails;
 
-        // fetch it from remote API
+        // Get it from remote API and save it to cache
         const remoteGameDetails = await GameDetailsRemoteDataSource.getGameDetailsById(gameId.toString());
-
-        // Save to local cache
         await GameDetailsLocalDataSource.saveGameDetails(remoteGameDetails);
 
-        // Clear old cache entries
         await GameDetailsRepository.clearOldCache();
 
         return remoteGameDetails;
@@ -41,30 +38,25 @@ export class GameDetailsRepository {
 
         if (missingIds.length === 0) return cachedGames;
 
-        // Fetch the missing games from remote API
+        // Fetch the missing games from remote API and then save them to local cache
         const remoteGames = await GameDetailsRemoteDataSource.getGamesDetailsByIds(missingIds.map(id => id.toString()));
-
-        // Save fetched games to local cache
         for (const game of remoteGames) {
             await GameDetailsLocalDataSource.saveGameDetails(game);
         }
 
-        // Clear old cache entries
         await GameDetailsRepository.clearOldCache();
 
-        // Combine cached and remote games
         const allGames = [...cachedGames, ...remoteGames];
-
-        // Return in the order of requested IDs
-        const gameMap = new Map(allGames.map(g => [g.id, g]));
-        return gameIds.map(id => gameMap.get(id)).filter((g): g is GameDetails => g !== undefined);
+        return allGames.filter((gameDetails): gameDetails is GameDetails => gameDetails !== undefined);
     }
 
     /**
      * Clear old cache entries.
+     * With each entry to the database, we have saved the time this game was saved to DB.
+     * So, when the life of the cache is ended, it will be deleted so new info can be fetched from remote API.
      *
-     * todo : Is it really necessary to clear my old cache? Wouldn't it be better for the loading time
-     * if I just let it be?
+     * todo : It's an absolute anti pattern to invalidate old cache only after user has requested info about it.
+     * We need to have an asynchronous timer that fires this function periodically.
      */
     private static async clearOldCache() {
 
