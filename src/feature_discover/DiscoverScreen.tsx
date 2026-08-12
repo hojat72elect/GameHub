@@ -7,7 +7,7 @@ import {Game} from "@/src/shared/domain/Game";
 import {router} from "expo-router";
 import {GamesCategory} from "@/src/shared/domain/GamesCategory";
 import {DiscoverScreenSection} from "@/src/feature_discover/DiscoverScreenSection";
-import {GamesGeneralRepository} from "@/src/shared/data/GamesGeneralRepository";
+import {GamesGeneralRepository} from "@/src/feature_discover/data/GamesGeneralRepository";
 import {useTheme} from "@/src/shared/states/ThemeContext";
 
 export function DiscoverScreen() {

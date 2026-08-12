@@ -1,7 +1,7 @@
 import {Game} from "@/src/shared/domain/Game";
 import {GamesCategory} from "@/src/shared/domain/GamesCategory";
-import {GamesGeneralLocalDataSource} from "@/src/shared/data/local/datasources/GamesGeneralLocalDataSource";
-import {GamesGeneralRemoteDataSource} from "@/src/shared/data/remote/GamesGeneralRemoteDataSource";
+import {GamesGeneralLocalDataSource} from "@/src/feature_discover/data/GamesGeneralLocalDataSource";
+import {GamesGeneralRemoteDataSource} from "@/src/feature_discover/data/GamesGeneralRemoteDataSource";
 
 /**
  * This Repository is the access point for getting general (bare minimum) info about multiple games.

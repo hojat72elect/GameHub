@@ -7,7 +7,7 @@ import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {useTheme} from "@/src/shared/states/ThemeContext";
-import {GamesGeneralRepository} from "@/src/shared/data/GamesGeneralRepository";
+import {GamesGeneralRepository} from "@/src/feature_discover/data/GamesGeneralRepository";
 
 export function CategoryScreen() {
     const {category} = useLocalSearchParams<{ category?: string }>();
