@@ -1,5 +1,5 @@
 import {Game} from "@/src/shared/domain/Game";
-import {AccessTokenDatasource} from "@/src/feature_discover/api/AccessTokenDatasource";
+import {AccessTokenDatasource} from "@/src/shared/data/remote/AccessTokenDatasource";
 
 /**
  * This datasource gives us all the data we need to show in the "DiscoverScreen".

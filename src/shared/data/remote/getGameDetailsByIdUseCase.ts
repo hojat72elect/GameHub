@@ -1,5 +1,5 @@
 import {GameDetails} from "@/src/shared/domain/GameDetails";
-import {AccessTokenDatasource} from "@/src/feature_discover/api/AccessTokenDatasource";
+import {AccessTokenDatasource} from "@/src/shared/data/remote/AccessTokenDatasource";
 
 /**
  * Fetches detailed information about a specific game by its ID from IGDB.
