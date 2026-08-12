@@ -1,6 +1,7 @@
 import {GameDetails} from "@/src/shared/domain/GameDetails";
 import {GamesDetailedLocalDataSource} from "@/src/shared/data/local/datasources/GamesDetailedLocalDataSource";
 import {getGameDetailsByIdUseCase} from "@/src/shared/data/remote/getGameDetailsByIdUseCase";
+import {getGamesByIdsUseCase} from "@/src/shared/getGamesByIdsUseCase";
 
 /**
  * This repository is the access point for getting very detailed info about a game.
@@ -47,7 +48,6 @@ export class GamesDetailedRepository {
         }
 
         // Fetch missing games from remote API
-        const {getGamesByIdsUseCase} = await import('@/src/shared/getGamesByIdsUseCase');
         const remoteGames = await getGamesByIdsUseCase(missingIds.map(id => id.toString()));
 
         // Save fetched games to local cache
