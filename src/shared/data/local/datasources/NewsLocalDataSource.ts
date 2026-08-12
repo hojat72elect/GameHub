@@ -74,6 +74,8 @@ export class NewsLocalDataSource {
 
     /**
      * Clear old cache entries
+     *
+     * todo : move this off the UI thread.
      */
     static async clearOldCache(): Promise<void> {
         const db = await getDatabase();

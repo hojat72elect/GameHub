@@ -1,6 +1,6 @@
 import {NewsApiResultItem} from "@/src/shared/domain/NewsApiResultItem";
 import {NewsLocalDataSource} from "@/src/shared/data/local/datasources/NewsLocalDataSource";
-import {GAMESPOT_FEED_URL, getRemoteArticlesUseCase} from "@/src/shared/data/remote/getRemoteArticlesUseCase";
+import {NewsRemoteDataSource} from "@/src/shared/data/remote/NewsRemoteDataSource";
 
 export class NewsRepository {
 
@@ -9,14 +9,8 @@ export class NewsRepository {
         const cachedNews = await NewsLocalDataSource.getNews();
         if (cachedNews) return cachedNews;
 
-        // Otherwise, fetch from remote API
-        const response = await fetch(GAMESPOT_FEED_URL);
-        if (!response.ok) throw new Error(`Failed to fetch news: ${response.status}`);
-
-        const xmlText = await response.text();
-        const remoteNews = getRemoteArticlesUseCase(xmlText);
-
-        // Save to local cache
+        // Otherwise, fetch from remote API and save them to local cache
+        const remoteNews = await NewsRemoteDataSource.getRemoteArticlesUseCase();
         await NewsLocalDataSource.saveNews(remoteNews);
 
         // Clear old cache entries
