@@ -1,6 +1,5 @@
 import {GameDetails} from "@/src/shared/domain/GameDetails";
 import {GamesDetailedLocalDataSource} from "@/src/shared/data/local/datasources/GamesDetailedLocalDataSource";
-import {getGamesByIdsUseCase} from "@/src/shared/getGamesByIdsUseCase";
 import {GamesDetailedRemoteDataSource} from "@/src/shared/data/remote/GamesDetailedRemoteDataSource";
 import {getDatabase} from "@/src/shared/data/local/Database";
 
@@ -35,19 +34,15 @@ export class GamesDetailedRepository {
     static async getGamesDetailsByIds(gameIds: number[]): Promise<GameDetails[]> {
         if (gameIds.length === 0) return [];
 
-        // Try to get from local cache first
+        // Check if we have all those games in local cache (Almost always we do)
         const cachedGames = await GamesDetailedLocalDataSource.getGamesDetailsByIds(gameIds);
-
-        // Check if we have all games in cache
-        const cachedIds = new Set(cachedGames.map(g => g.id));
+        const cachedIds = new Set(cachedGames.map(gameDetails => gameDetails.id));
         const missingIds = gameIds.filter(id => !cachedIds.has(id));
 
-        if (missingIds.length === 0) {
-            return cachedGames;
-        }
+        if (missingIds.length === 0) return cachedGames;
 
-        // Fetch missing games from remote API
-        const remoteGames = await getGamesByIdsUseCase(missingIds.map(id => id.toString()));
+        // Fetch the missing games from remote API
+        const remoteGames = await GamesDetailedRemoteDataSource.getGamesDetailsByIds(missingIds.map(id => id.toString()));
 
         // Save fetched games to local cache
         for (const game of remoteGames) {
