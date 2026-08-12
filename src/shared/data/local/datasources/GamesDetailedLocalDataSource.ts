@@ -2,15 +2,13 @@ import {GameDetails} from "@/src/shared/domain/GameDetails";
 import {getDatabase} from "@/src/shared/data/local/Database";
 
 export class GamesDetailedLocalDataSource {
-    /**
-     * Cache duration in milliseconds (24 hours)
-     */
-    private static readonly CACHE_DURATION = 24 * 60 * 60 * 1000;
+
+    private static readonly CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
     /**
-     * Save game details to the local database
+     * Saves `GameDetails` of a single game to SQL database.
      */
-    static async saveGameDetails(gameDetails: GameDetails): Promise<void> {
+    static async saveGameDetails(gameDetails: GameDetails) {
         const db = await getDatabase();
         const cachedAt = Date.now();
 
@@ -45,7 +43,8 @@ export class GamesDetailedLocalDataSource {
     }
 
     /**
-     * Get game details by ID from local database
+     * Returns `GameDetails` of a single game according to the `gameId` of that game.
+     * Pay attention that `gameId` is the reference parameter of the table which contains game details.
      */
     static async getGameDetailsById(gameId: number): Promise<GameDetails | null> {
         const db = await getDatabase();
@@ -88,7 +87,7 @@ export class GamesDetailedLocalDataSource {
     }
 
     /**
-     * Get multiple game details by their IDs
+     * Warn : This function is heavy. Use with caution.
      */
     static async getGamesDetailsByIds(gameIds: number[]): Promise<GameDetails[]> {
         if (gameIds.length === 0) return [];
@@ -130,9 +129,10 @@ export class GamesDetailedLocalDataSource {
     }
 
     /**
-     * Clear old cache entries
+     * todo: The logic of invalidating cache should be moved to the repository layer.
+     * Clear old cache entries.
      */
-    static async clearOldCache(): Promise<void> {
+    static async clearOldCache() {
         const db = await getDatabase();
         const now = Date.now();
         const cacheThreshold = now - this.CACHE_DURATION;
