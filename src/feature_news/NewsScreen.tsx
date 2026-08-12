@@ -4,7 +4,7 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {NewsArticle} from "@/src/shared/domain/NewsArticle";
-import {useTheme} from "@/src/shared/states/ThemeContext";
+import {useTheme} from "@/src/shared/contexts/ThemeContext";
 import {NewsRepository} from "@/src/feature_news/data/NewsRepository";
 import ClockIcon from "@/assets/svg/clock_outline_16dp.svg";
 

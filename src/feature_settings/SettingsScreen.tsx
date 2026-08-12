@@ -2,8 +2,8 @@ import {Linking, Modal, Pressable, ScrollView, Text, TouchableOpacity, View} fro
 import React, {useState} from "react";
 import {BuyCoffeeButton} from "./BuyCoffeeButton";
 import {useTranslation} from "react-i18next";
-import {ThemeMode, useTheme} from "@/src/shared/states/ThemeContext";
-import {useLanguage} from "@/src/shared/states/LanguageContext";
+import {ThemeMode, useTheme} from "@/src/shared/contexts/ThemeContext";
+import {useLanguage} from "@/src/shared/contexts/LanguageContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {Language} from "@/src/shared/domain/Language";
 import {InteractableSettingsSection} from "./InteractableSettingsSection";

@@ -7,7 +7,7 @@ import {Game} from "@/src/shared/domain/Game";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import SearchIcon from "@/assets/svg/magnify.svg";
 import {SearchGamesDatasource} from "@/src/feature_search/SearchGamesDatasource";
-import {useTheme} from "@/src/shared/states/ThemeContext";
+import {useTheme} from "@/src/shared/contexts/ThemeContext";
 
 export function SearchScreen() {
     const [query, setQuery] = useState<string>("");

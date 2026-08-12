@@ -2,8 +2,8 @@ import {ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View} from "
 import {SafeAreaView} from "react-native-safe-area-context";
 import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {useTheme} from "@/src/shared/states/ThemeContext";
-import {useLikes} from "@/src/shared/states/LikesContext";
+import {useTheme} from "@/src/shared/contexts/ThemeContext";
+import {useLikes} from "@/src/shared/contexts/LikesContext";
 import {GameDetails} from "@/src/shared/domain/GameDetails";
 import {router} from "expo-router";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";

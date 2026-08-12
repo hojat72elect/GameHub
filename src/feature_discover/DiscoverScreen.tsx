@@ -8,7 +8,7 @@ import {router} from "expo-router";
 import {GamesCategory} from "@/src/shared/domain/GamesCategory";
 import {DiscoverScreenSection} from "@/src/feature_discover/DiscoverScreenSection";
 import {GamesGeneralRepository} from "@/src/feature_discover/data/GamesGeneralRepository";
-import {useTheme} from "@/src/shared/states/ThemeContext";
+import {useTheme} from "@/src/shared/contexts/ThemeContext";
 
 export function DiscoverScreen() {
     const [popular, setPopular] = useState<Game[]>([]);
