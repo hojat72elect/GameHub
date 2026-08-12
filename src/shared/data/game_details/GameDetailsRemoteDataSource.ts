@@ -1,5 +1,5 @@
 import {GameDetails} from "@/src/shared/domain/GameDetails";
-import {AccessTokenDatasource} from "@/src/shared/data/remote/AccessTokenDatasource";
+import {AccessTokenDatasource} from "@/src/shared/data/AccessTokenDatasource";
 
 export class GameDetailsRemoteDataSource {
     static async getGameDetailsById(gameId: string): Promise<GameDetails> {

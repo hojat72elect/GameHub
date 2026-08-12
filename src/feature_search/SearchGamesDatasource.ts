@@ -1,5 +1,5 @@
 import {Game} from "@/src/shared/domain/Game";
-import {AccessTokenDatasource} from "@/src/shared/data/remote/AccessTokenDatasource";
+import {AccessTokenDatasource} from "@/src/shared/data/AccessTokenDatasource";
 
 export class SearchGamesDatasource {
     static async get(searchQuery: string): Promise<Game[]> {

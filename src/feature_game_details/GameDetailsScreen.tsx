@@ -12,7 +12,7 @@ import {
 import {router, useLocalSearchParams} from "expo-router";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {GameDetailsRepository} from "@/src/shared/data/GameDetailsRepository";
+import {GameDetailsRepository} from "@/src/shared/data/game_details/GameDetailsRepository";
 import {GameDetails} from "@/src/shared/domain/GameDetails";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {useTheme} from "@/src/shared/states/ThemeContext";

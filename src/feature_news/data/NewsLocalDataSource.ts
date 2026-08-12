@@ -1,5 +1,5 @@
 import {NewsArticle} from "@/src/shared/domain/NewsArticle";
-import {getDatabase} from "@/src/shared/data/local/Database";
+import {getDatabase} from "@/src/shared/data/Database";
 
 export class NewsLocalDataSource {
     /**

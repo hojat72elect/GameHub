@@ -1,7 +1,7 @@
 import {GameDetails} from "@/src/shared/domain/GameDetails";
-import {GameDetailsLocalDataSource} from "@/src/shared/data/local/GameDetailsLocalDataSource";
-import {GameDetailsRemoteDataSource} from "@/src/shared/data/remote/GameDetailsRemoteDataSource";
-import {getDatabase} from "@/src/shared/data/local/Database";
+import {GameDetailsLocalDataSource} from "@/src/shared/data/game_details/GameDetailsLocalDataSource";
+import {GameDetailsRemoteDataSource} from "@/src/shared/data/game_details/GameDetailsRemoteDataSource";
+import {getDatabase} from "@/src/shared/data/Database";
 
 /**
  * This repository is the access point for getting very detailed info about a game.

@@ -1,5 +1,5 @@
 import {Game} from "@/src/shared/domain/Game";
-import {AccessTokenDatasource} from "@/src/shared/data/remote/AccessTokenDatasource";
+import {AccessTokenDatasource} from "@/src/shared/data/AccessTokenDatasource";
 import {GamesCategory} from "@/src/shared/domain/GamesCategory";
 
 /**

@@ -7,7 +7,7 @@ import {useLikes} from "@/src/shared/states/LikesContext";
 import {GameDetails} from "@/src/shared/domain/GameDetails";
 import {router} from "expo-router";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
-import {GameDetailsRepository} from "@/src/shared/data/GameDetailsRepository";
+import {GameDetailsRepository} from "@/src/shared/data/game_details/GameDetailsRepository";
 import {getRelativeTimeTextUseCase} from "@/src/shared/getRelativeTimeTextUseCase";
 
 export function LikesScreen() {
