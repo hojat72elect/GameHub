@@ -1,5 +1,5 @@
 import {NewsApiResultItem} from "@/src/shared/domain/NewsApiResultItem";
-import {getDatabase} from "@/src/shared/database/Database";
+import {getDatabase} from "@/src/shared/data/local/Database";
 
 export class NewsLocalDataSource {
     /**

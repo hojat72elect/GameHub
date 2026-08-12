@@ -1,5 +1,5 @@
 import {Game} from "@/src/shared/domain/Game";
-import {getDatabase} from "@/src/shared/database/Database";
+import {getDatabase} from "@/src/shared/data/local/Database";
 
 export class GamesGeneralLocalDataSource {
     /**

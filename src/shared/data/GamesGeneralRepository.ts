@@ -1,6 +1,6 @@
 import {Game} from "@/src/shared/domain/Game";
 import {GamesCategory} from "@/src/shared/domain/GamesCategory";
-import {GamesGeneralLocalDataSource} from "@/src/shared/database/local_datasources/GamesGeneralLocalDataSource";
+import {GamesGeneralLocalDataSource} from "@/src/shared/data/local/datasources/GamesGeneralLocalDataSource";
 import {DiscoverScreenDatasource} from "@/src/feature_discover/api/DiscoverScreenDatasource";
 import {GamesCategoryDatasource} from "@/src/feature_discover/api/GamesCategoryDatasource";
 

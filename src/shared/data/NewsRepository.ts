@@ -1,5 +1,5 @@
 import {NewsApiResultItem} from "@/src/shared/domain/NewsApiResultItem";
-import {NewsLocalDataSource} from "@/src/shared/database/local_datasources/NewsLocalDataSource";
+import {NewsLocalDataSource} from "@/src/shared/data/local/datasources/NewsLocalDataSource";
 import {GAMESPOT_FEED_URL, getRemoteArticlesUseCase} from "@/src/feature_news/api/getRemoteArticlesUseCase";
 
 export class NewsRepository {

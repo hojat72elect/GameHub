@@ -1,5 +1,5 @@
 import {GameDetails} from "@/src/shared/domain/GameDetails";
-import {GamesDetailedLocalDataSource} from "@/src/shared/database/local_datasources/GamesDetailedLocalDataSource";
+import {GamesDetailedLocalDataSource} from "@/src/shared/data/local/datasources/GamesDetailedLocalDataSource";
 import {getGameDetailsByIdUseCase} from "@/src/feature_game_details/api/getGameDetailsByIdUseCase";
 
 /**
