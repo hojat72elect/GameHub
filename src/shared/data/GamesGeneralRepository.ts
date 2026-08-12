@@ -6,7 +6,7 @@ import {GamesCategoryDatasource} from "@/src/shared/data/remote/GamesCategoryDat
 
 /**
  * This Repository is the access point for getting general (bare minimum) info about multiple games.
- * By using this repo, we only want to get the game's ID and screenshot (nothing more!).
+ * By using this repo, we only want to get the games' IDs and screenshots (nothing more!).
  */
 export class GamesGeneralRepository {
 
