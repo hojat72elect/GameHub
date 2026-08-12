@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {NewsArticle} from "@/src/shared/domain/NewsArticle";
 import {useTheme} from "@/src/shared/states/ThemeContext";
-import {NewsRepository} from "@/src/shared/data/NewsRepository";
+import {NewsRepository} from "@/src/feature_news/data/NewsRepository";
 import ClockIcon from "@/assets/svg/clock_outline_16dp.svg";
 
 export function NewsScreen() {

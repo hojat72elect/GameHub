@@ -1,6 +1,6 @@
 import {NewsArticle} from "@/src/shared/domain/NewsArticle";
-import {NewsLocalDataSource} from "@/src/shared/data/local/datasources/NewsLocalDataSource";
-import {NewsRemoteDataSource} from "@/src/shared/data/remote/NewsRemoteDataSource";
+import {NewsLocalDataSource} from "@/src/feature_news/data/NewsLocalDataSource";
+import {NewsRemoteDataSource} from "@/src/feature_news/data/NewsRemoteDataSource";
 
 export class NewsRepository {
 
