@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 import {Game} from "@/src/shared/domain/Game";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import SearchIcon from "@/assets/svg/magnify.svg";
-import {SearchGamesDatasource} from "@/src/shared/data/remote/SearchGamesDatasource";
+import {SearchGamesDatasource} from "@/src/feature_search/SearchGamesDatasource";
 import {useTheme} from "@/src/shared/states/ThemeContext";
 
 export function SearchScreen() {
