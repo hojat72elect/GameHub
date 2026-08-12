@@ -7,8 +7,8 @@ import DiscoverIcon from '@/assets/svg/compass_rose.svg';
 import LikesIcon from '@/assets/svg/heart.svg';
 import NewsIcon from '@/assets/svg/newspaper.svg';
 
-import {useTheme} from "@/src/ThemeContext";
-import {HapticTab} from "@/src/HapticTab";
+import {useTheme} from "@/src/shared/states/ThemeContext";
+import {HapticTab} from "@/src/shared/HapticTab";
 
 export default function TabLayout() {
     const {colors} = useTheme();

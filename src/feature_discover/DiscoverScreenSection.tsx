@@ -4,7 +4,7 @@ import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useTranslation} from "react-i18next";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {router} from "expo-router";
-import {useTheme} from "@/src/ThemeContext";
+import {useTheme} from "@/src/shared/states/ThemeContext";
 
 /**
  * Each one of the seemingly identical sections you see in the discover screen.

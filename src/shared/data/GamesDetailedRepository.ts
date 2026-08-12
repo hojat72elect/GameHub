@@ -47,7 +47,7 @@ export class GamesDetailedRepository {
         }
 
         // Fetch missing games from remote API
-        const {getGamesByIdsUseCase} = await import('@/src/feature_likes/getGamesByIdsUseCase');
+        const {getGamesByIdsUseCase} = await import('@/src/shared/getGamesByIdsUseCase');
         const remoteGames = await getGamesByIdsUseCase(missingIds.map(id => id.toString()));
 
         // Save fetched games to local cache

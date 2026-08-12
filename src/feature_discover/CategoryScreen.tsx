@@ -6,7 +6,7 @@ import {Game} from "@/src/shared/domain/Game";
 import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
-import {useTheme} from "@/src/ThemeContext";
+import {useTheme} from "@/src/shared/states/ThemeContext";
 import {GamesGeneralRepository} from "@/src/shared/data/GamesGeneralRepository";
 
 export function CategoryScreen() {

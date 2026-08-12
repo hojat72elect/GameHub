@@ -15,7 +15,7 @@ import {useTranslation} from "react-i18next";
 import {GamesDetailedRepository} from "@/src/shared/data/GamesDetailedRepository";
 import {GameDetails} from "@/src/shared/domain/GameDetails";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
-import {useTheme} from "@/src/ThemeContext";
+import {useTheme} from "@/src/shared/states/ThemeContext";
 import {LikeButton} from "@/src/feature_game_details/LikeButton";
 import WebIcon from "@/assets/svg/web.svg";
 import WikipediaIcon from "@/assets/svg/wikipedia.svg";

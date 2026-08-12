@@ -1,6 +1,6 @@
 import React from "react";
 import {Text, TouchableOpacity, ViewStyle} from "react-native";
-import {useTheme} from "@/src/ThemeContext";
+import {useTheme} from "@/src/shared/states/ThemeContext";
 
 export function InteractableSettingsSection(
     {

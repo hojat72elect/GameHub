@@ -1,7 +1,7 @@
 import {Stack} from 'expo-router';
-import {ThemeProvider} from '@/src/ThemeContext';
-import {LikesProvider} from "@/src/feature_likes/LikesContext";
-import {LanguageProvider} from "@/src/LanguageContext";
+import {ThemeProvider} from '@/src/shared/states/ThemeContext';
+import {LikesProvider} from "@/src/shared/states/LikesContext";
+import {LanguageProvider} from "@/src/shared/states/LanguageContext";
 import '@/src/shared/internationalization';
 
 export default function RootLayout() {
