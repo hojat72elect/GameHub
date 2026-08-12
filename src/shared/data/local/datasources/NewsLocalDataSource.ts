@@ -1,4 +1,4 @@
-import {NewsApiResultItem} from "@/src/shared/domain/NewsApiResultItem";
+import {NewsArticle} from "@/src/shared/domain/NewsArticle";
 import {getDatabase} from "@/src/shared/data/local/Database";
 
 export class NewsLocalDataSource {
@@ -10,7 +10,7 @@ export class NewsLocalDataSource {
     /**
      * Save news articles to the local database
      */
-    static async saveNews(articles: NewsApiResultItem[]): Promise<void> {
+    static async saveNews(articles: NewsArticle[]): Promise<void> {
         const db = await getDatabase();
         const cachedAt = Date.now();
 
@@ -40,7 +40,7 @@ export class NewsLocalDataSource {
     /**
      * Get all news articles from local database
      */
-    static async getNews(): Promise<NewsApiResultItem[] | null> {
+    static async getNews(): Promise<NewsArticle[] | null> {
         const db = await getDatabase();
         const now = Date.now();
         const cacheThreshold = now - this.CACHE_DURATION;
@@ -69,7 +69,7 @@ export class NewsLocalDataSource {
                 square_small: row.image_square_small,
                 original: row.image_original
             }
-        } as NewsApiResultItem));
+        } as NewsArticle));
     }
 
     /**

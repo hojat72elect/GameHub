@@ -3,13 +3,13 @@ import idleImage from "@/assets/images/game_landscape_placeholder.webp";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {NewsApiResultItem} from "@/src/shared/domain/NewsApiResultItem";
+import {NewsArticle} from "@/src/shared/domain/NewsArticle";
 import {useTheme} from "@/src/shared/states/ThemeContext";
 import {NewsRepository} from "@/src/shared/data/NewsRepository";
 import ClockIcon from "@/assets/svg/clock_outline_16dp.svg";
 
 export function NewsScreen() {
-    const [newsData, setNewsData] = useState<NewsApiResultItem[]>([]);
+    const [newsData, setNewsData] = useState<NewsArticle[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const {colors} = useTheme();

@@ -1,4 +1,4 @@
-import {NewsApiResultItem} from "@/src/shared/domain/NewsApiResultItem";
+import {NewsArticle} from "@/src/shared/domain/NewsArticle";
 
 export class NewsRemoteDataSource {
     static GAMESPOT_FEED_URL = "https://www.gamespot.com/feeds/news/";
@@ -19,7 +19,7 @@ export class NewsRemoteDataSource {
             .replace(/&#160;/g, " ");
     }
 
-    static async getRemoteArticlesUseCase(): Promise<NewsApiResultItem[]> {
+    static async getRemoteArticlesUseCase(): Promise<NewsArticle[]> {
         const response = await fetch(NewsRemoteDataSource.GAMESPOT_FEED_URL);
         if (!response.ok) throw new Error(`Failed to fetch news: ${response.status}`);
 
@@ -28,8 +28,8 @@ export class NewsRemoteDataSource {
         return NewsRemoteDataSource.convertXmlToNewsArticles(xmlText)
     }
 
-    static convertXmlToNewsArticles(xmlText: string): NewsApiResultItem[] {
-        const items: NewsApiResultItem[] = [];
+    static convertXmlToNewsArticles(xmlText: string): NewsArticle[] {
+        const items: NewsArticle[] = [];
         const itemRegex = /<item>([\s\S]*?)<\/item>/g;
         let match;
         let index = 0;
