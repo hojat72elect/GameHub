@@ -1,6 +1,8 @@
 /**
  * This datasource gives us a Twitch access token.
  * we need that token for making API calls to IGDB API.
+ *
+ * This DataSource should only be used by other DataSources; and not directly in your UI.
  */
 export class AccessTokenDatasource {
 
