@@ -1,5 +1,6 @@
 import {Game} from "@/src/shared/domain/Game";
 import {AccessTokenDatasource} from "@/src/shared/data/remote/AccessTokenDatasource";
+import {GamesCategory} from "@/src/shared/domain/GamesCategory";
 
 /**
  * This datasource gives us all the data we need to show in the "DiscoverScreen".
@@ -7,9 +8,12 @@ import {AccessTokenDatasource} from "@/src/shared/data/remote/AccessTokenDatasou
  * (popular, recently released, coming coon, and most anticipated).
  *
  * This datasource performs a single batch request (using the IGDB multi-query endpoint).
+ *
+ * This datasource is for getting the games of a specific category.
+ * We show this data in the `GamesCategoryScreen`.
  */
 export class GamesGeneralRemoteDataSource {
-    static async get(): Promise<{
+    static async getAllCategoryGames(): Promise<{
         popularGames: Game[];
         recentlyReleasedGames: Game[];
         comingSoonGames: Game[];
@@ -79,5 +83,73 @@ query games "anticipated" {
             comingSoonGames: getResultByName("soon"),
             mostAnticipatedGames: getResultByName("anticipated"),
         };
+    }
+
+    /**
+     * todo : I still need to add pagination to this datasource.
+     */
+    static async getGamesByCategory(category: GamesCategory): Promise<Game[]>{
+
+
+        const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
+        const token = await AccessTokenDatasource.get();
+        const currentTimestamp = Math.floor(Date.now() / 1_000);
+        let query: string;
+
+        switch (category) {
+            case GamesCategory.Popular:
+                query = `
+                fields name, cover.image_id, follows;
+                where cover != null & game_type = 0;
+                sort follows desc;
+                limit 50;
+            `;
+                break;
+            case GamesCategory.RecentlyReleased:
+                query = `
+                fields name, cover.image_id, first_release_date;
+                where first_release_date <= ${currentTimestamp} & cover != null & game_type = 0;
+                sort first_release_date desc;
+                limit 50;
+            `;
+                break;
+            case GamesCategory.ComingSoon:
+                query = `
+                fields name, cover.image_id, first_release_date;
+                where first_release_date > ${currentTimestamp} & cover != null & game_type = 0;
+                sort first_release_date asc;
+                limit 50;
+            `;
+                break;
+            case GamesCategory.MostAnticipated:
+                query = `
+                fields name, cover.image_id, hypes, first_release_date;
+                where hypes != null & first_release_date > ${currentTimestamp} & cover != null & game_type = 0;
+                sort hypes desc;
+                limit 50;
+            `;
+                break;
+            default:
+                throw new Error(`Unknown category: ${category}`);
+        }
+
+        const response = await fetch("https://api.igdb.com/v4/games", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Client-ID": clientId!,
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "text/plain",
+            },
+            body: query.trim(),
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`IGDB API error: ${response.status} ${errorText}`);
+        }
+
+        const games: Game[] = await response.json();
+        return games || [];
     }
 }

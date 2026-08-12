@@ -10,7 +10,7 @@ export class GamesGeneralLocalDataSource {
     /**
      * Save games to the local database
      */
-    static async saveGames(games: Game[], category: string): Promise<void> {
+    static async saveGamesByCategory(games: Game[], category: string): Promise<void> {
         const db = await getDatabase();
         const cachedAt = Date.now();
 
@@ -76,6 +76,8 @@ export class GamesGeneralLocalDataSource {
 
     /**
      * Clear old cache entries
+     *
+     * todo : Move this logic to non-UI thread which is fired up by a timer.
      */
     static async clearOldCache(): Promise<void> {
         const db = await getDatabase();

@@ -2,7 +2,6 @@ import {Game} from "@/src/shared/domain/Game";
 import {GamesCategory} from "@/src/shared/domain/GamesCategory";
 import {GamesGeneralLocalDataSource} from "@/src/shared/data/local/datasources/GamesGeneralLocalDataSource";
 import {GamesGeneralRemoteDataSource} from "@/src/shared/data/remote/GamesGeneralRemoteDataSource";
-import {GamesCategoryDatasource} from "@/src/shared/data/remote/GamesCategoryDatasource";
 
 /**
  * This Repository is the access point for getting general (bare minimum) info about multiple games.
@@ -33,13 +32,13 @@ export class GamesGeneralRepository {
         }
 
         // Otherwise, fetch from remote API
-        const remoteData = await GamesGeneralRemoteDataSource.get();
+        const remoteData = await GamesGeneralRemoteDataSource.getAllCategoryGames();
 
         // Save to local cache
-        await GamesGeneralLocalDataSource.saveGames(remoteData.popularGames, 'popular');
-        await GamesGeneralLocalDataSource.saveGames(remoteData.recentlyReleasedGames, 'recent');
-        await GamesGeneralLocalDataSource.saveGames(remoteData.comingSoonGames, 'soon');
-        await GamesGeneralLocalDataSource.saveGames(remoteData.mostAnticipatedGames, 'anticipated');
+        await GamesGeneralLocalDataSource.saveGamesByCategory(remoteData.popularGames, 'popular');
+        await GamesGeneralLocalDataSource.saveGamesByCategory(remoteData.recentlyReleasedGames, 'recent');
+        await GamesGeneralLocalDataSource.saveGamesByCategory(remoteData.comingSoonGames, 'soon');
+        await GamesGeneralLocalDataSource.saveGamesByCategory(remoteData.mostAnticipatedGames, 'anticipated');
 
         // Clear old cache entries
         await GamesGeneralLocalDataSource.clearOldCache();
@@ -59,15 +58,13 @@ export class GamesGeneralRepository {
 
         // Try to get from local cache first
         const cachedGames = await GamesGeneralLocalDataSource.getGamesByCategory(cacheKey);
-        if (cachedGames) {
-            return cachedGames;
-        }
+        if (cachedGames) return cachedGames;
 
         // Otherwise, fetch from remote API
-        const remoteGames = await GamesCategoryDatasource.get(category);
+        const remoteGames = await GamesGeneralRemoteDataSource.getGamesByCategory(category);
 
         // Save to local cache
-        await GamesGeneralLocalDataSource.saveGames(remoteGames, cacheKey);
+        await GamesGeneralLocalDataSource.saveGamesByCategory(remoteGames, cacheKey);
 
         // Clear old cache entries
         await GamesGeneralLocalDataSource.clearOldCache();
