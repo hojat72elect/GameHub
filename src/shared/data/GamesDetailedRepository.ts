@@ -2,6 +2,7 @@ import {GameDetails} from "@/src/shared/domain/GameDetails";
 import {GamesDetailedLocalDataSource} from "@/src/shared/data/local/datasources/GamesDetailedLocalDataSource";
 import {getGamesByIdsUseCase} from "@/src/shared/getGamesByIdsUseCase";
 import {GamesDetailedRemoteDataSource} from "@/src/shared/data/remote/GamesDetailedRemoteDataSource";
+import {getDatabase} from "@/src/shared/data/local/Database";
 
 /**
  * This repository is the access point for getting very detailed info about a game.
@@ -22,7 +23,7 @@ export class GamesDetailedRepository {
         await GamesDetailedLocalDataSource.saveGameDetails(remoteGameDetails);
 
         // Clear old cache entries
-        await GamesDetailedLocalDataSource.clearOldCache();
+        await GamesDetailedRepository.clearOldCache();
 
         return remoteGameDetails;
     }
@@ -54,7 +55,7 @@ export class GamesDetailedRepository {
         }
 
         // Clear old cache entries
-        await GamesDetailedLocalDataSource.clearOldCache();
+        await GamesDetailedRepository.clearOldCache();
 
         // Combine cached and remote games
         const allGames = [...cachedGames, ...remoteGames];
@@ -62,5 +63,25 @@ export class GamesDetailedRepository {
         // Return in the order of requested IDs
         const gameMap = new Map(allGames.map(g => [g.id, g]));
         return gameIds.map(id => gameMap.get(id)).filter((g): g is GameDetails => g !== undefined);
+    }
+
+    /**
+     * Clear old cache entries.
+     *
+     * todo : Is it really necessary to clear my old cache? Wouldn't it be better for the loading time
+     * if I just let it be?
+     */
+    private static async clearOldCache() {
+
+        const db = await getDatabase();
+        const now = Date.now();
+        const cacheThreshold = now - GamesDetailedLocalDataSource.CACHE_DURATION;
+
+        await db.runAsync(
+            `DELETE
+             FROM games_detailed
+             WHERE cached_at <= ?`,
+            [cacheThreshold]
+        );
     }
 }

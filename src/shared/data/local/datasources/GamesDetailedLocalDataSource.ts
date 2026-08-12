@@ -3,7 +3,7 @@ import {getDatabase} from "@/src/shared/data/local/Database";
 
 export class GamesDetailedLocalDataSource {
 
-    private static readonly CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+    static readonly CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
     /**
      * Saves `GameDetails` of a single game to SQL database.
@@ -126,22 +126,5 @@ export class GamesDetailedLocalDataSource {
             player_perspectives: JSON.parse(row.player_perspectives || '[]'),
             themes: JSON.parse(row.themes || '[]'),
         } as GameDetails));
-    }
-
-    /**
-     * todo: The logic of invalidating cache should be moved to the repository layer.
-     * Clear old cache entries.
-     */
-    static async clearOldCache() {
-        const db = await getDatabase();
-        const now = Date.now();
-        const cacheThreshold = now - this.CACHE_DURATION;
-
-        await db.runAsync(
-            `DELETE
-             FROM games_detailed
-             WHERE cached_at <= ?`,
-            [cacheThreshold]
-        );
     }
 }
