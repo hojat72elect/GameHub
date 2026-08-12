@@ -3,10 +3,9 @@ import idleImage from "@/assets/images/game_landscape_placeholder.webp";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import axios from "axios";
 import {NewsApiResultItem} from "@/src/shared/domain/NewsApiResultItem";
 import {useTheme} from "@/src/ThemeContext";
-import {GAMESPOT_FEED_URL, getRemoteArticlesUseCase} from "@/src/feature_news/api/getRemoteArticlesUseCase";
+import {NewsRepository} from "@/src/shared/data/NewsRepository";
 import ClockIcon from "@/assets/svg/clock_outline_16dp.svg";
 
 export function NewsScreen() {
@@ -20,8 +19,7 @@ export function NewsScreen() {
         try {
             setLoading(true);
             setError(null);
-            const response = await axios.get(GAMESPOT_FEED_URL);
-            const parsedItems = getRemoteArticlesUseCase(response.data);
+            const parsedItems = await NewsRepository.getNewsArticles();
             setNewsData(parsedItems);
         } catch (err: any) {
             console.error("Error fetching gamespot feed:", err);
