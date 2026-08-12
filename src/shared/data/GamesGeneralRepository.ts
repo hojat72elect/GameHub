@@ -1,7 +1,7 @@
 import {Game} from "@/src/shared/domain/Game";
 import {GamesCategory} from "@/src/shared/domain/GamesCategory";
 import {GamesGeneralLocalDataSource} from "@/src/shared/data/local/datasources/GamesGeneralLocalDataSource";
-import {DiscoverScreenDatasource} from "@/src/shared/data/remote/DiscoverScreenDatasource";
+import {GamesGeneralRemoteDataSource} from "@/src/shared/data/remote/GamesGeneralRemoteDataSource";
 import {GamesCategoryDatasource} from "@/src/shared/data/remote/GamesCategoryDatasource";
 
 /**
@@ -33,7 +33,7 @@ export class GamesGeneralRepository {
         }
 
         // Otherwise, fetch from remote API
-        const remoteData = await DiscoverScreenDatasource.get();
+        const remoteData = await GamesGeneralRemoteDataSource.get();
 
         // Save to local cache
         await GamesGeneralLocalDataSource.saveGames(remoteData.popularGames, 'popular');

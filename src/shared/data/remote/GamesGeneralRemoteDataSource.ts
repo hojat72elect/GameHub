@@ -8,7 +8,7 @@ import {AccessTokenDatasource} from "@/src/shared/data/remote/AccessTokenDatasou
  *
  * This datasource performs a single batch request (using the IGDB multi-query endpoint).
  */
-export class DiscoverScreenDatasource {
+export class GamesGeneralRemoteDataSource {
     static async get(): Promise<{
         popularGames: Game[];
         recentlyReleasedGames: Game[];
