@@ -284,13 +284,25 @@ export function GameDetailsScreen() {
                                 {t('screenshots')}
                             </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                                {gameDetails.screenshots.map((screenshot) => (
-                                    <Image
+                                {gameDetails.screenshots.map((screenshot, index) => (
+                                    <TouchableOpacity
                                         key={screenshot.id}
-                                        source={{uri: getCoverUrl(screenshot.image_id, "1080p")}}
-                                        resizeMode="cover"
-                                        style={{width: 200, height: 120, borderRadius: 8, marginRight: 10}}
-                                    />
+                                        onPress={() => {
+                                            router.push({
+                                                pathname: '/image-viewer',
+                                                params: {
+                                                    screenshots: JSON.stringify(gameDetails.screenshots),
+                                                    initialIndex: index.toString()
+                                                }
+                                            });
+                                        }}
+                                    >
+                                        <Image
+                                            source={{uri: getCoverUrl(screenshot.image_id, "1080p")}}
+                                            resizeMode="cover"
+                                            style={{width: 200, height: 120, borderRadius: 8, marginRight: 10}}
+                                        />
+                                    </TouchableOpacity>
                                 ))}
                             </ScrollView>
                         </View>
