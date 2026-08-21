@@ -1,10 +1,14 @@
 import {SafeAreaProvider, useSafeAreaInsets} from "react-native-safe-area-context";
-import {Dimensions, Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {Alert, Dimensions, Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useLocalSearchParams, useRouter} from "expo-router";
 import {useRef, useState} from "react";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
 import {NativeSyntheticEvent} from "react-native/Libraries/Types/CoreEventTypes";
 import {NativeScrollEvent} from "react-native/Libraries/Components/ScrollView/ScrollView";
+import {isAvailableAsync, shareAsync} from 'expo-sharing';
+import {downloadAsync,} from 'expo-file-system/legacy';
+import {Paths} from 'expo-file-system';
+import {createAssetAsync, requestPermissionsAsync} from 'expo-media-library';
 
 export function ImageViewerScreen() {
 
@@ -35,6 +39,52 @@ export function ImageViewerScreen() {
         setCurrentIndex(newIndex);
     };
 
+    const getCurrentImageUrl = () => {
+        return getCoverUrl(screenshots[currentIndex].image_id, "1080p");
+    };
+
+    const handleShare = async () => {
+        try {
+            const imageUrl = getCurrentImageUrl();
+            const fileUri = `${Paths.cache.uri}screenshot_${screenshots[currentIndex].image_id}.jpg`;
+
+            const downloadResult = await downloadAsync(imageUrl, fileUri);
+
+            if (downloadResult.status === 200) {
+                if (await isAvailableAsync()) {
+                    await shareAsync(fileUri);
+                } else {
+                    Alert.alert('Error', 'Sharing is not available on this device');
+                }
+            }
+        } catch (error) {
+            Alert.alert('Error', 'Failed to share image');
+            console.error('Share error:', error);
+        }
+    };
+
+    const handleDownload = async () => {
+        try {
+            const imageUrl = getCurrentImageUrl();
+            const fileUri = `${Paths.cache.uri}screenshot_${screenshots[currentIndex].image_id}.jpg`;
+
+            const downloadResult = await downloadAsync(imageUrl, fileUri);
+
+            if (downloadResult.status === 200) {
+                const {status} = await requestPermissionsAsync();
+                if (status === 'granted') {
+                    await createAssetAsync(fileUri);
+                    Alert.alert('Success', 'Image saved to your gallery');
+                } else {
+                    Alert.alert('Permission denied', 'Permission to access gallery is required');
+                }
+            }
+        } catch (error) {
+            Alert.alert('Error', 'Failed to download image');
+            console.error('Download error:', error);
+        }
+    };
+
     return (
         <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>
             <View style={{flex: 1}}>
@@ -52,7 +102,7 @@ export function ImageViewerScreen() {
                     paddingHorizontal: 16,
                     backgroundColor: 'rgba(0, 0, 0, 0.5)',
                 }}>
-                    <TouchableOpacity onPress={()=>{
+                    <TouchableOpacity onPress={() => {
                         router.back();
                     }}>
                         <Text style={{fontSize: 24, color: '#FFF'}}>✕</Text>
@@ -60,7 +110,14 @@ export function ImageViewerScreen() {
                     <Text style={{fontSize: 16, color: '#FFF', fontWeight: '600'}}>
                         {currentIndex + 1} / {screenshots.length}
                     </Text>
-                    <View style={{width: 24}}/>
+                    <View style={{flexDirection: 'row', gap: 16}}>
+                        <TouchableOpacity onPress={handleShare}>
+                            <Text style={{fontSize: 24, color: '#FFF'}}>↗</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={handleDownload}>
+                            <Text style={{fontSize: 24, color: '#FFF'}}>↓</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
                 <ScrollView
