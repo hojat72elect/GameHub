@@ -1,5 +1,5 @@
 import {SafeAreaProvider, useSafeAreaInsets} from "react-native-safe-area-context";
-import {Alert, Dimensions, Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {Alert, Dimensions, Image, ScrollView, Text, ToastAndroid, TouchableOpacity, View} from "react-native";
 import {useLocalSearchParams, useRouter} from "expo-router";
 import {useRef, useState} from "react";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
@@ -76,7 +76,7 @@ export function ImageViewerScreen() {
                 const {status} = await requestPermissionsAsync();
                 if (status === 'granted') {
                     await createAssetAsync(fileUri);
-                    Alert.alert('Success', 'Image saved to your gallery');
+                    ToastAndroid.show("Image saved to your gallery successfully!", ToastAndroid.SHORT);
                 } else {
                     Alert.alert('Permission denied', 'Permission to access gallery is required');
                 }
