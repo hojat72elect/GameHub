@@ -14,6 +14,7 @@ config.transformer.babelTransformerPath = require.resolve("react-native-svg-tran
 
 // Add @ alias support
 config.resolver.alias = {
+    // eslint-disable-next-line no-undef
     '@': __dirname,
 };
 
