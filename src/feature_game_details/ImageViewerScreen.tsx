@@ -109,9 +109,11 @@ export function ImageViewerScreen() {
                     }}>
                         <Text style={{fontSize: 24, color: '#FFF'}}>✕</Text>
                     </TouchableOpacity>
-                    <Text style={{fontSize: 16, color: '#FFF', fontWeight: '600'}}>
-                        {currentIndex + 1} / {screenshots.length}
-                    </Text>
+                    {screenshots.length !== 1 && (
+                        <Text style={{fontSize: 16, color: '#FFF', fontWeight: '600'}}>
+                            {currentIndex + 1} / {screenshots.length}
+                        </Text>
+                    )}
                     <View style={{flexDirection: 'row', gap: 16}}>
                         <TouchableOpacity style={{padding: 5}} onPress={handleShare}>
                             <ShareIcon width={30} height={30}/>

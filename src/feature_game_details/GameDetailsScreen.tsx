@@ -173,18 +173,42 @@ export function GameDetailsScreen() {
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom: bottom}}>
 
                 <View>
-                    <Image source={coverImageUrl} resizeMode="cover" style={{width: "100%", height: 300}}/>
+                    <TouchableOpacity onPress={() => {
+                        if (gameDetails.cover?.image_id) {
+                            router.push({
+                                pathname: '/image-viewer',
+                                params: {
+                                    screenshots: JSON.stringify([{id: 0, image_id: gameDetails.cover.image_id}]),
+                                    initialIndex: '0'
+                                }
+                            });
+                        }
+                    }}>
+                        <Image source={coverImageUrl} resizeMode="cover" style={{width: "100%", height: 300}}/>
+                    </TouchableOpacity>
                     <View style={{position: "absolute", bottom: 0, right: 20, marginBottom: -20}}>
                         <LikeButton gameId={gameId}/>
                     </View>
                 </View>
                 <View>
                     <View style={{flexDirection: "row", marginStart: 18}}>
-                        <Image
-                            source={titleImageUrl}
-                            resizeMode="cover"
-                            style={{width: 100, height: 150, borderRadius: 8, marginRight: 15, marginTop: -26}}
-                        />
+                        <TouchableOpacity onPress={() => {
+                            if (gameDetails.artworks && gameDetails.artworks.length > 0) {
+                                router.push({
+                                    pathname: '/image-viewer',
+                                    params: {
+                                        screenshots: JSON.stringify([{id: 0, image_id: gameDetails.artworks[0].image_id}]),
+                                        initialIndex: '0'
+                                    }
+                                });
+                            }
+                        }}>
+                            <Image
+                                source={titleImageUrl}
+                                resizeMode="cover"
+                                style={{width: 100, height: 150, borderRadius: 8, marginRight: 15, marginTop: -26}}
+                            />
+                        </TouchableOpacity>
                         <View style={{flex: 1, justifyContent: "center"}}>
                             <Text style={{fontSize: 20, fontWeight: "bold", color: colors.text}}>
                                 {gameDetails.name}
