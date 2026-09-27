@@ -160,20 +160,20 @@ export function GameDetailsScreen() {
         );
     }
 
-    const coverUrl = gameDetails.cover?.image_id
+    const coverImageUrl = gameDetails.cover?.image_id
         ? {uri: getCoverUrl(gameDetails.cover.image_id, "1080p")}
         : idleImage;
 
-    const titlePictureUrl = gameDetails.artworks && gameDetails.artworks.length > 0
+    const titleImageUrl = gameDetails.artworks && gameDetails.artworks.length > 0
         ? {uri: getCoverUrl(gameDetails.artworks[0].image_id, "cover_big")}
-        : coverUrl;
+        : coverImageUrl;
 
     return (
         <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom: bottom}}>
 
                 <View>
-                    <Image source={coverUrl} resizeMode="cover" style={{width: "100%", height: 300}}/>
+                    <Image source={coverImageUrl} resizeMode="cover" style={{width: "100%", height: 300}}/>
                     <View style={{position: "absolute", bottom: 0, right: 20, marginBottom: -20}}>
                         <LikeButton gameId={gameId}/>
                     </View>
@@ -181,7 +181,7 @@ export function GameDetailsScreen() {
                 <View>
                     <View style={{flexDirection: "row", marginStart: 18}}>
                         <Image
-                            source={titlePictureUrl}
+                            source={titleImageUrl}
                             resizeMode="cover"
                             style={{width: 100, height: 150, borderRadius: 8, marginRight: 15, marginTop: -26}}
                         />
