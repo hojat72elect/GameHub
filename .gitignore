@@ -1,6 +1,6 @@
+.idea
 node_modules
 .expo
-.idea
 /expo-env.d.ts
 .env
 expo-env.d.ts
