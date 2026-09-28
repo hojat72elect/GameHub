@@ -45,11 +45,10 @@ export function DiscoverScreenSection({title, data}: { title: GamesCategory, dat
                         return t('mostAnticipated')
                 }
             })()}</Text>
-            <TouchableOpacity>
-                <Text
-                    style={{color: "#FF4B7D", fontWeight: "600", fontSize: 14}}
-                    onPress={() => router.push({pathname: '/category-games', params: {category: title}})}
-                >SEE ALL</Text>
+            <TouchableOpacity
+                onPress={() => router.push({pathname: '/category-games', params: {category: title}})}
+            >
+                <Text style={{color: "#FF4B7D", fontWeight: "600", fontSize: 14}}>SEE ALL</Text>
             </TouchableOpacity>
         </View>
 
