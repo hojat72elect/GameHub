@@ -14,8 +14,8 @@ import DownloadIcon from "@/assets/svg/download.svg";
 
 export function ImageViewerScreen() {
 
-    const {screenshots: screenshotsJson, initialIndex} = useLocalSearchParams<{
-        screenshots: string;
+    const {images: imagesJson, initialIndex} = useLocalSearchParams<{
+        images: string;
         initialIndex: string;
     }>();
     const router = useRouter();
@@ -23,10 +23,10 @@ export function ImageViewerScreen() {
     const {top} = useSafeAreaInsets();
     const scrollViewRef = useRef<ScrollView>(null);
 
-    const screenshots: {
+    const images: {
         id: number;
         image_id: string; // The id of that image on IGDB servers
-    }[] = JSON.parse(screenshotsJson);
+    }[] = JSON.parse(imagesJson);
     const initialIndexNum = parseInt(initialIndex, 10);
     const [currentIndex, setCurrentIndex] = useState(initialIndexNum);
 
@@ -42,13 +42,13 @@ export function ImageViewerScreen() {
     };
 
     const getCurrentImageUrl = () => {
-        return getCoverUrl(screenshots[currentIndex].image_id, "1080p");
+        return getCoverUrl(images[currentIndex].image_id, "1080p");
     };
 
     const handleShare = async () => {
         try {
             const imageUrl = getCurrentImageUrl();
-            const fileUri = `${Paths.cache.uri}screenshot_${screenshots[currentIndex].image_id}.jpg`;
+            const fileUri = `${Paths.cache.uri}screenshot_${images[currentIndex].image_id}.jpg`;
 
             const downloadResult = await downloadAsync(imageUrl, fileUri);
 
@@ -68,7 +68,7 @@ export function ImageViewerScreen() {
     const handleDownload = async () => {
         try {
             const imageUrl = getCurrentImageUrl();
-            const fileUri = `${Paths.cache.uri}screenshot_${screenshots[currentIndex].image_id}.jpg`;
+            const fileUri = `${Paths.cache.uri}screenshot_${images[currentIndex].image_id}.jpg`;
 
             const downloadResult = await downloadAsync(imageUrl, fileUri);
 
@@ -109,9 +109,9 @@ export function ImageViewerScreen() {
                     }}>
                         <Text style={{fontSize: 24, color: '#FFF'}}>✕</Text>
                     </TouchableOpacity>
-                    {screenshots.length !== 1 && (
+                    {images.length !== 1 && (
                         <Text style={{fontSize: 16, color: '#FFF', fontWeight: '600'}}>
-                            {currentIndex + 1} / {screenshots.length}
+                            {currentIndex + 1} / {images.length}
                         </Text>
                     )}
                     <View style={{flexDirection: 'row', gap: 16}}>
@@ -140,9 +140,9 @@ export function ImageViewerScreen() {
                         }, 0);
                     }}
                 >
-                    {screenshots.map((screenshot) => (
+                    {images.map((image) => (
                         <View
-                            key={screenshot.id}
+                            key={image.id}
                             style={{
                                 width: Dimensions.get('window').width,
                                 height: Dimensions.get('window').height,
@@ -152,7 +152,7 @@ export function ImageViewerScreen() {
                             }}
                         >
                             <Image
-                                source={{uri: getCoverUrl(screenshot.image_id, "1080p")}}
+                                source={{uri: getCoverUrl(image.image_id, "1080p")}}
                                 resizeMode="contain"
                                 style={{width: '100%', height: '100%'}}
                             />

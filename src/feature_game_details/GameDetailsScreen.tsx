@@ -178,7 +178,7 @@ export function GameDetailsScreen() {
                             router.push({
                                 pathname: '/image-viewer',
                                 params: {
-                                    screenshots: JSON.stringify([{id: 0, image_id: gameDetails.cover.image_id}]),
+                                    images: JSON.stringify([{id: 0, image_id: gameDetails.cover.image_id}]),
                                     initialIndex: '0'
                                 }
                             });
@@ -197,7 +197,7 @@ export function GameDetailsScreen() {
                                 router.push({
                                     pathname: '/image-viewer',
                                     params: {
-                                        screenshots: JSON.stringify([{id: 0, image_id: gameDetails.artworks[0].image_id}]),
+                                        images: JSON.stringify([{id: 0, image_id: gameDetails.artworks[0].image_id}]),
                                         initialIndex: '0'
                                     }
                                 });
@@ -315,7 +315,7 @@ export function GameDetailsScreen() {
                                             router.push({
                                                 pathname: '/image-viewer',
                                                 params: {
-                                                    screenshots: JSON.stringify(gameDetails.screenshots),
+                                                    images: JSON.stringify(gameDetails.screenshots),
                                                     initialIndex: index.toString()
                                                 }
                                             });
