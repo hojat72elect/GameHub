@@ -55,10 +55,8 @@ export function CategoryScreen() {
     };
 
     useEffect(() => {
-        if (chosenCategory) {
-            loadData();
-        }
-    }, [chosenCategory]);
+        loadData();
+    }, []);
 
     if (isLoading && !isRefreshing) {
         return (
