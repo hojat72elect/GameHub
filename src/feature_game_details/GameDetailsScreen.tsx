@@ -274,7 +274,7 @@ export function GameDetailsScreen() {
                                                         alignItems: "center",
                                                         backgroundColor: "rgba(0, 0, 0, 0.3)"
                                                     }}>
-                                                        <PlayIcon width={36} height={36} fill="#FFF"/>
+                                                        <PlayIcon width={36} height={36} color="#FFF"/>
                                                     </View>
                                                 </View>
                                             </View>
@@ -474,7 +474,7 @@ export function GameDetailsScreen() {
                                                 Linking.openURL(website.url);
                                             }}
                                         >
-                                            <IconComponent width={16} height={16} fill={colors.secondaryText}/>
+                                            <IconComponent width={16} height={16} color={colors.secondaryText}/>
                                             <Text style={{color: colors.secondaryText, fontSize: 14}}>
                                                 {name}
                                             </Text>

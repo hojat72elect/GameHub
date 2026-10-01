@@ -70,7 +70,7 @@ export function NewsScreen() {
                       style={{fontSize: 14, color: colors.secondaryText, lineHeight: 22, marginBottom: 10}}
                 >{item.deck}</Text>
                 <View style={{flexDirection: "row", alignItems: "center"}}>
-                    <ClockIcon width={20} height={20} fill={colors.icon}/>
+                    <ClockIcon width={20} height={20} color={colors.icon}/>
                     <Text style={{
                         fontSize: 14,
                         color: colors.secondaryText,
