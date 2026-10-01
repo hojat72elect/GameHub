@@ -46,9 +46,6 @@ export function SearchScreen() {
                 flexDirection: "row",
                 alignItems: "center"
             }}>
-                <TouchableOpacity onPress={() => router.back()} style={{marginRight: 15}}>
-                    <Text style={{fontSize: 18, color: "#FF4B7D", fontWeight: "600"}}>{t('back')}</Text>
-                </TouchableOpacity>
                 <Text style={{flex: 1, fontSize: 24, fontWeight: "bold", color: colors.text}}>{t('searchTitle')}</Text>
             </View>
 
