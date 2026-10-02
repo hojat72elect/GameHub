@@ -1,16 +1,15 @@
 import {SafeAreaProvider, useSafeAreaInsets} from "react-native-safe-area-context";
-import {Alert, Dimensions, Image, ScrollView, Text, ToastAndroid, TouchableOpacity, View} from "react-native";
+import {Alert, Text, ToastAndroid, TouchableOpacity, View} from "react-native";
 import {useLocalSearchParams, useRouter} from "expo-router";
-import {useRef, useState} from "react";
+import {useState} from "react";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
-import {NativeSyntheticEvent} from "react-native/Libraries/Types/CoreEventTypes";
-import {NativeScrollEvent} from "react-native/Libraries/Components/ScrollView/ScrollView";
 import {isAvailableAsync, shareAsync} from 'expo-sharing';
 import {downloadAsync,} from 'expo-file-system/legacy';
 import {Paths} from 'expo-file-system';
 import {createAssetAsync, requestPermissionsAsync} from 'expo-media-library';
 import ShareIcon from "@/assets/svg/share.svg";
 import DownloadIcon from "@/assets/svg/download.svg";
+import ImageViewer from "react-native-image-zoom-viewer";
 
 export function ImageViewerScreen() {
 
@@ -21,7 +20,6 @@ export function ImageViewerScreen() {
     const router = useRouter();
     const {colors} = useTheme();
     const {top} = useSafeAreaInsets();
-    const scrollViewRef = useRef<ScrollView>(null);
 
     const images: {
         id: number;
@@ -32,13 +30,6 @@ export function ImageViewerScreen() {
 
     const getCoverUrl = (imageId: string, size: "cover_big" | "1080p" = "1080p") => {
         return `https://images.igdb.com/igdb/image/upload/t_${size}/${imageId}.jpg`;
-    };
-
-    const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-        const contentOffsetX = event.nativeEvent.contentOffset.x;
-        const width = event.nativeEvent.layoutMeasurement.width;
-        const newIndex = Math.round(contentOffsetX / width);
-        setCurrentIndex(newIndex);
     };
 
     const getCurrentImageUrl = () => {
@@ -109,11 +100,7 @@ export function ImageViewerScreen() {
                     }}>
                         <Text style={{fontSize: 24, color: '#FFF'}}>✕</Text>
                     </TouchableOpacity>
-                    {images.length !== 1 && (
-                        <Text style={{fontSize: 16, color: '#FFF', fontWeight: '600'}}>
-                            {currentIndex + 1} / {images.length}
-                        </Text>
-                    )}
+
                     <View style={{flexDirection: 'row', gap: 16}}>
                         <TouchableOpacity style={{padding: 5}} onPress={handleShare}>
                             <ShareIcon width={30} height={30}/>
@@ -124,41 +111,13 @@ export function ImageViewerScreen() {
                     </View>
                 </View>
 
-                <ScrollView
-                    ref={scrollViewRef}
-                    horizontal
-                    pagingEnabled
-                    showsHorizontalScrollIndicator={false}
+                <ImageViewer
+                    imageUrls={images.map(image => ({url: getCoverUrl(image.image_id, "1080p")}))}
+                    index={initialIndexNum}
+                    onChange={(index) => index !== undefined && setCurrentIndex(index)}
                     style={{flex: 1}}
-                    onMomentumScrollEnd={handleScroll}
-                    onLayout={() => {
-                        setTimeout(() => {
-                            scrollViewRef.current?.scrollTo({
-                                x: initialIndexNum * Dimensions.get('window').width,
-                                animated: false
-                            });
-                        }, 0);
-                    }}
-                >
-                    {images.map((image) => (
-                        <View
-                            key={image.id}
-                            style={{
-                                width: Dimensions.get('window').width,
-                                height: Dimensions.get('window').height,
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                backgroundColor: '#000'
-                            }}
-                        >
-                            <Image
-                                source={{uri: getCoverUrl(image.image_id, "1080p")}}
-                                resizeMode="contain"
-                                style={{width: '100%', height: '100%'}}
-                            />
-                        </View>
-                    ))}
-                </ScrollView>
+                    backgroundColor="#000"
+                />
             </View>
         </SafeAreaProvider>
     );
