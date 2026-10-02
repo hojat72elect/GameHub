@@ -12,11 +12,13 @@ import {getRelativeTimeTextUseCase} from "@/src/shared/getRelativeTimeTextUseCas
 
 export function LikesScreen() {
     const {colors} = useTheme();
-    const {likedGameIds} = useLikes();
+    const {likedGameIds, toggleLikedGames} = useLikes();
     const [likedGames, setLikedGames] = useState<GameDetails[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const {t} = useTranslation();
+    const [selectedGameIds, setSelectedGameIds] = useState<Set<number>>(new Set())
+    const [isSelectionMode, setIsSelectionMode] = useState<boolean>(false);
 
     useEffect(() => {
         const loadLikedGames = async () => {
@@ -57,30 +59,84 @@ export function LikesScreen() {
         });
     };
 
+    const toggleSelection = (gameId: number) => {
+        setSelectedGameIds(currentlySelectedGames => {
+            const result = new Set(currentlySelectedGames);
+            if (result.has(gameId)) {
+                // The game was selected and we de-select it now
+                result.delete(gameId);
+                if (result.size === 0) setIsSelectionMode(false);
+            } else {
+                // select the game
+                result.add(gameId);
+                setIsSelectionMode(true);
+            }
+            return result;
+        });
+    };
+
+    const unlikeSelectedGames = () => {
+        selectedGameIds.forEach(gameId => toggleLikedGames(gameId.toString()));
+        setSelectedGameIds(new Set());
+        setIsSelectionMode(false);
+    };
+
+    const exitSelectionMode = () => {
+        setSelectedGameIds(new Set());
+        setIsSelectionMode(false);
+    };
+
     const renderGameCard = ({item}: { item: GameDetails }) => {
         const coverUrl = item.cover?.image_id
             ? {uri: getCoverUrl(item.cover.image_id)}
             : idleImage;
+        const isSelected = selectedGameIds.has(item.id);
 
         return (
             <TouchableOpacity
                 style={{
                     flexDirection: "row",
-                    backgroundColor: colors.card,
+                    backgroundColor: isSelected ? colors.border : colors.card,
                     marginBottom: 8,
                     padding: 12,
                     elevation: 2,
+                    opacity: isSelectionMode && !isSelected ? 0.6 : 1,
                 }}
-                onPress={() => router.push({
-                    pathname: '/game-details',
-                    params: {gameId: item.id.toString()}
-                })}
+                onPress={() => {
+                    if (isSelectionMode) {
+                        toggleSelection(item.id);
+                    } else {
+                        router.push({
+                            pathname: '/game-details',
+                            params: {gameId: item.id.toString()}
+                        });
+                    }
+                }}
+                onLongPress={() => toggleSelection(item.id)}
+                delayLongPress={500}
             >
-                <Image
-                    source={coverUrl}
-                    resizeMode="cover"
-                    style={{width: 120, height: 160, borderRadius: 8}}
-                />
+                <View style={{position: 'relative'}}>
+                    <Image
+                        source={coverUrl}
+                        resizeMode="cover"
+                        style={{width: 120, height: 160, borderRadius: 8}}
+                    />
+                    {isSelected && (
+                        <View style={{
+                            position: 'absolute',
+                            top: 4,
+                            right: 4,
+                            backgroundColor: '#FF4B7D',
+                            borderRadius: 12,
+                            width: 24,
+                            height: 24,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}>
+                            <Text style={{color: 'white', fontSize: 14, fontWeight: 'bold'}}>✓</Text>
+                        </View>
+                    )}
+                </View>
                 <View style={{flex: 1, marginLeft: 12, justifyContent: "flex-start"}}>
                     <Text style={{fontSize: 18, fontWeight: "semibold", color: colors.text, marginBottom: 4}}
                           numberOfLines={2}>
@@ -93,7 +149,7 @@ export function LikesScreen() {
                     <Text style={{
                         fontSize: 14,
                         color: colors.secondaryText
-                    }}>{item.involved_companies ? item.involved_companies[0].company.name : ""}</Text>
+                    }}>{item.involved_companies ? item.involved_companies[0]?.company.name : ""}</Text>
                     <Text style={{
                         color: colors.secondaryText,
                         paddingTop: 8
@@ -161,10 +217,23 @@ export function LikesScreen() {
                 paddingVertical: 12,
                 borderBottomWidth: 1,
                 borderBottomColor: colors.border,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
             }}>
                 <Text style={{fontSize: 20, fontWeight: "500", color: colors.text}}>
-                    {t('likesTitle')}
+                    {isSelectionMode ? `${selectedGameIds.size} selected` : t('likesTitle')}
                 </Text>
+                {isSelectionMode && (
+                    <View style={{flexDirection: 'row', gap: 12}}>
+                        <TouchableOpacity onPress={exitSelectionMode}>
+                            <Text style={{fontSize: 16, color: colors.secondaryText}}>Cancel</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={unlikeSelectedGames}>
+                            <Text style={{fontSize: 16, color: '#FF4B7D', fontWeight: 'bold'}}>Unlike</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
             </View>
             {likedGames.length === 0 ? renderEmptyState() : (
                 <FlatList
