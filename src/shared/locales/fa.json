@@ -58,5 +58,20 @@
   "somethingWentWrong": "خطایی رخ داد",
   "retry": "تلاش مجدد",
   "goBack": "بازگشت",
-  "loading": "در حال بارگذاری"
+  "loading": "در حال بارگذاری",
+  "signIn": "ورود",
+  "signInDescription": "برای دسترسی به بازی‌هایتان وارد شوید",
+  "welcomeBack": "خوش آمدید",
+  "loginDescription": "به حساب گیم‌هاب خود وارد شوید",
+  "email": "ایمیل",
+  "emailPlaceholder": "you@example.com",
+  "password": "رمز عبور",
+  "passwordPlaceholder": "رمز عبور خود را وارد کنید",
+  "forgotPassword": "رمز عبور را فراموش کرده‌اید؟",
+  "showPassword": "نمایش رمز عبور",
+  "hidePassword": "پنهان کردن رمز عبور",
+  "orContinueWith": "یا ادامه با",
+  "continueWithGoogle": "ادامه با گوگل",
+  "noAccount": "حساب کاربری ندارید؟",
+  "createAccount": "ایجاد حساب"
 }
