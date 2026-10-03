@@ -7,11 +7,13 @@ import {useLanguage} from "@/src/shared/contexts/LanguageContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {Language} from "@/src/shared/domain/Language";
 import {InteractableSettingsSection} from "./InteractableSettingsSection";
+import {useRouter} from "expo-router";
 
 export function SettingsScreen() {
     const {t} = useTranslation();
     const {themeMode, colors, setThemeMode} = useTheme();
     const {language, setLanguage} = useLanguage();
+    const router = useRouter();
     const [isThemeModalVisible, setIsThemeModalVisible] = useState(false);
     const [isLanguageModalVisible, setIsLanguageModalVisible] = useState(false);
 
@@ -53,6 +55,22 @@ export function SettingsScreen() {
             <Text style={{
                 fontSize: 24, fontWeight: "400", color: colors.text, marginStart: 18
             }}>{t('settingsTitle')}</Text>
+
+            <View style={{
+                marginTop: 14,
+                marginHorizontal: 14,
+                padding: 14,
+                backgroundColor: colors.card,
+                borderWidth: 1,
+                borderColor: colors.border,
+                elevation: 2
+            }}>
+                <InteractableSettingsSection
+                    title={t('signIn')}
+                    subtitle={t('signInDescription')}
+                    onPress={() => router.push('/login')}
+                />
+            </View>
 
             <View style={{
                 marginTop: 14,
