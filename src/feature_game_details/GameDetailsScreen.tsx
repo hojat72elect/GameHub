@@ -160,13 +160,13 @@ export function GameDetailsScreen() {
         );
     }
 
-    const coverImageUrl = gameDetails.cover?.image_id
-        ? {uri: getCoverUrl(gameDetails.cover.image_id, "1080p")}
+    const coverImageUrl = gameDetails.artworks && gameDetails.artworks.length > 0
+        ? {uri: getCoverUrl(gameDetails.artworks[0].image_id, "1080p")}
         : idleImage;
 
-    const titleImageUrl = gameDetails.artworks && gameDetails.artworks.length > 0
-        ? {uri: getCoverUrl(gameDetails.artworks[0].image_id, "cover_big")}
-        : coverImageUrl;
+    const titleImageUrl = gameDetails.cover?.image_id
+        ? {uri: getCoverUrl(gameDetails.cover.image_id, "1080p")}
+        : idleImage;
 
     return (
         <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>
@@ -178,7 +178,7 @@ export function GameDetailsScreen() {
                             router.push({
                                 pathname: '/image-viewer',
                                 params: {
-                                    images: JSON.stringify([{id: 0, image_id: gameDetails.cover.image_id}]),
+                                    images: JSON.stringify([{id: 0, image_id: gameDetails?.artworks?.[0].image_id}]),
                                     initialIndex: '0'
                                 }
                             });
@@ -197,7 +197,7 @@ export function GameDetailsScreen() {
                                 router.push({
                                     pathname: '/image-viewer',
                                     params: {
-                                        images: JSON.stringify([{id: 0, image_id: gameDetails.artworks[0].image_id}]),
+                                        images: JSON.stringify([{id: 0, image_id: gameDetails.cover?.image_id}]),
                                         initialIndex: '0'
                                     }
                                 });
