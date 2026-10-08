@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {ScrollView, Text, TextInput, TouchableOpacity, View} from "react-native";
-import {router} from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {useTranslation} from "react-i18next";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
@@ -16,22 +15,6 @@ export function LoginScreen() {
                 contentContainerStyle={{flexGrow: 1, paddingHorizontal: 24, paddingTop: 24, paddingBottom: 36}}
                 keyboardShouldPersistTaps="handled"
             >
-                <TouchableOpacity
-                    onPress={() => router.back()}
-                    accessibilityRole="button"
-                    accessibilityLabel={t("back")}
-                    style={{
-                        width: 44,
-                        height: 44,
-                        borderRadius: 22,
-                        borderWidth: 1,
-                        borderColor: colors.border,
-                        alignItems: "center",
-                        justifyContent: "center"
-                    }}
-                >
-                    <Ionicons name="arrow-back" size={22} color={colors.text}/>
-                </TouchableOpacity>
 
                 <View style={{alignItems: "center", marginTop: 44, marginBottom: 34}}>
                     <View style={{
