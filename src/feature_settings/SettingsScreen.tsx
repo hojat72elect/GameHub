@@ -7,13 +7,12 @@ import {useLanguage} from "@/src/shared/contexts/LanguageContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {Language} from "@/src/shared/domain/Language";
 import {InteractableSettingsSection} from "./InteractableSettingsSection";
-import {useRouter} from "expo-router";
+import {router} from "expo-router";
 
 export function SettingsScreen() {
     const {t} = useTranslation();
     const {themeMode, colors, setThemeMode} = useTheme();
     const {language, setLanguage} = useLanguage();
-    const router = useRouter();
     const [isThemeModalVisible, setIsThemeModalVisible] = useState(false);
     const [isLanguageModalVisible, setIsLanguageModalVisible] = useState(false);
 

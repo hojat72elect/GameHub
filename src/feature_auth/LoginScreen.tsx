@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View} from "react-native";
-import {useRouter} from "expo-router";
+import {router} from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {useTranslation} from "react-i18next";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
@@ -8,7 +8,6 @@ import {useTheme} from "@/src/shared/contexts/ThemeContext";
 export function LoginScreen() {
     const {colors} = useTheme();
     const {t} = useTranslation();
-    const router = useRouter();
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     return (
