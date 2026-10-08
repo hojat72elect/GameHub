@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {ScrollView, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {router} from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {useTranslation} from "react-i18next";
@@ -8,14 +8,11 @@ import {useTheme} from "@/src/shared/contexts/ThemeContext";
 export function LoginScreen() {
     const {colors} = useTheme();
     const {t} = useTranslation();
-    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     return (
-        <KeyboardAvoidingView
-            style={{flex: 1, backgroundColor: colors.background}}
-            behavior={Platform.OS === "ios" ? "padding" : undefined}
-        >
             <ScrollView
+                style={{flex: 1, backgroundColor: colors.background}}
                 contentContainerStyle={{flexGrow: 1, paddingHorizontal: 24, paddingTop: 24, paddingBottom: 36}}
                 keyboardShouldPersistTaps="handled"
             >
@@ -101,13 +98,13 @@ export function LoginScreen() {
                     <TextInput
                         placeholder={t("passwordPlaceholder")}
                         placeholderTextColor={colors.secondaryText}
-                        secureTextEntry={!passwordVisible}
+                        secureTextEntry={!isPasswordVisible}
                         autoComplete="password"
                         style={{flex: 1, color: colors.text}}
                     />
-                    <TouchableOpacity onPress={() => setPasswordVisible(value => !value)} accessibilityRole="button"
-                                      accessibilityLabel={passwordVisible ? t("hidePassword") : t("showPassword")}>
-                        <Ionicons name={passwordVisible ? "eye-off-outline" : "eye-outline"} size={21}
+                    <TouchableOpacity onPress={() => setIsPasswordVisible(value => !value)} accessibilityRole="button"
+                                      accessibilityLabel={isPasswordVisible ? t("hidePassword") : t("showPassword")}>
+                        <Ionicons name={isPasswordVisible ? "eye-off-outline" : "eye-outline"} size={21}
                                   color={colors.secondaryText}/>
                     </TouchableOpacity>
                 </View>
@@ -161,6 +158,5 @@ export function LoginScreen() {
                     </TouchableOpacity>
                 </View>
             </ScrollView>
-        </KeyboardAvoidingView>
     );
 }
