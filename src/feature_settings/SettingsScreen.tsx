@@ -10,7 +10,7 @@ import {InteractableSettingsSection} from "./InteractableSettingsSection";
 import {router} from "expo-router";
 
 export function SettingsScreen() {
-    const isLoginBackendImplemented= true; // todo : remove this feature flag when the Firebase login backend is added to this app.
+    const isLoginBackendImplemented= false; // todo : remove this feature flag when the Firebase login backend is added to this app.
     const {t} = useTranslation();
     const {themeMode, colors, setThemeMode} = useTheme();
     const {language, setLanguage} = useLanguage();
