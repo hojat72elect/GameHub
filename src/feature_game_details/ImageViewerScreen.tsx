@@ -1,6 +1,6 @@
 import {SafeAreaProvider, useSafeAreaInsets} from "react-native-safe-area-context";
 import {Alert, Text, ToastAndroid, TouchableOpacity, View} from "react-native";
-import {useLocalSearchParams, useRouter} from "expo-router";
+import {useLocalSearchParams, router} from "expo-router";
 import {useState} from "react";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
 import {isAvailableAsync, shareAsync} from 'expo-sharing';
@@ -17,7 +17,6 @@ export function ImageViewerScreen() {
         images: string;
         initialIndex: string;
     }>();
-    const router = useRouter();
     const {colors} = useTheme();
     const {top} = useSafeAreaInsets();
 

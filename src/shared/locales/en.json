@@ -58,5 +58,20 @@
   "somethingWentWrong": "Something went wrong",
   "retry": "Retry",
   "goBack": "Go Back",
-  "loading": "Loading"
+  "loading": "Loading",
+  "signIn": "Sign in",
+  "signInDescription": "Sign in to keep your games close",
+  "welcomeBack": "Welcome back",
+  "loginDescription": "Sign in to your GameHub account",
+  "email": "Email address",
+  "emailPlaceholder": "you@example.com",
+  "password": "Password",
+  "passwordPlaceholder": "Enter your password",
+  "forgotPassword": "Forgot password?",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password",
+  "orContinueWith": "or continue with",
+  "continueWithGoogle": "Continue with Google",
+  "noAccount": "Don't have an account?",
+  "createAccount": "Create account"
 }
