@@ -53,6 +53,7 @@ https://github.com/user-attachments/assets/d7193c2e-a76f-470f-bab2-422c09c9a2bd
 - [expo-splash-screen](https://docs.expo.dev/versions/latest/sdk/splash-screen/) - Provides access to controlling the visibility behavior of native splash screen.
 - [expo-updates](https://docs.expo.dev/versions/latest/sdk/updates/) - Enables your app to manage remote updates to your application code.
 - [Bun](https://bun.com/) - Pretty fast runtime, bundler, test runner, and package manager for JavaScript and TypeScript.
+- **RSS feed reader** - We were using [Gamespot](https://www.gamespot.com/)'s' news API in the past but unfortunately, that service was sunsetted by GameSpot. We're currently consuming the RSS feed of the same website for showing gaming news inside the app.
 
 ## Development Setup
 
@@ -71,19 +72,6 @@ secret. Once you have obtained the keys, you can set them in your `.env`:
 ```
 TWITCH_APP_CLIENT_ID=your_client_id_here
 TWITCH_APP_CLIENT_SECRET=your_client_secret_here
-```
-
-### Gamespot
-
-[Gamespot](https://www.gamespot.com/) is a video gaming website that provides news, reviews,
-previews, downloads, and other information on video games. The app uses its API to solely retrieve
-the latest news in the gaming world.
-
-Check [this link](https://www.gamespot.com/api/) on how to obtain an API key. Once you have obtained
-the key, you can set it in your `.env`:
-
-```
-GAMESPOT_API_KEY=your_api_key_here
 ```
 
 ## Contributing
