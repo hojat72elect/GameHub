@@ -36,9 +36,9 @@ export class GamesGeneralLocalDataSource {
     }
 
     /**
-     * Get games by category from local database
+     * Get games by category from local database.
      */
-    static async getGamesByCategory(category: string): Promise<Game[] | null> {
+    static async getGamesByCategory(category: string, offset: number = 0, limit: number = 20): Promise<Game[] | null> {
         const db = await getDatabase();
         const now = Date.now();
         const cacheThreshold = now - this.CACHE_DURATION;
@@ -53,8 +53,9 @@ export class GamesGeneralLocalDataSource {
                           WHEN category = 'recent' THEN first_release_date
                           WHEN category = 'soon' THEN first_release_date
                           WHEN category = 'anticipated' THEN hypes
-                          END DESC`,
-            [category, cacheThreshold]
+                          END DESC
+             LIMIT ? OFFSET ?`,
+            [category, cacheThreshold, limit, offset]
         );
 
         if (rows.length === 0) {

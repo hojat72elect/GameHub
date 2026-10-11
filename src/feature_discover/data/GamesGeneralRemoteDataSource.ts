@@ -86,10 +86,9 @@ query games "anticipated" {
     }
 
     /**
-     * todo : I still need to add pagination to this datasource.
+     * Get games by category with pagination support.
      */
-    static async getGamesByCategory(category: GamesCategory): Promise<Game[]>{
-
+    static async getGamesByCategory(category: GamesCategory, offset: number = 0, limit: number = 20): Promise<Game[]> {
 
         const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
         const token = await AccessTokenDatasource.get();
@@ -102,7 +101,8 @@ query games "anticipated" {
                 fields name, cover.image_id, follows;
                 where cover != null & game_type = 0;
                 sort follows desc;
-                limit 50;
+                limit ${limit};
+                offset ${offset};
             `;
                 break;
             case GamesCategory.RecentlyReleased:
@@ -110,7 +110,8 @@ query games "anticipated" {
                 fields name, cover.image_id, first_release_date;
                 where first_release_date <= ${currentTimestamp} & cover != null & game_type = 0;
                 sort first_release_date desc;
-                limit 50;
+                limit ${limit};
+                offset ${offset};
             `;
                 break;
             case GamesCategory.ComingSoon:
@@ -118,7 +119,8 @@ query games "anticipated" {
                 fields name, cover.image_id, first_release_date;
                 where first_release_date > ${currentTimestamp} & cover != null & game_type = 0;
                 sort first_release_date asc;
-                limit 50;
+                limit ${limit};
+                offset ${offset};
             `;
                 break;
             case GamesCategory.MostAnticipated:
@@ -126,7 +128,8 @@ query games "anticipated" {
                 fields name, cover.image_id, hypes, first_release_date;
                 where hypes != null & first_release_date > ${currentTimestamp} & cover != null & game_type = 0;
                 sort hypes desc;
-                limit 50;
+                limit ${limit};
+                offset ${offset};
             `;
                 break;
             default:
