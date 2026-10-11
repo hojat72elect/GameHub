@@ -14,11 +14,15 @@ export function CategoryScreen() {
     const [games, setGames] = useState<Game[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+    const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
+    const [hasMore, setHasMore] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const {colors} = useTheme();
     const {t} = useTranslation();
 
     const chosenCategory = category ? parseInt(category, 10) as GamesCategory : null;
+    const [currentOffset, setCurrentOffset] = useState<number>(0);
+    const PAGE_SIZE = 20;
 
     const getCategoryTitle = () => {
         switch (chosenCategory) {
@@ -43,14 +47,40 @@ export function CategoryScreen() {
         }
         setError(null);
         try {
-            const data = await GamesGeneralRepository.getCategoryScreenGames(chosenCategory!);
+            const data = await GamesGeneralRepository.getCategoryScreenGames(chosenCategory!, 0, PAGE_SIZE);
             setGames(data);
+            setCurrentOffset(PAGE_SIZE);
+            setHasMore(data.length === PAGE_SIZE);
         } catch (err: any) {
             console.error("Error loading category games:", err);
             setError(err.message || "Failed to load games");
         } finally {
             setIsLoading(false);
             setIsRefreshing(false);
+        }
+    };
+
+    const loadMore = async () => {
+        if (isLoadingMore || !hasMore) return;
+
+        setIsLoadingMore(true);
+        try {
+            const data = await GamesGeneralRepository.getCategoryScreenGames(chosenCategory!, currentOffset, PAGE_SIZE);
+            setGames(prev => [...prev, ...data]);
+            setCurrentOffset(prev => prev + data.length);
+            setHasMore(data.length === PAGE_SIZE);
+        } catch (err: any) {
+            console.error("Error loading more games:", err);
+        } finally {
+            setIsLoadingMore(false);
+        }
+    };
+
+    const handleScroll = ({nativeEvent}: any) => {
+        const {layoutMeasurement, contentOffset, contentSize} = nativeEvent;
+        const paddingToBottom = 200;
+        if (layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom) {
+            loadMore();
         }
     };
 
@@ -121,6 +151,8 @@ export function CategoryScreen() {
                     <RefreshControl refreshing={isRefreshing} onRefresh={() => loadData(true)} colors={["#FF4B7D"]}
                                     tintColor="#FF4B7D"/>
                 }
+                onScroll={handleScroll}
+                scrollEventThrottle={400}
             >
                 <View style={{
                     flexDirection: "row",
@@ -160,6 +192,12 @@ export function CategoryScreen() {
                 {games.length === 0 && (
                     <View style={{flex: 1, justifyContent: "center", alignItems: "center", marginTop: 50}}>
                         <Text style={{fontSize: 16, color: colors.secondaryText}}>{t('noGamesFound')}</Text>
+                    </View>
+                )}
+
+                {isLoadingMore && games.length > 0 && (
+                    <View style={{flex: 1, justifyContent: "center", alignItems: "center", marginTop: 20}}>
+                        <ActivityIndicator size="small" color="#FF4B7D"/>
                     </View>
                 )}
             </ScrollView>
