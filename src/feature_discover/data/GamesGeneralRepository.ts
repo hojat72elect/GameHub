@@ -46,7 +46,7 @@ export class GamesGeneralRepository {
         return remoteData;
     }
 
-    static async getCategoryScreenGames(category: GamesCategory): Promise<Game[]> {
+    static async getCategoryScreenGames(category: GamesCategory, offset: number = 0, limit: number = 20): Promise<Game[]> {
         const categoryMap: Record<GamesCategory, string> = {
             [GamesCategory.Popular]: 'popular',
             [GamesCategory.RecentlyReleased]: 'recent',
@@ -57,11 +57,11 @@ export class GamesGeneralRepository {
         const cacheKey = categoryMap[category];
 
         // Try to get from local cache first
-        const cachedGames = await GamesGeneralLocalDataSource.getGamesByCategory(cacheKey);
+        const cachedGames = await GamesGeneralLocalDataSource.getGamesByCategory(cacheKey, offset, limit);
         if (cachedGames) return cachedGames;
 
         // Otherwise, fetch from remote API
-        const remoteGames = await GamesGeneralRemoteDataSource.getGamesByCategory(category);
+        const remoteGames = await GamesGeneralRemoteDataSource.getGamesByCategory(category, offset, limit);
 
         // Save to local cache
         await GamesGeneralLocalDataSource.saveGamesByCategory(remoteGames, cacheKey);
