@@ -5,3 +5,4 @@ node_modules
 .env
 expo-env.d.ts
 android/.kotlin/
+android/app/google-services.json
