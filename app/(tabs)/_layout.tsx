@@ -1,4 +1,4 @@
-import {Tabs} from 'expo-router';
+import {Tabs} from 'expo-router/js-tabs';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 
