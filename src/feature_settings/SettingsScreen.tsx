@@ -8,11 +8,13 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import {Language} from "@/src/shared/domain/Language";
 import {InteractableSettingsSection} from "./InteractableSettingsSection";
 import {router} from "expo-router";
+import {useAuth} from "@/src/shared/contexts/AuthContext";
 
 export function SettingsScreen() {
     const {t} = useTranslation();
     const {themeMode, colors, setThemeMode} = useTheme();
     const {language, setLanguage} = useLanguage();
+    const {user, signOut} = useAuth();
     const [isThemeModalVisible, setIsThemeModalVisible] = useState(false);
     const [isLanguageModalVisible, setIsLanguageModalVisible] = useState(false);
 
@@ -48,12 +50,46 @@ export function SettingsScreen() {
         setIsLanguageModalVisible(false);
     };
 
+    const handleSignOut = async () => {
+        try {
+            await signOut();
+        } catch (error) {
+            console.error("Failed to sign out:", error);
+        }
+    };
+
     return (
         <ScrollView style={{backgroundColor: colors.background}}
                     contentContainerStyle={{marginTop: 36}}>
             <Text style={{
                 fontSize: 24, fontWeight: "400", color: colors.text, marginStart: 18
             }}>{t('settingsTitle')}</Text>
+
+            <View style={{
+                marginTop: 14,
+                backgroundColor: colors.card,
+                paddingTop: 14,
+                paddingStart: 14,
+                paddingBottom: 14,
+                borderWidth: 1,
+                borderColor: colors.border,
+                elevation: 2
+            }}>
+                <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>{t('account')}</Text>
+                {user ? (
+                    <InteractableSettingsSection
+                        title={t('signOut')}
+                        subtitle={user.displayName ?? user.email ?? t('signedInUser')}
+                        onPress={handleSignOut}
+                    />
+                ) : (
+                    <InteractableSettingsSection
+                        title={t('signIn')}
+                        subtitle={t('signInDescription')}
+                        onPress={() => router.push('/login')}
+                    />
+                )}
+            </View>
 
             <View style={{
                 marginTop: 14,
@@ -102,11 +138,6 @@ export function SettingsScreen() {
                     }}>{t('version')}</Text>
                     <Text style={{fontSize: 14, color: colors.secondaryText}}>v0.1.1-debug</Text>
                 </View>
-                <InteractableSettingsSection
-                    title={t('signIn')}
-                    subtitle={t('signInDescription')}
-                    onPress={() => router.push('/login')}
-                />
             </View>
 
             <BuyCoffeeButton/>
