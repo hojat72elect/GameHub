@@ -1,8 +1,8 @@
 import type {User} from "@react-native-firebase/auth";
-import {User} from "@/src/shared/domain/User";
+import {User as AppUser} from "@/src/shared/domain/User";
 import {AuthRemoteDataSource} from "@/src/shared/data/auth/AuthRemoteDataSource";
-import {AuthFailure} from "@/src/shared/data/auth/AuthFailure";
 import type {AuthFailureReason} from "@/src/shared/data/auth/AuthFailure";
+import {AuthFailure} from "@/src/shared/data/auth/AuthFailure";
 
 export {AuthFailure};
 export type {AuthFailureReason};
@@ -49,18 +49,18 @@ const getFailureReason = (code: string): AuthFailureReason | undefined => {
  */
 export class AuthRepository {
 
-    static observeAuthState(onUserChanged: (user: User | null) => void): () => void {
+    static observeAuthState(onUserChanged: (user: AppUser | null) => void): () => void {
         return AuthRemoteDataSource.observeAuthState(
             firebaseUser => onUserChanged(firebaseUser ? AuthRepository.toAppUser(firebaseUser) : null)
         );
     }
 
-    static async signInWithEmail(email: string, password: string): Promise<User> {
+    static async signInWithEmail(email: string, password: string): Promise<AppUser> {
         const user = await AuthRepository.execute(() => AuthRemoteDataSource.signInWithEmail(email, password));
         return AuthRepository.toAppUser(user);
     }
 
-    static async signUpWithEmail(email: string, password: string): Promise<User> {
+    static async signUpWithEmail(email: string, password: string): Promise<AppUser> {
         const user = await AuthRepository.execute(() => AuthRemoteDataSource.createAccountWithEmail(email, password));
         return AuthRepository.toAppUser(user);
     }
@@ -68,7 +68,7 @@ export class AuthRepository {
     /**
      * Returns null when the user closes the Google account picker without choosing an account.
      */
-    static async signInWithGoogle(): Promise<User | null> {
+    static async signInWithGoogle(): Promise<AppUser | null> {
         const user = await AuthRepository.execute(() => AuthRemoteDataSource.signInWithGoogle());
         return user ? AuthRepository.toAppUser(user) : null;
     }
@@ -95,7 +95,7 @@ export class AuthRepository {
         // The Google account picker being closed is not a failure; the UI must stay quiet about it.
         if (AuthRemoteDataSource.isGoogleSignInCancelled(error)) return new AuthFailure("cancelled");
 
-        const code = (error as {code?: unknown} | null)?.code;
+        const code = (error as { code?: unknown } | null)?.code;
         const message = error instanceof Error ? error.message : undefined;
 
         if (typeof code !== "string")
@@ -104,7 +104,7 @@ export class AuthRepository {
         return new AuthFailure(getFailureReason(code) ?? "unknown", message);
     }
 
-    private static toAppUser(user: User): User {
+    private static toAppUser(user: User): AppUser {
         return {
             id: user.uid,
             email: user.email,
