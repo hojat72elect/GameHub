@@ -7,8 +7,10 @@ import {Language} from "@/src/shared/domain/Language";
 
 interface LanguageContextType {
     language: Language;
-    setLanguage: (language: Language) => void;
+    setLanguage: (language: Language) => Promise<void>;
     isRTL: boolean;
+    /** False while the language of the previous launch is still being read from the device. */
+    isHydrated: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -42,6 +44,7 @@ const getDeviceLanguage = (): 'en' | 'fa' => {
 export function LanguageProvider({children}: { children: React.ReactNode }) {
     const [language, setLanguageState] = useState<Language>(getDeviceLanguage());
     const [isRTL, setIsRTL] = useState<boolean>(language === 'fa');
+    const [isHydrated, setIsHydrated] = useState<boolean>(false);// Used to get rid of race condition between local storage and account.
 
     const getEffectiveLanguage = (lang: Language): 'en' | 'fa' => {
         if (lang === 'system') {
@@ -110,16 +113,18 @@ export function LanguageProvider({children}: { children: React.ReactNode }) {
     const loadLanguagePreference = async () => {
         try {
             const savedLanguage = await AsyncStorage.getItem(LANGUAGE_STORAGE_KEY);
-            if (savedLanguage === 'en' || savedLanguage === 'fa') {
+            if (savedLanguage === 'en' || savedLanguage === 'fa' || savedLanguage === 'system') {
                 await setLanguage(savedLanguage);
             }
         } catch (error) {
             console.error('Failed to load language preference:', error);
+        } finally {
+            setIsHydrated(true);
         }
     };
 
     return (
-        <LanguageContext.Provider value={{language, setLanguage, isRTL}}>
+        <LanguageContext.Provider value={{language, setLanguage, isRTL, isHydrated}}>
             {children}
         </LanguageContext.Provider>
     );

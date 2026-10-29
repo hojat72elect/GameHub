@@ -1,9 +1,10 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import React, {createContext, useCallback, useContext, useEffect, useState} from 'react';
 import {useColorScheme as useSystemColorScheme} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Colors} from '../Colors';
+import type {ThemeMode} from '@/src/shared/domain/ThemeMode';
 
-export type ThemeMode = 'light' | 'dark' | 'system';
+export type {ThemeMode};
 
 interface ThemeContextProps {
     themeMode: ThemeMode;
@@ -11,6 +12,8 @@ interface ThemeContextProps {
     colors: typeof Colors.light;
     isDark: boolean;
     setThemeMode: (mode: ThemeMode) => Promise<void>;
+    /** False while the theme of the previous launch is still being read from the device. */
+    isHydrated: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
@@ -19,6 +22,7 @@ const THEME_STORAGE_KEY = 'app_theme_mode';
 
 export function ThemeProvider({children}: { children: React.ReactNode }) {
     const [themeMode, setThemeModeState] = useState<ThemeMode>('system');
+    const [isHydrated, setIsHydrated] = useState<boolean>(false);
     const systemColorScheme = useSystemColorScheme();
 
     // Load the currently stored theme of the app
@@ -30,20 +34,22 @@ export function ThemeProvider({children}: { children: React.ReactNode }) {
                     setThemeModeState(storedTheme);
             } catch (error) {
                 console.error('Failed to load theme preference:', error);
+            } finally {
+                setIsHydrated(true);
             }
         };
         loadTheme();
     }, []);
 
     // Save theme selection and update state
-    const setThemeMode = async (mode: ThemeMode) => {
+    const setThemeMode = useCallback(async (mode: ThemeMode) => {
         try {
             await AsyncStorage.setItem(THEME_STORAGE_KEY, mode);
             setThemeModeState(mode);
         } catch (error) {
             console.error('Failed to save theme preference:', error);
         }
-    };
+    }, []);
 
     // Resolve current theme active selection
     const resolvedTheme: 'light' | 'dark' =
@@ -55,7 +61,7 @@ export function ThemeProvider({children}: { children: React.ReactNode }) {
     const isDark = resolvedTheme === 'dark';
 
     return (
-        <ThemeContext.Provider value={{themeMode, resolvedTheme, colors, isDark, setThemeMode}}>
+        <ThemeContext.Provider value={{themeMode, resolvedTheme, colors, isDark, setThemeMode, isHydrated}}>
             {children}
         </ThemeContext.Provider>
     );

@@ -3,18 +3,27 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LIKES_STORAGE_KEY = "gamehub_liked_games";
 
-const LikesContext = createContext<{
+interface LikesContextType {
     likedGameIds: Set<string>;
     getLikedGames: (gameId: string) => boolean;
     toggleLikedGames: (gameId: string) => boolean;
-}>({
+    /** Replaces the liked games of the device with the liked games of the account of the user. */
+    replaceLikedGameIds: (gameIds: string[]) => void;
+    /** False while the liked games of the previous launch are still being read from the device. */
+    isHydrated: boolean;
+}
+
+const LikesContext = createContext<LikesContextType>({
     likedGameIds: new Set(),
     getLikedGames: () => false,
     toggleLikedGames: () => false,
+    replaceLikedGameIds: () => undefined,
+    isHydrated: false,
 });
 
 export function LikesProvider({children}: { children: React.ReactNode }) {
     const [likedGameIds, setLikedGameIds] = useState<Set<string>>(new Set());
+    const [isHydrated, setIsHydrated] = useState<boolean>(false);
 
     useEffect(() => {
         const loadLikes = async () => {
@@ -25,6 +34,8 @@ export function LikesProvider({children}: { children: React.ReactNode }) {
                 }
             } catch (err) {
                 console.error("Error loading liked games:", err);
+            } finally {
+                setIsHydrated(true);
             }
         };
         loadLikes();
@@ -59,8 +70,15 @@ export function LikesProvider({children}: { children: React.ReactNode }) {
         return newLiked!;
     }, [persistLikes]);
 
+    const replaceLikedGameIds = useCallback((gameIds: string[]) => {
+        const next = new Set(gameIds);
+        setLikedGameIds(next);
+        persistLikes(next);
+    }, [persistLikes]);
+
     return (
-        <LikesContext.Provider value={{likedGameIds, getLikedGames: isLiked, toggleLikedGames: toggleLike}}>
+        <LikesContext.Provider
+            value={{likedGameIds, getLikedGames: isLiked, toggleLikedGames: toggleLike, replaceLikedGameIds, isHydrated}}>
             {children}
         </LikesContext.Provider>
     );
