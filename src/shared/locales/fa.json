@@ -94,5 +94,6 @@
   "authFailure_playServicesUnavailable": "سرویس‌های گوگل پلی روی این دستگاه در دسترس نیست",
   "authFailure_configuration": "تنظیمات ورود درست نیست. تنظیمات فایربیس را بررسی کنید",
   "authFailure_cancelled": "ورود لغو شد",
-  "authFailure_unknown": "ورود ناموفق بود. دوباره تلاش کنید"
+  "authFailure_unknown": "ورود ناموفق بود. دوباره تلاش کنید",
+  "seeAll": "دیدن همه"
 }

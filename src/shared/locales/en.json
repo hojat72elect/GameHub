@@ -94,5 +94,6 @@
   "authFailure_playServicesUnavailable": "Google Play services are not available on this device",
   "authFailure_configuration": "Sign in is not configured correctly. Please check the Firebase setup",
   "authFailure_cancelled": "Sign in was cancelled",
-  "authFailure_unknown": "Sign in failed. Please try again"
+  "authFailure_unknown": "Sign in failed. Please try again",
+  "seeAll": "SEE ALL"
 }
