@@ -7,7 +7,7 @@ import {router} from "expo-router";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
 
 /**
- * Each one of the seemingly identical sections you see in the discover screen.
+ * Each one of the seemingly identical sections you see in the `DiscoverScreen`.
  * Right now, we have these 4 sections :
  *
  * 1 - Popular
@@ -48,15 +48,13 @@ export function DiscoverScreenSection({title, data}: { title: GamesCategory, dat
             <TouchableOpacity
                 onPress={() => router.push({pathname: '/category-games', params: {category: title}})}
             >
-                <Text style={{color: "#FF4B7D", fontWeight: "600", fontSize: 14}}>SEE ALL</Text>
+                <Text style={{color: "#FF4B7D", fontWeight: "600", fontSize: 14}}>{t("seeAll")}</Text>
             </TouchableOpacity>
         </View>
 
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             {data.map((item) => {
-                const coverUrl = item.cover?.image_id
-                    ? {uri: `https://images.igdb.com/igdb/image/upload/t_cover_big/${item.cover.image_id}.jpg`}
-                    : idleImage;
+                const coverUrl = item.cover?.image_id ? {uri: `https://images.igdb.com/igdb/image/upload/t_cover_big/${item.cover.image_id}.jpg`} : idleImage;
                 return (
                     <TouchableOpacity
                         key={item.id}

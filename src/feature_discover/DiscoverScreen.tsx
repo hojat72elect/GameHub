@@ -10,18 +10,21 @@ import {DiscoverScreenSection} from "@/src/feature_discover/DiscoverScreenSectio
 import {GamesGeneralRepository} from "@/src/feature_discover/data/GamesGeneralRepository";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
 
+/**
+ * The UI of the Discover screen. This is always the first screen that user sees after opening the app.
+ */
 export function DiscoverScreen() {
-    const [popular, setPopular] = useState<Game[]>([]);
-    const [recent, setRecent] = useState<Game[]>([]);
-    const [soon, setSoon] = useState<Game[]>([]);
-    const [anticipated, setAnticipated] = useState<Game[]>([]);
+    const [popularGames, setPopularGames] = useState<Game[]>([]);
+    const [recentGames, setRecentGames] = useState<Game[]>([]);
+    const [comingSoonGames, setComingSoonGames] = useState<Game[]>([]);
+    const [anticipatedGames, setAnticipatedGames] = useState<Game[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [refreshing, setRefreshing] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const {colors} = useTheme();
     const {t} = useTranslation();
 
-    const loadData = async (showRefreshIndicator = false) => {
+    async function loadData(showRefreshIndicator = false) {
         if (showRefreshIndicator) {
             setRefreshing(true);
         } else {
@@ -30,18 +33,18 @@ export function DiscoverScreen() {
         setError(null);
         try {
             const data = await GamesGeneralRepository.getDiscoverScreenGames();
-            setPopular(data.popularGames);
-            setRecent(data.recentlyReleasedGames);
-            setSoon(data.comingSoonGames);
-            setAnticipated(data.mostAnticipatedGames);
-        } catch (err: any) {
-            console.error("Error loading IGDB discover data:", err);
-            setError(err.message || "Failed to load discover data");
+            setPopularGames(data.popularGames);
+            setRecentGames(data.recentlyReleasedGames);
+            setComingSoonGames(data.comingSoonGames);
+            setAnticipatedGames(data.mostAnticipatedGames);
+        } catch (error: any) {
+            console.error("Error loading IGDB discover data:", error);
+            setError(error.message || "Failed to load discover data");
         } finally {
             setIsLoading(false);
             setRefreshing(false);
         }
-    };
+    }
 
     useEffect(() => {
         loadData();
@@ -115,10 +118,10 @@ export function DiscoverScreen() {
                                     tintColor="#FF4B7D"/>
                 }
             >
-                <DiscoverScreenSection title={GamesCategory.Popular} data={popular}/>
-                <DiscoverScreenSection title={GamesCategory.RecentlyReleased} data={recent}/>
-                <DiscoverScreenSection title={GamesCategory.ComingSoon} data={soon}/>
-                <DiscoverScreenSection title={GamesCategory.MostAnticipated} data={anticipated}/>
+                <DiscoverScreenSection title={GamesCategory.Popular} data={popularGames}/>
+                <DiscoverScreenSection title={GamesCategory.RecentlyReleased} data={recentGames}/>
+                <DiscoverScreenSection title={GamesCategory.ComingSoon} data={comingSoonGames}/>
+                <DiscoverScreenSection title={GamesCategory.MostAnticipated} data={anticipatedGames}/>
             </ScrollView>
         </SafeAreaProvider>
     );

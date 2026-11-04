@@ -9,6 +9,9 @@ import {GamesGeneralRemoteDataSource} from "@/src/feature_discover/data/GamesGen
  */
 export class GamesGeneralRepository {
 
+    /**
+     * This function receives the first 20 games in any of the 4 categories to be shown in `DiscoverScreen`.
+     */
     static async getDiscoverScreenGames(): Promise<{
         popularGames: Game[];
         recentlyReleasedGames: Game[];
