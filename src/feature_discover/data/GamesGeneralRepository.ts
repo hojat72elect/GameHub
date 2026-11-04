@@ -5,7 +5,7 @@ import {GamesGeneralRemoteDataSource} from "@/src/feature_discover/data/GamesGen
 
 /**
  * This Repository is the access point for getting general (bare minimum) info about multiple games.
- * By using this repo, we only want to get the games' IDs and screenshots (nothing more!).
+ * By using this repo, we only want to get the games' IDs and posters/screenshots (nothing more!).
  */
 export class GamesGeneralRepository {
 
@@ -46,6 +46,9 @@ export class GamesGeneralRepository {
         return remoteData;
     }
 
+    /**
+     * This function is only used inside `CategoryScreen` for getting general information about any of the 4 categories of video games.
+     */
     static async getCategoryScreenGames(category: GamesCategory, offset: number = 0, limit: number = 20): Promise<Game[]> {
         const categoryMap: Record<GamesCategory, string> = {
             [GamesCategory.Popular]: 'popular',
