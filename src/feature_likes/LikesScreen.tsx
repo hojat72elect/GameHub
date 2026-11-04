@@ -21,7 +21,7 @@ export function LikesScreen() {
     const [isSelectionMode, setIsSelectionMode] = useState<boolean>(false);
 
     useEffect(() => {
-        const loadLikedGames = async () => {
+        async function loadLikedGames() {
             setIsLoading(true);
             setError(null);
 
@@ -35,31 +35,31 @@ export function LikesScreen() {
                 const gameIds = Array.from(likedGameIds).map(id => parseInt(id, 10));
                 const games = await GameDetailsRepository.getGamesDetailsByIds(gameIds);
                 setLikedGames(games);
-            } catch (err: any) {
-                console.error("Error loading liked games:", err);
-                setError(err.message || "Failed to load liked games");
+            } catch (error: any) {
+                console.error("Error loading liked games:", error);
+                setError(error.message || "Failed to load liked games");
             } finally {
                 setIsLoading(false);
             }
-        };
+        }
 
         loadLikedGames();
     }, [likedGameIds]);
 
-    const getCoverUrl = (imageId: string, size: "cover_big" | "1080p" = "cover_big") => {
+    function getCoverUrl(imageId: string, size: "cover_big" | "1080p" = "cover_big") {
         return `https://images.igdb.com/igdb/image/upload/t_${size}/${imageId}.jpg`;
-    };
+    }
 
-    const formatDate = (timestamp?: number) => {
+    function formatDate(timestamp?: number) {
         if (!timestamp) return "TBD";
         return new Date(timestamp * 1000).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric"
         });
-    };
+    }
 
-    const toggleSelection = (gameId: number) => {
+    function toggleSelection(gameId: number) {
         setSelectedGameIds(currentlySelectedGames => {
             const result = new Set(currentlySelectedGames);
             if (result.has(gameId)) {
@@ -73,23 +73,21 @@ export function LikesScreen() {
             }
             return result;
         });
-    };
+    }
 
-    const unlikeSelectedGames = () => {
+    function unlikeSelectedGames() {
         selectedGameIds.forEach(gameId => toggleLikedGames(gameId.toString()));
         setSelectedGameIds(new Set());
         setIsSelectionMode(false);
-    };
+    }
 
-    const exitSelectionMode = () => {
+    function exitSelectionMode() {
         setSelectedGameIds(new Set());
         setIsSelectionMode(false);
-    };
+    }
 
-    const renderGameCard = ({item}: { item: GameDetails }) => {
-        const coverUrl = item.cover?.image_id
-            ? {uri: getCoverUrl(item.cover.image_id)}
-            : idleImage;
+    function renderGameCard({item}: { item: GameDetails }) {
+        const coverUrl = item.cover?.image_id ? {uri: getCoverUrl(item.cover.image_id)} : idleImage;
         const isSelected = selectedGameIds.has(item.id);
 
         return (
@@ -157,24 +155,26 @@ export function LikesScreen() {
                 </View>
             </TouchableOpacity>
         );
-    };
+    }
 
-    const renderEmptyState = () => (
-        <View style={{
-            flex: 1,
-            alignSelf: "center",
-            justifyContent: "center",
-            alignItems: "center",
-            paddingHorizontal: 20
-        }}>
-            <Text style={{fontSize: 20, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
-                {t('noLikedGames')}
-            </Text>
-            <Text style={{fontSize: 14, color: colors.secondaryText, textAlign: "center"}}>
-                {t('startLiking')}
-            </Text>
-        </View>
-    );
+    function renderEmptyState() {
+        return (
+            <View style={{
+                flex: 1,
+                alignSelf: "center",
+                justifyContent: "center",
+                alignItems: "center",
+                paddingHorizontal: 20
+            }}>
+                <Text style={{fontSize: 20, fontWeight: "bold", color: colors.text, marginBottom: 10}}>
+                    {t('noLikedGames')}
+                </Text>
+                <Text style={{fontSize: 14, color: colors.secondaryText, textAlign: "center"}}>
+                    {t('startLiking')}
+                </Text>
+            </View>
+        )
+    }
 
     if (isLoading) {
         return (

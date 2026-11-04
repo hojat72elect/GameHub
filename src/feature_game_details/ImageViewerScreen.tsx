@@ -12,7 +12,6 @@ import DownloadIcon from "@/assets/svg/download.svg";
 import ImageViewer from "react-native-image-zoom-viewer";
 
 export function ImageViewerScreen() {
-
     const {images: imagesJson, initialIndex} = useLocalSearchParams<{
         images: string;
         initialIndex: string;
@@ -27,15 +26,15 @@ export function ImageViewerScreen() {
     const initialIndexNum = parseInt(initialIndex, 10);
     const [currentIndex, setCurrentIndex] = useState(initialIndexNum);
 
-    const getCoverUrl = (imageId: string, size: "cover_big" | "1080p" = "1080p") => {
+    function getCoverUrl(imageId: string, size: "cover_big" | "1080p" = "1080p") {
         return `https://images.igdb.com/igdb/image/upload/t_${size}/${imageId}.jpg`;
-    };
+    }
 
-    const getCurrentImageUrl = () => {
+    function getCurrentImageUrl() {
         return getCoverUrl(images[currentIndex].image_id, "1080p");
-    };
+    }
 
-    const handleShare = async () => {
+    async function handleShare() {
         try {
             const imageUrl = getCurrentImageUrl();
             const fileUri = `${Paths.cache.uri}screenshot_${images[currentIndex].image_id}.jpg`;
@@ -53,9 +52,9 @@ export function ImageViewerScreen() {
             Alert.alert('Error', 'Failed to share image');
             console.error('Share error:', error);
         }
-    };
+    }
 
-    const handleDownload = async () => {
+    async function handleDownload() {
         try {
             const imageUrl = getCurrentImageUrl();
             const fileUri = `${Paths.cache.uri}screenshot_${images[currentIndex].image_id}.jpg`;
@@ -75,7 +74,7 @@ export function ImageViewerScreen() {
             Alert.alert('Error', 'Failed to download image');
             console.error('Download error:', error);
         }
-    };
+    }
 
     return (
         <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>

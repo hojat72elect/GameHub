@@ -1,4 +1,4 @@
-export interface GameDetails {
+export type GameDetails= {
     id: number;
     name: string;
     cover?: {
