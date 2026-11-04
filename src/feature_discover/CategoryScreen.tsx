@@ -1,4 +1,4 @@
-import {ActivityIndicator, Image, RefreshControl, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {ActivityIndicator, Image, RefreshControl, ScrollView, Text, TouchableOpacity, View, ScrollEvent} from "react-native";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {router, useLocalSearchParams} from "expo-router";
 import {GamesCategory} from "@/src/shared/domain/GamesCategory";
@@ -9,6 +9,9 @@ import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
 import {GamesGeneralRepository} from "@/src/feature_discover/data/GamesGeneralRepository";
 
+/**
+ * The UI of the Category screen.
+ */
 export function CategoryScreen() {
     const {category} = useLocalSearchParams<{ category?: string }>();
     const [games, setGames] = useState<Game[]>([]);
@@ -21,10 +24,10 @@ export function CategoryScreen() {
     const {t} = useTranslation();
 
     const chosenCategory = category ? parseInt(category, 10) as GamesCategory : null;
-    const [currentOffset, setCurrentOffset] = useState<number>(0);
+    const [currentOffset, setCurrentOffset] = useState<number>(0); // This offset is used for the sake of paginating the data of this screen.
     const PAGE_SIZE = 20;
 
-    const getCategoryTitle = () => {
+    function getScreenTitle(): string {
         switch (chosenCategory) {
             case GamesCategory.Popular:
                 return t('popular');
@@ -37,9 +40,9 @@ export function CategoryScreen() {
             default:
                 return "";
         }
-    };
+    }
 
-    const loadData = async (showRefreshIndicator = false) => {
+    async function loadData(showRefreshIndicator = false) {
         if (showRefreshIndicator) {
             setIsRefreshing(true);
         } else {
@@ -51,38 +54,38 @@ export function CategoryScreen() {
             setGames(data);
             setCurrentOffset(PAGE_SIZE);
             setHasMore(data.length === PAGE_SIZE);
-        } catch (err: any) {
-            console.error("Error loading category games:", err);
-            setError(err.message || "Failed to load games");
+        } catch (error: any) {
+            console.error("Error loading category games:", error);
+            setError(error.message || "Failed to load games");
         } finally {
             setIsLoading(false);
             setIsRefreshing(false);
         }
-    };
+    }
 
-    const loadMore = async () => {
+    async function loadMore() {
         if (isLoadingMore || !hasMore) return;
-
         setIsLoadingMore(true);
+
         try {
-            const data = await GamesGeneralRepository.getCategoryScreenGames(chosenCategory!, currentOffset, PAGE_SIZE);
-            setGames(prev => [...prev, ...data]);
-            setCurrentOffset(prev => prev + data.length);
-            setHasMore(data.length === PAGE_SIZE);
-        } catch (err: any) {
-            console.error("Error loading more games:", err);
+            const newlyLoadedGames = await GamesGeneralRepository.getCategoryScreenGames(chosenCategory!, currentOffset, PAGE_SIZE);
+            setGames(previouslyLoadedGames => [...previouslyLoadedGames, ...newlyLoadedGames]);
+            setCurrentOffset(previousOffset => previousOffset + newlyLoadedGames.length);
+            setHasMore(newlyLoadedGames.length === PAGE_SIZE);
+        } catch (error: any) {
+            console.error("Error loading more games:", error);
         } finally {
             setIsLoadingMore(false);
         }
-    };
+    }
 
-    const handleScroll = ({nativeEvent}: any) => {
+    function handleScroll({nativeEvent}: ScrollEvent) {
         const {layoutMeasurement, contentOffset, contentSize} = nativeEvent;
         const paddingToBottom = 200;
         if (layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom) {
             loadMore();
         }
-    };
+    }
 
     useEffect(() => {
         loadData();
@@ -141,7 +144,7 @@ export function CategoryScreen() {
                 flexDirection: "row",
                 alignItems: "center"
             }}>
-                <Text style={{fontSize: 24, fontWeight: "bold", color: colors.text}}>{getCategoryTitle()}</Text>
+                <Text style={{fontSize: 24, fontWeight: "bold", color: colors.text}}>{getScreenTitle()}</Text>
             </View>
 
             <ScrollView
