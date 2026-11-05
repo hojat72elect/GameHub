@@ -18,7 +18,7 @@ export function SearchScreen() {
     const {colors} = useTheme();
     const {t} = useTranslation();
 
-    const performSearch = async () => {
+    async function handleSearch() {
         const trimmedQuery = query.trim();
         if (trimmedQuery.length === 0) return;
 
@@ -34,7 +34,7 @@ export function SearchScreen() {
         } finally {
             setIsLoading(false);
         }
-    };
+    }
 
     return (
         <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>
@@ -72,7 +72,7 @@ export function SearchScreen() {
                         placeholderTextColor={colors.secondaryText}
                         value={query}
                         onChangeText={setQuery}
-                        onSubmitEditing={performSearch}
+                        onSubmitEditing={handleSearch}
                         returnKeyType="search"
                         autoFocus={true}
                     />
@@ -100,7 +100,7 @@ export function SearchScreen() {
                         marginBottom: 20,
                         textAlign: "center"
                     }}>{error}</Text>
-                    <TouchableOpacity onPress={performSearch} style={{
+                    <TouchableOpacity onPress={handleSearch} style={{
                         backgroundColor: "#FF4B7D",
                         paddingHorizontal: 25,
                         paddingVertical: 12,
