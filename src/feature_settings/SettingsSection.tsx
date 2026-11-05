@@ -1,18 +1,12 @@
 import React from "react";
-import {Text, TouchableOpacity, ViewStyle} from "react-native";
+import {Text, TouchableOpacity} from "react-native";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
 
-export function InteractableSettingsSection(
-    {
-        title,
-        subtitle,
-        onPress
-    }: {
-        title: string;
-        subtitle: string;
-        onPress: () => void;
-        style?: ViewStyle
-    }) {
+export function SettingsSection({title, subtitle, onPress}: {
+    title: string;
+    subtitle: string;
+    onPress: () => void;
+}) {
     const {colors} = useTheme();
 
     return (

@@ -2,7 +2,7 @@ import React, {createContext, useCallback, useContext, useEffect, useState} from
 import {User} from "@/src/shared/domain/User";
 import {AuthRepository} from "@/src/shared/data/auth/AuthRepository";
 
-interface AuthContextType {
+type AuthContextType= {
     /** The signed in user, or null when nobody is signed in. */
     user: User | null;
     /** True while we are still asking Firebase about the session of the previous launch. */

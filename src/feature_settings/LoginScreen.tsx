@@ -9,6 +9,10 @@ import {AuthFailure} from "@/src/shared/data/auth/AuthRepository";
 
 type LoginMode = "signIn" | "signUp";
 
+/**
+ * This is all for logging into the app by using eiter Google account or an email.
+ * This screen is considered to be part of the `settings` feature.
+ */
 export function LoginScreen() {
     const {colors} = useTheme();
     const {t} = useTranslation();

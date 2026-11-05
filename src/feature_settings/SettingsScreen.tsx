@@ -1,4 +1,4 @@
-import {Linking, Modal, Pressable, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {Linking, Modal as Dialog, Pressable, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
 import {BuyCoffeeButton} from "./BuyCoffeeButton";
 import {useTranslation} from "react-i18next";
@@ -6,7 +6,7 @@ import {ThemeMode, useTheme} from "@/src/shared/contexts/ThemeContext";
 import {useLanguage} from "@/src/shared/contexts/LanguageContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {Language} from "@/src/shared/domain/Language";
-import {InteractableSettingsSection} from "./InteractableSettingsSection";
+import {SettingsSection} from "./SettingsSection";
 import {router} from "expo-router";
 import {useAuth} from "@/src/shared/contexts/AuthContext";
 
@@ -15,10 +15,10 @@ export function SettingsScreen() {
     const {themeMode, colors, setThemeMode} = useTheme();
     const {language, setLanguage} = useLanguage();
     const {user, signOut} = useAuth();
-    const [isThemeModalVisible, setIsThemeModalVisible] = useState(false);
-    const [isLanguageModalVisible, setIsLanguageModalVisible] = useState(false);
+    const [isThemeDialogVisible, setIsThemeDialogVisible] = useState(false);
+    const [isLanguageDialogVisible, setIsLanguageDialogVisible] = useState(false);
 
-    const getThemeModeLabel = (mode: ThemeMode) => {
+    function getThemeLabel(mode: ThemeMode) {
         switch (mode) {
             case "light":
                 return t('light');
@@ -27,9 +27,9 @@ export function SettingsScreen() {
             case "system":
                 return t('systemDefault');
         }
-    };
+    }
 
-    const getLanguageLabel = (lang: Language) => {
+    function getLanguageLabel(lang: Language) {
         switch (lang) {
             case "en":
                 return t('english');
@@ -38,25 +38,28 @@ export function SettingsScreen() {
             case "system":
                 return t('systemDefault');
         }
-    };
+    }
 
-    const handleSelectTheme = (mode: ThemeMode) => {
+    function handleSelectTheme(mode: ThemeMode) {
         setThemeMode(mode);
-        setIsThemeModalVisible(false);
-    };
+        setIsThemeDialogVisible(false);
+    }
 
-    const handleSelectLanguage = (lang: Language) => {
+    function handleSelectLanguage(lang: Language) {
         setLanguage(lang);
-        setIsLanguageModalVisible(false);
-    };
+        setIsLanguageDialogVisible(false);
+    }
 
-    const handleSignOut = async () => {
+    /**
+     * signs out the user from the account or email they have used for registering into the app.
+     */
+    async function handleSignOut() {
         try {
             await signOut();
         } catch (error) {
             console.error("Failed to sign out:", error);
         }
-    };
+    }
 
     return (
         <ScrollView style={{backgroundColor: colors.background}}
@@ -77,13 +80,13 @@ export function SettingsScreen() {
             }}>
                 <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>{t('account')}</Text>
                 {user ? (
-                    <InteractableSettingsSection
+                    <SettingsSection
                         title={t('signOut')}
                         subtitle={user.displayName ?? user.email ?? t('signedInUser')}
                         onPress={handleSignOut}
                     />
                 ) : (
-                    <InteractableSettingsSection
+                    <SettingsSection
                         title={t('signIn')}
                         subtitle={t('signInDescription')}
                         onPress={() => router.push('/login')}
@@ -102,15 +105,15 @@ export function SettingsScreen() {
                 elevation: 2
             }}>
                 <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>{t('appearance')}</Text>
-                <InteractableSettingsSection
+                <SettingsSection
                     title={t('theme')}
-                    subtitle={getThemeModeLabel(themeMode)}
-                    onPress={() => setIsThemeModalVisible(true)}
+                    subtitle={getThemeLabel(themeMode)}
+                    onPress={() => setIsThemeDialogVisible(true)}
                 />
-                <InteractableSettingsSection
+                <SettingsSection
                     title={t('language')}
                     subtitle={getLanguageLabel(language)}
-                    onPress={() => setIsLanguageModalVisible(true)}
+                    onPress={() => setIsLanguageDialogVisible(true)}
                 />
             </View>
 
@@ -125,7 +128,7 @@ export function SettingsScreen() {
                 elevation: 2
             }}>
                 <Text style={{color: "#FF4B7D", fontWeight: "semibold", fontSize: 16}}>{t('about')}</Text>
-                <InteractableSettingsSection
+                <SettingsSection
                     title={t('sourceCode')}
                     subtitle={t('sourceCodeDescription')}
                     onPress={() => Linking.openURL("https://github.com/hojat72elect/GameHub")}
@@ -142,11 +145,11 @@ export function SettingsScreen() {
 
             <BuyCoffeeButton/>
 
-            <Modal
+            <Dialog
                 animationType="fade"
                 transparent={true}
-                visible={isThemeModalVisible}
-                onRequestClose={() => setIsThemeModalVisible(false)}
+                visible={isThemeDialogVisible}
+                onRequestClose={() => setIsThemeDialogVisible(false)}
             >
                 <Pressable style={{
                     flex: 1,
@@ -154,7 +157,7 @@ export function SettingsScreen() {
                     justifyContent: "center",
                     alignItems: "center",
                     padding: 20
-                }} onPress={() => setIsThemeModalVisible(false)}>
+                }} onPress={() => setIsThemeDialogVisible(false)}>
                     <View style={{
                         width: "100%",
                         maxWidth: 340,
@@ -271,13 +274,13 @@ export function SettingsScreen() {
                         </TouchableOpacity>
                     </View>
                 </Pressable>
-            </Modal>
+            </Dialog>
 
-            <Modal
+            <Dialog
                 animationType="fade"
                 transparent={true}
-                visible={isLanguageModalVisible}
-                onRequestClose={() => setIsLanguageModalVisible(false)}
+                visible={isLanguageDialogVisible}
+                onRequestClose={() => setIsLanguageDialogVisible(false)}
             >
                 <Pressable style={{
                     flex: 1,
@@ -285,7 +288,7 @@ export function SettingsScreen() {
                     justifyContent: "center",
                     alignItems: "center",
                     padding: 20
-                }} onPress={() => setIsLanguageModalVisible(false)}>
+                }} onPress={() => setIsLanguageDialogVisible(false)}>
                     <View style={{
                         width: "100%",
                         maxWidth: 340,
@@ -403,7 +406,7 @@ export function SettingsScreen() {
                         </TouchableOpacity>
                     </View>
                 </Pressable>
-            </Modal>
+            </Dialog>
         </ScrollView>
     );
 }

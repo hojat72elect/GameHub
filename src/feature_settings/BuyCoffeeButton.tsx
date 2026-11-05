@@ -5,7 +5,7 @@ import Animated, {useAnimatedStyle, useSharedValue, withSequence, withTiming} fr
 export function BuyCoffeeButton() {
     const rotation = useSharedValue(0);
 
-    const shake = () => {
+    function shake() {
         rotation.value = withSequence(
             withTiming(10, {duration: 100}),
             withTiming(-10, {duration: 100}),
@@ -13,7 +13,7 @@ export function BuyCoffeeButton() {
             withTiming(-10, {duration: 100}),
             withTiming(0, {duration: 100})
         );
-    };
+    }
 
     useEffect(() => {
         shake();
