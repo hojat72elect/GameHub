@@ -3,12 +3,12 @@ import {getDatabase} from "@/src/shared/data/Database";
 
 export class NewsLocalDataSource {
     /**
-     * Cache duration in milliseconds (1 hour for news)
+     * Cache duration for news in milliseconds (1 hour).
      */
     private static readonly CACHE_DURATION = 60 * 60 * 1000;
 
     /**
-     * Save news articles to the local database
+     * Save news articles to the local database.
      */
     static async saveNews(articles: NewsArticle[]): Promise<void> {
         const db = await getDatabase();
@@ -38,7 +38,7 @@ export class NewsLocalDataSource {
     }
 
     /**
-     * Get all news articles from local database
+     * Get all news articles from local database.
      */
     static async getNews(): Promise<NewsArticle[] | null> {
         const db = await getDatabase();
@@ -53,9 +53,7 @@ export class NewsLocalDataSource {
             [cacheThreshold]
         );
 
-        if (rows.length === 0) {
-            return null;
-        }
+        if (rows.length === 0) return null;
 
         return rows.map(row => ({
             id: row.id,

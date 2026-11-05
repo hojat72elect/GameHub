@@ -1,7 +1,7 @@
 import {NewsArticle} from "@/src/shared/domain/NewsArticle";
 
 export class NewsRemoteDataSource {
-    static GAMESPOT_FEED_URL = "https://www.gamespot.com/feeds/news/";
+    private static GAMESPOT_FEED_URL = "https://www.gamespot.com/feeds/news/";
 
     private static decodeHtmlEntities(str: string): string {
         return str
@@ -28,7 +28,7 @@ export class NewsRemoteDataSource {
         return NewsRemoteDataSource.convertXmlToNewsArticles(xmlText)
     }
 
-    static convertXmlToNewsArticles(xmlText: string): NewsArticle[] {
+    private static convertXmlToNewsArticles(xmlText: string): NewsArticle[] {
         const items: NewsArticle[] = [];
         const itemRegex = /<item>([\s\S]*?)<\/item>/g;
         let match;
