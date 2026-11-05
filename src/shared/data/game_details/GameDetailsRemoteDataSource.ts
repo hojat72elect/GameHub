@@ -5,7 +5,7 @@ export class GameDetailsRemoteDataSource {
     static async getGameDetailsById(gameId: string): Promise<GameDetails> {
 
         const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
-        const token = await AccessTokenDatasource.get();
+        const token = await AccessTokenDatasource.getToken();
 
         // Build the Apicalypse query to fetch required fields
         const body = `
@@ -53,7 +53,7 @@ export class GameDetailsRemoteDataSource {
         if (gameIds.length === 0) return [];
 
         const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
-        const token = await AccessTokenDatasource.get();
+        const token = await AccessTokenDatasource.getToken();
 
         const body = `
     fields name, cover.image_id, artworks.image_id, first_release_date, 

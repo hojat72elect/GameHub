@@ -1,11 +1,15 @@
 import {Game} from "@/src/shared/domain/Game";
 import {AccessTokenDatasource} from "@/src/shared/data/AccessTokenDatasource";
 
+/**
+ * At this point, we only can search for games, but maybe in the future, the search could be
+ * customized to include game studios and game characters and so on as well.
+ */
 export class SearchDatasource {
     static async getSearchResults(searchQuery: string): Promise<Game[]> {
 
         const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
-        const token = await AccessTokenDatasource.get();
+        const token = await AccessTokenDatasource.getToken();
 
         const query = `
             search "${searchQuery}";

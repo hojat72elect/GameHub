@@ -21,7 +21,7 @@ export class GamesGeneralRemoteDataSource {
     }> {
 
         const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
-        const token = await AccessTokenDatasource.get();
+        const token = await AccessTokenDatasource.getToken();
         const currentTimestamp = Math.floor(Date.now() / 1_000);
 
         // Build the Apicalypse multi-query body
@@ -91,7 +91,7 @@ query games "anticipated" {
     static async getGamesByCategory(category: GamesCategory, offset: number = 0, limit: number = 20): Promise<Game[]> {
 
         const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
-        const token = await AccessTokenDatasource.get();
+        const token = await AccessTokenDatasource.getToken();
         const currentTimestamp = Math.floor(Date.now() / 1_000);
         let query: string;
 

@@ -2,14 +2,14 @@
  * This datasource gives us a Twitch access token.
  * we need that token for making API calls to IGDB API.
  *
- * This DataSource should only be used by other DataSources; and not directly in your UI.
+ * This should only be used by other DataSources; and not directly in your UI.
  */
 export class AccessTokenDatasource {
 
     private static accessToken: string | null = null;
     private static tokenExpiryTime = 0;
 
-    static async get(): Promise<string> {
+    static async getToken(): Promise<string> {
         const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
         const clientSecret = process.env.EXPO_PUBLIC_IGDB_SECRET;
 
