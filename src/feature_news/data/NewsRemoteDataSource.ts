@@ -19,7 +19,7 @@ export class NewsRemoteDataSource {
             .replace(/&#160;/g, " ");
     }
 
-    static async getRemoteArticlesUseCase(): Promise<NewsArticle[]> {
+    static async getNews(): Promise<NewsArticle[]> {
         const response = await fetch(NewsRemoteDataSource.GAMESPOT_FEED_URL);
         if (!response.ok) throw new Error(`Failed to fetch news: ${response.status}`);
 

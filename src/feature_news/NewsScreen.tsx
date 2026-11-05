@@ -15,77 +15,75 @@ export function NewsScreen() {
     const {colors} = useTheme();
     const {t} = useTranslation();
 
-    const fetchFeed = async () => {
+    /**
+     * Gets all the news articles required for this screen.
+     */
+    async function getNewsFeed() {
         try {
             setLoading(true);
             setError(null);
             const parsedItems = await NewsRepository.getNewsArticles();
             setNewsData(parsedItems);
-        } catch (err: any) {
-            console.error("Error fetching gamespot feed:", err);
+        } catch (error: any) {
+            console.error("Error fetching gamespot feed:", error);
             setError(t('failedToLoad'));
         } finally {
             setLoading(false);
         }
-    };
+    }
 
     useEffect(() => {
-        fetchFeed();
+        getNewsFeed();
     }, []);
 
-    const NewsCard = (item: {
-        id: number;
-        title: string;
-        deck: string;
-        publish_date: string;
-        image: any;
-        site_detail_url: string
-    }) => (
-        <TouchableOpacity
-            activeOpacity={0.9}
-            style={{
-                backgroundColor: colors.card,
-                marginBottom: 18,
-                overflow: "hidden",
-                borderWidth: 1,
-                borderColor: colors.border,
-                elevation: 2,
-            }}
-            onPress={() => Linking.openURL(item.site_detail_url)}
-        >
-            <Image
-                source={item.image?.original ? {uri: item.image.original} : idleImage}
-                resizeMode="cover"
-                style={{width: "90%", height: 200, alignSelf: "center", borderRadius: 6, marginTop: 16}}
-            />
-            <View style={{padding: 15}}>
-                <Text style={{
-                    fontSize: 18,
-                    fontWeight: "semibold",
-                    color: colors.text,
-                    lineHeight: 26,
-                    marginBottom: 8
-                }}>{item.title}</Text>
-                <Text numberOfLines={3}
-                      style={{fontSize: 14, color: colors.secondaryText, lineHeight: 22, marginBottom: 10}}
-                >{item.deck}</Text>
-                <View style={{flexDirection: "row", alignItems: "center"}}>
-                    <ClockIcon width={20} height={20} color={colors.icon}/>
+    function renderNewsCard({item}: { item: NewsArticle }) {
+        return (
+            <TouchableOpacity
+                activeOpacity={0.9}
+                style={{
+                    backgroundColor: colors.card,
+                    marginBottom: 18,
+                    overflow: "hidden",
+                    borderWidth: 1,
+                    borderColor: colors.border,
+                    elevation: 2,
+                }}
+                onPress={() => Linking.openURL(item.site_detail_url)}
+            >
+                <Image
+                    source={item.image?.original ? {uri: item.image.original} : idleImage}
+                    resizeMode="cover"
+                    style={{width: "90%", height: 200, alignSelf: "center", borderRadius: 6, marginTop: 16}}
+                />
+                <View style={{padding: 15}}>
                     <Text style={{
-                        fontSize: 14,
-                        color: colors.secondaryText,
-                        paddingLeft: 5,
-                    }}>{new Date(item.publish_date).toLocaleString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        hour: 'numeric',
-                        minute: '2-digit',
-                        hour12: true
-                    })}</Text>
+                        fontSize: 18,
+                        fontWeight: "semibold",
+                        color: colors.text,
+                        lineHeight: 26,
+                        marginBottom: 8
+                    }}>{item.title}</Text>
+                    <Text numberOfLines={3}
+                          style={{fontSize: 14, color: colors.secondaryText, lineHeight: 22, marginBottom: 10}}
+                    >{item.deck}</Text>
+                    <View style={{flexDirection: "row", alignItems: "center"}}>
+                        <ClockIcon width={20} height={20} color={colors.icon}/>
+                        <Text style={{
+                            fontSize: 14,
+                            color: colors.secondaryText,
+                            paddingLeft: 5,
+                        }}>{new Date(item.publish_date).toLocaleString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            hour: 'numeric',
+                            minute: '2-digit',
+                            hour12: true
+                        })}</Text>
+                    </View>
                 </View>
-            </View>
-        </TouchableOpacity>
-    );
+            </TouchableOpacity>
+        )
+    }
 
     return (
         <SafeAreaProvider style={{flex: 1, backgroundColor: colors.background}}>
@@ -96,7 +94,12 @@ export function NewsScreen() {
                 borderBottomWidth: 1,
                 borderBottomColor: colors.border
             }}>
-                <Text style={{fontSize: 28, fontWeight: "300", fontFamily: "System", color: colors.text}}>{t('newsTitle')}</Text>
+                <Text style={{
+                    fontSize: 28,
+                    fontWeight: "300",
+                    fontFamily: "System",
+                    color: colors.text
+                }}>{t('newsTitle')}</Text>
             </View>
 
             {loading ? (
@@ -109,7 +112,7 @@ export function NewsScreen() {
                         {error}
                     </Text>
                     <TouchableOpacity
-                        onPress={fetchFeed}
+                        onPress={getNewsFeed}
                         activeOpacity={0.7}
                         style={{
                             backgroundColor: colors.text,
@@ -123,8 +126,8 @@ export function NewsScreen() {
                 </View>
             ) : (
                 <FlatList
-                    data={newsData || []}
-                    renderItem={({item}) => <NewsCard {...item}/>}
+                    data={newsData}
+                    renderItem={renderNewsCard}
                     keyExtractor={(item) => String(item.id)}
                     showsVerticalScrollIndicator={true}
                 />

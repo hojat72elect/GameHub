@@ -10,7 +10,7 @@ export class NewsRepository {
         if (cachedNews) return cachedNews;
 
         // Otherwise, fetch from remote API and save them to local cache
-        const remoteNews = await NewsRemoteDataSource.getRemoteArticlesUseCase();
+        const remoteNews = await NewsRemoteDataSource.getNews();
         await NewsLocalDataSource.saveNews(remoteNews);
 
         // Clear old cache entries
