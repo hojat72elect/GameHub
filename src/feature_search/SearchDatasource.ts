@@ -1,8 +1,8 @@
 import {Game} from "@/src/shared/domain/Game";
 import {AccessTokenDatasource} from "@/src/shared/data/AccessTokenDatasource";
 
-export class SearchGamesDatasource {
-    static async get(searchQuery: string): Promise<Game[]> {
+export class SearchDatasource {
+    static async getSearchResults(searchQuery: string): Promise<Game[]> {
 
         const clientId = process.env.EXPO_PUBLIC_IGDB_CLIENT_ID;
         const token = await AccessTokenDatasource.get();

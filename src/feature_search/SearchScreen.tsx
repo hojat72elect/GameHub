@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 import {Game} from "@/src/shared/domain/Game";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import SearchIcon from "@/assets/svg/magnify.svg";
-import {SearchGamesDatasource} from "@/src/feature_search/SearchGamesDatasource";
+import {SearchDatasource} from "@/src/feature_search/SearchDatasource";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
 
 export function SearchScreen() {
@@ -26,7 +26,7 @@ export function SearchScreen() {
         setError(null);
         setHasSearched(true);
         try {
-            const data = await SearchGamesDatasource.get(trimmedQuery);
+            const data = await SearchDatasource.getSearchResults(trimmedQuery);
             setResults(data);
         } catch (err: any) {
             console.error("Error searching games:", err);
