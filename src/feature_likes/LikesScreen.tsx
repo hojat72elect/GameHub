@@ -59,15 +59,18 @@ export function LikesScreen() {
         });
     }
 
+    /**
+     * Select or unselect a given game by having its ID.
+     */
     function toggleSelection(gameId: number) {
         setSelectedGameIds(currentlySelectedGames => {
             const result = new Set(currentlySelectedGames);
             if (result.has(gameId)) {
                 // The game was selected and we de-select it now
                 result.delete(gameId);
-                if (result.size === 0) setIsSelectionMode(false);
+                if (result.size === 0) setIsSelectionMode(false); // There are no selected games, we get out of selection mode.
             } else {
-                // select the game
+                // select the game (it's not yet selected)
                 result.add(gameId);
                 setIsSelectionMode(true);
             }
@@ -75,10 +78,12 @@ export function LikesScreen() {
         });
     }
 
+    /**
+     * Unlikes all games that are currently selected, and leaves the selection mode.
+     */
     function unlikeSelectedGames() {
         selectedGameIds.forEach(gameId => toggleLikedGames(gameId.toString()));
-        setSelectedGameIds(new Set());
-        setIsSelectionMode(false);
+        exitSelectionMode();
     }
 
     function exitSelectionMode() {
