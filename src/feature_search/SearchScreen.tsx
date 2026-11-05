@@ -11,9 +11,8 @@ import {useTheme} from "@/src/shared/contexts/ThemeContext";
 
 export function SearchScreen() {
     const [query, setQuery] = useState<string>("");
-    const [results, setResults] = useState<Game[]>([]);
+    const [results, setResults] = useState<Game[] | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [hasSearched, setHasSearched] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const {colors} = useTheme();
     const {t} = useTranslation();
@@ -24,7 +23,6 @@ export function SearchScreen() {
 
         setIsLoading(true);
         setError(null);
-        setHasSearched(true);
         try {
             const data = await SearchGamesDatasource.get(trimmedQuery);
             setResults(data);
@@ -111,13 +109,13 @@ export function SearchScreen() {
                 </View>
             )}
 
-            {!isLoading && !error && hasSearched && results.length === 0 && (
+            {!isLoading && !error && !results && (
                 <View style={{flex: 1, justifyContent: "center", alignItems: "center", marginTop: 50}}>
                     <Text style={{fontSize: 16, color: colors.secondaryText}}>{t('noGamesFound')}</Text>
                 </View>
             )}
 
-            {!isLoading && !error && results.length > 0 && (
+            {!isLoading && !error && !!results?.length && (
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={{padding: 15}}
@@ -127,7 +125,7 @@ export function SearchScreen() {
                         flexWrap: "wrap",
                         justifyContent: "space-between"
                     }}>
-                        {results.map((item) => {
+                        {results?.map((item) => {
                             const coverUrl = item.cover?.image_id
                                 ? {uri: `https://images.igdb.com/igdb/image/upload/t_cover_big/${item.cover.image_id}.jpg`}
                                 : idleImage;
