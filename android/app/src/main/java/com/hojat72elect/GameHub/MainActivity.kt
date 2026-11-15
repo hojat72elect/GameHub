@@ -1,8 +1,11 @@
 package com.hojat72elect.GameHub
 import expo.modules.splashscreen.SplashScreenManager
 
+import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import androidx.core.view.WindowCompat
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
@@ -21,6 +24,30 @@ class MainActivity : ReactActivity() {
     SplashScreenManager.registerOnActivity(this)
     // @generated end expo-splashscreen
     super.onCreate(null)
+    applyNavigationBarTheme()
+  }
+
+  override fun onConfigurationChanged(newConfig: Configuration) {
+    super.onConfigurationChanged(newConfig)
+    applyNavigationBarTheme(newConfig)
+  }
+
+  /**
+   * Sets the system navigation bar color and icon appearance
+   * to match the current day/night mode.
+   */
+  private fun applyNavigationBarTheme(config: Configuration? = null) {
+    val currentConfig = config ?: resources.configuration
+    val isNightMode = (currentConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
+        Configuration.UI_MODE_NIGHT_YES
+
+    window.navigationBarColor = if (isNightMode) Color.BLACK else Color.WHITE
+
+    // Light appearance = dark icons/buttons on the nav bar (for light theme).
+    // Dark appearance  = light icons/buttons on the nav bar (for dark theme).
+    WindowCompat.getInsetsController(window, window.decorView).apply {
+      isAppearanceLightNavigationBars = !isNightMode
+    }
   }
 
   /**
