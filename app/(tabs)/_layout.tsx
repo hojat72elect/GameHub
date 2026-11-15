@@ -34,7 +34,7 @@ export default function TabLayout() {
                 options={{
                     title: t('discoverTitle'),
                     // @ts-ignore
-                    tabBarIcon: ({color}) => <DiscoverIcon width={28} height={28} style={{color}}/>,
+                    tabBarIcon: ({color}) => <DiscoverIcon width={28} height={28} style={{color: color}}/>,
                 }}
             />
             <Tabs.Screen
@@ -42,7 +42,7 @@ export default function TabLayout() {
                 options={{
                     title: t('likesTitle'),
                     // @ts-ignore
-                    tabBarIcon: ({color}) => <LikesIcon width={28} height={28} style={{color}}/>,
+                    tabBarIcon: ({color}) => <LikesIcon width={28} height={28} style={{color: color}}/>,
                 }}
             />
             <Tabs.Screen
@@ -50,7 +50,7 @@ export default function TabLayout() {
                 options={{
                     title: t('newsTitle'),
                     // @ts-ignore
-                    tabBarIcon: ({color}) => <NewsIcon width={28} height={28} style={{color}}/>,
+                    tabBarIcon: ({color}) => <NewsIcon width={28} height={28} style={{color: color}}/>,
                 }}
             />
             <Tabs.Screen
@@ -58,7 +58,7 @@ export default function TabLayout() {
                 options={{
                     title: t('settingsTitle'),
                     // @ts-ignore
-                    tabBarIcon: ({color}) => <SettingsIcon width={28} height={28} style={{color}}/>,
+                    tabBarIcon: ({color}) => <SettingsIcon width={28} height={28} style={{color: color}}/>,
                 }}
             />
         </Tabs>
