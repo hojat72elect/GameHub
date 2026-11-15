@@ -8,7 +8,7 @@ import LikesIcon from '@/assets/svg/heart.svg';
 import NewsIcon from '@/assets/svg/newspaper.svg';
 
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
-import {HapticTab} from "@/src/shared/HapticTab";
+import {PressableTab} from "@/src/shared/PressableTab";
 
 export default function TabLayout() {
     const {colors} = useTheme();
@@ -27,7 +27,7 @@ export default function TabLayout() {
                     fontSize: 11,
                 },
                 headerShown: false,
-                tabBarButton: HapticTab,
+                tabBarButton: PressableTab,
             }}>
             <Tabs.Screen
                 name="index"
