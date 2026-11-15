@@ -1,5 +1,5 @@
 import React, {createContext, useCallback, useContext, useEffect, useState} from 'react';
-import {useColorScheme as useSystemColorScheme} from 'react-native';
+import {Appearance, useColorScheme as useSystemColorScheme} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Colors} from '../Colors';
 import type {ThemeMode} from '@/src/shared/domain/ThemeMode';
@@ -59,6 +59,11 @@ export function ThemeProvider({children}: { children: React.ReactNode }) {
 
     const colors = Colors[resolvedTheme];
     const isDark = resolvedTheme === 'dark';
+
+    // Synchronize system night mode and appearance with current app theme
+    useEffect(() => {
+        Appearance.setColorScheme(themeMode === 'system' ? 'unspecified' : themeMode);
+    }, [themeMode]);
 
     return (
         <ThemeContext.Provider value={{themeMode, resolvedTheme, colors, isDark, setThemeMode, isHydrated}}>
