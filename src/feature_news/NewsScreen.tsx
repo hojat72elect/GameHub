@@ -7,6 +7,7 @@ import {NewsArticle} from "@/src/shared/domain/NewsArticle";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
 import {NewsRepository} from "@/src/feature_news/data/NewsRepository";
 import ClockIcon from "@/assets/svg/clock_outline_16dp.svg";
+import {ScreenNameLabel} from "@/src/shared/ui/ScreenNameLabel";
 
 export function NewsScreen() {
     const [newsData, setNewsData] = useState<NewsArticle[]>([]);
@@ -94,12 +95,7 @@ export function NewsScreen() {
                 borderBottomWidth: 1,
                 borderBottomColor: colors.border
             }}>
-                <Text style={{
-                    fontSize: 28,
-                    fontWeight: "300",
-                    fontFamily: "System",
-                    color: colors.text
-                }}>{t('newsTitle')}</Text>
+                <ScreenNameLabel title={t('newsTitle')}/>
             </View>
 
             {loading ? (

@@ -9,6 +9,7 @@ import {router} from "expo-router";
 import idleImage from "@/assets/images/game_portrait_placeholder.webp";
 import {GameDetailsRepository} from "@/src/shared/data/game_details/GameDetailsRepository";
 import {getRelativeTimeTextUseCase} from "@/src/shared/getRelativeTimeTextUseCase";
+import {ScreenNameLabel} from "@/src/shared/ui/ScreenNameLabel";
 
 export function LikesScreen() {
     const {colors} = useTheme();
@@ -226,9 +227,7 @@ export function LikesScreen() {
                 justifyContent: 'space-between',
                 alignItems: 'center',
             }}>
-                <Text style={{fontSize: 20, fontWeight: "500", color: colors.text}}>
-                    {isSelectionMode ? `${selectedGameIds.size} selected` : t('likesTitle')}
-                </Text>
+                <ScreenNameLabel title={isSelectionMode ? `${selectedGameIds.size} selected` : t('likesTitle')}/>
                 {isSelectionMode && (
                     <View style={{flexDirection: 'row', gap: 12}}>
                         <TouchableOpacity onPress={exitSelectionMode}>

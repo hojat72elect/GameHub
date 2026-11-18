@@ -9,6 +9,7 @@ import {Language} from "@/src/shared/domain/Language";
 import {SettingsSection} from "./SettingsSection";
 import {router} from "expo-router";
 import {useAuth} from "@/src/shared/contexts/AuthContext";
+import {ScreenNameLabel} from "@/src/shared/ui/ScreenNameLabel";
 
 export function SettingsScreen() {
     const {t} = useTranslation();
@@ -64,9 +65,7 @@ export function SettingsScreen() {
     return (
         <ScrollView style={{backgroundColor: colors.background}}
                     contentContainerStyle={{marginTop: 36}}>
-            <Text style={{
-                fontSize: 24, fontWeight: "400", color: colors.text, marginStart: 18
-            }}>{t('settingsTitle')}</Text>
+            <ScreenNameLabel title={t('settingsTitle') }/>
 
             <View style={{
                 marginTop: 14,

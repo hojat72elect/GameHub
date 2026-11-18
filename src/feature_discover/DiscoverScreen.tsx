@@ -9,6 +9,7 @@ import {GamesCategory} from "@/src/shared/domain/GamesCategory";
 import {DiscoverScreenSection} from "@/src/feature_discover/DiscoverScreenSection";
 import {GamesGeneralRepository} from "@/src/feature_discover/data/GamesGeneralRepository";
 import {useTheme} from "@/src/shared/contexts/ThemeContext";
+import {ScreenNameLabel} from "@/src/shared/ui/ScreenNameLabel";
 
 /**
  * The UI of the Discover screen. This is always the first screen that user sees after opening the app.
@@ -105,7 +106,7 @@ export function DiscoverScreen() {
                 borderBottomWidth: 1,
                 borderBottomColor: colors.border
             }}>
-                <Text style={{fontSize: 24, fontWeight: "400", color: colors.text}}>{t('discoverTitle')}</Text>
+                <ScreenNameLabel title={t('discoverTitle')}/>
                 <TouchableOpacity onPress={() => router.push('/search')}>
                     <SearchIcon width={24} height={24} color={colors.text}/>
                 </TouchableOpacity>
